@@ -1,0 +1,174 @@
+﻿<!--Slider-->
+<div style="margin-left:72px;margin-bottom:72px">
+    <h1 class="cat-title">Drag a Part Into the Selection Container</h1>
+    <h4 id="price_text" style="margin-left:24px;margin-top:32px">Price: $0</h4>
+    <h4 id="sku_text" style="margin-left:24px;margin-top:32px">SKU:       </h4>
+    <h4 style="margin-left:24px;margin-top:16px"> Quantity:  <input type="text" name="quantity" style="width:32px" > <button type="button" id="cart_button" style="margin-left:24px;margin-top:16px">Add To Cart</button> </h4>
+    
+</div>
+<div id="parts_container" class="col-md-6">
+    <h2>Configuration Parts</h2>
+    <br />
+    <div class="no-js">
+        <div id="main-slider" class="liquid-slider">
+            <!--Operator Type-->
+            <div>
+                <h2 class="title">Operator Type</h2>
+                <div class="row row-space">
+                    <div class="col-md-3 metro-column">
+                        <div id="item_operator_1" class="metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 1</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 metro-column">
+                        <div id="item_operator_2" class="metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 2</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 metro-column">
+                        <div id="item_operator_3" class="metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 3</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 metro-column row-space">
+                        <div id="item_operator_4" class="metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 4</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Modular Diameter-->
+            <div>
+                <h2 class="title">Modular Diameter</h2>
+                <div class="row row-space">
+                    <div class="col-md-3 metro-column">
+                        <div id="item_modular_1" class="metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 1</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 metro-column">
+                        <div id="item_modular_2" class="metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 2</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 metro-column">
+                        <div id="item_modular_3" class="metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 3</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 metro-column row-space">
+                        <div id="item_modular_4" class="metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 4</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 metro-column row-space">
+                        <div id="item_modular_5" class="metro metro-wide" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 5</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--BaseMaterial & Style-->
+            <div>
+                <h2 class="title">Base Material & Style </h2>
+                <div class="row row-space">
+                    <div class="col-md-3 metro-column">
+                        <div id="item_material_1" class="metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 1</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 metro-column">
+                        <div id="item_material_2" class="metro metro-wide" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 2</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-space">
+                    <div class="col-md-3 metro-column">
+                        <div id="item_material_3" class="metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 3</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 metro-column">
+                        <div id="item_material_4" class="metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 4</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 metro-column">
+                        <div id="item_material_5" class="metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 5</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <!--Voltage--> 
+            <div>
+                <h2 class="title">Voltage</h2>
+                <div class="row row-space">
+                    <div class="col-md-3 metro-column">
+                        <div id="item_voltage_1" class="metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 1</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 metro-column">
+                        <div id="item_voltage_2" class="metro metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 2</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 metro-column">
+                        <div id="item_voltage_3" class="metro metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 3</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Position-->
+            <div>
+                <h2 class="title">Position</h2>
+                <div class="row row-space">
+                    <div class="col-md-3 metro-column">
+                        <div id="item_position_1" class="metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 1</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 metro-column">
+                        <div id="item_position_2" class="metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 2</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 metro-column">
+                        <div id="item_position_3" class="metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 3</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 metro-column row-space">
+                        <div id="item_position_4" class="metro" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 4</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-3 metro-column row-space">
+                        <div id="item_position_5" class="metro metro-wide" draggable="true" ondragstart="drag(event)">
+                            <h1>Part 5</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="selected" class="col-md-6">
+    <h2>Part Selection</h2>
+    <br />
+    <div id="selected_container" class="row" style="height:1200px" ondrop="dropIntoSelection(event)" ondragover="allowDrop(event)">
+
+    </div>
+</div>
+
+@section Scripts {
+    @Styles.Render("~/Content/liquid-slider.css")
+    @Styles.Render("https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.0.0/animate.min.css")
+    @Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js")
+    @Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js")
+    @Scripts.Render("~/Scripts/jquery.liquid-slider.min.js")
+    @Scripts.Render("~/Scripts/main.js")
+}

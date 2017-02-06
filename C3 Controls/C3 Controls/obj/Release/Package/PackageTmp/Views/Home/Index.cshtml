@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="jumbotron">
+    <h1>C3 Controls</h1>
+    <p class="lead">Use these to configure controls</p>
+    @Html.ActionLink("Configure Tower Lights", "ConfigureTowerLight", "Home", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Configure Push to Test", "ConfigurePushToTest", "Home", null, new { @class = "btn btn-primary" })
+</div>

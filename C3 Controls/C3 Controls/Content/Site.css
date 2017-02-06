@@ -1,0 +1,219 @@
+﻿body {
+    /*padding-top: 50px;*/
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+/* Page Text & Image Styles */
+.part-modal-warning {
+    background-color:#ffd800;
+    color:black;
+}
+
+.part-modal-error {
+    background-color:#E53935;
+    color:white;
+}
+
+.part-content {
+    background-color:#F2F2F2;
+}
+
+.part-whole-page {
+    margin-top:-5em;
+}
+
+.part-img {
+    vertical-align:middle;
+    float:right;
+}
+
+.part-text {
+    margin-bottom:0.75em;
+    text-align:left;
+}
+
+.part-text-header {
+    color:#0061AA;
+    font-size:5.2rem;
+}
+
+.part-text-body {
+    color:#535353;
+    font-size:25px;
+    padding-bottom:1em;
+    margin-bottom:3em;
+    border-bottom:2px solid #eee;
+}
+
+.part-tile-img {
+    width:90px;
+    height:90px;
+    vertical-align:middle;
+    margin-top:33px;
+    margin-left:33px;
+
+    /* To prevent images inside div from glitching during drag event */
+    user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.part-section-title {
+    font-size:2.6rem;
+    font-family:"Montserrat",sans-serif;
+    font-weight:400;
+    font-style:normal;
+    color:#005FAC;
+    text-transform:uppercase;
+    margin-bottom:1em;
+}
+
+.part-section-body {
+    font-size:1.8rem;
+    color:#444;
+    margin-top:-1em;
+    margin-bottom:2em;
+}
+
+.part-section-lead {
+    color:dimgray;
+    margin:32px;
+}
+
+.part-section-btn {
+    font-size:11px;
+}
+
+
+/* Tile Styles */
+.metro-column {
+    margin-right:32px;
+}
+
+.metro-static {
+    width:150px;
+    height:150px;
+    margin-top:16px;
+    background-color:#0061AA;
+}
+
+.metro-static h1 {
+    color:white;
+    font-size:small;
+    font-weight:600;
+    text-wrap:normal;
+    text-align:center;
+    vertical-align:middle;
+    line-height:150px;
+}
+
+.metro {
+    width:150px;
+    height:150px;
+    margin-top:16px;
+    background-color:#0061AA;
+}
+
+.metro:hover {
+    border:2px solid #28a3ff;
+}
+
+.metro h1 {
+    color:white;
+    font-size:small;
+    font-weight:600;
+    text-wrap:normal;
+    text-align:center;
+    vertical-align:middle;
+    line-height:150px;
+}
+
+.metro-wide {
+    width:312px;
+    height:150px;
+}
+
+.metro-overflow {
+    overflow-y:scroll;
+    height:332px;
+}
+
+
+/** Tabs
+ **************************************************************** **/
+div.tabs {
+	-webkit-border-radius: 0;
+	   -moz-border-radius: 0;
+			border-radius: 0;
+
+	margin:60px 0;
+}
+
+div.tabs div.tab-content {
+	border: 0;
+	padding: 17px;
+	background-color:rgba(0,0,0,0.03);
+
+	-webkit-border-radius: 0;
+	   -moz-border-radius: 0;
+			border-radius: 0;
+}
+div.tabs div.tab-content p:last-child {
+	padding-bottom:0; margin-bottom:0;
+}
+div.tabs ul.nav-tabs {
+	margin: 0;
+	border: 0;
+}
+
+div.tabs ul.nav-tabs li.active a {
+	border: 0;
+	color: #333;
+	background-color:rgba(0,0,0,0.03);
+	padding-top:15px;
+}
+
+div.tabs ul.nav-tabs a {
+	color: #666;
+	margin-right: 1px;
+	padding: 15px 25px;
+	background-color:rgba(0,0,0,0.01);
+	border:0 !important;
+
+	-webkit-border-radius: 0;
+	   -moz-border-radius: 0;
+			border-radius: 0;
+}
+
+div.tabs ul.nav-tabs a i.fa {
+	padding-right:6px;
+}
+
+div.tabs div.tab-content.transparent {
+	border-top:rgba(0,0,0,0.03) 1px solid;
+	background:transparent;
+}

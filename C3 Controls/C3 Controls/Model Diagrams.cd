@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="C3_Controls.Models.Control">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAABAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Models\ControlDataModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C3_Controls.Models.TowerLight">
+    <Position X="7.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QACAABAAAAAAAAAgAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Models\ControlDataModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C3_Controls.Models.PushToTest">
+    <Position X="3.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAABIAAAAAAACAAAAEAAAAAAAAAAAEEAAAAABAAAA=</HashCode>
+      <FileName>Models\ControlDataModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C3_Controls.Models.PricedItem">
+    <Position X="1.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAQAAAAAMAAAAAIQAAAAAAAAAEAAAQAAAAAA=</HashCode>
+      <FileName>Models\ControlDataModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

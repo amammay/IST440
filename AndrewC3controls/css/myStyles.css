@@ -1,0 +1,121 @@
+#wrapper {
+	margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+#leftHalf {
+	margin-left: -100px;
+    margin-right: 100px;
+}
+
+#rightHalf {
+	border: 1px solid gray;
+	padding-bottom: 20px;
+}
+
+#draggablePanelList {
+    cursor: move;
+}
+
+#yourWTL {
+	border-bottom: 1px solid gray;
+
+}
+
+#previewImgDiv {
+    margin: 10px 0px 15px 0px;
+}
+
+#filler {
+    font-size: 60px;
+    color: rgba(0, 0, 0, 0.1);
+}
+
+#interactivePreviewSKU {
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+#sku {
+    color: red;
+    font-weight: bold;
+}
+
+#splitRow {
+	margin-left: 100px;
+}
+
+.delImg {
+    cursor: pointer;
+}
+
+.dropdown {
+	margin: 20px 0px 20px 0px;
+}
+
+.config-header {
+	border-bottom: 1px solid gray;
+	margin-top: 75px;
+}
+
+.captionText {
+    color: gray;
+    padding-top: 15px;
+}
+
+.panel-link {
+    border-color: black;
+}
+
+.selection-wrapper {
+	margin: 5px;
+	display:none;
+}
+
+.selection-text {
+	border: 1px solid black;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.selection-img {
+	padding: 5px;
+	border: 1px solid black;
+	border-right: none;
+    border-top: none;
+}
+
+.selection-btn {
+	border: 1px solid black;
+    border-top: none;
+	padding: 10px 5px 5px 5px;
+}
+
+#orderableText {
+    padding-top: 6px;
+}
+
+/*
+ * Row with equal height columns
+ * --------------------------------------------------
+ */
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+ 
+/*TABLE*/
+table, th, td {
+    border-collapse: collapse;
+    width: 50%;
+    border: 1px solid #ddd;
+}
+td {
+    text-align: center;
+    padding: 5px;
+}
+
+
+

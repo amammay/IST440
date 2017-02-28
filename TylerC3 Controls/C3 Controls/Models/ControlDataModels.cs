@@ -258,7 +258,7 @@ namespace C3_Controls.Models
         public string Sku { get; set; }
         public double Price { get; set; }
         private string _Img;
-        public string Desc { get; set; }
+        public string Desc { get; set; }   
 
         public string Img
         {

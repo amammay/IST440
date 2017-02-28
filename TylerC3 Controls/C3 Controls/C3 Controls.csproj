@@ -138,8 +138,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ControlDataModels.cs" />
-    <Compile Include="Models\couchDBConnector.cs" />
-    <Compile Include="Models\couchDBImporter.cs" />
+    <Compile Include="Models\CouchDBConnector.cs" />
+    <Compile Include="Models\CouchDBImporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

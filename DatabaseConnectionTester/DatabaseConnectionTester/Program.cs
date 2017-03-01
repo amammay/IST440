@@ -1,14 +1,6 @@
 ﻿using System;
-using System.CodeDom.Compiler;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using MyCouch;
 using MyCouch.Requests;
-using MyCouch.Responses;
 
 namespace DatabaseConnectionTester
 {
@@ -46,12 +38,12 @@ namespace DatabaseConnectionTester
                 //retrieving database 5
                 var responseGet1 = db.Documents.GetAsync("5");
                 Console.WriteLine(responseGet1.Result.ToStringDebugVersion() + "\n");
-                Console.WriteLine(responseGet1.Result.Content.ToString() + "\n");
+                Console.WriteLine(responseGet1.Result.Content + "\n");
 
                 //retrieving database 1
                 var responseGet2 = db.Documents.GetAsync("1");
                 Console.WriteLine(responseGet2.Result.ToStringDebugVersion() + "\n");
-                Console.WriteLine(responseGet2.Result.Content.ToString() + "\n");
+                Console.WriteLine(responseGet2.Result.Content + "\n");
                 #endregion Get
 
 

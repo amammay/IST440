@@ -63,7 +63,7 @@ namespace DatabaseConnectionTester
                 Console.Write(responseGetView1.Result.ToStringDebugVersion() + "\n");
 
                 //Create a temp list to grab some values
-                List<string> newList = new List<string>();
+                List<Album> newAlbums = new List<Album>();
 
                 //cycle through each of the results rows
                 foreach (var rowResult in responseGetView1.Result.Rows)
@@ -77,17 +77,28 @@ namespace DatabaseConnectionTester
                     {
 
                         //add the item to the list
-                        newList.Add(item.Name);
+
+                        Album newAlbum = new Album
+                        {
+                            Name = item.Name,
+                            Tracks = item.Tracks
+
+
+                        };
+
+                        newAlbums.Add(newAlbum);
+
+
                     }
 
                     
                     
                 }
 
-                //foreach item in the list print it out
-                foreach (var item in newList)
+
+                foreach (var album in newAlbums)
                 {
-                    Console.WriteLine(item + "\n");
+                    Console.WriteLine(album.Name + "\n" + "Tracks:" + album.Tracks + "\n");
                 }
 
 

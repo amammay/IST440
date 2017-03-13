@@ -10,9 +10,18 @@ namespace C3_Controls.Models
     /// </summary>
     public abstract class Control
     {
+
+
         public static double DEFAULT_PRICE = 0.0;
         public abstract PricedItem OperatorType { get; }
         public abstract List<PricedItem> Voltages { get; }
+        public List<PricedItem> TempList { get; set; }
+
+       
+
+        
+
+        
 
 
         // Converts a string list into a select list for drop downs
@@ -32,32 +41,64 @@ namespace C3_Controls.Models
     /// </summary>
     public class TowerLight : Control
     {
+        
         public override PricedItem OperatorType
         {
             get
             {
                 return new PricedItem() { Name = "World Tower Lights", Sku = "WTL", Price = DEFAULT_PRICE };
             }
-        } 
-
-        public override List<PricedItem> Voltages
-        {
-            get
-            {
-                return new List<PricedItem>()
-                {
-                    new PricedItem() { Name = "24V AC/DC", Sku = "24V", Price = 10.00, Img = "img_voltages.png", Desc = "24V AC/DC" },
-                    new PricedItem() { Name = "120V 60Hz / 110V 50Hz", Sku = "120V", Price = 15.00, Img = "img_voltages.png", Desc = "120V 60Hz/ 110V 50Hz" },
-                    new PricedItem() { Name = "240V 60Hz / 220V 50Hz", Sku = "240V", Price = 20.00, Img = "img_voltages.png", Desc = "240V 60Hz / 220V 50Hz" }
-                };
-            }
         }
+
+
+        public couchDBConnector tempthing = new couchDBConnector();
+
+        public TowerLight()
+        {
+            TempList = new List<PricedItem>();
+            var datboi = tempthing.ItemList;
+
+            foreach (var pricedItemTemp in datboi)
+            {
+                PricedItem tempitem = new PricedItem
+                {
+                    Name = pricedItemTemp.Name,
+                    Sku = pricedItemTemp.Sku,
+                    Price = pricedItemTemp.Price,
+                    Desc = pricedItemTemp.Desc
+                    
+                };
+
+                TempList.Add(tempitem);
+
+            }
+
+
+        }
+
+
+        public override List<PricedItem> Voltages => new List<PricedItem>()
+        {
+                    
+                    
+            new PricedItem
+            {
+                Name = TempList[0].Name , Sku = TempList[0].Sku, Price = TempList[0].Price, Img = "img_voltages.png", Desc = TempList[0].Desc
+
+            },
+
+            new PricedItem
+            {
+                 Name = TempList[1].Name , Sku = TempList[1].Sku, Price = TempList[1].Price, Img = "img_voltages.png", Desc = TempList[1].Desc
+            }
+                    
+        };
 
         public PricedItem ModuleDiameter
         {
             get
             {
-                return new PricedItem() { Name = "50mm (131/32 inches)", Sku = "50MM", Price = DEFAULT_PRICE };
+                return new PricedItem() { Name = "50mm (131/32 inches)", Sku = "50MM", Price = DEFAULT_PRICE, Desc = "thing" };
             }
         }
 

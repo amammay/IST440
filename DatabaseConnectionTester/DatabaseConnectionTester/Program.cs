@@ -36,37 +36,94 @@ namespace DatabaseConnectionTester
 
 
             #region DataBase access
+
             //setup our database connection
             using (var db = new MyCouch.MyCouchClient(DatabaseAddress, DatabaseName))
             {
 
                 var queryModuleDiameter = new QueryViewRequest("operator_type", "Module_Diameter");
                 var queryVoltage = new QueryViewRequest("operator_type", "Voltage");
+                
+                
+                //Custom view that i have wrote in couchdb
+                /*
+                 * 
+                 * function(doc) {
+                 *    if (doc.$doctype !== 'Push To Test')
+                 *     return;
+                 *    emit(doc.Database.Items, doc.Database.Items.Push_To_Test);
+                 *  }
+                 */
+
                 var queryPtt = new QueryViewRequest("operator_type", "ptt_all");
 
+                //Capture our response from the query of our view
                 var queryPttResponse = db.Views.QueryAsync(queryPtt);
-
-
+                
+                //Print out debug information
                 Console.WriteLine(queryPttResponse.Result.ToStringDebugVersion());
 
+                //So just to catch up a Dictionary consists of Key, Value pairs
+                //Create a new dictionary with our key being a string IE. Contact_Block_Configuration or Operator_Type and etc....
+                //Our value being a array of PTTItems, this allows multiple object arays to be brought in from JSON
+                Dictionary<string, PTTItem[]> dictionaryValues = new Dictionary<string, PTTItem[]>();
 
-                Dictionary<string, PTTItem[]> tempValues = new Dictionary<string, PTTItem[]>();
-
-
-                foreach (var item in queryPttResponse.Result.Rows)
+                //Cycle through our response that we got, specifically the Rows
+                foreach (var row in queryPttResponse.Result.Rows)
                 {
-                    var itemObject = item.Value;
+                    //assign a temp itemObjcct to our rows value
+                    var itemObject = row.Value;
 
-                    tempValues=  JsonConvert.DeserializeObject<Dictionary<string, PTTItem[]>>(itemObject);
+                    //set our dictionary to the Deserialized object Dictionary consisting of strings and pttitems
+                    dictionaryValues =  JsonConvert.DeserializeObject<Dictionary<string, PTTItem[]>>(itemObject);
 
-                    
+                }
+
+
+                #region Testing ground
+                
+                List<PTTItem[]> newPttItems = new List<PTTItem[]>();
+
+                foreach (var value in dictionaryValues)
+                {
+
+                    var tempValue = value.Value;
+
+                    if (value.Key == "Contact_Block_Configuration")
+                    {
+
+                       newPttItems.Add(tempValue);
+
+
+                    }
 
 
                 }
 
 
-
                 
+                foreach (var pttItem in newPttItems)
+                {
+
+                    foreach (var thing in pttItem)
+                    {
+                        Console.WriteLine(thing.progression +"\n" + 
+                                            thing.id + "\n" 
+                                            + thing.sku + "\n" 
+                                            + thing.text + "\n"
+                                            + thing.voltage_ref_ids);
+                    }
+
+
+                    
+
+                }
+                #endregion Testing Ground
+
+                Console.ReadLine();
+
+
+
 
 
 

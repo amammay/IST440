@@ -34,6 +34,8 @@ namespace C3_Controls.Models
 
         public couchDBConnector()
         {
+
+            //Initilize 
             WtlMap = new Dictionary<string, WTLItem[]>();
 
             MyCouchClient myClient = new MyCouchClient(DatabaseAddress, DatabaseName);

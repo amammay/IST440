@@ -12,6 +12,7 @@ namespace C3_Controls.Models
         public static double DEFAULT_PRICE = 0.0;
         public abstract PricedItem OperatorType { get; }
         public abstract List<PricedItem> Voltages { get; }
+        public Dictionary<string, WTLItem[]> WtlMap { get;  set; }
 
 
         // Converts a string list into a select list for drop downs
@@ -31,6 +32,20 @@ namespace C3_Controls.Models
     /// </summary>
     public class TowerLight : Control
     {
+
+        couchDBConnector myCouchDbConnector = new couchDBConnector();
+
+        public TowerLight()
+        {
+            WtlMap = new Dictionary<string, WTLItem[]>();
+
+
+
+            WtlMap = myCouchDbConnector.WtlMap;
+
+
+        }
+
         public override PricedItem OperatorType
         {
             get { return new PricedItem {Name = "World Tower Lights", Sku = "WTL", Price = DEFAULT_PRICE}; }
@@ -628,37 +643,6 @@ namespace C3_Controls.Models
                     new PricedItem {Name = "IP20 Guard", Sku = "IPG", Price = 0.00}
                 };
             }
-        }
-    }
-
-
-    /// <summary>
-    ///     This resemebles all pieces of a control. It has fields
-    ///     to store specific information about each part of a control.
-    /// </summary>
-    public class PricedItem
-    {
-        public static string BASE_IMG = "../../Content/assets/";
-        private string _Img;
-        public string Name { get; set; }
-        public string Sku { get; set; }
-        public double Price { get; set; }
-        public string Desc { get; set; }
-
-        public string Img
-        {
-            get { return _Img; }
-            set
-            {
-                // Sets all images to the path ../../Content/assets/ folder
-                _Img = BASE_IMG + value;
-            }
-        }
-
-
-        public override string ToString()
-        {
-            return Name.ToLower().Replace(" ", "_");
         }
     }
 }

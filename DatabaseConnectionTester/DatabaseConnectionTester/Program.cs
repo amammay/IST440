@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using MyCouch.Requests;
 using System.Configuration;
+using System.Threading.Tasks;
+using MyCouch;
+using MyCouch.Requests;
 using Newtonsoft.Json;
 
 namespace DatabaseConnectionTester
 {
-
-
     public class PTTItem
     {
         public string id { get; set; }
@@ -16,7 +15,14 @@ namespace DatabaseConnectionTester
         public string sku { get; set; }
         public string progression { get; set; }
         public int[] voltage_ref_ids { get; set; }
+    }
 
+    public class WTLItem
+    {
+        public string text { get; set; }
+        public string sku { get; set; }
+        public string progression { get; set; }
+        public double price { get; set; }
     }
 
 
@@ -26,25 +32,45 @@ namespace DatabaseConnectionTester
 
         public static string DatabaseName => ConfigurationManager.AppSettings["DataBaseName"];
 
-        public static string Database => ConfigurationManager.AppSettings["DataBase"];
+        public static string DatabaseWTL => ConfigurationManager.AppSettings["DataBase_WTL"];
 
-        
+        public static string DatabasePTT => ConfigurationManager.AppSettings["DataBase_PTT"];
+
+        public static IDictionary<string, WTLItem[]> WtlIMap;
 
 
         static void Main(string[] args)
         {
 
+            //reworked the connection to be async
+            DbConnection().Wait();
 
-            #region DataBase access
+            //dispose of our connection
+            DbConnection().Dispose();
 
-            //setup our database connection
-            using (var db = new MyCouch.MyCouchClient(DatabaseAddress, DatabaseName))
+
+            //print out the text of each item
+            foreach (var mapItem in WtlIMap)
             {
 
-                var queryModuleDiameter = new QueryViewRequest("operator_type", "Module_Diameter");
-                var queryVoltage = new QueryViewRequest("operator_type", "Voltage");
-                
-                
+                foreach (var item in mapItem.Value)
+                {
+                    Console.WriteLine(item.text);
+                }
+
+            }
+
+            Console.ReadLine();
+
+        }
+
+        private static async Task DbConnection()
+        {
+            using (var db = new MyCouchClient(DatabaseAddress, DatabaseName))
+            {
+
+                var wtlQuery = new QueryViewRequest("database_query", "wtl_all");
+
                 //Custom view that i have wrote in couchdb
                 /*
                  * 
@@ -55,91 +81,34 @@ namespace DatabaseConnectionTester
                  *  }
                  */
 
-                var queryPtt = new QueryViewRequest("operator_type", "ptt_all");
-
                 //Capture our response from the query of our view
-                var queryPttResponse = db.Views.QueryAsync(queryPtt);
-                
+                var wtlQueryResponse = db.Views.QueryAsync(wtlQuery);
+
+
                 //Print out debug information
-                Console.WriteLine(queryPttResponse.Result.ToStringDebugVersion());
+                Console.WriteLine(wtlQueryResponse.Result.ToStringDebugVersion());
 
                 //So just to catch up a Dictionary consists of Key, Value pairs
                 //Create a new dictionary with our key being a string IE. Contact_Block_Configuration or Operator_Type and etc....
                 //Our value being a array of PTTItems, this allows multiple object arays to be brought in from JSON
-                Dictionary<string, PTTItem[]> dictionaryValues = new Dictionary<string, PTTItem[]>();
+                var dictionaryValues = new Dictionary<string, WTLItem[]>();
 
                 //Cycle through our response that we got, specifically the Rows
-                foreach (var row in queryPttResponse.Result.Rows)
+                foreach (var row in wtlQueryResponse.Result.Rows)
                 {
                     //assign a temp itemObjcct to our rows value
                     var itemObject = row.Value;
 
                     //set our dictionary to the Deserialized object Dictionary consisting of strings and pttitems
-                    dictionaryValues =  JsonConvert.DeserializeObject<Dictionary<string, PTTItem[]>>(itemObject);
-
+                    dictionaryValues = JsonConvert.DeserializeObject<Dictionary<string, WTLItem[]>>(itemObject);
                 }
 
-
-                #region Testing ground
-                
-                List<PTTItem[]> newPttItems = new List<PTTItem[]>();
-
-                foreach (var value in dictionaryValues)
-                {
-
-                    var tempValue = value.Value;
-
-                    if (value.Key == "Contact_Block_Configuration")
-                    {
-
-                       newPttItems.Add(tempValue);
-
-
-                    }
-
-
-                }
-
-
-                
-                foreach (var pttItem in newPttItems)
-                {
-
-                    foreach (var thing in pttItem)
-                    {
-                        Console.WriteLine(thing.progression +"\n" + 
-                                            thing.id + "\n" 
-                                            + thing.sku + "\n" 
-                                            + thing.text + "\n"
-                                            + thing.voltage_ref_ids);
-                    }
-
-
-                    
-
-                }
-                #endregion Testing Ground
-
-                Console.ReadLine();
-
-
-
-
-
-
-
-
-
-
+                WtlIMap = dictionaryValues;
 
             }
-            #endregion DataBase access  
 
+            
 
         }
-
     }
-
-
 }
-

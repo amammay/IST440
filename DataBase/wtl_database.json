@@ -3,7 +3,7 @@
     "$doctype": "C3Controls_WTL",
     "DataBase": {
         "Items": {
-            "World _Tower_Lights": {
+            "World_Tower_Lights": {
                 "Operator Type": [
                     {
                         "text": "World Tower Lights",

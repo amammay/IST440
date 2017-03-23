@@ -1,0 +1,182 @@
+{
+    "_id": "C3Controls_WTL",
+    "$doctype": "C3Controls_WTL",
+    "DataBase": {
+        "Items": {
+            "World_Tower_Lights": {
+                "Operator Type": [
+                    {
+                        "text": "World Tower Lights",
+                        "sku": "WTL",
+                        "progression": "1",
+                        "price": "8.00"
+                    }
+                ],
+                "Diameter": [
+                    {
+                        "text": "50mm (1-31/32)",
+                        "sku": "50",
+                        "progression": "1"
+                    }
+                ],
+                "Base Material & Style": [
+                    {
+                        "text": "Polycarbonate Panel Mount - Short",
+                        "sku": "P1",
+                        "progression": "1",
+                        "price": "48.50"
+                    },
+                    {
+                        "text": "Polycarbonate Panel Mount - Tall",
+                        "sku": "P2",
+                        "progression": "1",
+                        "price": "48.50"
+                    },
+                    {
+                        "text": "Polycarbonate Direct Mount",
+                        "sku": "P3",
+                        "progression": "1",
+                        "price": "0.00"
+                    }
+                ],
+                "Voltage": [
+                    {
+                        "text": "24V AC/DC",
+                        "sku": "24",
+                        "progression": "1"
+                    },
+                    {
+                        "text": "120V 60Hz / 110V 50Hz",
+                        "sku": "120",
+                        "progression": "1"
+                    },
+                    {
+                        "text": "240V 60Hz / 220V 50Hz",
+                        "sku": "240",
+                        "progression": "1"
+                    }
+                ],
+                "Light Lens": [
+                    {
+                        "text": "Standard",
+                        "sku": "ST",
+                        "progression": "3",
+                        "price": "8.00"
+                    },
+                    {
+                        "text": "Clear",
+                        "sku": "C",
+                        "progression": "3",
+                        "price": "8.00"
+                    }
+                ],
+                "Sound Module": [
+                    {
+                        "text": "Continuous 80db",
+                        "sku": "DS1",
+                        "progression": "2",
+                        "price": "82.00"
+                    },
+                    {
+                        "text": "Intermittent 80db",
+                        "sku": "FS1",
+                        "progression": "2",
+                        "price": "82.00"
+                    }
+                ],
+                "Position": [
+                    {
+                        "text": "Continuous LED Light Module Amber",
+                        "sku": "DA",
+                        "progression": "2",
+                        "price": "48.50"
+                    },
+                    {
+                        "text": "Flashing LED Light Module Amber",
+                        "sku": "FA",
+                        "progression": "2",
+                        "price": "61.00"
+                    },
+                    {
+                        "text": "Rotary LED Light Module Amber",
+                        "sku": "RA",
+                        "progression": "2",
+                        "price": "61.00"
+                    },
+                    {
+                        "text": "Continuous LED Light Module Blue",
+                        "sku": "DB",
+                        "progression": "2",
+                        "price": "48.50"
+                    },
+                    {
+                        "text": "Flashing LED Light Module Blue",
+                        "sku": "FB",
+                        "progression": "2",
+                        "price": "61.00"
+                    },
+                    {
+                        "text": "Rotary LED Light Module Blue",
+                        "sku": "RB",
+                        "progression": "2",
+                        "price": "61.00"
+                    },
+                    {
+                        "text": "Continuous LED Light Module Green",
+                        "sku": "DG",
+                        "progression": "2",
+                        "price": "48.50"
+                    },
+                    {
+                        "text": "Flashing LED Light Module Green",
+                        "sku": "FG",
+                        "progression": "2",
+                        "price": "61.00"
+                    },
+                    {
+                        "text": "Rotary LED Light Module Green",
+                        "sku": "RG",
+                        "progression": "2",
+                        "price": "61.00"
+                    },
+                    {
+                        "text": "Continuous LED Light Module Red",
+                        "sku": "DR",
+                        "progression": "2",
+                        "price": "48.50"
+                    },
+                    {
+                        "text": "Flashing LED Light Module Red",
+                        "sku": "FR",
+                        "progression": "2",
+                        "price": "61.00"
+                    },
+                    {
+                        "text": "Rotary LED Light Module Red",
+                        "sku": "RR",
+                        "progression": "2",
+                        "price": "61.00"
+                    },
+                    {
+                        "text": "Continuous LED Light Module White",
+                        "sku": "DW",
+                        "progression": "2",
+                        "price": "48.50"
+                    },
+                    {
+                        "text": "Flashing LED Light Module White",
+                        "sku": "FW",
+                        "progression": "2",
+                        "price": "61.00"
+                    },
+                    {
+                        "text": "Rotary LED Light Module White",
+                        "sku": "RW",
+                        "progression": "2",
+                        "price": "61.00"
+                    }
+                ]
+            }
+        }
+    }
+}

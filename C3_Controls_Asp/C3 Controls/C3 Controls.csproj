@@ -34,6 +34,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -138,8 +140,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ControlDataModels.cs" />
-    <Compile Include="Models\CouchDBConnector.cs" />
-    <Compile Include="Models\CouchDBImporter.cs" />
+    <Compile Include="Models\CouchDbConnections\CouchDBConnector.cs" />
+    <Compile Include="Models\Items\PricedItem.cs" />
+    <Compile Include="Models\Items\PTTItem.cs" />
+    <Compile Include="Models\Items\WTLItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

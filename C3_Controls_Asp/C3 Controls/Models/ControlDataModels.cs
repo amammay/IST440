@@ -13,8 +13,8 @@ namespace C3_Controls.Models
         public abstract PricedItem OperatorType { get; }
         public abstract List<PricedItem> Voltages { get; }
         public Dictionary<string, WTLItem[]> WtlMap { get;  set; }
-
-
+        public Dictionary<string , PTTItem[]> PttMap { get; set; }
+        public CouchDbConnector myCouchDbConnector = new CouchDbConnector();
         // Converts a string list into a select list for drop downs
         public static IEnumerable<SelectListItem> Convert(List<string> items)
         {
@@ -33,16 +33,12 @@ namespace C3_Controls.Models
     public class TowerLight : Control
     {
 
-        couchDBConnector myCouchDbConnector = new couchDBConnector();
-
         public TowerLight()
         {
             WtlMap = new Dictionary<string, WTLItem[]>();
-
-
-
+            
+            //Assign our dictionary to the one that was populated when the connection was made 
             WtlMap = myCouchDbConnector.WtlMap;
-
 
         }
 
@@ -264,6 +260,16 @@ namespace C3_Controls.Models
     /// </summary>
     public class PushToTest : Control
     {
+
+        public PushToTest()
+        {
+            PttMap = new Dictionary<string, PTTItem[]>();
+
+
+
+            PttMap = myCouchDbConnector.PttMap;
+        }
+
         public override PricedItem OperatorType
         {
             get { return new PricedItem {Name = "Push to Test", Sku = "PTT", Price = DEFAULT_PRICE}; }

@@ -1,6 +1,9 @@
 ﻿namespace DatabaseConnectionTester
 {
-    class Views
+    public class Views
     {
+
+
+
     }
 }

@@ -4,84 +4,78 @@
     "DataBase": {
         "Items": {
             "Push_To_Test": {
-                "Operator_Type": {
-                    "text": "Push-To-Test",
-                    "Operator": {
-                        "Full_Voltage": {
-                            "text": "Full Voltage",
-                            "price": "78",
-                            "voltages": [
-                                {
-                                    "id": "1",
-                                    "text": "6V AC/DC",
-                                    "sku": "FVPTT6"
-                                },
-                                {
-                                    "id": "2",
-                                    "text": "12V AC/DC",
-                                    "sku": "FVPTT12"
-                                },
-                                {
-                                    "id": "3",
-                                    "text": "24V AC/DC",
-                                    "sku": "FVPTT24"
-                                },
-                                {
-                                    "id": "4",
-                                    "text": "120V AC/DC",
-                                    "sku": "FVPTT120"
-                                }
-                            ]
-                        },
-                        "Transformer": {
-                            "text": "Transformer (50/60 Hz)",
-                            "price": "100",
-                            "voltages": [
-                                {
-                                    "id": "5",
-                                    "text": "120V AC",
-                                    "sku": "TFPTT120"
-                                },
-                                {
-                                    "id": "6",
-                                    "text": "240V AC",
-                                    "sku": "TFPTT240"
-                                },
-                                {
-                                    "id": "7",
-                                    "text": "277V AC",
-                                    "sku": "TFPTT277"
-                                },
-                                {
-                                    "id": "8",
-                                    "text": "480V AC",
-                                    "sku": "TFPTT480"
-                                }
-                            ]
-                        },
-                        "Resistor": {
-                            "text": "Resistor",
-                            "price": "89",
-                            "voltages": [
-                                {
-                                    "id": "9",
-                                    "text": "120V AC/DC",
-                                    "sku": "RLPTT120"
-                                },
-                                {
-                                    "id": "10",
-                                    "text": "240V AC/DC",
-                                    "sku": "RLPTT240"
-                                },
-                                {
-                                    "id": "11",
-                                    "text": "480V AC/DC",
-                                    "sku": "RLPTT480"
-                                }
-                            ]
-                        }
+                "Full_Voltage": [
+                    {
+                        "id": "1",
+                        "text": "6V AC/DC",
+                        "price": "78",
+                        "sku": "FVPTT6"
+                    },
+                    {
+                        "id": "2",
+                        "text": "12V AC/DC",
+                        "price": "78",
+                        "sku": "FVPTT12"
+                    },
+                    {
+                        "id": "3",
+                        "text": "24V AC/DC",
+                        "price": "78",
+                        "sku": "FVPTT24"
+                    },
+                    {
+                        "id": "4",
+                        "text": "120V AC/DC",
+                        "price": "78",
+                        "sku": "FVPTT120"
                     }
-                },
+                ],
+                "Transformer (50/60 Hz)": [
+                    {
+                        "id": "5",
+                        "text": "120V AC",
+                        "price": "100",
+                        "sku": "TFPTT120"
+                    },
+                    {
+                        "id": "6",
+                        "text": "240V AC",
+                        "price": "100",
+                        "sku": "TFPTT240"
+                    },
+                    {
+                        "id": "7",
+                        "text": "277V AC",
+                        "price": "100",
+                        "sku": "TFPTT277"
+                    },
+                    {
+                        "id": "8",
+                        "text": "480V AC",
+                        "price": "100",
+                        "sku": "TFPTT480"
+                    }
+                ],
+                "Resistor": [
+                    {
+                        "id": "9",
+                        "text": "120V AC/DC",
+                        "price": "89",
+                        "sku": "RLPTT120"
+                    },
+                    {
+                        "id": "10",
+                        "text": "240V AC/DC",
+                        "price": "89",
+                        "sku": "RLPTT240"
+                    },
+                    {
+                        "id": "11",
+                        "text": "480V AC/DC",
+                        "price": "89",
+                        "sku": "RLPTT480"
+                    }
+                ],
                 "Lamp Type And Color": [
                     {
                         "text": "Amber LED",

@@ -1,0 +1,6 @@
+﻿namespace DatabaseConnectionTester
+{
+    class Views
+    {
+    }
+}

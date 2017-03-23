@@ -1,8 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Web.Configuration;
 
 namespace C3_Controls.Models
 {
+   
+
+
     /// <summary>
     ///     This is a base product and contains all the
     ///     information that is the same amongst all products.
@@ -14,7 +18,7 @@ namespace C3_Controls.Models
         public abstract List<PricedItem> Voltages { get; }
         public Dictionary<string, WTLItem[]> WtlMap { get;  set; }
         public Dictionary<string , PTTItem[]> PttMap { get; set; }
-        public CouchDbConnector myCouchDbConnector = new CouchDbConnector();
+        
         // Converts a string list into a select list for drop downs
         public static IEnumerable<SelectListItem> Convert(List<string> items)
         {
@@ -23,6 +27,8 @@ namespace C3_Controls.Models
                 listItems.Add(new SelectListItem {Text = item, Value = item});
             return listItems;
         }
+        public string CmSetting => WebConfigurationManager.AppSettings["CurrentDatebase"];
+
     }
 
 
@@ -35,10 +41,18 @@ namespace C3_Controls.Models
 
         public TowerLight()
         {
-            WtlMap = new Dictionary<string, WTLItem[]>();
-            
-            //Assign our dictionary to the one that was populated when the connection was made 
-            WtlMap = myCouchDbConnector.WtlMap;
+
+            if (CmSetting != "internal")
+            {
+                CouchDbConnector myCouchDbConnector = new CouchDbConnector();
+
+                WtlMap = new Dictionary<string, WTLItem[]>();
+
+                //Assign our dictionary to the one that was populated when the connection was made 
+                WtlMap = myCouchDbConnector.WtlMap;
+            }
+         
+        
 
         }
 
@@ -263,11 +277,15 @@ namespace C3_Controls.Models
 
         public PushToTest()
         {
-            PttMap = new Dictionary<string, PTTItem[]>();
 
+            if (CmSetting != "internal")
+            {
+                CouchDbConnector myCouchDbConnector = new CouchDbConnector();
 
+                PttMap = new Dictionary<string, PTTItem[]>();
+                PttMap = myCouchDbConnector.PttMap;
 
-            PttMap = myCouchDbConnector.PttMap;
+            }
         }
 
         public override PricedItem OperatorType

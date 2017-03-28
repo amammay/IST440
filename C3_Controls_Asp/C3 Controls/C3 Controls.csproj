@@ -141,6 +141,8 @@
     </Compile>
     <Compile Include="Models\ControlDataModels.cs" />
     <Compile Include="Models\CouchDbConnections\CouchDBConnector.cs" />
+    <Compile Include="Models\DataStructuring\PTT_Data.cs" />
+    <Compile Include="Models\DataStructuring\WTL_Data.cs" />
     <Compile Include="Models\Items\PricedItem.cs" />
     <Compile Include="Models\Items\PTTItem.cs" />
     <Compile Include="Models\Items\WTLItem.cs" />
@@ -251,7 +253,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\scripts.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

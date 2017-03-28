@@ -1,7 +1,7 @@
 ﻿@using C3_Controls.Models
 @model PushToTest
 @{
-    var basics = Model.BasicOperators;
+   
     var voltages = Model.Voltages;
     var lampColors = Model.LampColors;
     var lensColors = Model.LensColors;
@@ -86,7 +86,7 @@
                     <div id="tab_a" class="tab-pane active">
                         <h4>Basic Operators</h4>
                         <div class="row">
-                            @foreach (var i in basics)
+                            @*@foreach (var i in basics)
                             {
                                 <div id="col_basic_@i.Name" class="col-md-3 metro-column">
                                     <div id="item_basic_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
@@ -94,7 +94,7 @@
                                         <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
                                     </div>
                                 </div>
-                            }
+                            }*@
                         </div>
                     </div>
 
@@ -176,7 +176,7 @@
                     <div id="tab_g" class="tab-pane">
                         <h4>Options</h4>
                         <div id="slide_lens_types" class="row">
-                            @foreach (var i in options)
+                            @*@foreach (var i in options)
                             {
                                 <div id="col_option_@i.ToString()" class="col-md-3 metro-column">
                                     <div id="item_option_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
@@ -184,7 +184,7 @@
                                         <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
                                     </div>
                                 </div>
-                            }
+                            }*@
                         </div>
                     </div>
                 </div>

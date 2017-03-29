@@ -61,7 +61,9 @@ namespace C3_Controls.Models.DataStructuring
                                 Name = item.text,
                                 Price = item.price,
                                 Desc = item.text,
-                                Sku = item.sku
+                                Sku = item.sku,
+                                Img = "img_voltages.png"
+
                             };
                             //Add her to the list
                             Voltages.Add(singleItem);
@@ -78,7 +80,8 @@ namespace C3_Controls.Models.DataStructuring
                                 Name = item.text,
                                 Price = item.price,
                                 Desc = item.text,
-                                Sku = item.sku
+                                Sku = item.sku,
+                                Img = "img_voltages.png"
                             };
                             //Add her to the list
                             Voltages.Add(singleItem);
@@ -95,7 +98,8 @@ namespace C3_Controls.Models.DataStructuring
                                 Name = item.text,
                                 Price = item.price,
                                 Desc = item.text,
-                                Sku = item.sku
+                                Sku = item.sku,
+                                Img = "img_voltages.png"
                             };
                             //Add her to the list
                             Voltages.Add(singleItem);

@@ -139,6 +139,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Items\Control.cs" />
     <Compile Include="Models\ControlDataModels.cs" />
     <Compile Include="Models\CouchDbConnections\CouchDBConnector.cs" />
     <Compile Include="Models\DataStructuring\PTT_Data.cs" />

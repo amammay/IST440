@@ -115,20 +115,20 @@ textarea {
 }
 
 .metro-static {
-    width:150px;
-    height:150px;
+    width:100px;
+    height:100px;
     margin-top:16px;
     background-color:#0061AA;
 }
 
 .metro-static h1 {
     color:white;
-    font-size:small;
+    font-size:x-small;
     font-weight:600;
     text-wrap:normal;
     text-align:center;
     vertical-align:middle;
-    line-height:150px;
+    line-height:75px;
 }
 
 .metro {

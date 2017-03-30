@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace C3_Controls.Models
 {
     /// <summary>
@@ -27,6 +30,11 @@ namespace C3_Controls.Models
         public override string ToString()
         {
             return Name.ToLower().Replace(" ", "_");
+        }
+
+        public static implicit operator List<object>(PricedItem v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

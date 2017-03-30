@@ -1,32 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Configuration;
 
 namespace C3_Controls.Models.DataStructuring
 {
     public class PTT_Data
     {
-        public Dictionary<string, PTTItem[]> PttMap { get; set; }
-        public string CmSetting => WebConfigurationManager.AppSettings["CurrentDatebase"];
-
-
-        
-        public List<PricedItem> Voltages { get; set; }
-        public List<PricedItem> LampTypeColor { get; set; }
-        public List<PricedItem> ClampRing { get; set; }
-        public List<PricedItem> LensType { get; set; }
-        public List<PricedItem> LensColor { get; set; }
-        public PricedItem Options { get; set; }
-
-
-
         public PTT_Data()
         {
             if (CmSetting != "internal")
             {
-                CouchDbConnector myCouchDbConnector = new CouchDbConnector();
+                var myCouchDbConnector = new CouchDbConnector();
 
                 PttMap = new Dictionary<string, PTTItem[]>();
 
@@ -39,31 +22,27 @@ namespace C3_Controls.Models.DataStructuring
             //Cycle over our wtl map 
             foreach (var valueSet in PttMap)
             {
-                List<PTTItem> valueSetItems = new List<PTTItem>();
+                var valueSetItems = new List<PTTItem>();
 
                 //TODO document
                 foreach (var valueSetItem in valueSet.Value)
-                {
                     valueSetItems.Add(valueSetItem);
-                }
 
-                
 
                 switch (valueSet.Key)
                 {
                     case "Full_Voltage":
-                        
-                        
+
+
                         foreach (var item in valueSetItems)
                         {
-                            PricedItem singleItem = new PricedItem
+                            var singleItem = new PricedItem
                             {
                                 Name = item.text,
                                 Price = item.price,
                                 Desc = item.text,
                                 Sku = item.sku,
                                 Img = "img_voltages.png"
-
                             };
                             //Add her to the list
                             Voltages.Add(singleItem);
@@ -75,7 +54,7 @@ namespace C3_Controls.Models.DataStructuring
 
                         foreach (var item in valueSetItems)
                         {
-                            PricedItem singleItem = new PricedItem
+                            var singleItem = new PricedItem
                             {
                                 Name = item.text,
                                 Price = item.price,
@@ -89,11 +68,11 @@ namespace C3_Controls.Models.DataStructuring
                         break;
 
                     case "Resistor":
-                       // Voltages = new List<PricedItem>();
+                        // Voltages = new List<PricedItem>();
 
                         foreach (var item in valueSetItems)
                         {
-                            PricedItem singleItem = new PricedItem
+                            var singleItem = new PricedItem
                             {
                                 Name = item.text,
                                 Price = item.price,
@@ -111,7 +90,7 @@ namespace C3_Controls.Models.DataStructuring
 
                         foreach (var item in valueSetItems)
                         {
-                            PricedItem singleItem = new PricedItem
+                            var singleItem = new PricedItem
                             {
                                 Name = item.text,
                                 Price = item.price,
@@ -127,7 +106,7 @@ namespace C3_Controls.Models.DataStructuring
 
                         foreach (var item in valueSetItems)
                         {
-                            PricedItem singleItem = new PricedItem
+                            var singleItem = new PricedItem
                             {
                                 Name = item.text,
                                 Price = item.price,
@@ -143,7 +122,7 @@ namespace C3_Controls.Models.DataStructuring
 
                         foreach (var item in valueSetItems)
                         {
-                            PricedItem singleItem = new PricedItem
+                            var singleItem = new PricedItem
                             {
                                 Name = item.text,
                                 Price = item.price,
@@ -159,7 +138,7 @@ namespace C3_Controls.Models.DataStructuring
 
                         foreach (var item in valueSetItems)
                         {
-                            PricedItem singleItem = new PricedItem
+                            var singleItem = new PricedItem
                             {
                                 Name = item.text,
                                 Price = item.price,
@@ -171,9 +150,8 @@ namespace C3_Controls.Models.DataStructuring
                         }
                         break;
 
-                        case "Options":
+                    case "Options":
                         foreach (var item in valueSetItems)
-                        {
                             Options = new PricedItem
                             {
                                 Name = item.text,
@@ -181,21 +159,20 @@ namespace C3_Controls.Models.DataStructuring
                                 Desc = item.text,
                                 Sku = item.sku
                             };
-                           
-                        }
                         break;
-
-
-
-
                 }
-
-
             }
         }
 
+        public Dictionary<string, PTTItem[]> PttMap { get; set; }
+        public string CmSetting => WebConfigurationManager.AppSettings["CurrentDatebase"];
 
 
-
+        public List<PricedItem> Voltages { get; set; }
+        public List<PricedItem> LampTypeColor { get; set; }
+        public List<PricedItem> ClampRing { get; set; }
+        public List<PricedItem> LensType { get; set; }
+        public List<PricedItem> LensColor { get; set; }
+        public PricedItem Options { get; set; }
     }
 }

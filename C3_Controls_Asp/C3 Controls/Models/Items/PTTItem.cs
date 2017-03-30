@@ -9,6 +9,5 @@
         public string progression { get; set; }
         public int[] display_if_voltage_id_is { get; set; }
         public int[] display_if_lens_type_id_is { get; set; }
-
     }
 }

@@ -152,7 +152,7 @@
   <ItemGroup>
     <Content Include="Content\assets\img_base_long.png" />
     <Content Include="Content\assets\img_base_short.png" />
-    <Content Include="Content\assets\img_clamp_ring.png" />
+    <Content Include="Content\assets\img_clamp_ring_polyester.png" />
     <Content Include="Content\assets\img_lamp_amber.png" />
     <Content Include="Content\assets\img_lamp_blue.png" />
     <Content Include="Content\assets\img_lamp_clear_flashing_incandescent.png" />

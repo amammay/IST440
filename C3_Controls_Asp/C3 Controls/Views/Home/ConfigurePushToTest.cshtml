@@ -1,7 +1,7 @@
 ﻿@using C3_Controls.Models
 @model PushToTest
 @{
-   
+    var basics = Model.BasicOperators;
     var voltages = Model.Voltages;
     var lampColors = Model.LampColors;
     var lensColors = Model.LensColors;
@@ -36,57 +36,86 @@
         <h2 class="part-section-title">Available Parts</h2>
         <h1 class="part-section-body">Drag a part into your product</h1>
 
+        <br/>
+
+        <h4>Already know your SKU? Enter here:</h4>
+
+        <form>
+            <input type="text" name="product_sku"/>
+        </form>
+
         <!-- Tabs With Left Navigation -->
         <div class="row tabs nomargin-top">
 
             <!-- Tabs -->
-            <div class="col-md-3 col-sm-3 nopadding-right" style="padding-right:0px;padding-left:0px;">
+           <div class="col-md-12 col-sm-12 nopadding-right" style="padding-right:0px;padding-left:0px;">
                 <ul class="nav nav-tabs nav-stacked">
                     <li class="active">
-                        <a href="#tab_a" data-toggle="tab">
+                        <a href="#tab_a" data-toggle="collapse">
                             <i class="fa fa-dashboard"></i> Operators
                         </a>
                     </li>
-                    <li>
-                        <a href="#tab_b" data-toggle="tab">
-                            <i class="fa fa-bolt"></i> Voltages
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab_c" data-toggle="tab">
-                            <i class="fa fa-tint"></i> Lamp Colors
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab_d" data-toggle="tab">
-                            <i class="fa fa-tint"></i> Lens Colors
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab_e" data-toggle="tab">
-                            <i class="fa fa-wrench"></i> Clamp Rings
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab_f" data-toggle="tab">
-                            <i class="fa fa-eye"></i> Lens Types
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab_g" data-toggle="tab">
-                            <i class="fa fa-gear"></i> Options
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                    </ul>
+
+               
+                        <div id="tab_a" class="collapse">
+                            <h4>Basic Operators</h4>
+                            <div class="row">
+                                @foreach (var i in basics)
+                                {
+                                    <div id="col_basic_@i.Name" class="col-md-3 metro-column">
+                                        <div id="item_basic_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
+                                            <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                  
+
+               <ul class="nav nav-tabs nav-stacked">
+
+                   <li>
+                       <a href="#tab_b" data-toggle="collapse">
+                           <i class="fa fa-bolt"></i> Voltages
+                       </a>
+                   </li>
+                   <li>
+                       <a href="#tab_c" data-toggle="collapse">
+                           <i class="fa fa-tint"></i> Lamp Colors
+                       </a>
+                   </li>
+                   <li>
+                       <a href="#tab_d" data-toggle="collapse">
+                           <i class="fa fa-tint"></i> Lens Colors
+                       </a>
+                   </li>
+                   <li>
+                       <a href="#tab_e" data-toggle="collapse">
+                           <i class="fa fa-wrench"></i> Clamp Rings
+                       </a>
+                   </li>
+                   <li>
+                       <a href="#tab_f" data-toggle="collapse">
+                           <i class="fa fa-eye"></i> Lens Types
+                       </a>
+                   </li>
+                   <li>
+                       <a href="#tab_g" data-toggle="collapse">
+                           <i class="fa fa-gear"></i> Options
+                       </a>
+                   </li>
+               </ul>
+           </div>
 
             <!-- Tab Contents -->
-            <div class="col-md-9 col-sm-9 nopadding-left" style="padding-right:0px;padding-left:0px;">
+            <div class="col-md-12 col-sm-12 nopadding-left" style="padding-right:0px;padding-left:0px;">
                 <div class="tab-content">
-                    <div id="tab_a" class="tab-pane active">
+                    <div id="tab_a" class="collapse">
                         <h4>Basic Operators</h4>
                         <div class="row">
-                            @*@foreach (var i in basics)
+                            @foreach (var i in basics)
                             {
                                 <div id="col_basic_@i.Name" class="col-md-3 metro-column">
                                     <div id="item_basic_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
@@ -94,11 +123,11 @@
                                         <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
                                     </div>
                                 </div>
-                            }*@
+                            }
                         </div>
                     </div>
 
-                    <div id="tab_b" class="tab-pane">
+                    <div id="tab_b" class="collapse">
                         <h4>Voltages</h4>
                         <div id="slide_voltages" class="row metro-overflow">
                             @foreach (var i in voltages)
@@ -113,7 +142,7 @@
                         </div>
                     </div>
 
-                    <div id="tab_c" class="tab-pane">
+                    <div id="tab_c" class="collapse">
                         <h4>Lamp Colors</h4>
                         <div id="slide_lamp_colors" class="row metro-overflow">
                             @foreach (var i in lampColors)
@@ -128,7 +157,7 @@
                         </div>
                     </div>
 
-                    <div id="tab_d" class="tab-pane">
+                    <div id="tab_d" class="collapse">
                         <h4>Lens Colors</h4>
                         <div class="row metro-overflow">
                             @foreach (var i in lensColors)
@@ -143,7 +172,7 @@
                         </div>
                     </div>
 
-                    <div id="tab_e" class="tab-pane">
+                    <div id="tab_e" class="collapse">
                         <h4>Clamp Rings</h4>
                         <div class="row">
                             @foreach (var i in clampRings)
@@ -158,7 +187,7 @@
                         </div>
                     </div>
 
-                    <div id="tab_f" class="tab-pane">
+                    <div id="tab_f" class="collapse">
                         <h4>Lens Types</h4>
                         <div id="slide_lens_types" class="row metro-overflow">
                             @foreach (var i in lensTypes)
@@ -173,10 +202,10 @@
                         </div>
                     </div>
 
-                    <div id="tab_g" class="tab-pane">
+                    <div id="tab_g" class="collapse">
                         <h4>Options</h4>
                         <div id="slide_lens_types" class="row">
-                            @*@foreach (var i in options)
+                            @foreach (var i in options)
                             {
                                 <div id="col_option_@i.ToString()" class="col-md-3 metro-column">
                                     <div id="item_option_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
@@ -184,19 +213,78 @@
                                         <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
                                     </div>
                                 </div>
-                            }*@
+                            }
                         </div>
                     </div>
-                </div>
-            </div>
+                </div>               
+            </div>   
         </div>
-    </div>
+        <div class="info" id="product_info">Component info</div>
+        <br/>
+        <div class="info" id="product_info">Product info</div>
+   </div>
+
+    
 
     <!-- Cart Information -->
     <div class="col-md-4" id="cart_info_container" style="margin-bottom:124px;">
+
         <h2 class="part-section-title">Product Info</h2>
-        <h1 class="part-section-body" id="title_text_sku">Sku: </h1>
+       
+        <div class="box" id="container_main" ondrop="dropInCart(event)" ondragover="allowDrop(event)">Drag and drop here</div>
+
+        <br/>
+
+
+        <table class="table table-bordered">
+            <tr>
+                <th bgcolor="#D3D3D3"><strong>Part Type</strong></th>
+                <th bgcolor="#D3D3D3"><strong>Part Pic</strong></th>
+                <th bgcolor="#D3D3D3"><strong>Remove</strong></th>
+            </tr>
+            <tr>
+                <th>Operator Type</th>
+                <td id="container_basic"></td>
+                <td><button id="removeOperatorBtn" type="button" onclick="removeOperator()">X</button></td>
+            </tr>
+            <tr>
+                <th>Voltage</th>
+                <td id="container_voltage"></td>
+                <td><button id="removeVoltageBtn" type="button" onclick="removeVoltage()">X</button></td>
+            </tr>
+            <tr>
+                <th>Lamp Type/Color</th>
+                <td id="container_lamp_color"></td>
+                <td><button id="removeLampBtn" type="button" onclick="removeLamp()">X</button></td>
+            </tr>
+            <tr>
+                <th>Clamp Ring</th>
+                <td id="container_clamp_ring"></td>
+                <td><button id="removeClampBtn" type="button" onclick="removeClamp()">X</button></td>
+            </tr>
+            <tr>
+                <th>Lens Type</th>
+                <td id="container_lens_type"></td>
+                <td><button id="removeLensTypeBtn" type="button" onclick="removeLensType">X</button></td>
+            </tr>
+            <tr>
+                <th>Lens Color</th>
+                <td id="container_lens_color"></td>
+                <td><button id="removeLensColorBtn" type="button" onclick="removeLensColor()">X</button></td>
+            </tr>
+            <tr>
+                <th>Options</th>
+                <td id="container_option"></td>
+                <td><button id="removeOptionsBtn" type="button" onclick="removeOptions()">X</button></td>
+            </tr>
+        </table>
+
+        <br /> <br />
+
+        <h1 class="part-section-body" id="title_text_sku">Product Sku: </h1>
         <h1 class="part-section-body" id="title_text_price">Price: $0</h1>
+        <h1 class="part-section-body" id="title_text_price_discount">Discounted Price: $0</h1>
+
         <hr />
         <div class="col-md-8">
             <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showSelectedItems()">Details</button>
@@ -209,19 +297,22 @@
 </div>
 
 <!-- Remove Container -->
-<div class="row text-center hidden" id="remove_container" style="border:1px dashed red" ondrop="dropInRemoveContainer(event)" ondragover="allowDrop(event)">
+<!-- 
+    <div class="row text-center hidden" id="remove_container" style="border:1px dashed red" ondrop="dropInRemoveContainer(event)" ondragover="allowDrop(event)">
     <h4 class="part-section-lead"><i class="fa fa-trash"></i> Drop item here to remove</h4>
-</div>
+</div> 
+-->
 
 <!-- Product Selection -->
+<!--
 <div class="row">
-    <!-- Product Selection Wrapper -->
+    <!-- Product Selection Wrapper --
     <div class="col-md-12" id="container_main" style="margin-top:64px" ondrop="dropInCart(event)" ondragover="allowDrop(event)">
         <h2 class="part-section-title">Selection</h2>
         <h1 class="part-section-body">Drag items anywhere on here</h1>
 
         <div class="row">
-            <!-- Default Selection -->
+            <!-- Default Selection --
             <div class="col-md-3">
                 <h4>Required Parts</h4>
                 <div id="container_required" class="row">
@@ -233,19 +324,19 @@
                 </div>
             </div>
 
-            <!-- Basic Operator Selection -->
+            <!-- Basic Operator Selection --
             <div class="col-md-3">
                 <h4><i class="fa fa-dashboard"></i> Basic Operator</h4>
                 <div id="container_basic" class="row"></div>
             </div>
 
-            <!-- Voltage Selection -->
+            <!-- Voltage Selection --
             <div class="col-md-3">
                 <h4><i class="fa fa-bolt"></i> Selected Voltage</h4>
                 <div id="container_voltage" class="row"></div>
             </div>
 
-            <!-- Lamp Color Selection -->
+            <!-- Lamp Color Selection --
             <div class="col-md-3">
                 <h4><i class="fa fa-tint"></i> Lamp Color</h4>
                 <div id="container_lamp_color" class="row"></div>
@@ -253,25 +344,25 @@
         </div>
 
         <div class="row" style="margin-top:64px">
-            <!-- Lens Color Selection -->
+            <!-- Lens Color Selection --
             <div class="col-md-3">
                 <h4><i class="fa fa-tint"></i> Lens Color</h4>
                 <div id="container_lens_color" class="row"></div>
             </div>
 
-            <!-- Clamp Ring Selection -->
+            <!-- Clamp Ring Selection --
             <div class="col-md-3">
                 <h4><i class="fa fa-wrench"></i> Clamp Ring</h4>
                 <div id="container_clamp_ring" class="row"></div>
             </div>
 
-            <!-- Lens Type Selection -->
+            <!-- Lens Type Selection --
             <div class="col-md-3">
                 <h4><i class="fa fa-eye"></i> Lens Type</h4>
                 <div id="container_lens_type" class="row"></div>
             </div>
 
-            <!-- Options Selection -->
+            <!-- Options Selection --
             <div class="col-md-3">
                 <h4><i class="fa fa-gear"></i> Options</h4>
                 <div id="container_option" class="row"></div>
@@ -279,6 +370,7 @@
         </div>
     </div>
 </div>
+-->
 
 <!-- Generic Modal -->
 <div id="custom_modal" class="modal fade" role="dialog">

@@ -1,31 +1,71 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Configuration;
+using C3_Controls.Models.CouchDbConnections;
 
 namespace C3_Controls.Models.DataStructuring
 {
+
+    /// <summary>
+    /// @author Alex Mammay
+    /// @updated 4/2/2017
+    /// @email: amm7100@psu.edu
+    /// This class acts a data structuring class
+    /// </summary>
     public class WTL_Data
     {
+
+        #region Private Fields
+
+        private Dictionary<string, WTLItem[]> WtlMap { get; }
+
+        #endregion Private Fields
+
+        #region Public Fields
+
+        public PricedItem OperatorType { get; set; }
+        public PricedItem ModuelDiameter { get; set; }
+        public List<PricedItem> Voltages { get; set; }
+        public List<PricedItem> Styles { get; set; }
+        public List<PricedItem> Positions { get; set; }
+        public List<PricedItem> SoundModule { get; set; }
+        public List<PricedItem> LightLens { get; set; }
+
+        #endregion Public Fields
+        
+        #region Public Methods
+
         /// <summary>
-        ///     This is were dictionary specific values get their proper inheritence of a priced item
+        /// This is were dictionary specific values get their proper inheritence of a priced item
         /// </summary>
         public WTL_Data()
         {
-            //Quick check to see if we are local or using external couchdb 
-            if (CmSetting != "internal")
-            {
-                //Instance of couch connector
-                var myCouchDbConnector = new CouchDbConnector();
+        
+            //Instance of couch connector
+            var myCouchDbConnector = new CouchDbConnector();
 
-                //Creates our map
-                WtlMap = new Dictionary<string, WTLItem[]>();
+            //Creates our map
+            WtlMap = new Dictionary<string, WTLItem[]>();
 
-                //Assign our dictionary to the one that was populated when the connection was made 
-                WtlMap = myCouchDbConnector.WtlMap;
-            }
+            //Assign our dictionary to the one that was populated when the connection was made 
+            WtlMap = myCouchDbConnector.WtlMap;
+            
+            //Fire off Method for doing the heavy lifting 
+            WtlDataStructure(WtlMap);
+           
+        }
 
+        #endregion Public Methods
 
+        #region Private Methods
+        /// <summary>
+        /// Actually structures of the data.
+        /// </summary>
+        /// <param name="wtlMap"></param>
+        private void WtlDataStructure(Dictionary<string, WTLItem[]> wtlMap)
+        {
             //Cycle over our wtl map 
-            foreach (var valueSet in WtlMap)
+            foreach (var valueSet in wtlMap)
             {
                 var valueSetItems = new List<WTLItem>();
 
@@ -166,20 +206,15 @@ namespace C3_Controls.Models.DataStructuring
                             Positions.Add(singleItem);
                         }
                         break;
+                    default:
+                        Console.WriteLine("Error, Cant Strucutre data");
+                        break;
                 }
             }
         }
 
-        public Dictionary<string, WTLItem[]> WtlMap { get; set; }
-        public string CmSetting => WebConfigurationManager.AppSettings["CurrentDatebase"];
+        #endregion Private Methods
 
 
-        public PricedItem OperatorType { get; set; }
-        public PricedItem ModuelDiameter { get; set; }
-        public List<PricedItem> Voltages { get; set; }
-        public List<PricedItem> Styles { get; set; }
-        public List<PricedItem> Positions { get; set; }
-        public List<PricedItem> SoundModule { get; set; }
-        public List<PricedItem> LightLens { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿@using C3_Controls.Models
 @model PushToTest
 @{
-    var basics = Model.BasicOperators;
+    var basics = Model.Basics;
     var voltages = Model.Voltages;
     var lampColors = Model.LampColors;
     var lensColors = Model.LensColors;
@@ -205,12 +205,12 @@
                     <div id="tab_g" class="collapse">
                         <h4>Options</h4>
                         <div id="slide_lens_types" class="row">
-                            @foreach (var i in options)
+                            @options
                             {
-                                <div id="col_option_@i.ToString()" class="col-md-3 metro-column">
-                                    <div id="item_option_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                                <div id="col_option_@options.ToString()" class="col-md-3 metro-column">
+                                    <div id="item_option_@options.ToString()" class="metro" data-sku="@options.Sku" data-price="@options.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                        <img class="part-tile-img" alt="@options.Name" src="@options.Img" title="@options.Name" />
+                                        <p style="color:white; text-align:center; font-size:10px;"> @options.Desc </p>
                                     </div>
                                 </div>
                             }

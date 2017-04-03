@@ -10,7 +10,7 @@ namespace UnitTest
     [TestClass]
     public class UnitTestDbConnection
     {
-
+        private CouchDbConnector testConnector { get; set; }
 
         [TestMethod]
         public void TestCouchDbConnector()
@@ -19,12 +19,24 @@ namespace UnitTest
             CouchDbConnector testConnector = new CouchDbConnector();
 
 
-            var tempResponse = testConnector.WtlQueryResponse;
+            var tempWtlResponse = testConnector.WtlQueryResponse;
+            var tempPttResponse = testConnector.WtlQueryResponse;
 
             //If this retruns as null then no db connection is there
-            Assert.IsNotNull(testConnector.DeserelizeWtl(tempResponse));
+            Assert.IsNotNull(testConnector.DeserelizeWtl(tempWtlResponse));
+
+            Console.WriteLine("Status of the World tower light database " + tempWtlResponse.Result.StatusCode);
+
+            Assert.IsNotNull(testConnector.DeserelizePtt(tempPttResponse));
+
+            Console.WriteLine("Status of the Push to Test database " + tempPttResponse.Result.StatusCode);
+
+
 
 
         }
+
+    
+
     }
 }

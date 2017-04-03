@@ -26,15 +26,11 @@ namespace C3_Controls.Models.CouchDbConnections
         public Dictionary<string, WTLItem[]> WtlMap { get; set; }
         public Dictionary<string, PTTItem[]> PttMap { get; set; }
         public MyCouchClient MyClient { get; set; }
-
-        #endregion Public Fields
-
-        #region Private Fields
-
         public Task<ViewQueryResponse> WtlQueryResponse { get; set; }
         public Task<ViewQueryResponse> PttQueryResponse { get; set; }
 
-        #endregion Private Fields
+        #endregion Public Fields
+
 
         #region Private Methods
 

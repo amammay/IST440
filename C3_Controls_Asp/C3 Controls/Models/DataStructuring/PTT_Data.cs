@@ -117,7 +117,8 @@ namespace C3_Controls.Models.DataStructuring
                                 singleItem.Img = "img_lamp_neon_green.png";
                             else if (singleItem.Sku.Equals("NR"))
                                 singleItem.Img = "img_lamp_neon_red.png";
-
+                            else if (singleItem.Sku.Equals("NL"))
+                                singleItem.Img = "img_voltages.png";
                             //Add her to the list
                             LampTypeColor.Add(singleItem);
                         }

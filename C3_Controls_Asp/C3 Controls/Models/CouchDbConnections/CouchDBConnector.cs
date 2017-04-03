@@ -31,8 +31,8 @@ namespace C3_Controls.Models.CouchDbConnections
 
         #region Private Fields
 
-        private Task<ViewQueryResponse> WtlQueryResponse { get; set; }
-        private Task<ViewQueryResponse> PttQueryResponse { get; set; }
+        public Task<ViewQueryResponse> WtlQueryResponse { get; set; }
+        public Task<ViewQueryResponse> PttQueryResponse { get; set; }
 
         #endregion Private Fields
 

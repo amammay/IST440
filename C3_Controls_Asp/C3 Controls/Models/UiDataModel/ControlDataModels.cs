@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using C3_Controls.Models.DataStructuring;
 
-namespace C3_Controls.Models.UiController
+namespace C3_Controls.Models.UiDataModel
 {
     /// <summary>
     ///     This is the Tower Light product. It contains information

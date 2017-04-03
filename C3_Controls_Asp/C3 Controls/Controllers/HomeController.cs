@@ -1,6 +1,6 @@
 ﻿using C3_Controls.Models;
 using System.Web.Mvc;
-using C3_Controls.Models.UiController;
+using C3_Controls.Models.UiDataModel;
 
 namespace C3_Controls.Controllers
 {

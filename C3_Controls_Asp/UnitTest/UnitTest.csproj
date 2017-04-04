@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="UnitTests\UnitTestDbConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTests\WTL_UnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

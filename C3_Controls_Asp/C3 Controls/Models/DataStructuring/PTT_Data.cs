@@ -17,7 +17,7 @@ namespace C3_Controls.Models.DataStructuring
 
         #region Private Fields
 
-        private Dictionary<string, PTTItem[]> PttMap { get; }
+        public Dictionary<string, PTTItem[]> PttMap { get; }
 
         #endregion Private Fields
 
@@ -59,7 +59,7 @@ namespace C3_Controls.Models.DataStructuring
         /// Actually structures of the data.
         /// </summary>
         /// <param name="pttMap"></param>
-        private void PttDataStructure(Dictionary<string, PTTItem[]> pttMap)
+        public void PttDataStructure(Dictionary<string, PTTItem[]> pttMap)
         {
             //Initilaze the voltages
             Voltages = new List<PricedItem>();

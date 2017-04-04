@@ -17,7 +17,7 @@ namespace C3_Controls.Models.DataStructuring
 
         #region Private Fields
 
-        private Dictionary<string, WTLItem[]> WtlMap { get; }
+        public Dictionary<string, WTLItem[]> WtlMap { get; }
 
         #endregion Private Fields
 
@@ -62,7 +62,7 @@ namespace C3_Controls.Models.DataStructuring
         /// Actually structures of the data.
         /// </summary>
         /// <param name="wtlMap"></param>
-        private void WtlDataStructure(Dictionary<string, WTLItem[]> wtlMap)
+        public void WtlDataStructure(Dictionary<string, WTLItem[]> wtlMap)
         {
             //Cycle over our wtl map 
             foreach (var valueSet in wtlMap)

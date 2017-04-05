@@ -175,11 +175,11 @@ namespace C3_Controls.Models.DataStructuring
                                 Sku = item.sku
                             };
 
-                            //assigning images to items
-                            //if (singleItem.Name.Contains("Aluminum"))
-                            //    singleItem.Img = "img_clamp_ring_aluminum.png";
-                            //else if (singleItem.Name.Contains("Polyester"))
-                            //    singleItem.Img = "img_clamp_ring_polyester.png";
+                            
+                            if (singleItem.Name.Contains("Aluminum"))
+                                singleItem.Img = "AluminumClampRing.jpg";
+                            else if (singleItem.Name.Contains("Polyester"))
+                                singleItem.Img = "img_clamp_ring_polyester.png";
 
                             //Add her to the list
                             ClampRing.Add(singleItem);
@@ -199,14 +199,14 @@ namespace C3_Controls.Models.DataStructuring
                             };
 
                             //assigning image to each item
-                            //if (singleItem.Sku.Equals("IPBC"))
-                            //    singleItem.Img = "";
-                            //else if (singleItem.Sku.Equals("IPBCM"))
-                            //    singleItem.Img = "";
-                            //else if (singleItem.Sku.Equals("GIPBC"))
-                            //    singleItem.Img = "";
-                            //else if (singleItem.Sku.Equals("SIPBCM"))
-                            //    singleItem.Img = "";
+                            if (singleItem.Sku.Equals("IPBC"))
+                                singleItem.Img = "illuminated.jpg";
+                            else if (singleItem.Sku.Equals("IPBCM"))
+                                singleItem.Img = "illuminated_mushroom.jpg";
+                            else if (singleItem.Sku.Equals("GIPBC"))
+                                singleItem.Img = "illuminated_guarded.jpg";
+                            else if (singleItem.Sku.Equals("SIPBCM"))
+                                singleItem.Img = "shrouded_illuminated_push_button.jpg";
 
                             //Add her to the list
                             LensType.Add(singleItem);

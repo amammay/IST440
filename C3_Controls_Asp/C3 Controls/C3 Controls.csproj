@@ -153,12 +153,16 @@
     <Content Include="Content\assets\120V.JPG" />
     <Content Include="Content\assets\240V.JPG" />
     <Content Include="Content\assets\24V.JPG" />
+    <Content Include="Content\assets\AluminumClampRing.jpg" />
     <Content Include="Content\assets\AmberFlashingTowerLight.PNG" />
     <Content Include="Content\assets\AmberRotaryTowerLight.PNG" />
-    <Content Include="Content\assets\BlueRotaryTowrLight.PNG" />
-    <Content Include="Content\assets\FlashingBlueTowerLight.png" />
+    <Content Include="Content\assets\BlueRotaryTowerLight.PNG" />
+    <Content Include="Content\assets\BlueFlashingTowerLight.png" />
     <Content Include="Content\assets\GreenFlashingTowerLight.PNG" />
     <Content Include="Content\assets\GreenRotaryTowerLight.PNG" />
+    <Content Include="Content\assets\illuminated.jpg" />
+    <Content Include="Content\assets\illuminated_guarded.jpg" />
+    <Content Include="Content\assets\illuminated_mushroom.jpg" />
     <Content Include="Content\assets\img_base_direct.jpg" />
     <Content Include="Content\assets\img_base_long.png" />
     <Content Include="Content\assets\img_base_short.png" />
@@ -198,6 +202,8 @@
     <Content Include="Content\assets\RedFlashingTowerLight.PNG" />
     <Content Include="Content\assets\RedRotaryTowerLight.PNG" />
     <Content Include="Content\assets\search.gif" />
+    <Content Include="Content\assets\shrouded_illuminated_push_button.jpg" />
+    <Content Include="Content\assets\sound.jpg" />
     <Content Include="Content\assets\towerlights.png" />
     <Content Include="Content\assets\WhiteFlashingTowerLight.PNG" />
     <Content Include="Content\assets\WhiteRotaryTowerLight.PNG" />

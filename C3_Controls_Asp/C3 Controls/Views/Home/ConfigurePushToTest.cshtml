@@ -50,7 +50,7 @@
             <!-- Tabs -->
            <div class="col-md-12 col-sm-12 nopadding-right" style="padding-right:0px;padding-left:0px;">
                 <ul class="nav nav-tabs nav-stacked">
-                    <li class="active">
+                    <li>
                         <a href="#tab_a" data-toggle="collapse">
                             <i class="fa fa-dashboard"></i> Operators
                         </a>
@@ -81,37 +81,154 @@
                            <i class="fa fa-bolt"></i> Voltages
                        </a>
                    </li>
+                   </ul>
+
+                   <div id="tab_b" class="collapse">
+                       <h4>Voltages</h4>
+                       <div id="slide_voltages" class="row metro-overflow">
+                           @foreach (var i in voltages)
+                           {
+                               <div id="col_voltage_@i.Name" class="col-md-3 metro-column">
+                                   <div id="item_voltage_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                       <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
+                                       <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                                   </div>
+                               </div>
+                           }
+                       </div>
+                   </div>
+
+               <ul class="nav nav-tabs nav-stacked">
                    <li>
                        <a href="#tab_c" data-toggle="collapse">
                            <i class="fa fa-tint"></i> Lamp Colors
                        </a>
                    </li>
+                   </ul>
+
+               <div id="tab_c" class="collapse">
+                   <h4>Lamp Colors</h4>
+                   <div id="slide_lamp_colors" class="row metro-overflow">
+                       @foreach (var i in lampColors)
+                       {
+                           <div id="col_lamp_color_@i.ToString()" class="col-md-3 metro-column">
+                               <div id="item_lamp_color_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                   <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
+                                   <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                               </div>
+                           </div>
+                       }
+                   </div>
+               </div>
+
+               <ul class="nav nav-tabs nav-stacked">
+
                    <li>
                        <a href="#tab_d" data-toggle="collapse">
                            <i class="fa fa-tint"></i> Lens Colors
                        </a>
                    </li>
+                   </ul>
+
+               <div id="tab_d" class="collapse">
+                   <h4>Lens Colors</h4>
+                   <div class="row metro-overflow">
+                       @foreach (var i in lensColors)
+                       {
+                           <div id="col_lens_color_@i.ToString()" class="col-md-3 metro-column">
+                               <div id="item_lens_color_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                   <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
+                                   <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                               </div>
+                           </div>
+                       }
+                   </div>
+               </div>
+
+
+
+
+
+               <ul class="nav nav-tabs nav-stacked">
                    <li>
                        <a href="#tab_e" data-toggle="collapse">
                            <i class="fa fa-wrench"></i> Clamp Rings
                        </a>
                    </li>
+                   </ul>
+
+               <div id="tab_e" class="collapse">
+                   <h4>Clamp Rings</h4>
+                   <div class="row">
+                       @foreach (var i in clampRings)
+                       {
+                           <div id="col_clamp_ring_@i.ToString()" class="col-md-3 metro-column">
+                               <div id="item_clamp_ring_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                   <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
+                                   <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                               </div>
+                           </div>
+                       }
+                   </div>
+               </div>
+
+               
+
+               <ul class="nav nav-tabs nav-stacked">
                    <li>
                        <a href="#tab_f" data-toggle="collapse">
                            <i class="fa fa-eye"></i> Lens Types
                        </a>
                    </li>
+                   </ul>
+
+               <div id="tab_f" class="collapse">
+                   <h4>Lens Types</h4>
+                   <div id="slide_lens_types" class="row metro-overflow">
+                       @foreach (var i in lensTypes)
+                       {
+                           <div id="col_lens_type_@i.ToString()" class="col-md-3 metro-column">
+                               <div id="item_lens_type_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                   <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
+                                   <p style="color:white; text-align:center; font-size:9px;"> @i.Desc </p>
+                               </div>
+                           </div>
+                       }
+                   </div>
+               </div>
+
+
+
+
+
+               <ul class="nav nav-tabs nav-stacked">
                    <li>
                        <a href="#tab_g" data-toggle="collapse">
                            <i class="fa fa-gear"></i> Options
                        </a>
                    </li>
                </ul>
+
+               <div id="tab_g" class="collapse">
+                   <h4>Options</h4>
+                   <div id="slide_lens_types" class="row">
+                       @options
+                       {
+                       <div id="col_option_@options.ToString()" class="col-md-3 metro-column">
+                           <div id="item_option_@options.ToString()" class="metro" data-sku="@options.Sku" data-price="@options.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                               <img class="part-tile-img" alt="@options.Name" src="@options.Img" title="@options.Name" />
+                               <p style="color:white; text-align:center; font-size:10px;"> @options.Desc </p>
+                           </div>
+                       </div>
+                       }
+                   </div>
+               </div>
+
+
            </div>
 
             <!-- Tab Contents -->
             <div class="col-md-12 col-sm-12 nopadding-left" style="padding-right:0px;padding-left:0px;">
-                <div class="tab-content">
                     <div id="tab_a" class="collapse">
                         <h4>Basic Operators</h4>
                         <div class="row">
@@ -218,7 +335,7 @@
                     </div>
                 </div>               
             </div>   
-        </div>
+        
         <div class="info" id="product_info">Component info</div>
         <br/>
         <div class="info" id="product_info">Product info</div>

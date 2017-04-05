@@ -1,39 +1,82 @@
 ﻿using System.Collections.Generic;
-using System.Web.Configuration;
+using C3_Controls.Models.CouchDbConnections;
 
 namespace C3_Controls.Models.DataStructuring
 {
+
+    /// <summary>
+    /// @author Alex Mammay
+    /// @updated 4/2/2017
+    /// @email: amm7100@psu.edu
+    /// This class acts a data structuring class for the Push To Test Items
+    /// THis is the logic you use to specify any special use cases for UI representation of the items
+    /// ie. specific images,etc.....
+    /// </summary>
     public class PTT_Data
     {
+
+        #region Private Fields
+
+        public Dictionary<string, PTTItem[]> PttMap { get; }
+
+        #endregion Private Fields
+
+        #region Public Fields
+
+        public List<PricedItem> Voltages { get; set; }
+        public List<PricedItem> LampTypeColor { get; set; }
+        public List<PricedItem> ClampRing { get; set; }
+        public List<PricedItem> LensType { get; set; }
+        public List<PricedItem> LensColor { get; set; }
+        public PricedItem Options { get; set; }
+
+        #endregion Public Fields
+
+        #region Public Methods
+
         public PTT_Data()
         {
-            if (CmSetting != "internal")
-            {
-                var myCouchDbConnector = new CouchDbConnector();
+            
+            //Instance of couch connector
+            var myCouchDbConnector = new CouchDbConnector();
+            
+            //Creates our map
+            PttMap = new Dictionary<string, PTTItem[]>();
 
-                PttMap = new Dictionary<string, PTTItem[]>();
+            //Assign our dictionary to the one that was populated when the connection was made 
+            PttMap = myCouchDbConnector.PttMap;
+           
+            //Fire off Method for doing the heavy lifting 
+            PttDataStructure(PttMap);
+           
+        }
 
-                //Assign our dictionary to the one that was populated when the connection was made 
-                PttMap = myCouchDbConnector.PttMap;
-            }
+        #endregion Public Methods
 
+        #region Private Methods
+
+        /// <summary>
+        /// Actually structures of the data.
+        /// </summary>
+        /// <param name="pttMap"></param>
+        public void PttDataStructure(Dictionary<string, PTTItem[]> pttMap)
+        {
+            //Initilaze the voltages
             Voltages = new List<PricedItem>();
-
+           
             //Cycle over our wtl map 
-            foreach (var valueSet in PttMap)
+            foreach (var valueSet in pttMap)
             {
                 var valueSetItems = new List<PTTItem>();
 
-                //TODO document
+                //Iterate over each value set, its going to be a ptt item 
                 foreach (var valueSetItem in valueSet.Value)
                     valueSetItems.Add(valueSetItem);
 
-
+                //Switch on the value set key
                 switch (valueSet.Key)
                 {
                     case "Full_Voltage":
-
-
                         foreach (var item in valueSetItems)
                         {
                             var singleItem = new PricedItem
@@ -50,8 +93,6 @@ namespace C3_Controls.Models.DataStructuring
                         break;
 
                     case "Transformer (50/60 Hz)":
-                        //Voltages = new List<PricedItem>();
-
                         foreach (var item in valueSetItems)
                         {
                             var singleItem = new PricedItem
@@ -68,8 +109,6 @@ namespace C3_Controls.Models.DataStructuring
                         break;
 
                     case "Resistor":
-                        // Voltages = new List<PricedItem>();
-
                         foreach (var item in valueSetItems)
                         {
                             var singleItem = new PricedItem
@@ -220,15 +259,9 @@ namespace C3_Controls.Models.DataStructuring
             }
         }
 
-        public Dictionary<string, PTTItem[]> PttMap { get; set; }
-        public string CmSetting => WebConfigurationManager.AppSettings["CurrentDatebase"];
+        #endregion Private Methods
 
 
-        public List<PricedItem> Voltages { get; set; }
-        public List<PricedItem> LampTypeColor { get; set; }
-        public List<PricedItem> ClampRing { get; set; }
-        public List<PricedItem> LensType { get; set; }
-        public List<PricedItem> LensColor { get; set; }
-        public PricedItem Options { get; set; }
+
     }
 }

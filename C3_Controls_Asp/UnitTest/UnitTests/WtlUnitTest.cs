@@ -19,6 +19,8 @@ namespace UnitTest.UnitTests
 
             Assert.IsNotNull(returnMap);
 
+            Console.WriteLine(returnMap.Keys);
+
 
         }
     }

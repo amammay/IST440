@@ -121,7 +121,7 @@ namespace C3_Controls.Models.DataStructuring
                                     singleItem.Img = "img_base_long.png";
                                     break;
                                 case "P3":
-                                    singleItem.Img = "img_base_short.png";
+                                    singleItem.Img = "img_base_direct.jpg";
                                     break;
                             }
 
@@ -140,8 +140,24 @@ namespace C3_Controls.Models.DataStructuring
                                 Price = item.price,
                                 Desc = item.text,
                                 Sku = item.sku,
-                                Img = "img_voltages.png"
                             };
+
+                            switch (singleItem.Sku)
+                            {
+                                case "24":
+                                    singleItem.Img = "24V.jpg";
+                                    break;
+                                case "120":
+                                    singleItem.Img = "120V.jpg";
+                                    break;
+                                case "240":
+                                    singleItem.Img = "240V.jpg";
+                                    break;
+                                default:
+                                    break;
+
+                            }
+
                             //Add her to the list
                             Voltages.Add(singleItem);
                         }
@@ -172,7 +188,8 @@ namespace C3_Controls.Models.DataStructuring
                                 Name = item.text,
                                 Price = item.price,
                                 Desc = item.text,
-                                Sku = item.sku
+                                Sku = item.sku,
+                                Img = "sound.jpg"
                             };
                             //Add her to the list
                             SoundModule.Add(singleItem);
@@ -193,15 +210,89 @@ namespace C3_Controls.Models.DataStructuring
 
                             //extra logic for assigning image path to position
                             if (singleItem.Sku.EndsWith("A"))
-                                singleItem.Img = "img_light_amber.png";
+                            {
+                                switch (singleItem.Sku)
+                                {
+                                    case "DA":
+                                        singleItem.Img = "img_light_amber.png";
+                                        break;
+                                    case "FA":
+                                        singleItem.Img = "AmberFlashingTowerLight.png";
+                                        break;
+                                    case "RA":
+                                        singleItem.Img = "AmberRotaryTowerLight.png";
+                                        break;
+
+                                }
+                            }
+                              
                             else if (singleItem.Sku.EndsWith("B"))
-                                singleItem.Img = "img_light_blue.png";
+                            {
+                                switch (singleItem.Sku)
+                                {
+                                    case "DB":
+                                        singleItem.Img = "img_light_blue.png";
+                                        break;
+                                    case "FB":
+                                        singleItem.Img = "BlueFlashingTowerLight.png";
+                                        break;
+                                    case "RB":
+                                        singleItem.Img = "BlueRotaryTowerLight.png";
+                                        break;
+
+                                }
+                            }
                             else if (singleItem.Sku.EndsWith("G"))
-                                singleItem.Img = "img_light_green.png";
+                            {
+                                switch (singleItem.Sku)
+                                {
+                                    case "DG":
+                                        singleItem.Img = "img_light_green.png";
+                                        break;
+                                    case "FG":
+                                        singleItem.Img = "GreenFlashingTowerLight.png";
+                                        break;
+                                    case "RG":
+                                        singleItem.Img = "GreenRotaryTowerLight.png";
+                                        break;
+
+                                }
+                            }
+                              
                             else if (singleItem.Sku.EndsWith("R"))
-                                singleItem.Img = "img_light_red.png";
+                            {
+                                switch (singleItem.Sku)
+                                {
+                                    case "DR":
+                                        singleItem.Img = "img_light_red.png";
+                                        break;
+                                    case "FR":
+                                        singleItem.Img = "RedFlashingTowerLight.png";
+                                        break;
+                                    case "RR":
+                                        singleItem.Img = "RedRotaryTowerLight.png";
+                                        break;
+
+                                }
+                            }
+                             
                             else if (singleItem.Sku.EndsWith("W"))
-                                singleItem.Img = "img_light_white.png";
+                            {
+                                switch (singleItem.Sku)
+                                {
+                                    case "DW":
+                                        singleItem.Img = "img_light_white.png";
+                                        break;
+                                    case "FW":
+                                        singleItem.Img = "WhiteFlashingTowerLight.png";
+                                        break;
+                                    case "RW":
+                                        singleItem.Img = "WhiteRotaryTowerLight.png";
+                                        break;
+
+                                }
+                            }
+                                
                             //Add it to the list
                             Positions.Add(singleItem);
                         }

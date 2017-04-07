@@ -51,7 +51,7 @@
            <div class="col-md-12 col-sm-12 nopadding-right" style="padding-right:0px;padding-left:0px;">
                 <ul class="nav nav-tabs nav-stacked">
                     <li>
-                        <a href="#tab_a" data-toggle="collapse">
+                        <a href="#tab_a" data-toggle="collapse" title="Operator placeholder">
                             <i class="fa fa-dashboard"></i> Operators
                         </a>
                     </li>
@@ -65,8 +65,8 @@
                                 {
                                     <div id="col_basic_@i.Name" class="col-md-3 metro-column">
                                         <div id="item_basic_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                            <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
+                                            <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                         </div>
                                     </div>
                                 }
@@ -77,7 +77,7 @@
                <ul class="nav nav-tabs nav-stacked">
 
                    <li>
-                       <a href="#tab_b" data-toggle="collapse">
+                       <a href="#tab_b" data-toggle="collapse" title="Voltage placeholder">
                            <i class="fa fa-bolt"></i> Voltages
                        </a>
                    </li>
@@ -90,8 +90,8 @@
                            {
                                <div id="col_voltage_@i.Name" class="col-md-3 metro-column">
                                    <div id="item_voltage_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                       <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                       <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                                       <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
+                                       <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                    </div>
                                </div>
                            }
@@ -100,7 +100,7 @@
 
                <ul class="nav nav-tabs nav-stacked">
                    <li>
-                       <a href="#tab_c" data-toggle="collapse">
+                       <a href="#tab_c" data-toggle="collapse" title="Lamp Color placeholder">
                            <i class="fa fa-tint"></i> Lamp Colors
                        </a>
                    </li>
@@ -113,8 +113,8 @@
                        {
                            <div id="col_lamp_color_@i.ToString()" class="col-md-3 metro-column">
                                <div id="item_lamp_color_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                   <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                   <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                                   <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
+                                   <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                </div>
                            </div>
                        }
@@ -124,7 +124,7 @@
                <ul class="nav nav-tabs nav-stacked">
 
                    <li>
-                       <a href="#tab_d" data-toggle="collapse">
+                       <a href="#tab_d" data-toggle="collapse" title="Lens Color placeholder">
                            <i class="fa fa-tint"></i> Lens Colors
                        </a>
                    </li>
@@ -137,8 +137,8 @@
                        {
                            <div id="col_lens_color_@i.ToString()" class="col-md-3 metro-column">
                                <div id="item_lens_color_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                   <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                   <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                                   <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
+                                   <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                </div>
                            </div>
                        }
@@ -151,7 +151,7 @@
 
                <ul class="nav nav-tabs nav-stacked">
                    <li>
-                       <a href="#tab_e" data-toggle="collapse">
+                       <a href="#tab_e" data-toggle="collapse" title="Clamp Ring placeholder">
                            <i class="fa fa-wrench"></i> Clamp Rings
                        </a>
                    </li>
@@ -164,8 +164,8 @@
                        {
                            <div id="col_clamp_ring_@i.ToString()" class="col-md-3 metro-column">
                                <div id="item_clamp_ring_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                   <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                   <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                                   <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
+                                   <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                </div>
                            </div>
                        }
@@ -176,7 +176,7 @@
 
                <ul class="nav nav-tabs nav-stacked">
                    <li>
-                       <a href="#tab_f" data-toggle="collapse">
+                       <a href="#tab_f" data-toggle="collapse" title="Lens Type placeholder">
                            <i class="fa fa-eye"></i> Lens Types
                        </a>
                    </li>
@@ -189,8 +189,8 @@
                        {
                            <div id="col_lens_type_@i.ToString()" class="col-md-3 metro-column">
                                <div id="item_lens_type_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                   <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                   <p style="color:white; text-align:center; font-size:9px;"> @i.Desc </p>
+                                   <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
+                                   <p style="color:white; text-align:center; font-size:9px;"> @i.Name </p>
                                </div>
                            </div>
                        }
@@ -203,7 +203,7 @@
 
                <ul class="nav nav-tabs nav-stacked">
                    <li>
-                       <a href="#tab_g" data-toggle="collapse">
+                       <a href="#tab_g" data-toggle="collapse" title="Option placeholder">
                            <i class="fa fa-gear"></i> Options
                        </a>
                    </li>
@@ -216,8 +216,8 @@
                        {
                        <div id="col_option_@options.ToString()" class="col-md-3 metro-column">
                            <div id="item_option_@options.ToString()" class="metro" data-sku="@options.Sku" data-price="@options.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                               <img class="part-tile-img" alt="@options.Name" src="@options.Img" title="@options.Name" />
-                               <p style="color:white; text-align:center; font-size:10px;"> @options.Desc </p>
+                               <img class="part-tile-img" alt="@options.Name" src="@options.Img" title="@options.Desc" />
+                               <p style="color:white; text-align:center; font-size:10px;"> @options.Name </p>
                            </div>
                        </div>
                        }

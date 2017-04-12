@@ -70,7 +70,7 @@ textarea {
     width:90px;
     height:90px;
     vertical-align:middle;
-    margin-top:33px;
+    margin-top:23px;
     margin-left:33px;
 
     /* To prevent images inside div from glitching during drag event */
@@ -115,7 +115,7 @@ textarea {
 }
 
 .metro-static {
-    width:100px;
+    width:150px;
     height:100px;
     margin-top:16px;
     background-color:#0061AA;
@@ -123,12 +123,12 @@ textarea {
 
 .metro-static h1 {
     color:white;
-    font-size:x-small;
+    font-size:small;
     font-weight:600;
     text-wrap:normal;
     text-align:center;
     vertical-align:middle;
-    line-height:75px;
+    line-height:150px;
 }
 
 .metro {
@@ -166,54 +166,54 @@ textarea {
 /** Tabs
  **************************************************************** **/
 div.tabs {
-	-webkit-border-radius: 0;
-	   -moz-border-radius: 0;
-			border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
 
-	margin:60px 0;
+    margin:60px 0;
 }
 
 div.tabs div.tab-content {
-	border: 0;
-	padding: 17px;
-	background-color:rgba(0,0,0,0.03);
+    border: 0;
+    padding: 17px;
+    background-color:rgba(0,0,0,0.03);
 
-	-webkit-border-radius: 0;
-	   -moz-border-radius: 0;
-			border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
 }
 div.tabs div.tab-content p:last-child {
-	padding-bottom:0; margin-bottom:0;
+    padding-bottom:0; margin-bottom:0;
 }
 div.tabs ul.nav-tabs {
-	margin: 0;
-	border: 0;
+    margin: 0;
+    border: 0;
 }
 
 div.tabs ul.nav-tabs li.active a {
-	border: 0;
-	color: #333;
-	background-color:rgba(0,0,0,0.03);
-	padding-top:15px;
+    border: 0;
+    color: #333;
+    background-color:rgba(0,0,0,0.03);
+    padding-top:15px;
 }
 
 div.tabs ul.nav-tabs a {
-	color: #666;
-	margin-right: 1px;
-	padding: 15px 25px;
-	background-color:rgba(0,0,0,0.01);
-	border:0 !important;
+    color: #666;
+    margin-right: 1px;
+    padding: 15px 25px;
+    background-color:rgba(0,0,0,0.01);
+    border:0 !important;
 
-	-webkit-border-radius: 0;
-	   -moz-border-radius: 0;
-			border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
 }
 
 div.tabs ul.nav-tabs a i.fa {
-	padding-right:6px;
+    padding-right:6px;
 }
 
 div.tabs div.tab-content.transparent {
-	border-top:rgba(0,0,0,0.03) 1px solid;
-	background:transparent;
+    border-top:rgba(0,0,0,0.03) 1px solid;
+    background:transparent;
 }

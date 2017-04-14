@@ -189,6 +189,7 @@
 .get-app img {
     height: 40px;
 }
+
 .box {
     border: 5px solid black;
     width: 380px;
@@ -202,6 +203,4 @@
     height: 100px;
     text-align: center;
 }
-
-
 

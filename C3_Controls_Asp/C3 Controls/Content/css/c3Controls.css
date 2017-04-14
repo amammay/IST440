@@ -204,3 +204,8 @@
     text-align: center;
 }
 
+/*Affixed product info*/
+.affix {
+    top: 20px;
+}
+

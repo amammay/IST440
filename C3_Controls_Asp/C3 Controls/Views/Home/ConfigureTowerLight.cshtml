@@ -224,79 +224,80 @@
   
 <!-- Cart Information -->
 <div class="col-md-4" id="cart_info_container" style="margin-bottom:124px;">
-
-    <h2 class="part-section-title">Product Info</h2>
+    <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="204">
+        <h2 class="part-section-title">Product Info</h2>
        
-    <div class="box" id="container_main" ondrop="dropInCart(event)" ondragover="allowDrop(event)">Drag and drop here</div>
+        <div class="box" id="container_main" ondrop="dropInCart(event)" ondragover="allowDrop(event)">Drag and drop here</div>
 
-    <br/>
+        <br/>
 
 
-    <table class="table table-bordered">
-        <tr>
-            <th bgcolor="#D3D3D3"><strong>Part Type</strong></th>
-            <th bgcolor="#D3D3D3"><strong>Part Pic</strong></th>
-            <th bgcolor="#D3D3D3"><strong>Remove</strong></th>
-        </tr>
-        <tr>
-            <th>Operator Type</th>
-            <td id="container_styles"></td>
-            <td><button id="removestyleBtn" type="button" onclick="removestyle()">X</button></td>
-        </tr>
-        <tr>
-            <th>Voltage</th>
-            <td id="container_voltages"></td>
-            <td><button id="removeVoltageBtn" type="button" onclick="removeVoltage()">X</button></td>
-        </tr>
-        <tr>
-            <th>Positon 1</th>
-            <td id="container1_postions"></td>
-            <td><button id="removeposition1Btn" type="button" onclick="removePostion()">X</button></td>
-        </tr>
+        <table class="table table-bordered">
+            <tr>
+                <th bgcolor="#D3D3D3"><strong>Part Type</strong></th>
+                <th bgcolor="#D3D3D3"><strong>Part Pic</strong></th>
+                <th bgcolor="#D3D3D3"><strong>Remove</strong></th>
+            </tr>
+            <tr>
+                <th>Operator Type</th>
+                <td id="container_styles"></td>
+                <td><button id="removestyleBtn" type="button" onclick="removestyle()">X</button></td>
+            </tr>
+            <tr>
+                <th>Voltage</th>
+                <td id="container_voltages"></td>
+                <td><button id="removeVoltageBtn" type="button" onclick="removeVoltage()">X</button></td>
+            </tr>
+            <tr>
+                <th>Positon 1</th>
+                <td id="container1_postions"></td>
+                <td><button id="removeposition1Btn" type="button" onclick="removePostion()">X</button></td>
+            </tr>
                 
-        <tr>
-            <th>Positon 2</th>
-            <td id="container2_postions"></td>
-            <td><button id="removeposition2Btn" type="button" onclick="removePostion()">X</button></td>
-        </tr>
+            <tr>
+                <th>Positon 2</th>
+                <td id="container2_postions"></td>
+                <td><button id="removeposition2Btn" type="button" onclick="removePostion()">X</button></td>
+            </tr>
                 
-        <tr>
-            <th>Positon 3</th>
-            <td id="container3_postions"></td>
-            <td><button id="removeposition3Btn" type="button" onclick="removePostion()">X</button></td>
-        </tr>
+            <tr>
+                <th>Positon 3</th>
+                <td id="container3_postions"></td>
+                <td><button id="removeposition3Btn" type="button" onclick="removePostion()">X</button></td>
+            </tr>
                 
-        <tr>
-            <th>Positon 4</th>
-            <td id="container4_postions"></td>
-            <td><button id="removeposition4Btn" type="button" onclick="removePostion()">X</button></td>
-        </tr>
-        <tr>
-            <th>Positon 5</th>
-            <td id="container5_postions"></td>
-            <td><button id="removeposition5Btn" type="button" onclick="removePostion()">X</button></td>
-        </tr>
-        <tr>
-            <th>Sound Module</th>
-            <td id="container_soundModule"></td>
-            <td><button id="removeModuleBtn" type="button" onclick="removeModule()">X</button></td>
-        </tr>
+            <tr>
+                <th>Positon 4</th>
+                <td id="container4_postions"></td>
+                <td><button id="removeposition4Btn" type="button" onclick="removePostion()">X</button></td>
+            </tr>
+            <tr>
+                <th>Positon 5</th>
+                <td id="container5_postions"></td>
+                <td><button id="removeposition5Btn" type="button" onclick="removePostion()">X</button></td>
+            </tr>
+            <tr>
+                <th>Sound Module</th>
+                <td id="container_soundModule"></td>
+                <td><button id="removeModuleBtn" type="button" onclick="removeModule()">X</button></td>
+            </tr>
                
-    </table>
-    <br /> <br />
+        </table>
+        <br /> <br />
 
-    <h1 class="part-section-body" id="title_text_sku">Product Sku: </h1>
-    <h1 class="part-section-body" id="title_text_price">Price: $0</h1>
-    <h1 class="part-section-body" id="title_text_price_discount">Discounted Price: $0</h1>
+        <h1 class="part-section-body" id="title_text_sku">Product Sku: </h1>
+        <h1 class="part-section-body" id="title_text_price">Price: $0</h1>
+        <h1 class="part-section-body" id="title_text_price_discount">Discounted Price: $0</h1>
 
-    <hr />
-    <div class="col-md-8">
-        <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showSelectedItems()">Details</button>
-        <button class="button button-primary btn-sm part-section-btn" onclick="addToCart()">Add to Cart</button>
-    </div>
-    <div class="col-md-4 text-right">
-        <button class="button button-primary btn-danger btn-sm part-section-btn" onclick="window.location.reload()">Clear All</button>
-    </div>
+        <hr />
+        <div class="col-md-8">
+            <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showSelectedItems()">Details</button>
+            <button class="button button-primary btn-sm part-section-btn" onclick="addToCart()">Add to Cart</button>
+        </div>
+        <div class="col-md-4 text-right">
+            <button class="button button-primary btn-danger btn-sm part-section-btn" onclick="window.location.reload()">Clear All</button>
+        </div>
+    </ul>
 </div>
 </div>
 

@@ -1,4 +1,5 @@
 ﻿@using C3_Controls.Models
+@using MyCouch.Contexts
 @model PushToTest
 @{
     var basics = Model.Basics;
@@ -40,11 +41,32 @@
 
         <h4>Already know your SKU? Enter here:</h4>
 
-        <form>
-            <input type="text" name="product_sku"/>
-        </form>
+    <form id ="enter_sku">
+        <input type="text" name="product_sku" size="2" id="operatorSku" maxlength="3" /> <strong>-</strong>
+        <input type="text" name="product_sku" size="2" id="voltageSku" maxlength="3" /> <strong>-</strong>
+        <input type="text" name="product_sku" size="2" id="lampColorSku" maxlength="3" /> <strong>-</strong>
+        <input type="text" name="product_sku" size="2" id="lensColorSku" maxlength="3" /> <strong>-</strong>
+        <input type="text" name="product_sku" size="2" id="clampRingSku" maxlength="3" /> <strong>-</strong>
+        <input type="text" name="product_sku" size="2" id="lensTypeSku" maxlength="3" /> <strong>-</strong>
+        <input type="text" name="product_sku" size="2" id="optionsSku" maxlength="3" /> 
+    </form>
+        
+    <span></span>
+    
+    <script language="javascript">
 
-        <!-- Tabs With Left Navigation -->
+        var operatorSku = document.getElementById("operatorSku");
+        document.display(operatorSku.value);
+
+        var voltageSku = document.getElementById("voltageSku");
+        document.write(voltageSku.value);
+    </script>
+     
+           
+       
+
+
+    <!-- Tabs With Left Navigation -->
         <div class="row tabs nomargin-top">
 
             <!-- Tabs -->
@@ -516,8 +538,8 @@
     @Scripts.Render("~/Scripts/scripts.js")
     @Scripts.Render("~/Scripts/cart-pushtotest.js")
     <script type="text/javascript">
-            $(function () {
-                setup('@Model.OperatorType.Sku');
-            });
+        $(function () {
+            setup('@Model.OperatorType.Sku');
+        });
     </script>
 }

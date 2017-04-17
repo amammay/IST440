@@ -1,6 +1,6 @@
 ﻿@using C3_Controls.Models
 @using MyCouch.Contexts
-@model PushToTest
+@model C3_Controls.Models.UiDataModel.PushToTest
 @{
     var basics = Model.Basics;
     var voltages = Model.Voltages;
@@ -363,7 +363,7 @@
 
 <!-- Cart Information -->
 <div class="col-md-4" id="cart_info_container" style="margin-bottom: 124px;">
-    <div style="position:fixed;top:18px;float:right;left:965px;bottom:-50px">
+    <div style="position:fixed;top:18px;float:right;left:965px;">
 
         <h2 class="part-section-title">Product Info</h2>
 
@@ -452,7 +452,7 @@
 
 <!-- Remove Container -->
 <!-- 
-    <div class="row text-center hidden" id="remove_container" style="border:1px dashed red" ondrop="dropInRemoveContainer(event)" ondragover="allowDrop(event)">
+<div class="row text-center hidden" id="remove_container" style="border:1px dashed red" ondrop="dropInRemoveContainer(event)" ondragover="allowDrop(event)">
     <h4 class="part-section-lead"><i class="fa fa-trash"></i> Drop item here to remove</h4>
 </div> 
 -->
@@ -460,69 +460,69 @@
 <!-- Product Selection -->
 <!--
 <div class="row">
-    <!-- Product Selection Wrapper --
-    <div class="col-md-12" id="container_main" style="margin-top:64px" ondrop="dropInCart(event)" ondragover="allowDrop(event)">
-        <h2 class="part-section-title">Selection</h2>
-        <h1 class="part-section-body">Drag items anywhere on here</h1>
+<!-- Product Selection Wrapper --
+<div class="col-md-12" id="container_main" style="margin-top:64px" ondrop="dropInCart(event)" ondragover="allowDrop(event)">
+<h2 class="part-section-title">Selection</h2>
+<h1 class="part-section-body">Drag items anywhere on here</h1>
 
-        <div class="row">
-            <!-- Default Selection --
-            <div class="col-md-3">
-                <h4>Required Parts</h4>
-                <div id="container_required" class="row">
-                    <div class="col-md-3 metro-column">
-                        <div id="item_required_operator" class="metro-static" draggable="false">
-                            <h1>@Model.OperatorType.Name</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Basic Operator Selection --
-            <div class="col-md-3">
-                <h4><i class="fa fa-dashboard"></i> Basic Operator</h4>
-                <div id="container_basic" class="row"></div>
-            </div>
-
-            <!-- Voltage Selection --
-            <div class="col-md-3">
-                <h4><i class="fa fa-bolt"></i> Selected Voltage</h4>
-                <div id="container_voltage" class="row"></div>
-            </div>
-
-            <!-- Lamp Color Selection --
-            <div class="col-md-3">
-                <h4><i class="fa fa-tint"></i> Lamp Color</h4>
-                <div id="container_lamp_color" class="row"></div>
-            </div>
-        </div>
-
-        <div class="row" style="margin-top:64px">
-            <!-- Lens Color Selection --
-            <div class="col-md-3">
-                <h4><i class="fa fa-tint"></i> Lens Color</h4>
-                <div id="container_lens_color" class="row"></div>
-            </div>
-
-            <!-- Clamp Ring Selection --
-            <div class="col-md-3">
-                <h4><i class="fa fa-wrench"></i> Clamp Ring</h4>
-                <div id="container_clamp_ring" class="row"></div>
-            </div>
-
-            <!-- Lens Type Selection --
-            <div class="col-md-3">
-                <h4><i class="fa fa-eye"></i> Lens Type</h4>
-                <div id="container_lens_type" class="row"></div>
-            </div>
-
-            <!-- Options Selection --
-            <div class="col-md-3">
-                <h4><i class="fa fa-gear"></i> Options</h4>
-                <div id="container_option" class="row"></div>
+<div class="row">
+<!-- Default Selection --
+<div class="col-md-3">
+    <h4>Required Parts</h4>
+    <div id="container_required" class="row">
+        <div class="col-md-3 metro-column">
+            <div id="item_required_operator" class="metro-static" draggable="false">
+                <h1>@Model.OperatorType.Name</h1>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Basic Operator Selection --
+<div class="col-md-3">
+    <h4><i class="fa fa-dashboard"></i> Basic Operator</h4>
+    <div id="container_basic" class="row"></div>
+</div>
+
+<!-- Voltage Selection --
+<div class="col-md-3">
+    <h4><i class="fa fa-bolt"></i> Selected Voltage</h4>
+    <div id="container_voltage" class="row"></div>
+</div>
+
+<!-- Lamp Color Selection --
+<div class="col-md-3">
+    <h4><i class="fa fa-tint"></i> Lamp Color</h4>
+    <div id="container_lamp_color" class="row"></div>
+</div>
+</div>
+
+<div class="row" style="margin-top:64px">
+<!-- Lens Color Selection --
+<div class="col-md-3">
+    <h4><i class="fa fa-tint"></i> Lens Color</h4>
+    <div id="container_lens_color" class="row"></div>
+</div>
+
+<!-- Clamp Ring Selection --
+<div class="col-md-3">
+    <h4><i class="fa fa-wrench"></i> Clamp Ring</h4>
+    <div id="container_clamp_ring" class="row"></div>
+</div>
+
+<!-- Lens Type Selection --
+<div class="col-md-3">
+    <h4><i class="fa fa-eye"></i> Lens Type</h4>
+    <div id="container_lens_type" class="row"></div>
+</div>
+
+<!-- Options Selection --
+<div class="col-md-3">
+    <h4><i class="fa fa-gear"></i> Options</h4>
+    <div id="container_option" class="row"></div>
+</div>
+</div>
+</div>
 </div>
 -->
 

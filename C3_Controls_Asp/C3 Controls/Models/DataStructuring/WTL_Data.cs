@@ -1,31 +1,71 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Configuration;
+using C3_Controls.Models.CouchDbConnections;
 
 namespace C3_Controls.Models.DataStructuring
 {
+
+    /// <summary>
+    /// @author Alex Mammay
+    /// @updated 4/2/2017
+    /// @email: amm7100@psu.edu
+    /// This class acts a data structuring class
+    /// </summary>
     public class WTL_Data
     {
+
+        #region Private Fields
+
+        public Dictionary<string, WTLItem[]> WtlMap { get; }
+
+        #endregion Private Fields
+
+        #region Public Fields
+
+        public PricedItem OperatorType { get; set; }
+        public PricedItem ModuelDiameter { get; set; }
+        public List<PricedItem> Voltages { get; set; }
+        public List<PricedItem> Styles { get; set; }
+        public List<PricedItem> Positions { get; set; }
+        public List<PricedItem> SoundModule { get; set; }
+        public List<PricedItem> LightLens { get; set; }
+
+        #endregion Public Fields
+        
+        #region Public Methods
+
         /// <summary>
-        ///     This is were dictionary specific values get their proper inheritence of a priced item
+        /// This is were dictionary specific values get their proper inheritence of a priced item
         /// </summary>
         public WTL_Data()
         {
-            //Quick check to see if we are local or using external couchdb 
-            if (CmSetting != "internal")
-            {
-                //Instance of couch connector
-                var myCouchDbConnector = new CouchDbConnector();
+        
+            //Instance of couch connector
+            var myCouchDbConnector = new CouchDbConnector();
 
-                //Creates our map
-                WtlMap = new Dictionary<string, WTLItem[]>();
+            //Creates our map
+            WtlMap = new Dictionary<string, WTLItem[]>();
 
-                //Assign our dictionary to the one that was populated when the connection was made 
-                WtlMap = myCouchDbConnector.WtlMap;
-            }
+            //Assign our dictionary to the one that was populated when the connection was made 
+            WtlMap = myCouchDbConnector.WtlMap;
+            
+            //Fire off Method for doing the heavy lifting 
+            WtlDataStructure(WtlMap);
+           
+        }
 
+        #endregion Public Methods
 
+        #region Private Methods
+        /// <summary>
+        /// Actually structures of the data.
+        /// </summary>
+        /// <param name="wtlMap"></param>
+        public void WtlDataStructure(Dictionary<string, WTLItem[]> wtlMap)
+        {
             //Cycle over our wtl map 
-            foreach (var valueSet in WtlMap)
+            foreach (var valueSet in wtlMap)
             {
                 var valueSetItems = new List<WTLItem>();
 
@@ -81,7 +121,7 @@ namespace C3_Controls.Models.DataStructuring
                                     singleItem.Img = "img_base_long.png";
                                     break;
                                 case "P3":
-                                    singleItem.Img = "img_base_short.png";
+                                    singleItem.Img = "img_base_direct.jpg";
                                     break;
                             }
 
@@ -100,8 +140,24 @@ namespace C3_Controls.Models.DataStructuring
                                 Price = item.price,
                                 Desc = item.text,
                                 Sku = item.sku,
-                                Img = "img_voltages.png"
                             };
+
+                            switch (singleItem.Sku)
+                            {
+                                case "24":
+                                    singleItem.Img = "24V.jpg";
+                                    break;
+                                case "120":
+                                    singleItem.Img = "120V.jpg";
+                                    break;
+                                case "240":
+                                    singleItem.Img = "240V.jpg";
+                                    break;
+                                default:
+                                    break;
+
+                            }
+
                             //Add her to the list
                             Voltages.Add(singleItem);
                         }
@@ -132,7 +188,8 @@ namespace C3_Controls.Models.DataStructuring
                                 Name = item.text,
                                 Price = item.price,
                                 Desc = item.text,
-                                Sku = item.sku
+                                Sku = item.sku,
+                                Img = "sound.jpg"
                             };
                             //Add her to the list
                             SoundModule.Add(singleItem);
@@ -153,33 +210,102 @@ namespace C3_Controls.Models.DataStructuring
 
                             //extra logic for assigning image path to position
                             if (singleItem.Sku.EndsWith("A"))
-                                singleItem.Img = "img_light_amber.png";
+                            {
+                                switch (singleItem.Sku)
+                                {
+                                    case "DA":
+                                        singleItem.Img = "img_light_amber.png";
+                                        break;
+                                    case "FA":
+                                        singleItem.Img = "AmberFlashingTowerLight.png";
+                                        break;
+                                    case "RA":
+                                        singleItem.Img = "AmberRotaryTowerLight.png";
+                                        break;
+
+                                }
+                            }
+                              
                             else if (singleItem.Sku.EndsWith("B"))
-                                singleItem.Img = "img_light_blue.png";
+                            {
+                                switch (singleItem.Sku)
+                                {
+                                    case "DB":
+                                        singleItem.Img = "img_light_blue.png";
+                                        break;
+                                    case "FB":
+                                        singleItem.Img = "BlueFlashingTowerLight.png";
+                                        break;
+                                    case "RB":
+                                        singleItem.Img = "BlueRotaryTowerLight.png";
+                                        break;
+
+                                }
+                            }
                             else if (singleItem.Sku.EndsWith("G"))
-                                singleItem.Img = "img_light_green.png";
+                            {
+                                switch (singleItem.Sku)
+                                {
+                                    case "DG":
+                                        singleItem.Img = "img_light_green.png";
+                                        break;
+                                    case "FG":
+                                        singleItem.Img = "GreenFlashingTowerLight.png";
+                                        break;
+                                    case "RG":
+                                        singleItem.Img = "GreenRotaryTowerLight.png";
+                                        break;
+
+                                }
+                            }
+                              
                             else if (singleItem.Sku.EndsWith("R"))
-                                singleItem.Img = "img_light_red.png";
+                            {
+                                switch (singleItem.Sku)
+                                {
+                                    case "DR":
+                                        singleItem.Img = "img_light_red.png";
+                                        break;
+                                    case "FR":
+                                        singleItem.Img = "RedFlashingTowerLight.png";
+                                        break;
+                                    case "RR":
+                                        singleItem.Img = "RedRotaryTowerLight.png";
+                                        break;
+
+                                }
+                            }
+                             
                             else if (singleItem.Sku.EndsWith("W"))
-                                singleItem.Img = "img_light_white.png";
+                            {
+                                switch (singleItem.Sku)
+                                {
+                                    case "DW":
+                                        singleItem.Img = "img_light_white.png";
+                                        break;
+                                    case "FW":
+                                        singleItem.Img = "WhiteFlashingTowerLight.png";
+                                        break;
+                                    case "RW":
+                                        singleItem.Img = "WhiteRotaryTowerLight.png";
+                                        break;
+
+                                }
+                            }
+                                
                             //Add it to the list
                             Positions.Add(singleItem);
                         }
+                        break;
+                    default:
+                        Console.WriteLine("Error, Cant Strucutre data");
                         break;
                 }
             }
         }
 
-        public Dictionary<string, WTLItem[]> WtlMap { get; set; }
-        public string CmSetting => WebConfigurationManager.AppSettings["CurrentDatebase"];
+        #endregion Private Methods
 
 
-        public PricedItem OperatorType { get; set; }
-        public PricedItem ModuelDiameter { get; set; }
-        public List<PricedItem> Voltages { get; set; }
-        public List<PricedItem> Styles { get; set; }
-        public List<PricedItem> Positions { get; set; }
-        public List<PricedItem> SoundModule { get; set; }
-        public List<PricedItem> LightLens { get; set; }
     }
 }

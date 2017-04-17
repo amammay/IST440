@@ -40,6 +40,14 @@ namespace C3_Controls.Models.UiDataModel
         public override PricedItem OperatorType
             => new PricedItem {Name = "Push to Test", Sku = "PTT", Price = DEFAULT_PRICE};
 
+        public List<PricedItem> Basics => new List<PricedItem>()
+        {
+            new PricedItem() { Name = "Full Voltage", Img = "img_push_to_test.png", Desc= "Full Voltage"},
+            new PricedItem() { Name = "Transformer (50/60 Hz)",  Img = "img_push_to_test.png", Desc = "Transformer (50/60 Hz)" },
+            new PricedItem() { Name = "Resister",  Img = "img_push_to_test.png", Desc = "Resister" }
+        };
+        
+
         public override List<PricedItem> Voltages => PttData.Voltages;
         public List<PricedItem> LampColors => PttData.LampTypeColor;
         public List<PricedItem> ClampRings => PttData.ClampRing;

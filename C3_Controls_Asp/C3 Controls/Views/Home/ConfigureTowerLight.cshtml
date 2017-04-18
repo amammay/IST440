@@ -7,7 +7,7 @@
     var styles = Model.Styles;
     var positions = Model.Positions;
     var soundMoudle = Model.SoundModule;
-    var lightLens = Model.LightLens;
+   // var lightLens = Model.LightLens;
     ViewBag.Title = "Configure Tower Light";
 }
 
@@ -56,14 +56,9 @@
                         </a>
                     </li>
 
-                    <li>
-                        <a href="#tab_d" data-toggle="tab">
-                            <i class="fa fa-lightbulb-o"></i> Light lens
-                        </a>
-                    </li>
 
                     <li>
-                        <a href="#tab_e" data-toggle="tab">
+                        <a href="#tab_d" data-toggle="tab">
                             <i class="fa fa-soundcloud"></i> Sound Module
                         </a>
                     </li>
@@ -118,23 +113,7 @@
                         </div>
                     </div>
 
-
                     <div id="tab_d" class="tab-pane">
-                        <h4>Lens Type</h4>
-                        <div class="row metro-overflow">
-                            @foreach (var i in lightLens)
-                            {
-                                <div id="col_lightLensn_@i.ToString()" class="col-md-3 metro-column">
-                                    <div id="item_lightLensn_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                    </div>
-
-                    <div id="tab_e" class="tab-pane">
                         <h4>Sound Moudle</h4>
                         <div class="row metro-overflow">
                             @foreach (var i in soundMoudle)

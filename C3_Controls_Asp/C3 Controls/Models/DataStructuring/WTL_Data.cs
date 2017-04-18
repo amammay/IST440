@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Configuration;
 using C3_Controls.Models.CouchDbConnections;
 
@@ -18,6 +19,8 @@ namespace C3_Controls.Models.DataStructuring
         #region Private Fields
 
         public Dictionary<string, WTLItem[]> WtlMap { get; }
+
+        private List<PricedItem> PositionsClearlens { get; set; }
 
         #endregion Private Fields
 
@@ -302,6 +305,32 @@ namespace C3_Controls.Models.DataStructuring
                         break;
                 }
             }
+
+            PositionsClearlens = new List<PricedItem>();
+            foreach (var positionItem in Positions)
+            {
+                var tempPositionItem = positionItem;
+                var tempSku = positionItem.Sku;
+
+                if (positionItem.Sku.EndsWith("A") || positionItem.Sku.EndsWith("B")
+                    || positionItem.Sku.EndsWith("G") || positionItem.Sku.EndsWith("R"))
+                {
+                    tempPositionItem.Sku = tempSku.Insert(1, "C");
+                    tempPositionItem.Name += " Clear Lens";
+                    tempPositionItem.Desc += " Clear Lens";
+
+                    PositionsClearlens.Add(tempPositionItem);
+                }
+                
+              
+            }
+
+            foreach (var item in PositionsClearlens)
+            {
+                Positions.Add(item);
+            }
+
+
         }
 
         #endregion Private Methods

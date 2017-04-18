@@ -254,7 +254,6 @@
     <Content Include="Content\old\css" />
     <Content Include="Content\old\css%281%29" />
     <Content Include="Content\old\saved_resource" />
-    <Content Include="Model Diagrams.cd" />
     <None Include="Properties\PublishProfiles\c3controls - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\c3Controls.js" />

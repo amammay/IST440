@@ -190,6 +190,7 @@
   height: 40px;
 }
 
+/*Drag and drop area*/
 .box {
     border: 5px solid black;
     width: 380px;
@@ -197,3 +198,7 @@
     text-align: center;
 }
 
+/*Affixed product info*/
+.affix {
+    top: 15px;
+}

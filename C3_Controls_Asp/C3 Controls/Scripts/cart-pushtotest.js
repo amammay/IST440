@@ -541,6 +541,60 @@ function showSelectedItems() {
     showModal('Product Details', content);
 }
 
+/*
+ * Functions to show details for the individual parts 
+ */
+function showOperatorDesc() {
+    showModal('Operator Description', 'Placeholder');
+}
+
+function showVoltageDesc() {
+    showModal('Voltage Description', 'Placeholder');
+}
+
+function showLampTypeDesc() {
+    showModal('Lamp Type Description', 'Placeholder');
+}
+
+function showClampRingDesc() {
+    showModal('Clamp Ring Description', 'Placeholder');
+}
+
+function showLensTypeDesc() {
+    showModal('Lens Type Description', 'Placeholder');
+}
+
+function showLensColorDesc() {
+    showModal('Lens Color Description', 'Placeholder');
+}
+
+function showOptionsDesc() {
+    showModal('Options Description', 'Placeholder');
+}
+
+/**
+ * Functions to remove from the table 
+ * 
+ */
+
+function removeOperator() {
+
+    var target = dropInCart.target || dropInCart.srcElement;
+    var id = target.id;
+
+    var selectedId = e.dataTransfer.getData(id);
+    var child = document.getElementById(selectedId);
+    var correctColumn = getSelectionColumn(selectedId) +
+        "_" + getProductName(selectedId);
+
+    // Append child to its original parent
+    var parent = document.getElementById(correctColumn);
+    parent.appendChild(child);
+
+    setProperSku(getContainer(selectedId), "");
+    Cart.substractPrice(child.dataset.price);
+}
+
 /**
  * Validates the user's selection and mocks a 
  * checkout proccess.

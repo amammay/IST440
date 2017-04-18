@@ -2,16 +2,19 @@
 const CATEGORY_STYLE = "item_style";
 const CATEGORY_VOLTAGE = "item_voltage";
 const CATEGORY_POSITION = "item_position";
+const CATEGORY_SOUND = "item_sound";
 
 // Containers
 const CONTAINER_STYLE = "container_style";
 const CONTAINER_VOLTAGE = "container_voltage";
 const CONTAINER_POSITION = "container_position";
+const CONTAINER_SOUND = "container_sound";
 
 // Columns
 const COLUMN_STYLE = "col_style";
 const COLUMN_VOLTAGE = "col_voltage";
 const COLUMN_POSITION = "col_position";
+const COLUMN_SOUND = "col_sound";
 
 // Position Constraints
 const MAX_POSITIONS = 5;
@@ -28,6 +31,7 @@ var Cart = {
     base: "",
     voltage: "",
     position: "",
+    sound:"",
 
     // Generates sku in the correct order
     generateSku: function () {
@@ -221,6 +225,8 @@ function getSelectionColumn(_id) {
         return COLUMN_VOLTAGE;
     else if (_id.indexOf(CATEGORY_POSITION) >= 0)
         return COLUMN_POSITION;
+    else if (_id.indexOf(CATEGORY_SOUND) >= 0)
+        return COLUMN_SOUND;
     return null;
 }
 
@@ -255,6 +261,8 @@ function getContainer(_id) {
         return CONTAINER_VOLTAGE;
     else if (_id.indexOf(CATEGORY_POSITION) >= 0)
         return CONTAINER_POSITION;
+    else if (_id.indexOf(CATEGORY_SOUND) >= 0)
+        return CONTAINER_SOUND;
     return null;
 }
 

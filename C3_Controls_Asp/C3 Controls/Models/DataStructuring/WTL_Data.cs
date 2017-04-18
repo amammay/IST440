@@ -295,6 +295,8 @@ namespace C3_Controls.Models.DataStructuring
 
                                 }
                             }
+
+
                                 
                             //Add it to the list
                             Positions.Add(singleItem);
@@ -309,8 +311,11 @@ namespace C3_Controls.Models.DataStructuring
             PositionsClearlens = new List<PricedItem>();
             foreach (var positionItem in Positions)
             {
-                var tempPositionItem = positionItem;
+                var tempPositionItem = new PricedItem();
+                
+
                 var tempSku = positionItem.Sku;
+                var tempImg = positionItem.Img;
 
                 if (positionItem.Sku.EndsWith("A") || positionItem.Sku.EndsWith("B")
                     || positionItem.Sku.EndsWith("G") || positionItem.Sku.EndsWith("R"))
@@ -318,13 +323,15 @@ namespace C3_Controls.Models.DataStructuring
                     tempPositionItem.Sku = tempSku.Insert(1, "C");
                     tempPositionItem.Name += " Clear Lens";
                     tempPositionItem.Desc += " Clear Lens";
+                    tempPositionItem.Img = tempImg.Replace(".png", "_clear.png");
 
                     PositionsClearlens.Add(tempPositionItem);
                 }
-                
+
               
             }
 
+            
             foreach (var item in PositionsClearlens)
             {
                 Positions.Add(item);

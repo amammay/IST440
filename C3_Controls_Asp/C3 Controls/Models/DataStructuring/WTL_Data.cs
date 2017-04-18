@@ -316,13 +316,15 @@ namespace C3_Controls.Models.DataStructuring
 
                 var tempSku = positionItem.Sku;
                 var tempImg = positionItem.Img;
+                var tempName = positionItem.Name;
 
                 if (positionItem.Sku.EndsWith("A") || positionItem.Sku.EndsWith("B")
                     || positionItem.Sku.EndsWith("G") || positionItem.Sku.EndsWith("R"))
                 {
                     tempPositionItem.Sku = tempSku.Insert(1, "C");
-                    tempPositionItem.Name += " Clear Lens";
-                    tempPositionItem.Desc += " Clear Lens";
+                    tempPositionItem.Name = tempName + "Clear Lens";
+                    tempPositionItem.Desc = tempName + "Clear Lens";
+
                     tempPositionItem.Img = tempImg.Replace(".png", "_clear.png");
 
                     PositionsClearlens.Add(tempPositionItem);

@@ -160,6 +160,8 @@ function dropInCart(ev) {
 
     // Update text on screen
     displayCartUpdates();
+
+    alert(selectedId);
 }
 
 
@@ -185,6 +187,7 @@ function dropInRemoveContainer(e) {
 
         setProperSku(getContainer(selectedId), "");
         Cart.substractPrice(child.dataset.price);
+        alert(parent);
     }
 
     // Show text updates
@@ -192,6 +195,9 @@ function dropInRemoveContainer(e) {
 
     // Make remove container invisible
     $("#remove_container").addClass("hidden");
+
+    alert(selectedId);
+    alert(correctColumn);
 }
 
 
@@ -579,20 +585,11 @@ function showOptionsDesc() {
 
 function removeOperator() {
 
-    var target = dropInCart.target || dropInCart.srcElement;
-    var id = target.id;
+   
+    var id = document.getElementById(Cart.operator);
 
-    var selectedId = e.dataTransfer.getData(id);
-    var child = document.getElementById(selectedId);
-    var correctColumn = getSelectionColumn(selectedId) +
-        "_" + getProductName(selectedId);
+    alert(id);
 
-    // Append child to its original parent
-    var parent = document.getElementById(correctColumn);
-    parent.appendChild(child);
-
-    setProperSku(getContainer(selectedId), "");
-    Cart.substractPrice(child.dataset.price);
 }
 
 /**

@@ -1,19 +1,19 @@
 ﻿// Categories
 const CATEGORY_STYLE = "item_style";
 const CATEGORY_VOLTAGE = "item_voltage";
-const CATEGORY_POSITION = "item_position";
+const CATEGORY_POSITION = "item_positions";
 const CATEGORY_SOUND = "item_sound";
 
 // Containers
 const CONTAINER_STYLE = "container_style";
 const CONTAINER_VOLTAGE = "container_voltage";
-const CONTAINER_POSITION = "container_position";
+const CONTAINER_POSITION = "container_positions";
 const CONTAINER_SOUND = "container_sound";
 
 // Columns
 const COLUMN_STYLE = "col_style";
 const COLUMN_VOLTAGE = "col_voltage";
-const COLUMN_POSITION = "col_position";
+const COLUMN_POSITION = "col_positions";
 const COLUMN_SOUND = "col_soundMoudle";
 
 // Position Constraints

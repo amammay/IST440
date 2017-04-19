@@ -34,22 +34,22 @@ var Cart = {
     base: "",
     voltage: "",
     position: "",
-    sound:"",
+    sound: "",
 
     // Generates sku in the correct order
-    generateSku: function () {
-        return "Sku: " + this.operator + this.module + this.base + this.voltage + this.position;
+    generateSku: function() {
+        return "Sku: " + this.operator + this.module + this.base + this.voltage + this.position + this.sound;
     },
 
-    generatePrice: function () {
+    generatePrice: function() {
         return "Price: $" + this.price;
     },
 
-    updatePrice: function (p) {
+    updatePrice: function(p) {
         this.price += parseFloat(p);
     },
 
-    subtractPrice: function (p) {
+    subtractPrice: function(p) {
         this.price -= parseFloat(p);
     },
 
@@ -71,6 +71,9 @@ var Cart = {
 
     addPosition(p) {
         this.position += "-" + p;
+    },
+    setSound(s) {
+        this.sound = "-" + s;
     }
 };
 
@@ -290,6 +293,10 @@ function setProperSku(_container, _sku) {
         case CONTAINER_VOLTAGE:
             Cart.setVoltage(_sku);
             break;
+        case CONTAINER_SOUND:
+            Cart.setSound(_sku)
+            break;  
+     
     }
 }
 

@@ -73,7 +73,7 @@ var Cart = {
         this.position += "-" + p;
     },
     setSound(s) {
-        this.sound += "-" + s;
+        this.sound = "-" + s;
     }
 };
 
@@ -293,6 +293,9 @@ function setProperSku(_container, _sku) {
         case CONTAINER_VOLTAGE:
             Cart.setVoltage(_sku);
             break;
+        case CONTAINER_SOUND:
+            Cart.setSound(_sku)
+            break;  
      
     }
 }

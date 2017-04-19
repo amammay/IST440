@@ -85,7 +85,7 @@
                         <div id="slide_styles" class="row">
                             @foreach (var i in styles)
                             {
-                                <div id="col_styles_@i.ToString()" class="col-md-3 metro-column">
+                                <div id="col_style_@i.ToString()" class="col-md-3 metro-column">
                                     <div id="item_style_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
                                         <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
                                         <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
@@ -113,8 +113,8 @@
                         <div id="slide_voltages" class="row">
                             @foreach (var i in voltages)
                             {
-                                <div id="col_voltages_@i.ToString()" class="col-md-3 metro-column">
-                                    <div id="item_voltages_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                <div id="col_voltage_@i.ToString()" class="col-md-3 metro-column">
+                                    <div id="item_voltage_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
                                         <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
                                         <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                     </div>
@@ -194,8 +194,8 @@
                 <div class="row">
                     @foreach (var i in styles)
                     {
-                        <div id="col_styles_@i.Name" class="col-md-3 metro-column">
-                            <div id="item_styles.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                        <div id="col_style_@i.Name" class="col-md-3 metro-column">
+                            <div id="item_style.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
                                 <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
                                 <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
                             </div>
@@ -208,8 +208,8 @@
                 <div id="slide_voltages" class="row metro-overflow">
                     @foreach (var i in voltages)
                     {
-                        <div id="col_voltages_@i.Name" class="col-md-3 metro-column">
-                            <div id="item_voltages_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                        <div id="col_voltage_@i.Name" class="col-md-3 metro-column">
+                            <div id="item_voltage_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
                                 <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
                                 <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
                             </div>
@@ -239,10 +239,10 @@
                 <div class="row metro-overflow">
                     @foreach (var i in soundMoudle)
                     {
-                        <div id="col_soundModule_@i.ToString()" class="col-md-3 metro-column">
-                            <div id="item_soundModule_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                        <div id="col_soundMoudle_@i.ToString()" class="col-md-3 metro-column">
+                            <div id="item_soundMoudle_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
+                                <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                             </div>
                         </div>
                     }
@@ -273,12 +273,12 @@
         <tr>
             <th>Sound Module</th>
             <td id="container_sound"></td>
-            <td><button id="removeModuleBtn" type="button" onclick="removeModule()">X</button></td>
+            <td><button id="removeModuleBtn" type="button" onclick="removeModule(event)">X</button></td>
         </tr>
         <tr>
             <th>Voltage</th>
             <td id="container_voltage"></td>
-            <td><button id="removeVoltageBtn" type="button" onclick="removeVoltage()">X</button></td>
+            <td><button id="removeVoltageBtn" type="button" onclick="removeVoltage(event)">X</button></td>
         </tr>          
         <tr>
             <th>Positon 5</th>
@@ -308,7 +308,7 @@
         <tr>
             <th>Operator Type</th>
             <td id="container_style"></td>
-            <td><button id="removestyleBtn" type="button" onclick="removestyle()">X</button></td>
+            <td><button id="removestyleBtn" type="button" onclick="removeStyle(event)">X</button></td>
         </tr>
                
     </table>

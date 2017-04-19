@@ -14,7 +14,7 @@ const CONTAINER_SOUND = "container_sound";
 const COLUMN_STYLE = "col_style";
 const COLUMN_VOLTAGE = "col_voltage";
 const COLUMN_POSITION = "col_position";
-const COLUMN_SOUND = "col_sound";
+const COLUMN_SOUND = "col_soundMoudle";
 
 // Position Constraints
 const MAX_POSITIONS = 5;
@@ -24,6 +24,9 @@ const LAST_ALLOWED_POSITIONS = [
 ];
 
 // Variables
+
+var tempContainerArray = new Array();
+
 var Cart = {
     price: 0,
     operator: "",
@@ -136,6 +139,9 @@ function dropInCart(ev) {
         document.getElementById(container).appendChild(child);
         child.dataset.selected = true;
         setProperSku(container, child.dataset.sku);
+
+        tempContainerArray.push(selectedId);
+
     } else {
         // Check if another position can be added
         if (allowAnotherPosition()) {
@@ -159,6 +165,9 @@ function dropInCart(ev) {
     // Update text on screen
     updateDisplay();
 }
+
+
+
 
 
 /**
@@ -317,6 +326,9 @@ function showSelectedItems() {
     content += "<b>Total Price: </b>$" + Cart.price;
     showModal('Product Details', content);
 }
+
+
+
 
 
 /**
@@ -548,4 +560,150 @@ function dateTimeChecker() {
 
         break;
     }
+}
+
+/**
+ *
+ * Function for removing a style 
+ * @param {any} event
+ */
+function removeStyle(event) {
+
+    var item = findSelectedItems();
+    //This is the specific substring we are searching for this would be the part of the object type
+    var subString = "style";
+    var selectedId, child, correctColumn;
+
+    for (var i = 0; i < item.length; i++) {
+
+        var tempId = item[i].id;
+
+        if (tempId.includes(subString)) {
+            child = item[i];
+            selectedId = tempId;
+            correctColumn = getSelectionColumn(selectedId) +
+                "_" + getProductName(selectedId);
+        }
+    }
+
+    // Make sure the child is a selected child
+    if (child.dataset.selected == 'true') {
+        // Set child as not selected anymore
+        child.dataset.selected = 'false';
+
+        // Check if child is a position item
+        if (selectedId.indexOf(CATEGORY_POSITION) >= 0) {
+            Cart.position = "";
+            Cart.subtractPrice(child.dataset.price);
+            document.getElementById(CONTAINER_POSITION).removeChild(child);
+        }
+        else {
+            //// Append child to its original parent
+            var parent = document.getElementById(correctColumn);
+            parent.appendChild(child);
+
+            setProperSku(getContainer(selectedId), "");
+            Cart.subtractPrice(child.dataset.price);
+        }
+    }
+
+    // Show text updates
+    updateDisplay();
+}
+/**
+ *
+ * Function for removing a style 
+ * @param {any} event
+ */
+function removeModule(event) {
+
+    var item = findSelectedItems();
+    //This is the specific substring we are searching for this would be the part of the object type
+    var subString = "soundMoudle";
+    var selectedId, child, correctColumn;
+
+    for (var i = 0; i < item.length; i++) {
+
+        var tempId = item[i].id;
+
+        if (tempId.includes(subString)) {
+            child = item[i];
+            selectedId = tempId;
+            correctColumn = getSelectionColumn(selectedId) +
+                "_" + getProductName(selectedId);
+        }
+    }
+
+    // Make sure the child is a selected child
+    if (child.dataset.selected == 'true') {
+        // Set child as not selected anymore
+        child.dataset.selected = 'false';
+
+        // Check if child is a position item
+        if (selectedId.indexOf(CATEGORY_POSITION) >= 0) {
+            Cart.position = "";
+            Cart.subtractPrice(child.dataset.price);
+            document.getElementById(CONTAINER_POSITION).removeChild(child);
+        }
+        else {
+            //// Append child to its original parent
+            var parent = document.getElementById(correctColumn);
+            parent.appendChild(child);
+
+            setProperSku(getContainer(selectedId), "");
+            Cart.subtractPrice(child.dataset.price);
+        }
+    }
+
+    // Show text updates
+    updateDisplay();
+}
+
+/**
+ *
+ * Function for removing a style 
+ * @param {any} event
+ */
+function removeVoltage(event) {
+
+    var item = findSelectedItems();
+    //This is the specific substring we are searching for this would be the part of the object type
+    var subString = "voltage";
+    var selectedId, child, correctColumn;
+
+    for (var i = 0; i < item.length; i++) {
+
+        var tempId = item[i].id;
+
+        if (tempId.includes(subString)) {
+            child = item[i];
+            selectedId = tempId;
+            correctColumn = getSelectionColumn(selectedId) +
+                "_" + getProductName(selectedId);
+        }
+    }
+
+    // Make sure the child is a selected child
+    if (child.dataset.selected == 'true') {
+        // Set child as not selected anymore
+        child.dataset.selected = 'false';
+
+        // Check if child is a position item
+        if (selectedId.indexOf(CATEGORY_POSITION) >= 0) {
+            Cart.position = "";
+            Cart.subtractPrice(child.dataset.price);
+            document.getElementById(CONTAINER_POSITION).removeChild(child);
+        }
+        else {
+            //// Append child to its original parent
+            var parent = document.getElementById(correctColumn);
+            parent.appendChild(child);
+
+            setProperSku(getContainer(selectedId), "");
+            Cart.subtractPrice(child.dataset.price);
+        }
+    }
+
+    // Show text updates
+    updateDisplay();
 }

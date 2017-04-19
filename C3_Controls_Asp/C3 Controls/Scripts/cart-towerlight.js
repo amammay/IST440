@@ -615,7 +615,7 @@ function removeStyle(event) {
  * Function for removing a style 
  * @param {any} event
  */
-function removeModule(event) {
+function removeSoundModule(event) {
 
     var item = findSelectedItems();
     //This is the specific substring we are searching for this would be the part of the object type
@@ -669,6 +669,57 @@ function removeVoltage(event) {
     var item = findSelectedItems();
     //This is the specific substring we are searching for this would be the part of the object type
     var subString = "voltage";
+    var selectedId, child, correctColumn;
+
+    for (var i = 0; i < item.length; i++) {
+
+        var tempId = item[i].id;
+
+        if (tempId.includes(subString)) {
+            child = item[i];
+            selectedId = tempId;
+            correctColumn = getSelectionColumn(selectedId) +
+                "_" + getProductName(selectedId);
+        }
+    }
+
+    // Make sure the child is a selected child
+    if (child.dataset.selected == 'true') {
+        // Set child as not selected anymore
+        child.dataset.selected = 'false';
+
+        // Check if child is a position item
+        if (selectedId.indexOf(CATEGORY_POSITION) >= 0) {
+            Cart.position = "";
+            Cart.subtractPrice(child.dataset.price);
+            document.getElementById(CONTAINER_POSITION).removeChild(child);
+        }
+        else {
+            //// Append child to its original parent
+            var parent = document.getElementById(correctColumn);
+            parent.appendChild(child);
+
+            setProperSku(getContainer(selectedId), "");
+            Cart.subtractPrice(child.dataset.price);
+        }
+    }
+
+    // Show text updates
+    updateDisplay();
+}
+
+
+
+/**
+ *
+ * Function for removing a style 
+ * @param {any} event
+ */
+function removeLastPostion(event) {
+
+    var item = findSelectedItems();
+    //This is the specific substring we are searching for this would be the part of the object type
+    var subString = "positions";
     var selectedId, child, correctColumn;
 
     for (var i = 0; i < item.length; i++) {

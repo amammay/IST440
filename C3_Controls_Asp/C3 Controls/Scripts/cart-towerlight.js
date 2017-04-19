@@ -28,7 +28,7 @@ const LAST_ALLOWED_POSITIONS = [
 var tempContainerArray = new Array();
 
 var Cart = {
-    price: 0,
+    price: 8,
     operator: "",
     module: "",
     base: "",

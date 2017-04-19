@@ -1,17 +1,20 @@
 ﻿// Categories
 const CATEGORY_STYLE = "item_style";
 const CATEGORY_VOLTAGE = "item_voltage";
-const CATEGORY_POSITION = "item_position";
+const CATEGORY_POSITION = "item_positions";
+const CATEGORY_SOUND = "item_sound";
 
 // Containers
 const CONTAINER_STYLE = "container_style";
 const CONTAINER_VOLTAGE = "container_voltage";
-const CONTAINER_POSITION = "container_position";
+const CONTAINER_POSITION = "container_positions";
+const CONTAINER_SOUND = "container_sound";
 
 // Columns
 const COLUMN_STYLE = "col_style";
 const COLUMN_VOLTAGE = "col_voltage";
-const COLUMN_POSITION = "col_position";
+const COLUMN_POSITION = "col_positions";
+const COLUMN_SOUND = "col_soundMoudle";
 
 // Position Constraints
 const MAX_POSITIONS = 5;
@@ -21,6 +24,9 @@ const LAST_ALLOWED_POSITIONS = [
 ];
 
 // Variables
+
+var tempContainerArray = new Array();
+
 var Cart = {
     price: 0,
     operator: "",
@@ -28,6 +34,7 @@ var Cart = {
     base: "",
     voltage: "",
     position: "",
+    sound:"",
 
     // Generates sku in the correct order
     generateSku: function () {
@@ -132,6 +139,9 @@ function dropInCart(ev) {
         document.getElementById(container).appendChild(child);
         child.dataset.selected = true;
         setProperSku(container, child.dataset.sku);
+
+        tempContainerArray.push(selectedId);
+
     } else {
         // Check if another position can be added
         if (allowAnotherPosition()) {
@@ -155,6 +165,9 @@ function dropInCart(ev) {
     // Update text on screen
     updateDisplay();
 }
+
+
+
 
 
 /**
@@ -221,6 +234,8 @@ function getSelectionColumn(_id) {
         return COLUMN_VOLTAGE;
     else if (_id.indexOf(CATEGORY_POSITION) >= 0)
         return COLUMN_POSITION;
+    else if (_id.indexOf(CATEGORY_SOUND) >= 0)
+        return COLUMN_SOUND;
     return null;
 }
 
@@ -255,6 +270,8 @@ function getContainer(_id) {
         return CONTAINER_VOLTAGE;
     else if (_id.indexOf(CATEGORY_POSITION) >= 0)
         return CONTAINER_POSITION;
+    else if (_id.indexOf(CATEGORY_SOUND) >= 0)
+        return CONTAINER_SOUND;
     return null;
 }
 
@@ -309,6 +326,9 @@ function showSelectedItems() {
     content += "<b>Total Price: </b>$" + Cart.price;
     showModal('Product Details', content);
 }
+
+
+
 
 
 /**
@@ -452,4 +472,289 @@ function addToCart() {
         return;
     }
     showModal('Success', 'World Tower Light added to cart!');
+
+    dateTimeChecker();
+}
+function dateTimeChecker() {
+
+    // placing order and checks timestap to determine if same day shipping is availible
+    var d = new Date();
+    var hour = d.getHours();
+    var day = d.getDay();
+
+    //if (day == 1, day == 2, day == 3, day == 4, day == 5) {
+    //    if (hour >= 8 == hour <= 18) {
+    //        showModal("success!", "your item will be shipped today!");
+    //        return;
+    //    } else {
+    //        showErrorModal("error", "Your item will ship the next business day");
+    //        return;
+    //    } 
+    //} else {
+    //    showErrorModal("error", "Your item will ship the next business day");
+    //    return;
+    //}
+
+
+    switch (day) {
+    case 0:
+        showErrorModal("error", "Your item will ship the next business day");
+
+        break;
+    case 1:
+
+        if (hour >= 8 == hour <= 18) {
+            showModal("success!", "your item will be shipped today!");
+
+        } else {
+            showErrorModal("error", "Your item will ship the next business day");
+
+        }
+        break;
+    case 2:
+
+        if (hour >= 8 == hour <= 18) {
+            showModal("success!", "your item will be shipped today!");
+
+        } else {
+            showErrorModal("error", "Your item will ship the next business day");
+
+        }
+        break;
+    case 3:
+
+        if (hour >= 8 == hour <= 18) {
+            showModal("success!", "your item will be shipped today!");
+
+        } else {
+            showErrorModal("error", "Your item will ship the next business day");
+
+        }
+        break;
+    case 4:
+
+        if (hour >= 8 == hour <= 18) {
+            showModal("success!", "your item will be shipped today!");
+
+        } else {
+            showErrorModal("error", "Your item will ship the next business day");
+
+        }
+        break;
+    case 5:
+
+        if (hour >= 8 == hour <= 18) {
+            showModal("success!", "your item will be shipped today!");
+
+        } else {
+            showErrorModal("error", "Your item will ship the next business day");
+
+        }
+        break;
+
+    case 6:
+        showErrorModal("error", "Your item will ship the next business day");
+
+    default:
+        showModal("Success", "Your item will be ship Today");
+
+        break;
+    }
+}
+
+/**
+ *
+ * Function for removing a style 
+ * @param {any} event
+ */
+function removeStyle(event) {
+
+    var item = findSelectedItems();
+    //This is the specific substring we are searching for this would be the part of the object type
+    var subString = "style";
+    var selectedId, child, correctColumn;
+
+    for (var i = 0; i < item.length; i++) {
+
+        var tempId = item[i].id;
+
+        if (tempId.includes(subString)) {
+            child = item[i];
+            selectedId = tempId;
+            correctColumn = getSelectionColumn(selectedId) +
+                "_" + getProductName(selectedId);
+        }
+    }
+
+    // Make sure the child is a selected child
+    if (child.dataset.selected == 'true') {
+        // Set child as not selected anymore
+        child.dataset.selected = 'false';
+
+        // Check if child is a position item
+        if (selectedId.indexOf(CATEGORY_POSITION) >= 0) {
+            Cart.position = "";
+            Cart.subtractPrice(child.dataset.price);
+            document.getElementById(CONTAINER_POSITION).removeChild(child);
+        }
+        else {
+            //// Append child to its original parent
+            var parent = document.getElementById(correctColumn);
+            parent.appendChild(child);
+
+            setProperSku(getContainer(selectedId), "");
+            Cart.subtractPrice(child.dataset.price);
+        }
+    }
+
+    // Show text updates
+    updateDisplay();
+}
+/**
+ *
+ * Function for removing a style 
+ * @param {any} event
+ */
+function removeSoundModule(event) {
+
+    var item = findSelectedItems();
+    //This is the specific substring we are searching for this would be the part of the object type
+    var subString = "soundMoudle";
+    var selectedId, child, correctColumn;
+
+    for (var i = 0; i < item.length; i++) {
+
+        var tempId = item[i].id;
+
+        if (tempId.includes(subString)) {
+            child = item[i];
+            selectedId = tempId;
+            correctColumn = getSelectionColumn(selectedId) +
+                "_" + getProductName(selectedId);
+        }
+    }
+
+    // Make sure the child is a selected child
+    if (child.dataset.selected == 'true') {
+        // Set child as not selected anymore
+        child.dataset.selected = 'false';
+
+        // Check if child is a position item
+        if (selectedId.indexOf(CATEGORY_POSITION) >= 0) {
+            Cart.position = "";
+            Cart.subtractPrice(child.dataset.price);
+            document.getElementById(CONTAINER_POSITION).removeChild(child);
+        }
+        else {
+            //// Append child to its original parent
+            var parent = document.getElementById(correctColumn);
+            parent.appendChild(child);
+
+            setProperSku(getContainer(selectedId), "");
+            Cart.subtractPrice(child.dataset.price);
+        }
+    }
+
+    // Show text updates
+    updateDisplay();
+}
+
+/**
+ *
+ * Function for removing a style 
+ * @param {any} event
+ */
+function removeVoltage(event) {
+
+    var item = findSelectedItems();
+    //This is the specific substring we are searching for this would be the part of the object type
+    var subString = "voltage";
+    var selectedId, child, correctColumn;
+
+    for (var i = 0; i < item.length; i++) {
+
+        var tempId = item[i].id;
+
+        if (tempId.includes(subString)) {
+            child = item[i];
+            selectedId = tempId;
+            correctColumn = getSelectionColumn(selectedId) +
+                "_" + getProductName(selectedId);
+        }
+    }
+
+    // Make sure the child is a selected child
+    if (child.dataset.selected == 'true') {
+        // Set child as not selected anymore
+        child.dataset.selected = 'false';
+
+        // Check if child is a position item
+        if (selectedId.indexOf(CATEGORY_POSITION) >= 0) {
+            Cart.position = "";
+            Cart.subtractPrice(child.dataset.price);
+            document.getElementById(CONTAINER_POSITION).removeChild(child);
+        }
+        else {
+            //// Append child to its original parent
+            var parent = document.getElementById(correctColumn);
+            parent.appendChild(child);
+
+            setProperSku(getContainer(selectedId), "");
+            Cart.subtractPrice(child.dataset.price);
+        }
+    }
+
+    // Show text updates
+    updateDisplay();
+}
+
+
+
+/**
+ *
+ * Function for removing a style 
+ * @param {any} event
+ */
+function removeLastPostion(event) {
+
+    var item = findSelectedItems();
+    //This is the specific substring we are searching for this would be the part of the object type
+    var subString = "positions";
+    var selectedId, child, correctColumn;
+
+    for (var i = 0; i < item.length; i++) {
+
+        var tempId = item[i].id;
+
+        if (tempId.includes(subString)) {
+            child = item[i];
+            selectedId = tempId;
+            correctColumn = getSelectionColumn(selectedId) +
+                "_" + getProductName(selectedId);
+        }
+    }
+
+    // Make sure the child is a selected child
+    if (child.dataset.selected == 'true') {
+        // Set child as not selected anymore
+        child.dataset.selected = 'false';
+
+        // Check if child is a position item
+        if (selectedId.indexOf(CATEGORY_POSITION) >= 0) {
+            Cart.position = "";
+            Cart.subtractPrice(child.dataset.price);
+            document.getElementById(CONTAINER_POSITION).removeChild(child);
+        }
+        else {
+            //// Append child to its original parent
+            var parent = document.getElementById(correctColumn);
+            parent.appendChild(child);
+
+            setProperSku(getContainer(selectedId), "");
+            Cart.subtractPrice(child.dataset.price);
+        }
+    }
+
+    // Show text updates
+    updateDisplay();
 }

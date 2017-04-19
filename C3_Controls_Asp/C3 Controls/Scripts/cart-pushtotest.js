@@ -545,7 +545,9 @@ function showSelectedItems() {
  * Validates the user's selection and mocks a 
  * checkout proccess.
 */
-function addToCart() {
+function addToCart() { 
+    
+    
     // Let's check if the user has selected everything we need to build the part
     if (!hasItems(CONTAINER_BASIC)) {
         showErrorModal('Missing Items', 'Please select a basic operator!');
@@ -576,4 +578,94 @@ function addToCart() {
         return;
     }
     showModal('Success', 'Push-to-Test item added to cart!');
+    dateTimeChecker();
+    
+
+}
+
+function dateTimeChecker() {
+
+// placing order and checks timestap to determine if same day shipping is availible
+    var d = new Date();
+    var hour = d.getHours();
+    var day = d.getDay();
+
+    //if (day == 1, day == 2, day == 3, day == 4, day == 5) {
+    //    if (hour >= 8 == hour <= 18) {
+    //        showModal("success!", "your item will be shipped today!");
+    //        return;
+    //    } else {
+    //        showErrorModal("error", "Your item will ship the next business day");
+    //        return;
+    //    } 
+    //} else {
+    //    showErrorModal("error", "Your item will ship the next business day");
+    //    return;
+    //}
+
+
+    switch (day) {
+    case 0:
+        showErrorModal("error", "Your item will ship the next business day");
+
+        break;
+    case 1:
+
+        if (hour >= 8 == hour <= 18) {
+            showModal("success!", "your item will be shipped today!");
+
+        } else {
+            showErrorModal("error", "Your item will ship the next business day");
+
+        }
+        break;
+    case 2:
+
+        if (hour >= 8 == hour <= 18) {
+            showModal("success!", "your item will be shipped today!");
+
+        } else {
+            showErrorModal("error", "Your item will ship the next business day");
+
+        }
+        break;
+    case 3:
+
+        if (hour >= 8 == hour <= 18) {
+            showModal("success!", "your item will be shipped today!");
+
+        } else {
+            showErrorModal("error", "Your item will ship the next business day");
+
+        }
+        break;
+    case 4:
+
+        if (hour >= 8 == hour <= 18) {
+            showModal("success!", "your item will be shipped today!");
+
+        } else {
+            showErrorModal("error", "Your item will ship the next business day");
+
+        }
+        break;
+    case 5:
+
+        if (hour >= 8 == hour <= 18) {
+            showModal("success!", "your item will be shipped today!");
+
+        } else {
+            showErrorModal("error", "Your item will ship the next business day");
+
+        }
+        break;
+
+    case 6:
+        showErrorModal("error", "Your item will ship the next business day");
+
+    default:
+        showModal("Success", "Your item will be ship Today");
+
+        break;
+    }
 }

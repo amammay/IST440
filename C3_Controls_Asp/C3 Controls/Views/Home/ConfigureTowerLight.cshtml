@@ -1,13 +1,13 @@
 ﻿@using C3_Controls.Models
 @model C3_Controls.Models.UiDataModel.TowerLight
 @{
+  
     var operatorType = Model.OperatorType;
     var voltages = Model.Voltages;
     var moduleDiameter = Model.ModuleDiameter;
     var styles = Model.Styles;
     var positions = Model.Positions;
     var soundMoudle = Model.SoundModule;
-   // var lightLens = Model.LightLens;
     ViewBag.Title = "Configure Tower Light";
 }
 
@@ -29,166 +29,276 @@
 
 <!-- Available Items -->
 <div class="row">
-    <!-- Configuration Parts -->
-    <div class="col-md-8" id="parts_container">
-        <h2 class="part-section-title">Available Parts</h2>
-        <h1 class="part-section-body">Drag a part into your product</h1>
+<!-- Configuration Parts -->
+<div class="col-md-8" id="parts_container">
+    <h2 class="part-section-title">Available Parts</h2>
+    <h1 class="part-section-body">Drag a part into your product</h1>
 
-        <!-- Tabs With Left Navigation -->
-        <div class="row tabs nomargin-top">
+    <br />
 
-            <!-- Tabs -->
-            <div class="col-md-3 col-sm-3 nopadding-right" style="padding-right:0px;padding-left:0px;">
-                <ul class="nav nav-tabs nav-stacked">
-                    <li class="active">
-                        <a href="#tab_a" data-toggle="tab">
-                            <i class="fa fa-magic"></i> Styles
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab_b" data-toggle="tab">
-                            <i class="fa fa-bolt"></i> Voltages
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab_c" data-toggle="tab">
-                            <i class="fa fa-puzzle-piece"></i> Positions
-                        </a>
-                    </li>
+    <h4>Already know your SKU? Enter here:</h4>
+    
+
+<!-- BELOW WILL PROBABLY NOT WORK -->
+
+    <form id ="enter_sku">
+        <input type="text" name="product_sku" size="2" id="operatorSku" maxlength="3" /> <strong>-</strong>
+        <input type="text" name="product_sku" size="2" id="voltageSku" maxlength="3" /> <strong>-</strong>
+        <input type="text" name="product_sku" size="2" id="lampColorSku" maxlength="3" /> <strong>-</strong>
+        <input type="text" name="product_sku" size="2" id="lensColorSku" maxlength="3" /> <strong>-</strong>
+        <input type="text" name="product_sku" size="2" id="clampRingSku" maxlength="3" /> <strong>-</strong>
+        <input type="text" name="product_sku" size="2" id="lensTypeSku" maxlength="3" /> <strong>-</strong>
+        <input type="text" name="product_sku" size="2" id="optionsSku" maxlength="3" /> 
+    </form>
+    
+    <span></span>
+        
+    <script language="javascript">
+
+        var operatorSku = document.getElementById("operatorSku");
+        document.display(operatorSku.value);
+
+        var voltageSku = document.getElementById("voltageSku");
+        document.write(voltageSku.value);
+    </script>
+    
+<!-- ABOVE PROBABLY DOESNT WORK -->
 
 
-                    <li>
-                        <a href="#tab_d" data-toggle="tab">
-                            <i class="fa fa-soundcloud"></i> Sound Module
-                        </a>
-                    </li>
-                </ul>
+<!-- Tabs With Left Navigation -->
+    <div class="row tabs nomargin-top">
+
+<!-- Tabs -->
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                        <i class="fa fa-dashboard"></i> Base Styles</a>
+                </h4>
             </div>
-
-            <!-- Tab Contents -->
-            <div class="col-md-9 col-sm-9 nopadding-left" style="padding-right:0px;padding-left:0px;">
-                <div class="tab-content">
-                    <div id="tab_a" class="tab-pane active">
-                        <h4>Styles</h4>
-                        <div class="row">
+            <div id="collapse1" class="panel-collapse collapse">
+                <div class="panel-body">
+                
+                    <div id="tab_a">
+                        @*<h4>Styles</h4>*@
+                        <div id="slide_styles" class="row">
                             @foreach (var i in styles)
                             {
                                 <div id="col_style_@i.ToString()" class="col-md-3 metro-column">
                                     <div id="item_style_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
+                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                     </div>
                                 </div>
                             }
                         </div>
                     </div>
 
-                    <div id="tab_b" class="tab-pane">
-                        <h4>Voltages</h4>
-                        <div class="row">
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                        <i class="fa fa-bolt"></i> Voltages</a>
+                </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body">
+                
+                    <div id="tab_b">
+                        @*<h4>Voltages</h4>*@
+                        <div id="slide_voltages" class="row">
                             @foreach (var i in voltages)
                             {
                                 <div id="col_voltage_@i.ToString()" class="col-md-3 metro-column">
                                     <div id="item_voltage_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
+                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                     </div>
                                 </div>
                             }
                         </div>
                     </div>
-
-                    <div id="tab_c" class="tab-pane">
-                        <h4>Positions</h4>
-                        <div class="row metro-overflow">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                        <i class="fa fa-lightbulb-o"></i> Lamps</a>
+                </h4>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse">
+                <div class="panel-body">
+                
+                    <div id="tab_c">
+                        @*<h4>Positions</h4>*@
+                        <div id="slide_positions" class="row metro-overflow"> <!--overflow when more than one row of choices-->
                             @foreach (var i in positions)
                             {
-                                <div id="col_position_@i.ToString()" class="col-md-3 metro-column">
-                                    <div id="item_position_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                                <div id="col_positions_@i.ToString()" class="col-md-3 metro-column">
+                                    <div id="item_positions_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
+                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                     </div>
                                 </div>
                             }
                         </div>
                     </div>
+                        
+                </div>
+            </div>
+        </div>
+    
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+                        <i class="fa fa-bell"></i> Sound Modules</a>
+                </h4>
+            </div>
+            <div id="collapse4" class="panel-collapse collapse">
+                <div class="panel-body">
 
-                    <div id="tab_d" class="tab-pane">
-                        <h4>Sound Moudle</h4>
-                        <div class="row metro-overflow">
+                    <div id="tab_d" >
+                        @*<h4>Sound Module</h4>*@
+                        <div id="slide_sound_modules" class="row">
                             @foreach (var i in soundMoudle)
                             {
-                                <div id="col_soundModule_@i.ToString()" class="col-md-3 metro-column">
-                                    <div id="item_soundModule_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                                <div id="col_soundMoudle_@i.ToString()" class="col-md-3 metro-column">
+                                    <div id="item_soundMoudle_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
+                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                     </div>
                                 </div>
                             }
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
-    <!-- Product Selection -->
-    <div class="row">
-        <!-- Product Selection Wrapper -->
-        <div class="col-md-4" id="container_main" style="margin-top:64px" ondrop="dropInCart(event)" ondragover="allowDrop(event)">
-            <h2 class="part-section-title">Selection</h2>
-            <h1 class="part-section-body">Drag items anywhere on here</h1>
 
-            <div class="row">
-                <!-- Default Selection -->
-                <div class="col-md-3">
-                    <h4>Required Parts</h4>
-                    <div id="container_required" class="row">
-                        <div class="col-md-3 metro-column">
-                            <div id="item_required_operator" class="metro-static" draggable="false">
-                                <h1>@Model.OperatorType.Name</h1>
-                            </div>
-                            <div id="item_required_diameter" class="metro-static" draggable="false">
-                                <h1>@Model.ModuleDiameter.Name</h1>
+          
+
+        <!-- Tab Contents -->
+        <div class="col-md-12 col-sm-12 nopadding-left" style="padding-right:0px;padding-left:0px;">
+            <div id="tab_a" class="collapse">
+                                   
+                <div class="row">
+                    @foreach (var i in styles)
+                    {
+                        <div id="col_style_@i.Name" class="col-md-3 metro-column">
+                            <div id="item_style.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
+                                <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Styles Selection -->
-                <div class="col-md-3">
-                    <h4><i class="fa fa-magic"></i> Selected Style</h4>
-                    <div id="container_style" class="row">
-                    </div>
-                </div>
-
-                <!-- Voltage Selection -->
-                <div class="col-md-3">
-                    <h4><i class="fa fa-bolt"></i> Selected Voltage</h4>
-                    <div id="container_voltage" class="row">
-                    </div>
-                </div>
-
-                <!-- Positions Selection -->
-                <div class="col-md-3">
-                    <h4><i class="fa fa-puzzle-piece"></i> Selected Position Items</h4>
-                    <div id="container_position" class="row">
-                    </div>
+                    }
                 </div>
             </div>
+            <div id="tab_b" class="collapse">
+                                    
+                <div id="slide_voltages" class="row metro-overflow">
+                    @foreach (var i in voltages)
+                    {
+                        <div id="col_voltage_@i.Name" class="col-md-3 metro-column">
+                            <div id="item_voltage_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
+                                <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div id="tab_c" class="collapse">
+                                    
+                <div id="slide_positions" class="row metro-overflow">
+                    @foreach (var i in positions)
+                    {
+                        <div id="col_positions_@i.ToString()" class="col-md-3 metro-column">
+                            <div id="item_positions_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
+                                <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+
+            <div id="tab_d" class="collapse">
+                                    
+                <div class="row metro-overflow">
+                    @foreach (var i in soundMoudle)
+                    {
+                        <div id="col_soundMoudle_@i.ToString()" class="col-md-3 metro-column">
+                            <div id="item_soundMoudle_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
+                                <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+                   
         </div>
     </div>
 </div>
-
-<!-- Remove Container -->
-<div class="row text-center hidden" id="remove_container" style="border:1px dashed red" ondrop="dropInRemoveContainer(event)" ondragover="allowDrop(event)">
-    <h4 class="part-section-lead"><i class="fa fa-trash"></i> Drop item here to remove</h4>
-</div>
-
-   <!-- Cart Information -->
+            
+  
+<!-- Cart Information -->
 <div class="col-md-4" id="cart_info_container" style="margin-bottom:124px;">
     <h2 class="part-section-title">Product Info</h2>
-    <h1 class="part-section-body" id="title_text_sku">Sku: </h1>
+       
+    <div class="box" id="container_main" ondrop="dropInCart(event)" ondragover="allowDrop(event)">Drag and drop here</div>
+
+    <br/>
+   
+
+    <table class="table table-bordered">
+        <tr>
+            <th bgcolor="#D3D3D3"><strong>Part Type</strong></th>
+            <th bgcolor="#D3D3D3"><strong>Part Pic</strong></th>
+            <th bgcolor="#D3D3D3"><strong>Remove</strong></th>
+        </tr>
+        <tr>
+            <th>Sound Module</th>
+            <td id="container_sound"></td>
+            <td><button id="removeModuleBtn" type="button" onclick="removeSoundModule(event)">X</button></td>
+        </tr>
+        <tr>
+            <th>Voltage</th>
+            <td id="container_voltage"></td>
+            <td><button id="removeVoltageBtn" type="button" onclick="removeVoltage(event)">X</button></td>
+        </tr>          
+        <tr>
+            <th>Positon </th>
+            <td id="container_positions"></td>
+            <td><button id="removePositionBtn" type="button" onclick="removeLastPostion()">X</button></td>
+        </tr>
+ 
+        <tr>
+            <th>Operator Type</th>
+            <td id="container_style"></td>
+            <td><button id="removestyleBtn" type="button" onclick="removeStyle(event)">X</button></td>
+        </tr>
+               
+    </table>
+    <br /> <br />
+    
+    <h1 class="part-section-body" id="title_text_sku">Product Sku: </h1>
     <h1 class="part-section-body" id="title_text_price">Price: $0</h1>
+    <h1 class="part-section-body" id="title_text_price_discount">Discounted Price: $0</h1>
+
     <hr />
     <div class="col-md-8">
         <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showSelectedItems()">Details</button>
@@ -199,6 +309,7 @@
     </div>
 </div>
 
+</div>
 
 <!-- Generic Modal -->
 <div id="custom_modal" class="modal fade" role="dialog">
@@ -222,6 +333,8 @@
         </div>
     </div>
 </div>
+
+
 
 @section Scripts {
     @Scripts.Render("~/Scripts/scripts.js")

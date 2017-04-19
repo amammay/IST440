@@ -324,8 +324,16 @@ namespace C3_Controls.Models.DataStructuring
                     tempPositionItem.Sku = tempSku.Insert(1, "C");
                     tempPositionItem.Name = tempName + "Clear Lens";
                     tempPositionItem.Desc = tempName + "Clear Lens";
-
                     tempPositionItem.Img = tempImg.Replace(".png", "_clear.png");
+
+                    if (tempPositionItem.Sku.StartsWith("D"))
+                    {
+                        tempPositionItem.Price = 48.50;
+                    }
+                    else
+                    {
+                        tempPositionItem.Price = 61.00;
+                    }
 
                     PositionsClearlens.Add(tempPositionItem);
                 }
@@ -343,7 +351,5 @@ namespace C3_Controls.Models.DataStructuring
         }
 
         #endregion Private Methods
-
-
     }
 }

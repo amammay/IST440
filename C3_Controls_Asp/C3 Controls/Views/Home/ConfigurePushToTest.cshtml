@@ -56,7 +56,6 @@
 <script language="javascript">
 
     var operatorSku = document.getElementById("operatorSku");
-    document.display(operatorSku.value);
 
     var voltageSku = document.getElementById("voltageSku");
     document.write(voltageSku.value);
@@ -78,6 +77,7 @@
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
                     <i class="fa fa-dashboard"></i> Operators</a>
+                <button class="button btn-default btn-sm part-section-btn" onclick="showOperatorDesc()">What's this?</button>
             </h4>
         </div>
         <div id="collapse1" class="panel-collapse collapse">
@@ -107,6 +107,7 @@
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
                     <i class="fa fa-bolt"></i> Voltages</a>
+                <button class="button btn-default btn-sm part-section-btn" onclick="showVoltageDesc()">What's this?</button>
             </h4>
         </div>
         <div id="collapse2" class="panel-collapse collapse">
@@ -135,6 +136,7 @@
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
                     <i class="fa fa-tint"></i> Lamp Colors</a>
+                <button class="button btn-default btn-sm part-section-btn" onclick="showLampTypeDesc()">What's this?</button>
             </h4>
         </div>
         <div id="collapse3" class="panel-collapse collapse">
@@ -164,8 +166,8 @@
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-                    <i class="fa fa-tint"></i> Lens Colors
-                </a>
+                    <i class="fa fa-tint"></i> Lens Colors </a>
+                    <button class="button btn-default btn-sm part-section-btn" onclick="showLensColorDesc()">What's this?</button>
             </h4>
         </div>
         <div id="collapse4" class="panel-collapse collapse">
@@ -194,8 +196,8 @@
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-                    <i class="fa fa-wrench"></i> Clamp Rings
-                </a>
+                    <i class="fa fa-wrench"></i> Clamp Rings</a>
+                    <button class="button btn-default btn-sm part-section-btn" onclick="showClampRingDesc()">What's this?</button>
             </h4>
         </div>
         <div id="collapse5" class="panel-collapse collapse">
@@ -224,9 +226,9 @@
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
-                    <i class="fa fa-eye"></i> Lens Types
-                </a>
-            </h4>
+                    <i class="fa fa-eye"></i> Lens Types</a>
+                    <button class="button btn-default btn-sm part-section-btn" onclick="showLensTypeDesc()">What's this?</button>
+                </h4>
         </div>
         <div id="collapse6" class="panel-collapse collapse">
             <div class="panel-body">
@@ -254,9 +256,9 @@
     <div class="panel-heading">
         <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">
-                <i class="fa fa-gear"></i> Options
-            </a>
-        </h4>
+                <i class="fa fa-gear"></i> Options</a>
+                <button class="button btn-default btn-sm part-section-btn" onclick="showOptionsDesc()">What's this?</button>
+            </h4>
     </div>
     <div id="collapse7" class="panel-collapse collapse">
         <div class="panel-body">
@@ -418,10 +420,10 @@
             </tr>
             <tr>
                 <th>Operator Type
-                    <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showOperatorDesc()">Details</button>
+                    <button class="button btn-default btn-sm part-section-btn" onclick="showOperatorDesc()">Details</button>
                 </th>
                 <td id="container_basic"></td>
-                <td><button id="removeOperatorBtn" type="button" onclick="window.location.reload(false)">X</button></td>
+                <td><button id="removeOperatorBtn" type="button" onclick="removeOperator(event)">X</button></td>
             </tr>
             <tr>
                 <th>Voltage
@@ -449,7 +451,7 @@
                     <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showLensTypeDesc()">Details</button>
                 </th>
                 <td id="container_lens_type"></td>
-                <td><button id="removeLensTypeBtn" type="button" onclick="removeLensType">X</button></td>
+                <td><button id="removeLensTypeBtn" type="button" onclick="removeLensType()">X</button></td>
             </tr>
             <tr>
                 <th>Lens Color

@@ -87,7 +87,7 @@ var Cart = {
         this.price += parseFloat(p);
     },
 
-    substractPrice: function (p) {
+    subtractPrice: function (p) {
         this.price -= parseFloat(p);
     }
 };
@@ -162,6 +162,7 @@ function dropInCart(ev) {
     displayCartUpdates();
 
     alert(selectedId);
+    alert(container);
 }
 
 
@@ -186,7 +187,7 @@ function dropInRemoveContainer(e) {
         parent.appendChild(child);
 
         setProperSku(getContainer(selectedId), "");
-        Cart.substractPrice(child.dataset.price);
+        Cart.subtractPrice(child.dataset.price);
         alert(parent);
     }
 
@@ -559,7 +560,7 @@ function showVoltageDesc() {
 }
 
 function showLampTypeDesc() {
-    showModal('Lamp Type Description', 'Placeholder');
+    showModal('Lamp Type/Color Description', 'Placeholder');
 }
 
 function showClampRingDesc() {
@@ -578,18 +579,374 @@ function showOptionsDesc() {
     showModal('Options Description', 'Placeholder');
 }
 
+
 /**
- * Functions to remove from the table 
- * 
+ *
+ * Function for removing an operator
+ * @param {any} event
  */
+function removeOperator(event) {
 
-function removeOperator() {
+    var item = findSelectedItems();
+    //This is the specific substring we are searching for this would be the part of the object type
+    var subString = "basic";
+    var selectedId, child, correctColumn, parent;
 
-   
-    var id = document.getElementById(Cart.operator);
+    for (var i = 0; i < item.length; i++) {
 
-    alert(id);
+        var tempId = item[i].id;
 
+        if (tempId.includes(subString)) {
+            child = item[i];
+            selectedId = tempId;
+            correctColumn = getSelectionColumn(selectedId) +
+                "_" + getProductName(selectedId);
+
+            alert(correctColumn);
+        }
+    }
+
+    // Make sure the child is a selected child
+    if (child.dataset.selected == 'true') {
+        // Set child as not selected anymore
+        child.dataset.selected = 'false';
+
+        // Check the child
+        if (selectedId.indexOf(CATEGORY_BASIC) >= 0) {
+            Cart.basicOperator = "";
+            Cart.subtractPrice(child.dataset.price);
+            document.getElementById(CONTAINER_BASIC).removeChild(child);
+        }
+        else {
+            //// Append child to its original parent
+            parent = document.getElementById(correctColumn);
+            parent.appendChild(child);
+
+            setProperSku(getContainer(selectedId), "");
+            Cart.subtractPrice(child.dataset.price);
+        }
+    }
+
+    // Show text updates
+
+    displayCartUpdates();
+}
+
+/**
+ *
+ * Function for removing an operator
+ * @param {any} event
+ */
+function removeVoltage(event) {
+
+    var item = findSelectedItems();
+    //This is the specific substring we are searching for this would be the part of the object type
+    var subString = "voltage";
+    var selectedId, child, correctColumn;
+
+    for (var i = 0; i < item.length; i++) {
+
+        var tempId = item[i].id;
+
+        if (tempId.includes(subString)) {
+            child = item[i];
+            selectedId = tempId;
+            correctColumn = getSelectionColumn(selectedId) +
+                "_" + getProductName(selectedId);
+
+            alert(correctColumn);
+        }
+    }
+
+    // Make sure the child is a selected child
+    if (child.dataset.selected == 'true') {
+        // Set child as not selected anymore
+        child.dataset.selected = 'false';
+
+        // Check the child
+        if (selectedId.indexOf(CATEGORY_VOLTAGE) >= 0) {
+            Cart.voltage = "";
+            Cart.subtractPrice(child.dataset.price);
+            document.getElementById(CONTAINER_VOLTAGE).removeChild(child);
+        }
+        else {
+            //// Append child to its original parent
+            var parent = document.getElementById(correctColumn);
+            parent.appendChild(child);
+
+            setProperSku(getContainer(selectedId), "");
+            Cart.subtractPrice(child.dataset.price);
+        }
+    }
+
+    // Show text updates
+
+    displayCartUpdates();
+}
+
+/**
+ *
+ * Function for removing an operator
+ * @param {any} event
+ */
+function removeLamp(event) {
+
+    var item = findSelectedItems();
+    //This is the specific substring we are searching for this would be the part of the object type
+    var subString = "lamp_color";
+    var selectedId, child, correctColumn;
+
+    for (var i = 0; i < item.length; i++) {
+
+        var tempId = item[i].id;
+
+        if (tempId.includes(subString)) {
+            child = item[i];
+            selectedId = tempId;
+            correctColumn = getSelectionColumn(selectedId) +
+                "_" + getProductName(selectedId);
+
+            alert(correctColumn);
+        }
+    }
+
+    // Make sure the child is a selected child
+    if (child.dataset.selected == 'true') {
+        // Set child as not selected anymore
+        child.dataset.selected = 'false';
+
+        // Check the child
+        if (selectedId.indexOf(CATEGORY_LAMP_COLOR) >= 0) {
+            Cart.lampColor = "";
+            Cart.subtractPrice(child.dataset.price);
+            document.getElementById(CONTAINER_LAMP_COLOR).removeChild(child);
+        }
+        else {
+            //// Append child to its original parent
+            var parent = document.getElementById(correctColumn);
+            parent.appendChild(child);
+
+            setProperSku(getContainer(selectedId), "");
+            Cart.subtractPrice(child.dataset.price);
+        }
+    }
+
+    // Show text updates
+
+    displayCartUpdates();
+}
+
+/**
+ *
+ * Function for removing a clamp
+ * @param {any} event
+ */
+function removeClamp(event) {
+
+    var item = findSelectedItems();
+    //This is the specific substring we are searching for this would be the part of the object type
+    var subString = "clamp";
+    var selectedId, child, correctColumn;
+
+    for (var i = 0; i < item.length; i++) {
+
+        var tempId = item[i].id;
+
+        if (tempId.includes(subString)) {
+            child = item[i];
+            selectedId = tempId;
+            correctColumn = getSelectionColumn(selectedId) +
+                "_" + getProductName(selectedId);
+
+            alert(correctColumn);
+        }
+    }
+
+    // Make sure the child is a selected child
+    if (child.dataset.selected == 'true') {
+        // Set child as not selected anymore
+        child.dataset.selected = 'false';
+
+        // Check the child
+        if (selectedId.indexOf(CATEGORY_CLAMP_RING) >= 0) {
+            Cart.clampRing = "";
+            Cart.subtractPrice(child.dataset.price);
+            document.getElementById(CONTAINER_CLAMP_RING).removeChild(child);
+        }
+        else {
+            //// Append child to its original parent
+            var parent = document.getElementById(correctColumn);
+            parent.appendChild(child);
+
+            setProperSku(getContainer(selectedId), "");
+            Cart.subtractPrice(child.dataset.price);
+        }
+    }
+
+    // Show text updates
+
+    displayCartUpdates();
+}
+
+/**
+ *
+ * Function for removing an operator
+ * @param {any} event
+ */
+function removeLensType(event) {
+
+    var item = findSelectedItems();
+    //This is the specific substring we are searching for this would be the part of the object type
+    var subString = "lens_type";
+    var selectedId, child, correctColumn;
+
+    for (var i = 0; i < item.length; i++) {
+
+        var tempId = item[i].id;
+
+        if (tempId.includes(subString)) {
+            child = item[i];
+            selectedId = tempId;
+            correctColumn = getSelectionColumn(selectedId) +
+                "_" + getProductName(selectedId);
+
+            alert(correctColumn);
+        }
+    }
+
+    // Make sure the child is a selected child
+    if (child.dataset.selected == 'true') {
+        // Set child as not selected anymore
+        child.dataset.selected = 'false';
+
+        // Check the child
+        if (selectedId.indexOf(CATEGORY_LENS_TYPE) >= 0) {
+            Cart.lensType = "";
+            Cart.subtractPrice(child.dataset.price);
+            document.getElementById(CONTAINER_LENS_TYPE).removeChild(child);
+        }
+        else {
+            //// Append child to its original parent
+            var parent = document.getElementById(correctColumn);
+            parent.appendChild(child);
+
+            setProperSku(getContainer(selectedId), "");
+            Cart.subtractPrice(child.dataset.price);
+        }
+    }
+
+    // Show text updates
+
+    displayCartUpdates();
+}
+
+/**
+ *
+ * Function for removing a lens color
+ * @param {any} event
+ */
+function removeLensColor(event) {
+
+    var item = findSelectedItems();
+    //This is the specific substring we are searching for this would be the part of the object type
+    var subString = "lens_color";
+    var selectedId, child, correctColumn;
+
+    for (var i = 0; i < item.length; i++) {
+
+        var tempId = item[i].id;
+
+        if (tempId.includes(subString)) {
+            child = item[i];
+            selectedId = tempId;
+            correctColumn = getSelectionColumn(selectedId) +
+                "_" + getProductName(selectedId);
+
+            
+            alert(child);
+            alert(selectedId);
+            alert(getSelectionColumn(selectedId));
+            alert(getProductName(selectedId));
+            alert(correctColumn);
+        }
+    }
+
+    // Make sure the child is a selected child
+    if (child.dataset.selected == 'true') {
+        // Set child as not selected anymore
+        child.dataset.selected = 'false';
+
+        // Check the child
+        if (selectedId.indexOf(CATEGORY_LENS_COLOR) >= 0) {
+            Cart.lensColor = "";
+            Cart.subtractPrice(child.dataset.price);
+            document.getElementById(CONTAINER_LENS_COLOR).removeChild(child);
+        }
+        else {
+            //// Append child to its original parent
+            var parent = document.getElementById(correctColumn);
+            parent.appendChild(child);
+
+            setProperSku(getContainer(selectedId), "");
+            Cart.subtractPrice(child.dataset.price);
+        }
+    }
+
+    // Show text updates
+
+    displayCartUpdates();
+}
+
+/**
+ *
+ * Function for removing an option
+ * @param {any} event
+ */
+function removeOptions(event) {
+
+    var item = findSelectedItems();
+    //This is the specific substring we are searching for this would be the part of the object type
+    var subString = "option";
+    var selectedId, child, correctColumn;
+
+    for (var i = 0; i < item.length; i++) {
+
+        var tempId = item[i].id;
+
+        if (tempId.includes(subString)) {
+            child = item[i];
+            selectedId = tempId;
+            correctColumn = getSelectionColumn(selectedId) +
+                "_" + getProductName(selectedId);
+
+            alert(correctColumn);
+        }
+    }
+
+    // Make sure the child is a selected child
+    if (child.dataset.selected == 'true') {
+        // Set child as not selected anymore
+        child.dataset.selected = 'false';
+
+        // Check the child
+        if (selectedId.indexOf(CATEGORY_OPTION) >= 0) {
+            Cart.option = "";
+            Cart.subtractPrice(child.dataset.price);
+            document.getElementById(CONTAINER_OPTION).removeChild(child);
+        }
+        else {
+            //// Append child to its original parent
+            var parent = document.getElementById(correctColumn);
+            parent.appendChild(child);
+
+            setProperSku(getContainer(selectedId), "");
+            Cart.subtractPrice(child.dataset.price);
+        }
+    }
+
+    // Show text updates
+
+    displayCartUpdates();
 }
 
 /**

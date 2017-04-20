@@ -25,7 +25,7 @@ const LAST_ALLOWED_POSITIONS = [
 
 // Variables
 
-var tempContainerArray = new Array();
+
 
 var Cart = {
     price: 8,
@@ -114,6 +114,145 @@ function dragPart(ev) {
     ev.dataTransfer.setData("part", ev.target.id);
 }
 
+function manualInputRetrieve() {
+    var tempSkuArray = new Array();
+    var operatorSku = "WTL";
+    var diameterSku = "50";
+    var subStringBase = "P";
+    var voltages = ["24", "120", "240"];
+    var subStringSound = "S1";
+
+    var baseMaterial = document.getElementById("baseMaterialSku").value.toUpperCase();
+    if (!baseMaterial.includes(subStringBase)) {
+        showWarningModal('Warning', 'You\'ve entered a invalid base!');
+
+        return null;
+
+
+    }
+
+    var voltage = document.getElementById("voltageSku").value.toUpperCase();
+    var iteratorBool;
+    var lengthOfArray = voltages.length;
+    for (var i = 0; i < voltages.length; i++) {
+        if (!voltage.includes(voltages[i])) {
+            iteratorBool = true;
+            //showWarningModal('Warning', 'You\'ve entered a invalid voltage!');
+            
+        }
+        if (voltage.includes(voltages[i])) {
+            break;
+        }
+
+        //check to see if iteratorbool is set to true
+        if (iteratorBool) {
+            //did we max out the array?
+            if (i == lengthOfArray) {
+                showWarningModal('Warning', 'You\'ve entered a invalid voltage!');
+                return null;
+            }
+            
+           
+        }
+
+
+        
+    }
+
+    var position1 = document.getElementById("positionSku1").value.toUpperCase();
+    var position2 = document.getElementById("positionSku2").value.toUpperCase();
+    var position3 = document.getElementById("positionSku3").value.toUpperCase();
+    var position4 = document.getElementById("positionSku4").value.toUpperCase();
+    var position5 = document.getElementById("positionSku5").value.toUpperCase();
+
+    var soundModule = document.getElementById("soundSku").value.toUpperCase();
+    //make sure soundmodule isnt blank
+    if (!soundModule == "") {
+        if (!soundModule.includes(subStringSound)) {
+            showWarningModal('Warning', 'You\'ve entered a invalid sound moudle!');
+            return null;
+        }
+    }
+   
+    tempSkuArray.push(baseMaterial);
+    tempSkuArray.push(voltage);
+    tempSkuArray.push(position1);
+    tempSkuArray.push(position2);
+    tempSkuArray.push(position3);
+    tempSkuArray.push(position4);
+    tempSkuArray.push(position5);
+    tempSkuArray.push(soundModule);
+
+    return tempSkuArray;
+
+
+}
+
+/**
+ *
+ * Retrieve manually entered in sku and build the product
+ */
+function submitManaulSku() {
+
+    var getInputs = manualInputRetrieve();
+
+    
+
+    for (var i = 0; i < getInputs.length; i++) {
+
+        //temp value for checking to see if the input is empty
+        var checkValue = getInputs[i];
+
+        //if a input box is empty dont do anything
+        if (!checkValue == "") {
+
+            //serach for a matching data sku that was inputed 
+            var searchItem = "[data-sku~=" + "'" + checkValue.toUpperCase() + "'" + "]";
+
+            //query for a child
+            var childQuery = document.querySelectorAll(searchItem);
+            var id = childQuery[0].id;
+            var container = getContainer(id);
+
+            // Check if item isn't a position item
+            if (container != CONTAINER_POSITION) {
+                if (hasItems(container)) {
+                    showWarningModal('Warning', 'You\'ve already selected an item!');
+
+                    // Check if should hide remove container
+                    checkRemoveContainer(childQuery[0]);
+                    return;
+                }
+                // Add child to its proper container & set proper sku
+                document.getElementById(container).appendChild(childQuery[0]);
+                childQuery[0].dataset.selected = true;
+                setProperSku(container, childQuery[0].dataset.sku);
+
+
+            } else {
+                // Check if another position can be added
+                if (allowAnotherPosition()) {
+                    // Add a new child to the proper container because multiple
+                    // positions  can be chosen
+                    document.getElementById(container).appendChild(copyTile(childQuery[0]));
+                    Cart.addPosition(childQuery[0].dataset.sku);
+                } else {
+                    showWarningModal('You can\'t select any more positions',
+                        'You\'ve chosen ' +
+                        'a sound module or have all five positions selected!');
+
+                    // Check if should hide remove container
+                    checkRemoveContainer(childQuery[0]);
+                    return;
+                }
+            }
+        }
+    }
+    updateDisplay();
+
+
+}
+
 
 /**
  * Triggered when item is dropped inside cart.
@@ -143,7 +282,6 @@ function dropInCart(ev) {
         child.dataset.selected = true;
         setProperSku(container, child.dataset.sku);
 
-        tempContainerArray.push(selectedId);
 
     } else {
         // Check if another position can be added
@@ -168,9 +306,6 @@ function dropInCart(ev) {
     // Update text on screen
     updateDisplay();
 }
-
-
-
 
 
 /**

@@ -1,7 +1,10 @@
 ﻿@using C3_Controls.Models
 @model C3_Controls.Models.UiDataModel.TowerLight
 @{
+  
+    var operatorType = Model.OperatorType;
     var voltages = Model.Voltages;
+    var moduleDiameter = Model.ModuleDiameter;
     var styles = Model.Styles;
     var positions = Model.Positions;
     var soundMoudle = Model.SoundModule;
@@ -26,37 +29,60 @@
 
 <!-- Available Items -->
 <div class="row">
-    <!-- Configuration Parts -->
-    <div class="col-md-8" id="parts_container">
-        <h2 class="part-section-title">Available Parts</h2>
-        <h1 class="part-section-body">Drag a part into your product</h1>
+<!-- Configuration Parts -->
+<div class="col-md-8" id="parts_container">
+<h2 class="part-section-title">Available Parts</h2>
+<h1 class="part-section-body">Drag a part into your product</h1>
 
-        <br />
+<br />
 
-        <h4>Already know your SKU? Enter here:</h4>
+<h4>Already know your SKU? Enter here:</h4>
+    
 
-        <form>
-            <input type="text" name="product_sku" />
-        </form>
-        <!-- Tabs With Left Navigation -->
-        <div class="row tabs nomargin-top">
 
-            <!-- Tabs -->
-            <div class="col-md-3 col-sm-3 nopadding-right" style="padding-right:0px;padding-left:0px;">
-                <ul class="nav nav-tabs nav-stacked">
-                    <li class="active">
-                        <a href="#tab_a" data-toggle="tab">
-                            <i class="fa fa-magic"></i> Styles
-                        </a>
-                    </li>
-                    
-                    <div id="tab_a" class="collapse">
-                    
-                        <div class="row">
+<form id ="enter_sku">
+    <input type="text" name="product_sku_1" size="2" id="operatorSku"     placeholder="WTL" disabled maxlength="3" /> <strong>-</strong>
+    <input type="text" name="product_sku_2" size="2" id="diameterSku"     placeholder="50" disabled maxlength="3" /> 
+    <input type="text" name="product_sku_3" size="2" id="baseMaterialSku" maxlength="3"  /> <strong>-</strong>
+    <input type="text" name="product_sku_4" size="2" id="voltageSku"      maxlength="3"  />
+        
+    <input type="text" name="product_sku_5" size="2" id="positionSku1" maxlength="3" />
+    <input type="text" name="product_sku_5" size="2" id="positionSku2" maxlength="3" />
+    <input type="text" name="product_sku_5" size="2" id="positionSku3" maxlength="3" /> 
+    <input type="text" name="product_sku_5" size="2" id="positionSku4" maxlength="3" /> 
+    <input type="text" name="product_sku_5" size="2" id="positionSku5" maxlength="3" /> 
+    <input type="text" name="product_sku_5" size="2" id="soundSku" maxlength="3" placeholder="Sound" /> 
+    <button type="button" name="submitManualSku" id="manualSku" class="button button-primary btn-lg" onclick="submitManaulSku();">Submit Sku</button>
+</form>
+    
+<span></span>
+
+    
+
+
+
+<!-- Tabs With Left Navigation -->
+<div class="row tabs nomargin-top">
+
+    <!-- Tabs -->
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                        <i class="fa fa-dashboard"></i> Base Styles</a>
+                </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse">
+                <div class="panel-body">
+                
+                    <div id="tab_a">
+                        @*<h4>Styles</h4>*@
+                        <div id="slide_styles" class="row">
                             @foreach (var i in styles)
                             {
-                                <div id="col_styles_@i.ToString()" class="col-md-3 metro-column">
-                                    <div id="col_styles_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                <div id="col_style_@i.ToString()" class="col-md-3 metro-column">
+                                    <div id="item_style_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
                                         <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
                                         <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                     </div>
@@ -65,165 +91,219 @@
                         </div>
                     </div>
 
-                    <li>
-                        <a href="#tab_b" data-toggle="tab">
-                            <i class="fa fa-bolt"></i> Voltages
-                        </a>
-                    </li>
-                    
-
-
-                    <li>
-                        <a href="#tab_c" data-toggle="tab">
-                            <i class="fa fa-puzzle-piece"></i> Positions
-                        </a>
-                    </li>
-                    
-                    
-
-                </ul>
+                </div>
             </div>
-
-            <!-- Tab Contents -->
-            <div class="col-md-9 col-sm-9 nopadding-left" style="padding-right:0px;padding-left:0px;">
-                <div class="tab-content">
-                    <div id="tab_a" class="tab-pane active">
-                        <h4>Styles</h4>
-                        <div class="row">
-                            @foreach (var i in styles)
-                            {
-                                <div id="col_style_@i.ToString()" class="col-md-3 metro-column">
-                                    <div id="item_style_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                    </div>
-
-                    <div id="tab_b" class="tab-pane">
-                        <h4>Voltages</h4>
-                        <div class="row">
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                        <i class="fa fa-bolt"></i> Voltages</a>
+                </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body">
+                
+                    <div id="tab_b">
+                        @*<h4>Voltages</h4>*@
+                        <div id="slide_voltages" class="row">
                             @foreach (var i in voltages)
                             {
                                 <div id="col_voltage_@i.ToString()" class="col-md-3 metro-column">
                                     <div id="item_voltage_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
+                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                        <i class="fa fa-lightbulb-o"></i> Lamps</a>
+                </h4>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse">
+                <div class="panel-body">
+                
+                    <div id="tab_c">
+                        @*<h4>Positions</h4>*@
+                        <div id="slide_positions" class="row metro-overflow"> <!--overflow when more than one row of choices-->
+                            @foreach (var i in positions)
+                            {
+                                <div id="col_positions_@i.ToString()" class="col-md-3 metro-column">
+                                    <div id="item_positions_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
+                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                        
+                </div>
+            </div>
+        </div>
+    
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+                        <i class="fa fa-bell"></i> Sound Modules</a>
+                </h4>
+            </div>
+            <div id="collapse4" class="panel-collapse collapse">
+                <div class="panel-body">
+
+                    <div id="tab_d" >
+                        @*<h4>Sound Module</h4>*@
+                        <div id="slide_sound_modules" class="row">
+                            @foreach (var i in soundMoudle)
+                            {
+                                <div id="col_soundMoudle_@i.ToString()" class="col-md-3 metro-column">
+                                    <div id="item_soundMoudle_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
+                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                     </div>
                                 </div>
                             }
                         </div>
                     </div>
 
-                    <div id="tab_c" class="tab-pane">
-                        <h4>Positions</h4>
-                        <div class="row metro-overflow">
-                            @foreach (var i in positions)
-                            {
-                                <div id="col_position_@i.ToString()" class="col-md-3 metro-column">
-                                    <div id="item_position_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Cart Information -->
-    <div class="col-md-4" id="cart_info_container" style="margin-bottom:124px;">
-        <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="470">
-            <h2 class="part-section-title">Product Info</h2>
-       
-            <div class="box" id="container_main" ondrop="dropInCart(event)" ondragover="allowDrop(event)">Drag and drop here</div>
-        
+          
 
-        
-            <table class="table table-bordered">
-                <tr>
-                    <th bgcolor="#D3D3D3"><strong>Part Type</strong></th>
-                    <th bgcolor="#D3D3D3"><strong>Part Pic</strong></th>
-                    <th bgcolor="#D3D3D3"><strong>Remove</strong></th>
-                </tr>
-                <tr>
-                    <th>
-                        Operator Type
-                        <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showOperatorDesc()">Details</button>
-                    </th>
-                    <td id="container_style"></td>
-                    <td><button id="removeOperatorBtn" type="button" onclick="window.reload()">X</button></td>
-                </tr>
-                <tr>
-                    <th>
-                        Voltage
-                        <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showVoltageDesc()">Details</button>
-                    </th>
-                    <td id="container_voltage"></td>
-                    <td><button id="removeVoltageBtn" type="button" onclick="removeVoltage()">X</button></td>
-                </tr>
-                <tr>
-                    <th>
-                        Lamp Type/Color
-                        <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showLampTypeDesc()">Details</button>
-                    </th>
-                    <td id="container_lamp_color"></td>
-                    <td><button id="removeLampBtn" type="button" onclick="removeLamp()">X</button></td>
-                </tr>
-                <tr>
-                    <th>
-                        Clamp Ring
-                        <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showClampRingDesc()">Details</button>
-                    </th>
-                    <td id="container_clamp_ring"></td>
-                    <td><button id="removeClampBtn" type="button" onclick="removeClamp()">X</button></td>
-                </tr>
-                <tr>
-                    <th>
-                        Lens Type
-                        <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showLensTypeDesc()">Details</button>
-                    </th>
-                    <td id="container_lens_type"></td>
-                    <td><button id="removeLensTypeBtn" type="button" onclick="removeLensType">X</button></td>
-                </tr>
-                <tr>
-                    <th>
-                        Lens Color
-                        <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showLensColorDesc()">Details</button>
-                    </th>
-                    <td id="container_lens_color"></td>
-                    <td><button id="removeLensColorBtn" type="button" onclick="removeLensColor()">X</button></td>
-                </tr>
-                <tr>
-                    <th>
-                        Options
-                        <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showOptionsDesc()">Details</button>
-                    </th>
-                    <td id="container_option"></td>
-                    <td><button id="removeOptionsBtn" type="button" onclick="removeOptions()">X</button></td>
-                </tr>
-            </table>
-            <br /> <br />
-    
-            <h1 class="part-section-body" id="title_text_sku">Product Sku: </h1>
-            <h1 class="part-section-body" id="title_text_price">Price: $0</h1>
-            <h1 class="part-section-body" id="title_text_price_discount">Discounted Price: $0</h1>
+    <!-- Tab Contents -->
+    <div class="col-md-12 col-sm-12 nopadding-left" style="padding-right:0px;padding-left:0px;">
+        <div id="tab_a" class="collapse">
+                                   
+            <div class="row">
+                @foreach (var i in styles)
+                {
+                    <div id="col_style_@i.Name" class="col-md-3 metro-column">
+                        <div id="item_style.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
+                            <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div id="tab_b" class="collapse">
+                                    
+            <div id="slide_voltages" class="row metro-overflow">
+                @foreach (var i in voltages)
+                {
+                    <div id="col_voltage_@i.Name" class="col-md-3 metro-column">
+                        <div id="item_voltage_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
+                            <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
 
-            <hr />
-            <div class="col-md-8">
-                <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showSelectedItems()">Details</button>
-                <button class="button button-primary btn-sm part-section-btn" onclick="addToCart()">Add to Cart</button>
+        <div id="tab_c" class="collapse">
+                                    
+            <div id="slide_positions" class="row metro-overflow">
+                @foreach (var i in positions)
+                {
+                    <div id="col_positions_@i.ToString()" class="col-md-3 metro-column">
+                        <div id="item_positions_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
+                            <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                        </div>
+                    </div>
+                }
             </div>
-            <div class="col-md-4 text-right">
-                <button class="button button-primary btn-danger btn-sm part-section-btn" onclick="window.location.reload()">Clear All</button>
+        </div>
+
+
+        <div id="tab_d" class="collapse">
+                                    
+            <div class="row metro-overflow">
+                @foreach (var i in soundMoudle)
+                {
+                    <div id="col_soundMoudle_@i.ToString()" class="col-md-3 metro-column">
+                        <div id="item_soundMoudle_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
+                            <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
+                        </div>
+                    </div>
+                }
             </div>
-        </ul>
+        </div>
+
+                   
     </div>
+</div>
+</div>
+            
+  
+<!-- Cart Information -->
+<div class="col-md-4" id="cart_info_container" style="margin-bottom:124px;">
+    <h2 class="part-section-title">Product Info</h2>
+       
+    <div class="box" id="container_main" ondrop="dropInCart(event)" ondragover="allowDrop(event)">Drag and drop here</div>
+
+    <br/>
+   
+
+    <table class="table table-bordered">
+        <tr>
+            <th bgcolor="#D3D3D3"><strong>Part Type</strong></th>
+            <th bgcolor="#D3D3D3"><strong>Part Pic</strong></th>
+            <th bgcolor="#D3D3D3"><strong>Remove</strong></th>
+        </tr>
+        <tr>
+            <th>Sound Module</th>
+            <td id="container_sound"></td>
+            <td><button id="removeModuleBtn" type="button" onclick="removeSoundModule(event)">X</button></td>
+        </tr>
+        <tr>
+            <th>Voltage</th>
+            <td id="container_voltage"></td>
+            <td><button id="removeVoltageBtn" type="button" onclick="removeVoltage(event)">X</button></td>
+        </tr>          
+        <tr>
+            <th>Positon </th>
+            <td id="container_positions"></td>
+            <td><button id="removePositionBtn" type="button" onclick="removeLastPostion()">X</button></td>
+        </tr>
+ 
+        <tr>
+            <th>Operator Type</th>
+            <td id="container_style"></td>
+            <td><button id="removestyleBtn" type="button" onclick="removeStyle(event)">X</button></td>
+        </tr>
+               
+    </table>
+    <br /> <br />
+    
+    <h1 class="part-section-body" id="title_text_sku">Product Sku: </h1>
+    <h1 class="part-section-body" id="title_text_price">Price: $0</h1>
+    <h1 class="part-section-body" id="title_text_price_discount">Discounted Price: $0</h1>
+
+    <hr />
+    <div class="col-md-8">
+        <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showSelectedItems()">Details</button>
+        <button class="button button-primary btn-sm part-section-btn" onclick="addToCart()">Add to Cart</button>
+    </div>
+    <div class="col-md-4 text-right">
+        <button class="button button-primary btn-danger btn-sm part-section-btn" onclick="window.location.reload()">Clear All</button>
+    </div>
+</div>
 
 </div>
 
@@ -250,8 +330,9 @@
     </div>
 </div>
 
+
+
 @section Scripts {
-   
     @Scripts.Render("~/Scripts/scripts.js")
     @Scripts.Render("~/Scripts/cart-towerlight.js")
     <script type="text/javascript">

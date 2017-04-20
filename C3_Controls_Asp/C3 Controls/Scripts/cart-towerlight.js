@@ -125,7 +125,7 @@ function manualInputRetrieve() {
     var position3 = document.getElementById("positionSku3").value;
     var position4 = document.getElementById("positionSku4").value;
     var position5 = document.getElementById("positionSku5").value;
-    var position6 = document.getElementById("positionSku6").value;
+    var soundModule = document.getElementById("soundSku6").value;
 
     tempSkuArray.push(operatorSku);
     tempSkuArray.push(diameterSku);
@@ -136,7 +136,7 @@ function manualInputRetrieve() {
     tempSkuArray.push(position3);
     tempSkuArray.push(position4);
     tempSkuArray.push(position5);
-    tempSkuArray.push(position6);
+    tempSkuArray.push(soundModule);
 
     return tempSkuArray;
 
@@ -151,7 +151,7 @@ function submitManaulSku() {
 
     var getInputs = manualInputRetrieve();
 
-    var tempOp, tempDiam, tempBase, tempVolt, tempPos1, tempPos2, tempPos3, tempPos4, tempPos5, tempPos6;
+    var tempOp, tempDiam, tempBase, tempVolt, tempPos1, tempPos2, tempPos3, tempPos4, tempPos5, soundModule;
 
     tempOp = getInputs[0];
     tempDiam = getInputs[1];
@@ -162,7 +162,7 @@ function submitManaulSku() {
     tempPos3 = getInputs[6];
     tempPos4 = getInputs[7];
     tempPos5 = getInputs[8];
-    tempPos6 = getInputs[9];
+    soundModule = getInputs[9];
 
     var searchBase = "[data-sku~=" + tempBase.toUpperCase() + "]";
     var searchVolt = "[data-sku~=" + "'" + tempVolt + "'" + "]";
@@ -171,7 +171,7 @@ function submitManaulSku() {
     var searchPos3 = "[data-sku~=" + tempPos3.toUpperCase() + "]";
     var searchPos4 = "[data-sku~=" + tempPos4.toUpperCase() + "]";
     var searchPos5 = "[data-sku~=" + tempPos5.toUpperCase() + "]";
-    var searchPos6 = "[data-sku~=" + tempPos6.toUpperCase() + "]";
+    var searchSoundModule = "[data-sku~=" + soundModule.toUpperCase() + "]";
 
     var childBaseQuery = document.querySelectorAll(searchBase);
     var childVoltQuery = document.querySelectorAll(searchVolt);
@@ -180,7 +180,7 @@ function submitManaulSku() {
     var childPos3Query = document.querySelectorAll(searchPos3);
     var childPos4Query = document.querySelectorAll(searchPos4);
     var childPos5Query = document.querySelectorAll(searchPos5);
-    var childPos6Query = document.querySelectorAll(searchPos6);
+    var childSoundQuery = document.querySelectorAll(searchSoundModule);
 
     var childBase = childBaseQuery[0];
     var childVoltage = childVoltQuery[0];
@@ -189,16 +189,12 @@ function submitManaulSku() {
     var childPos3 = childPos3Query[0];
     var childPos4 = childPos4Query[0];
     var childPos5 = childPos5Query[0];
-    var childPos6 = childPos6Query[0];
+    var childSound = childSoundQuery[0];
    
     var baseId = childBase.id;
     var voltageId = childVoltage.id;
     var pos1Id = childPos1.id;
-    var pos2Id = childPos2.id;
-    var pos3Id = childPos3.id;
-    var pos4Id = childPos4.id;
-    var pos5Id = childPos5.id;
-    var pos6Id = childPos6.id;
+    var soundId = childSound.id;
 
 
 
@@ -206,7 +202,7 @@ function submitManaulSku() {
     var containerBase = getContainer(baseId);
     var containerVoltage = getContainer(voltageId);
     var containerPos = getContainer(pos1Id);
-    var containerSound = getContainer(pos6Id);
+    var containerSound = getContainer(soundId);
 
 
 
@@ -269,11 +265,11 @@ function submitManaulSku() {
     Cart.updatePrice(childPos5.dataset.price);
 
     // Add child to its proper container & set proper sku
-    document.getElementById(containerSound).appendChild(childPos6);
-    childPos6.dataset.selected = true;
-    setProperSku(containerSound, childPos6.dataset.sku);
+    document.getElementById(containerSound).appendChild(childSound);
+    childSound.dataset.selected = true;
+    setProperSku(containerSound, childSound.dataset.sku);
     // Update the price of the cart
-    Cart.updatePrice(childPos6.dataset.price);
+    Cart.updatePrice(childSound.dataset.price);
 
 
 

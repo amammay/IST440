@@ -118,17 +118,62 @@ function manualInputRetrieve() {
     var tempSkuArray = new Array();
     var operatorSku = "WTL";
     var diameterSku = "50";
-    var baseMaterial = document.getElementById("baseMaterialSku").value;
-    var voltage = document.getElementById("voltageSku").value;
-    var position1 = document.getElementById("positionSku1").value;
-    var position2 = document.getElementById("positionSku2").value;
-    var position3 = document.getElementById("positionSku3").value;
-    var position4 = document.getElementById("positionSku4").value;
-    var position5 = document.getElementById("positionSku5").value;
-    var soundModule = document.getElementById("soundSku6").value;
+    var subStringBase = "P";
+    var voltages = ["24", "120", "240"];
+    var subStringSound = "S1";
 
-    //tempSkuArray.push(operatorSku);
-    //tempSkuArray.push(diameterSku);
+    var baseMaterial = document.getElementById("baseMaterialSku").value.toUpperCase();
+    if (!baseMaterial.includes(subStringBase)) {
+        showWarningModal('Warning', 'You\'ve entered a invalid base!');
+
+        return null;
+
+
+    }
+
+    var voltage = document.getElementById("voltageSku").value.toUpperCase();
+    var iteratorBool;
+    var lengthOfArray = voltages.length;
+    for (var i = 0; i < voltages.length; i++) {
+        if (!voltage.includes(voltages[i])) {
+            iteratorBool = true;
+            //showWarningModal('Warning', 'You\'ve entered a invalid voltage!');
+            
+        }
+        if (voltage.includes(voltages[i])) {
+            break;
+        }
+
+        //check to see if iteratorbool is set to true
+        if (iteratorBool) {
+            //did we max out the array?
+            if (i == lengthOfArray) {
+                showWarningModal('Warning', 'You\'ve entered a invalid voltage!');
+                return null;
+            }
+            
+           
+        }
+
+
+        
+    }
+
+    var position1 = document.getElementById("positionSku1").value.toUpperCase();
+    var position2 = document.getElementById("positionSku2").value.toUpperCase();
+    var position3 = document.getElementById("positionSku3").value.toUpperCase();
+    var position4 = document.getElementById("positionSku4").value.toUpperCase();
+    var position5 = document.getElementById("positionSku5").value.toUpperCase();
+
+    var soundModule = document.getElementById("soundSku").value.toUpperCase();
+    //make sure soundmodule isnt blank
+    if (!soundModule == "") {
+        if (!soundModule.includes(subStringSound)) {
+            showWarningModal('Warning', 'You\'ve entered a invalid sound moudle!');
+            return null;
+        }
+    }
+   
     tempSkuArray.push(baseMaterial);
     tempSkuArray.push(voltage);
     tempSkuArray.push(position1);
@@ -150,6 +195,8 @@ function manualInputRetrieve() {
 function submitManaulSku() {
 
     var getInputs = manualInputRetrieve();
+
+    
 
     for (var i = 0; i < getInputs.length; i++) {
 
@@ -199,11 +246,11 @@ function submitManaulSku() {
                     return;
                 }
             }
-
-
         }
-
     }
+    updateDisplay();
+
+
 }
 
 

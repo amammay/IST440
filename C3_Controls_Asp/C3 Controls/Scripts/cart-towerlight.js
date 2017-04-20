@@ -25,7 +25,7 @@ const LAST_ALLOWED_POSITIONS = [
 
 // Variables
 
-var tempContainerArray = new Array();
+
 
 var Cart = {
     price: 8,
@@ -114,6 +114,179 @@ function dragPart(ev) {
     ev.dataTransfer.setData("part", ev.target.id);
 }
 
+function manualInputRetrieve() {
+    var tempSkuArray = new Array();
+    var operatorSku = "WTL";
+    var diameterSku = "50";
+    var baseMaterial = document.getElementById("baseMaterialSku").value;
+    var voltage = document.getElementById("voltageSku").value;
+    var position1 = document.getElementById("positionSku1").value;
+    var position2 = document.getElementById("positionSku2").value;
+    var position3 = document.getElementById("positionSku3").value;
+    var position4 = document.getElementById("positionSku4").value;
+    var position5 = document.getElementById("positionSku5").value;
+    var position6 = document.getElementById("positionSku6").value;
+
+    tempSkuArray.push(operatorSku);
+    tempSkuArray.push(diameterSku);
+    tempSkuArray.push(baseMaterial);
+    tempSkuArray.push(voltage);
+    tempSkuArray.push(position1);
+    tempSkuArray.push(position2);
+    tempSkuArray.push(position3);
+    tempSkuArray.push(position4);
+    tempSkuArray.push(position5);
+    tempSkuArray.push(position6);
+
+    return tempSkuArray;
+
+
+}
+
+/**
+ *
+ * Retrieve manually entered in sku and build the product
+ */
+function submitManaulSku() {
+
+    var getInputs = manualInputRetrieve();
+
+    var tempOp, tempDiam, tempBase, tempVolt, tempPos1, tempPos2, tempPos3, tempPos4, tempPos5, tempPos6;
+
+    tempOp = getInputs[0];
+    tempDiam = getInputs[1];
+    tempBase = getInputs[2];
+    tempVolt = getInputs[3];
+    tempPos1 = getInputs[4];
+    tempPos2 = getInputs[5];
+    tempPos3 = getInputs[6];
+    tempPos4 = getInputs[7];
+    tempPos5 = getInputs[8];
+    tempPos6 = getInputs[9];
+
+    var searchBase = "[data-sku~=" + tempBase.toUpperCase() + "]";
+    var searchVolt = "[data-sku~=" + "'" + tempVolt + "'" + "]";
+    var searchPos1 = "[data-sku~=" + tempPos1.toUpperCase() + "]";
+    var searchPos2 = "[data-sku~=" + tempPos2.toUpperCase() + "]";
+    var searchPos3 = "[data-sku~=" + tempPos3.toUpperCase() + "]";
+    var searchPos4 = "[data-sku~=" + tempPos4.toUpperCase() + "]";
+    var searchPos5 = "[data-sku~=" + tempPos5.toUpperCase() + "]";
+    var searchPos6 = "[data-sku~=" + tempPos6.toUpperCase() + "]";
+
+    var childBaseQuery = document.querySelectorAll(searchBase);
+    var childVoltQuery = document.querySelectorAll(searchVolt);
+    var childPos1Query = document.querySelectorAll(searchPos1);
+    var childPos2Query = document.querySelectorAll(searchPos2);
+    var childPos3Query = document.querySelectorAll(searchPos3);
+    var childPos4Query = document.querySelectorAll(searchPos4);
+    var childPos5Query = document.querySelectorAll(searchPos5);
+    var childPos6Query = document.querySelectorAll(searchPos6);
+
+    var childBase = childBaseQuery[0];
+    var childVoltage = childVoltQuery[0];
+    var childPos1 = childPos1Query[0];
+    var childPos2 = childPos2Query[0];
+    var childPos3 = childPos3Query[0];
+    var childPos4 = childPos4Query[0];
+    var childPos5 = childPos5Query[0];
+    var childPos6 = childPos6Query[0];
+   
+    var baseId = childBase.id;
+    var voltageId = childVoltage.id;
+    var pos1Id = childPos1.id;
+    var pos2Id = childPos2.id;
+    var pos3Id = childPos3.id;
+    var pos4Id = childPos4.id;
+    var pos5Id = childPos5.id;
+    var pos6Id = childPos6.id;
+
+
+
+
+    var containerBase = getContainer(baseId);
+    var containerVoltage = getContainer(voltageId);
+    var containerPos = getContainer(pos1Id);
+    var containerSound = getContainer(pos6Id);
+
+
+
+
+
+    // Add child to its proper container & set proper sku
+    document.getElementById(containerBase).appendChild(childBase);
+    childBase.dataset.selected = true;
+    setProperSku(containerBase, childBase.dataset.sku);
+    // Update the price of the cart
+    Cart.updatePrice(childBase.dataset.price);
+
+
+    // Add child to its proper container & set proper sku
+    document.getElementById(containerVoltage).appendChild(childVoltage);
+    childVoltage.dataset.selected = true;
+    setProperSku(containerVoltage, childVoltage.dataset.sku);
+    // Update the price of the cart
+    Cart.updatePrice(childVoltage.dataset.price);
+
+
+
+
+    ////////pos
+    // Add child to its proper container & set proper sku
+    document.getElementById(containerPos).appendChild(childPos1);
+    childPos1.dataset.selected = true;
+    setProperSku(containerPos, childPos1.dataset.sku);
+    // Update the price of the cart
+    Cart.updatePrice(childPos1.dataset.price);
+
+
+
+    // Add child to its proper container & set proper sku
+    document.getElementById(containerPos).appendChild(childPos2);
+    childPos2.dataset.selected = true;
+    setProperSku(containerPos, childPos2.dataset.sku);
+    // Update the price of the cart
+    Cart.updatePrice(childPos2.dataset.price);
+
+    // Add child to its proper container & set proper sku
+    document.getElementById(containerPos).appendChild(childPos3);
+    childPos3.dataset.selected = true;
+    setProperSku(containerPos, childPos3.dataset.sku);
+    // Update the price of the cart
+    Cart.updatePrice(childPos3.dataset.price);
+
+    // Add child to its proper container & set proper sku
+    document.getElementById(containerPos).appendChild(childPos4);
+    childPos4.dataset.selected = true;
+    setProperSku(containerPos, childPos4.dataset.sku);
+    // Update the price of the cart
+    Cart.updatePrice(childPos4.dataset.price);
+
+    // Add child to its proper container & set proper sku
+    document.getElementById(containerPos).appendChild(childPos5);
+    childPos5.dataset.selected = true;
+    setProperSku(containerPos, childPos5.dataset.sku);
+    // Update the price of the cart
+    Cart.updatePrice(childPos5.dataset.price);
+
+    // Add child to its proper container & set proper sku
+    document.getElementById(containerSound).appendChild(childPos6);
+    childPos6.dataset.selected = true;
+    setProperSku(containerSound, childPos6.dataset.sku);
+    // Update the price of the cart
+    Cart.updatePrice(childPos6.dataset.price);
+
+
+
+
+
+
+    // Update text on screen
+    updateDisplay();
+    
+   
+}
+
+
 
 /**
  * Triggered when item is dropped inside cart.
@@ -143,7 +316,6 @@ function dropInCart(ev) {
         child.dataset.selected = true;
         setProperSku(container, child.dataset.sku);
 
-        tempContainerArray.push(selectedId);
 
     } else {
         // Check if another position can be added
@@ -168,9 +340,6 @@ function dropInCart(ev) {
     // Update text on screen
     updateDisplay();
 }
-
-
-
 
 
 /**

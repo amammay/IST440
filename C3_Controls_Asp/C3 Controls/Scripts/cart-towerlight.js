@@ -153,37 +153,58 @@ function submitManaulSku() {
 
     for (var i = 0; i < getInputs.length; i++) {
 
-
-        var checkEmpty = getInputs[i];
+        //temp value for checking to see if the input is empty
+        var checkValue = getInputs[i];
 
         //if a input box is empty dont do anything
-        if (!checkEmpty == "") {
+        if (!checkValue == "") {
 
             //serach for a matching data sku that was inputed 
-            var searchItem = "[data-sku~=" + "'" + getInputs[i].toUpperCase() + "'" + "]";
+            var searchItem = "[data-sku~=" + "'" + checkValue.toUpperCase() + "'" + "]";
 
             //query for a child
             var childQuery = document.querySelectorAll(searchItem);
             var id = childQuery[0].id;
             var container = getContainer(id);
 
-            // Add child to its proper container & set proper sku
-            document.getElementById(container).appendChild(childQuery[0]);
-            childQuery[0].dataset.selected = true;
-            setProperSku(container, childQuery[0].dataset.sku);
-            // Update the price of the cart
-            Cart.updatePrice(childQuery[0].dataset.price);
-            // Update text on screen
-            updateDisplay();
-            
-            
+            // Check if item isn't a position item
+            if (container != CONTAINER_POSITION) {
+                if (hasItems(container)) {
+                    showWarningModal('Warning', 'You\'ve already selected an item!');
+
+                    // Check if should hide remove container
+                    checkRemoveContainer(childQuery[0]);
+                    return;
+                }
+                // Add child to its proper container & set proper sku
+                document.getElementById(container).appendChild(childQuery[0]);
+                childQuery[0].dataset.selected = true;
+                setProperSku(container, childQuery[0].dataset.sku);
+
+
+            } else {
+                // Check if another position can be added
+                if (allowAnotherPosition()) {
+                    // Add a new child to the proper container because multiple
+                    // positions  can be chosen
+                    document.getElementById(container).appendChild(copyTile(childQuery[0]));
+                    Cart.addPosition(childQuery[0].dataset.sku);
+                } else {
+                    showWarningModal('You can\'t select any more positions',
+                        'You\'ve chosen ' +
+                        'a sound module or have all five positions selected!');
+
+                    // Check if should hide remove container
+                    checkRemoveContainer(childQuery[0]);
+                    return;
+                }
+            }
+
+
         }
 
-
     }
-   
 }
-
 
 
 /**

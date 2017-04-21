@@ -85,16 +85,15 @@ namespace C3_Controls.Models.DataStructuring
                                 singleItem.Img = "120vac.png";
                             else if (singleItem.Sku.Equals("277V_AC"))
                                 singleItem.Img = "120vac.png";
-                            
-                            //to change
+                           
                             else if (singleItem.Sku.Equals("480V_AC"))
-                                singleItem.Img = "120vac.png";
+                                singleItem.Img = "480vac.png";
 
                             else if (singleItem.Sku.Equals("240V"))
                                 singleItem.Img = "120vac.png";
-                            //to change
+                            
                             else if (singleItem.Sku.Equals("480V"))
-                                singleItem.Img = "120vac.png";
+                                singleItem.Img = "480vac.png";
 
 
 
@@ -114,7 +113,7 @@ namespace C3_Controls.Models.DataStructuring
                                 Price = item.price,
                                 Desc = item.text,
                                 Sku = item.sku,
-                                Img = "img_push_to_test.png"
+                                Img = "img_voltages.png"
                             };
                             //Add her to the list
                             BasicOperators.Add(singleItem);

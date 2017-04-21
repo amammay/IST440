@@ -19,10 +19,10 @@ const CONTAINER_OPTION = "container_option";
 // Columns
 const COLUMN_BASIC = "col_basic";
 const COLUMN_VOLTAGE = "col_voltage";
-const COLUMN_LAMP_COLOR = "col_lamp_color";
-const COLUMN_LENS_COLOR = "col_lens_color";
-const COLUMN_CLAMP_RING = "col_clamp_ring";
-const COLUMN_LENS_TYPE = "col_lens_type";
+const COLUMN_LAMP_COLOR = "col_lamp";
+const COLUMN_LENS_COLOR = "col_lens";
+const COLUMN_CLAMP_RING = "col_clamp";
+const COLUMN_LENS_TYPE = "col_lens";
 const COLUMN_OPTION = "col_option";
 
 // Parent Columns (for filtering)
@@ -162,7 +162,6 @@ function dropInCart(ev) {
     displayCartUpdates();
 
     alert(selectedId);
-    alert(container);
 }
 
 
@@ -552,31 +551,34 @@ function showSelectedItems() {
  * Functions to show details for the individual parts 
  */
 function showOperatorDesc() {
-    showModal('Operator Description', 'Placeholder');
+    showModal('Operator Description', 'Choose from one of three options (Full Voltage, Transformer, Resistor) that you wish ' +
+        'to have in use for your light unit. Please note that your selection will limit the available voltages.');
 }
 
 function showVoltageDesc() {
-    showModal('Voltage Description', 'Placeholder');
+    showModal('Voltage Description', 'The voltage intensity that you would like to have for your product. Please note that this will limit the lamp colors ' +
+        'you will have available.');
 }
 
 function showLampTypeDesc() {
-    showModal('Lamp Type/Color Description', 'Placeholder');
+    showModal('Lamp Type/Color Description', 'The lamp type (if none) or color that you wish to use in the position of your lamp.');
 }
 
 function showClampRingDesc() {
-    showModal('Clamp Ring Description', 'Placeholder');
+    showModal('Clamp Ring Description', 'The clamp ring type you would like to have for your product. Please note that if Aluminum is selected, ' +
+        'it will limit your available lens types.');
 }
 
 function showLensTypeDesc() {
-    showModal('Lens Type Description', 'Placeholder');
+    showModal('Lens Type Description', 'The lens type you wish your product to have.');
 }
 
 function showLensColorDesc() {
-    showModal('Lens Color Description', 'Placeholder');
+    showModal('Lens Color Description', 'The color of the lens for the lens type that you wish your product to have');
 }
 
 function showOptionsDesc() {
-    showModal('Options Description', 'Placeholder');
+    showModal('Options Description', 'An option to have a case added to your product to will help to prevent from accidently bumping.');
 }
 
 
@@ -601,8 +603,6 @@ function removeOperator(event) {
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
                 "_" + getProductName(selectedId);
-
-            alert(correctColumn);
         }
     }
 
@@ -611,20 +611,13 @@ function removeOperator(event) {
         // Set child as not selected anymore
         child.dataset.selected = 'false';
 
-        // Check the child
-        if (selectedId.indexOf(CATEGORY_BASIC) >= 0) {
-            Cart.basicOperator = "";
-            Cart.subtractPrice(child.dataset.price);
-            document.getElementById(CONTAINER_BASIC).removeChild(child);
-        }
-        else {
             //// Append child to its original parent
             parent = document.getElementById(correctColumn);
             parent.appendChild(child);
 
             setProperSku(getContainer(selectedId), "");
             Cart.subtractPrice(child.dataset.price);
-        }
+       // }
     }
 
     // Show text updates
@@ -653,8 +646,6 @@ function removeVoltage(event) {
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
                 "_" + getProductName(selectedId);
-
-            alert(correctColumn);
         }
     }
 
@@ -663,20 +654,12 @@ function removeVoltage(event) {
         // Set child as not selected anymore
         child.dataset.selected = 'false';
 
-        // Check the child
-        if (selectedId.indexOf(CATEGORY_VOLTAGE) >= 0) {
-            Cart.voltage = "";
-            Cart.subtractPrice(child.dataset.price);
-            document.getElementById(CONTAINER_VOLTAGE).removeChild(child);
-        }
-        else {
             //// Append child to its original parent
             var parent = document.getElementById(correctColumn);
             parent.appendChild(child);
 
             setProperSku(getContainer(selectedId), "");
             Cart.subtractPrice(child.dataset.price);
-        }
     }
 
     // Show text updates
@@ -705,8 +688,6 @@ function removeLamp(event) {
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
                 "_" + getProductName(selectedId);
-
-            alert(correctColumn);
         }
     }
 
@@ -714,14 +695,6 @@ function removeLamp(event) {
     if (child.dataset.selected == 'true') {
         // Set child as not selected anymore
         child.dataset.selected = 'false';
-
-        // Check the child
-        if (selectedId.indexOf(CATEGORY_LAMP_COLOR) >= 0) {
-            Cart.lampColor = "";
-            Cart.subtractPrice(child.dataset.price);
-            document.getElementById(CONTAINER_LAMP_COLOR).removeChild(child);
-        }
-        else {
             //// Append child to its original parent
             var parent = document.getElementById(correctColumn);
             parent.appendChild(child);
@@ -729,7 +702,7 @@ function removeLamp(event) {
             setProperSku(getContainer(selectedId), "");
             Cart.subtractPrice(child.dataset.price);
         }
-    }
+    
 
     // Show text updates
 
@@ -757,8 +730,6 @@ function removeClamp(event) {
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
                 "_" + getProductName(selectedId);
-
-            alert(correctColumn);
         }
     }
 
@@ -766,14 +737,6 @@ function removeClamp(event) {
     if (child.dataset.selected == 'true') {
         // Set child as not selected anymore
         child.dataset.selected = 'false';
-
-        // Check the child
-        if (selectedId.indexOf(CATEGORY_CLAMP_RING) >= 0) {
-            Cart.clampRing = "";
-            Cart.subtractPrice(child.dataset.price);
-            document.getElementById(CONTAINER_CLAMP_RING).removeChild(child);
-        }
-        else {
             //// Append child to its original parent
             var parent = document.getElementById(correctColumn);
             parent.appendChild(child);
@@ -781,7 +744,7 @@ function removeClamp(event) {
             setProperSku(getContainer(selectedId), "");
             Cart.subtractPrice(child.dataset.price);
         }
-    }
+    
 
     // Show text updates
 
@@ -809,8 +772,6 @@ function removeLensType(event) {
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
                 "_" + getProductName(selectedId);
-
-            alert(correctColumn);
         }
     }
 
@@ -819,13 +780,6 @@ function removeLensType(event) {
         // Set child as not selected anymore
         child.dataset.selected = 'false';
 
-        // Check the child
-        if (selectedId.indexOf(CATEGORY_LENS_TYPE) >= 0) {
-            Cart.lensType = "";
-            Cart.subtractPrice(child.dataset.price);
-            document.getElementById(CONTAINER_LENS_TYPE).removeChild(child);
-        }
-        else {
             //// Append child to its original parent
             var parent = document.getElementById(correctColumn);
             parent.appendChild(child);
@@ -833,7 +787,7 @@ function removeLensType(event) {
             setProperSku(getContainer(selectedId), "");
             Cart.subtractPrice(child.dataset.price);
         }
-    }
+    
 
     // Show text updates
 
@@ -861,13 +815,6 @@ function removeLensColor(event) {
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
                 "_" + getProductName(selectedId);
-
-            
-            alert(child);
-            alert(selectedId);
-            alert(getSelectionColumn(selectedId));
-            alert(getProductName(selectedId));
-            alert(correctColumn);
         }
     }
 
@@ -876,13 +823,6 @@ function removeLensColor(event) {
         // Set child as not selected anymore
         child.dataset.selected = 'false';
 
-        // Check the child
-        if (selectedId.indexOf(CATEGORY_LENS_COLOR) >= 0) {
-            Cart.lensColor = "";
-            Cart.subtractPrice(child.dataset.price);
-            document.getElementById(CONTAINER_LENS_COLOR).removeChild(child);
-        }
-        else {
             //// Append child to its original parent
             var parent = document.getElementById(correctColumn);
             parent.appendChild(child);
@@ -890,7 +830,6 @@ function removeLensColor(event) {
             setProperSku(getContainer(selectedId), "");
             Cart.subtractPrice(child.dataset.price);
         }
-    }
 
     // Show text updates
 
@@ -918,8 +857,6 @@ function removeOptions(event) {
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
                 "_" + getProductName(selectedId);
-
-            alert(correctColumn);
         }
     }
 
@@ -928,13 +865,6 @@ function removeOptions(event) {
         // Set child as not selected anymore
         child.dataset.selected = 'false';
 
-        // Check the child
-        if (selectedId.indexOf(CATEGORY_OPTION) >= 0) {
-            Cart.option = "";
-            Cart.subtractPrice(child.dataset.price);
-            document.getElementById(CONTAINER_OPTION).removeChild(child);
-        }
-        else {
             //// Append child to its original parent
             var parent = document.getElementById(correctColumn);
             parent.appendChild(child);
@@ -942,7 +872,6 @@ function removeOptions(event) {
             setProperSku(getContainer(selectedId), "");
             Cart.subtractPrice(child.dataset.price);
         }
-    }
 
     // Show text updates
 

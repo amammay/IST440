@@ -80,7 +80,7 @@
                     <div class="row">
                         @foreach (var i in basics)
                         {
-                            <div id="col_basic_@i.Name" class="col-md-3 metro-column">
+                            <div id="col_basic_@i.ToString()" class="col-md-3 metro-column">
                                 <div id="item_basic_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
                                     <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
                                     <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
@@ -110,7 +110,7 @@
                     <div id="slide_voltages" class="row metro-overflow">
                         @foreach (var i in voltages)
                         {
-                            <div id="col_voltage_@i.Name" class="col-md-3 metro-column">
+                            <div id="col_voltage_@i.ToString()" class="col-md-3 metro-column">
                                 <div id="item_voltage_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
                                     <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
                                     <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>

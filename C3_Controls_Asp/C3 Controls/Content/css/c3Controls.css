@@ -209,10 +209,10 @@
     top: 15px;
 }
 
+/*Drag and drop area*/
 .box {
     border: 5px solid black;
     width: 380px;
     height: 300px;
     text-align: center;
 }
-

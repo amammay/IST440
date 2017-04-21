@@ -31,40 +31,40 @@
 <div class="row">
 <!-- Configuration Parts -->
 <div class="col-md-8" id="parts_container">
-    <h2 class="part-section-title">Available Parts</h2>
-    <h1 class="part-section-body">Drag a part into your product</h1>
+<h2 class="part-section-title">Available Parts</h2>
+<h1 class="part-section-body">Drag a part into your product</h1>
 
-    <br />
+<br />
 
-    <h4>Already know your SKU? Enter here:</h4>
+<h4>Already know your SKU? Enter here:</h4>
     
 
 
-    <form id ="enter_sku">
-        <input type="text" name="product_sku_1" size="2" id="operatorSku"     placeholder="WTL" disabled maxlength="3" /> <strong>-</strong>
-        <input type="text" name="product_sku_2" size="2" id="diameterSku"     placeholder="50" disabled maxlength="3" /> 
-        <input type="text" name="product_sku_3" size="2" id="baseMaterialSku" maxlength="3"  /> <strong>-</strong>
-        <input type="text" name="product_sku_4" size="2" id="voltageSku"      maxlength="3"  />
+<form id ="enter_sku">
+    <input type="text" name="product_sku_1" size="2" id="operatorSku"     placeholder="WTL" disabled maxlength="3" /> <strong>-</strong>
+    <input type="text" name="product_sku_2" size="2" id="diameterSku"     placeholder="50" disabled maxlength="3" /> 
+    <input type="text" name="product_sku_3" size="2" id="baseMaterialSku" maxlength="3"  /> <strong>-</strong>
+    <input type="text" name="product_sku_4" size="2" id="voltageSku"      maxlength="3"  />
         
-        <input type="text" name="product_sku_5" size="2" id="positionSku1" maxlength="3" />
-        <input type="text" name="product_sku_5" size="2" id="positionSku2" maxlength="3" />
-        <input type="text" name="product_sku_5" size="2" id="positionSku3" maxlength="3" /> 
-        <input type="text" name="product_sku_5" size="2" id="positionSku4" maxlength="3" /> 
-        <input type="text" name="product_sku_5" size="2" id="positionSku5" maxlength="3" /> 
-        <input type="text" name="product_sku_5" size="2" id="soundSku" maxlength="3" placeholder="Sound" /> 
-        <button type="button" name="submitManualSku" id="manualSku" class="button button-primary btn-lg" onclick="submitManaulSku();">Submit Sku</button>
-    </form>
+    <input type="text" name="product_sku_5" size="2" id="positionSku1" maxlength="3" />
+    <input type="text" name="product_sku_5" size="2" id="positionSku2" maxlength="3" />
+    <input type="text" name="product_sku_5" size="2" id="positionSku3" maxlength="3" /> 
+    <input type="text" name="product_sku_5" size="2" id="positionSku4" maxlength="3" /> 
+    <input type="text" name="product_sku_5" size="2" id="positionSku5" maxlength="3" /> 
+    <input type="text" name="product_sku_5" size="2" id="soundSku" maxlength="3" placeholder="Sound" /> 
+    <button type="button" name="submitManualSku" id="manualSku" class="button button-primary btn-lg" onclick="submitManaulSku();">Submit Sku</button>
+</form>
     
-    <span></span>
+<span></span>
 
     
 
 
 
 <!-- Tabs With Left Navigation -->
-    <div class="row tabs nomargin-top">
+<div class="row tabs nomargin-top">
 
-<!-- Tabs -->
+    <!-- Tabs -->
     <div class="panel-group" id="accordion">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -183,71 +183,71 @@
 
           
 
-        <!-- Tab Contents -->
-        <div class="col-md-12 col-sm-12 nopadding-left" style="padding-right:0px;padding-left:0px;">
-            <div id="tab_a" class="collapse">
+    <!-- Tab Contents -->
+    <div class="col-md-12 col-sm-12 nopadding-left" style="padding-right:0px;padding-left:0px;">
+        <div id="tab_a" class="collapse">
                                    
-                <div class="row">
-                    @foreach (var i in styles)
-                    {
-                        <div id="col_style_@i.Name" class="col-md-3 metro-column">
-                            <div id="item_style.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
-                            </div>
+            <div class="row">
+                @foreach (var i in styles)
+                {
+                    <div id="col_style_@i.Name" class="col-md-3 metro-column">
+                        <div id="item_style.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
+                            <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
                         </div>
-                    }
-                </div>
+                    </div>
+                }
             </div>
-            <div id="tab_b" class="collapse">
+        </div>
+        <div id="tab_b" class="collapse">
                                     
-                <div id="slide_voltages" class="row metro-overflow">
-                    @foreach (var i in voltages)
-                    {
-                        <div id="col_voltage_@i.Name" class="col-md-3 metro-column">
-                            <div id="item_voltage_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
-                            </div>
+            <div id="slide_voltages" class="row metro-overflow">
+                @foreach (var i in voltages)
+                {
+                    <div id="col_voltage_@i.Name" class="col-md-3 metro-column">
+                        <div id="item_voltage_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
+                            <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
                         </div>
-                    }
-                </div>
+                    </div>
+                }
             </div>
+        </div>
 
-            <div id="tab_c" class="collapse">
+        <div id="tab_c" class="collapse">
                                     
-                <div id="slide_positions" class="row metro-overflow">
-                    @foreach (var i in positions)
-                    {
-                        <div id="col_positions_@i.ToString()" class="col-md-3 metro-column">
-                            <div id="item_positions_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                                <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
-                            </div>
+            <div id="slide_positions" class="row metro-overflow">
+                @foreach (var i in positions)
+                {
+                    <div id="col_positions_@i.ToString()" class="col-md-3 metro-column">
+                        <div id="item_positions_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
+                            <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
                         </div>
-                    }
-                </div>
+                    </div>
+                }
             </div>
+        </div>
 
 
-            <div id="tab_d" class="collapse">
+        <div id="tab_d" class="collapse">
                                     
-                <div class="row metro-overflow">
-                    @foreach (var i in soundMoudle)
-                    {
-                        <div id="col_soundMoudle_@i.ToString()" class="col-md-3 metro-column">
-                            <div id="item_soundMoudle_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                                <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
-                                <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
-                            </div>
+            <div class="row metro-overflow">
+                @foreach (var i in soundMoudle)
+                {
+                    <div id="col_soundMoudle_@i.ToString()" class="col-md-3 metro-column">
+                        <div id="item_soundMoudle_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
+                            <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                         </div>
-                    }
-                </div>
+                    </div>
+                }
             </div>
+        </div>
 
                    
-        </div>
     </div>
+</div>
 </div>
             
   

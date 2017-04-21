@@ -3,17 +3,34 @@ using C3_Controls.Models.CouchDbConnections;
 
 namespace C3_Controls.Models.DataStructuring
 {
-
     /// <summary>
-    /// @author Alex Mammay
-    /// @updated 4/2/2017
-    /// @email: amm7100@psu.edu
-    /// This class acts a data structuring class for the Push To Test Items
-    /// THis is the logic you use to specify any special use cases for UI representation of the items
-    /// ie. specific images,etc.....
+    ///     @author Alex Mammay
+    ///     @updated 4/2/2017
+    ///     @email: amm7100@psu.edu
+    ///     This class acts a data structuring class for the Push To Test Items
+    ///     THis is the logic you use to specify any special use cases for UI representation of the items
+    ///     ie. specific images,etc.....
     /// </summary>
     public class PTT_Data
     {
+        #region Public Methods
+
+        public PTT_Data()
+        {
+            //Instance of couch connector
+            var myCouchDbConnector = new CouchDbConnector();
+
+            //Creates our map
+            PttMap = new Dictionary<string, PTTItem[]>();
+
+            //Assign our dictionary to the one that was populated when the connection was made 
+            PttMap = myCouchDbConnector.PttMap;
+
+            //Fire off Method for doing the heavy lifting 
+            PttDataStructure(PttMap);
+        }
+
+        #endregion Public Methods
 
         #region Private Fields
 
@@ -21,50 +38,15 @@ namespace C3_Controls.Models.DataStructuring
 
         #endregion Private Fields
 
-        #region Public Fields
-
-        public List<PricedItem> Voltages { get; set; }
-        public List<PricedItem> LampTypeColor { get; set; }
-        public List<PricedItem> ClampRing { get; set; }
-        public List<PricedItem> LensType { get; set; }
-        public List<PricedItem> LensColor { get; set; }
-        public PricedItem Options { get; set; }
-
-        #endregion Public Fields
-
-        #region Public Methods
-
-        public PTT_Data()
-        {
-            
-            //Instance of couch connector
-            var myCouchDbConnector = new CouchDbConnector();
-            
-            //Creates our map
-            PttMap = new Dictionary<string, PTTItem[]>();
-
-            //Assign our dictionary to the one that was populated when the connection was made 
-            PttMap = myCouchDbConnector.PttMap;
-           
-            //Fire off Method for doing the heavy lifting 
-            PttDataStructure(PttMap);
-           
-        }
-
-        #endregion Public Methods
-
         #region Private Methods
 
         /// <summary>
-        /// Actually structures of the data.
+        ///     Actually structures of the data.
         /// </summary>
         /// <param name="pttMap"></param>
         public void PttDataStructure(Dictionary<string, PTTItem[]> pttMap)
         {
-            //Initilaze the voltages
-            Voltages = new List<PricedItem>();
-           
-            //Cycle over our wtl map 
+            //Cycle over our ptt map 
             foreach (var valueSet in pttMap)
             {
                 var valueSetItems = new List<PTTItem>();
@@ -76,7 +58,53 @@ namespace C3_Controls.Models.DataStructuring
                 //Switch on the value set key
                 switch (valueSet.Key)
                 {
-                    case "Full_Voltage":
+                    case "Voltages":
+                        Voltages = new List<PricedItem>();
+                        foreach (var item in valueSetItems)
+                        {
+                            var singleItem = new PricedItem
+                            {
+                                Name = item.text,
+                                Price = item.price,
+                                Desc = item.text,
+                                Sku = item.sku
+                            };
+
+                            if (singleItem.Sku.Equals("6V"))
+                                singleItem.Img = "6vacdc.png";
+                            else if (singleItem.Sku.Equals("12V"))
+                                singleItem.Img = "12vacdc.png";
+                            else if (singleItem.Sku.Equals("24V"))
+                                singleItem.Img = "24acdc.png";
+                            else if (singleItem.Sku.Equals("120V"))
+                                singleItem.Img = "120vacdc.png";
+
+                            else if (singleItem.Sku.Equals("120V_AC"))
+                                singleItem.Img = "120vacdc.png";
+                            else if (singleItem.Sku.Equals("240V_AC"))
+                                singleItem.Img = "120vac.png";
+                            else if (singleItem.Sku.Equals("277V_AC"))
+                                singleItem.Img = "120vac.png";
+                           
+                            else if (singleItem.Sku.Equals("480V_AC"))
+                                singleItem.Img = "480vac.png";
+
+                            else if (singleItem.Sku.Equals("240V"))
+                                singleItem.Img = "120vac.png";
+                            
+                            else if (singleItem.Sku.Equals("480V"))
+                                singleItem.Img = "480vac.png";
+
+
+
+
+                            //Add her to the list
+                            Voltages.Add(singleItem);
+                        }
+                        break;
+
+                    case "BasicOperators":
+                        BasicOperators = new List<PricedItem>();
                         foreach (var item in valueSetItems)
                         {
                             var singleItem = new PricedItem
@@ -88,45 +116,12 @@ namespace C3_Controls.Models.DataStructuring
                                 Img = "img_voltages.png"
                             };
                             //Add her to the list
-                            Voltages.Add(singleItem);
+                            BasicOperators.Add(singleItem);
                         }
                         break;
 
-                    case "Transformer (50/60 Hz)":
-                        foreach (var item in valueSetItems)
-                        {
-                            var singleItem = new PricedItem
-                            {
-                                Name = item.text,
-                                Price = item.price,
-                                Desc = item.text,
-                                Sku = item.sku,
-                                Img = "img_voltages.png"
-                            };
-                            //Add her to the list
-                            Voltages.Add(singleItem);
-                        }
-                        break;
-
-                    case "Resistor":
-                        foreach (var item in valueSetItems)
-                        {
-                            var singleItem = new PricedItem
-                            {
-                                Name = item.text,
-                                Price = item.price,
-                                Desc = item.text,
-                                Sku = item.sku,
-                                Img = "img_voltages.png"
-                            };
-                            //Add her to the list
-                            Voltages.Add(singleItem);
-                        }
-                        break;
-
-                    case "Lamp Type And Color":
-                        LampTypeColor = new List<PricedItem>();
-
+                    case "LampColors":
+                        LampColors = new List<PricedItem>();
                         foreach (var item in valueSetItems)
                         {
                             var singleItem = new PricedItem
@@ -138,33 +133,32 @@ namespace C3_Controls.Models.DataStructuring
                             };
 
                             //extra logic for assigning image path to position
-                            if (singleItem.Sku.Equals("LA"))
+                            if (singleItem.Sku.Contains("_A"))
                                 singleItem.Img = "img_lamp_amber.png";
-                            else if (singleItem.Sku.Equals("LB"))
+                            else if (singleItem.Sku.Contains("_B"))
                                 singleItem.Img = "img_lamp_blue.png";
-                            else if (singleItem.Sku.Equals("LG"))
+                            else if (singleItem.Sku.Contains("_G"))
                                 singleItem.Img = "img_lamp_green.png";
-                            else if (singleItem.Sku.Equals("LR"))
+                            else if (singleItem.Sku.Contains("_R"))
                                 singleItem.Img = "img_lamp_red.png";
-                            else if (singleItem.Sku.Equals("LW"))
+                            else if (singleItem.Sku.Contains("_W"))
                                 singleItem.Img = "img_lamp_white.png";
-                            else if (singleItem.Name.Equals("Clear Incandescent"))       //checked differently
+                            else if (singleItem.Sku.Contains("_CI")) //checked differently
                                 singleItem.Img = "img_lamp_clear_incandescent.png";
-                            else if (singleItem.Sku.Equals("F"))
+                            else if (singleItem.Sku.Contains("_CLI"))
                                 singleItem.Img = "img_lamp_clear_flashing_incandescent.png";
-                            else if (singleItem.Sku.Equals("NG"))
+                            else if (singleItem.Sku.Contains("_NG"))
                                 singleItem.Img = "img_lamp_neon_green.png";
-                            else if (singleItem.Sku.Equals("NR"))
+                            else if (singleItem.Sku.Contains("_NR"))
                                 singleItem.Img = "img_lamp_neon_red.png";
-                            else if (singleItem.Sku.Equals("NL"))
+                            else if (singleItem.Name.Equals("No Lamp"))
                                 singleItem.Img = "img_voltages.png";
                             //Add her to the list
-                            LampTypeColor.Add(singleItem);
+                            LampColors.Add(singleItem);
                         }
                         break;
-                    case "Clamp Ring":
-                        ClampRing = new List<PricedItem>();
-
+                    case "ClampRings":
+                        ClampRings = new List<PricedItem>();
                         foreach (var item in valueSetItems)
                         {
                             var singleItem = new PricedItem
@@ -175,19 +169,18 @@ namespace C3_Controls.Models.DataStructuring
                                 Sku = item.sku
                             };
 
-                            
+
                             if (singleItem.Name.Contains("Aluminum"))
                                 singleItem.Img = "AluminumClampRing.jpg";
                             else if (singleItem.Name.Contains("Polyester"))
                                 singleItem.Img = "img_clamp_ring_polyester.png";
 
                             //Add her to the list
-                            ClampRing.Add(singleItem);
+                            ClampRings.Add(singleItem);
                         }
                         break;
-                    case "Lens Type":
-                        LensType = new List<PricedItem>();
-
+                    case "LensTypes":
+                        LensTypes = new List<PricedItem>();
                         foreach (var item in valueSetItems)
                         {
                             var singleItem = new PricedItem
@@ -199,22 +192,21 @@ namespace C3_Controls.Models.DataStructuring
                             };
 
                             //assigning image to each item
-                            if (singleItem.Sku.Equals("IPBC"))
+                            if (singleItem.Sku.Equals("IPBL"))
                                 singleItem.Img = "illuminated.jpg";
-                            else if (singleItem.Sku.Equals("IPBCM"))
+                            else if (singleItem.Sku.Equals("IPBML"))
                                 singleItem.Img = "illuminated_mushroom.jpg";
-                            else if (singleItem.Sku.Equals("GIPBC"))
+                            else if (singleItem.Sku.Equals("GIPBL"))
                                 singleItem.Img = "illuminated_guarded.jpg";
-                            else if (singleItem.Sku.Equals("SIPBCM"))
+                            else if (singleItem.Sku.Equals("SIPBML"))
                                 singleItem.Img = "shrouded_illuminated_push_button.jpg";
 
                             //Add her to the list
-                            LensType.Add(singleItem);
+                            LensTypes.Add(singleItem);
                         }
                         break;
-                    case "Lens Color":
-                        LensColor = new List<PricedItem>();
-
+                    case "LensColors":
+                        LensColors = new List<PricedItem>();
                         foreach (var item in valueSetItems)
                         {
                             var singleItem = new PricedItem
@@ -226,34 +218,44 @@ namespace C3_Controls.Models.DataStructuring
                             };
 
                             //assigning image to each item
-                            if (singleItem.Sku.Equals("AR"))
+                            if (singleItem.Sku.Equals("ALE"))
                                 singleItem.Img = "img_lens_amber.png";
-                            else if (singleItem.Sku.Equals("BE"))
+                            else if (singleItem.Sku.Equals("BLE"))
                                 singleItem.Img = "img_lens_blue.png";
-                            else if (singleItem.Sku.Equals("CR"))
+                            else if (singleItem.Sku.Equals("CLE"))
                                 singleItem.Img = "img_lens_clear.png";
-                            else if (singleItem.Sku.Equals("GN"))
+                            else if (singleItem.Sku.Equals("GLE"))
                                 singleItem.Img = "img_lens_green.png";
-                            else if (singleItem.Sku.Equals("RD"))
+                            else if (singleItem.Sku.Equals("RLE"))
                                 singleItem.Img = "img_lens_red.png";
-                            else if (singleItem.Sku.Equals("WE"))
+                            else if (singleItem.Sku.Equals("WLE"))
                                 singleItem.Img = "img_lens_white.png";
+                            else if (singleItem.Sku.Equals("YLE"))
+                                singleItem.Img = "img_lens_yellow.png";
 
                             //Add her to the list
-                            LensColor.Add(singleItem);
+                            LensColors.Add(singleItem);
                         }
                         break;
 
                     case "Options":
+                        Options = new List<PricedItem>();
                         foreach (var item in valueSetItems)
-                            Options = new PricedItem
+                        {
+                            var singleItem = new PricedItem
                             {
                                 Name = item.text,
                                 Price = item.price,
                                 Desc = item.text,
                                 Sku = item.sku
-                                //, Img = "img_ip20_guards.png"
                             };
+
+                            if (singleItem.Sku.Equals("IPG"))
+                                singleItem.Img = "search.gif";
+
+                            Options.Add(singleItem);
+                        }
+
                         break;
                 }
             }
@@ -261,7 +263,17 @@ namespace C3_Controls.Models.DataStructuring
 
         #endregion Private Methods
 
+        #region Public Fields
 
+        public List<PricedItem> OperatorType { get; set; }
+        public List<PricedItem> Voltages { get; set; }
+        public List<PricedItem> BasicOperators { get; set; }
+        public List<PricedItem> LampColors { get; set; }
+        public List<PricedItem> ClampRings { get; set; }
+        public List<PricedItem> LensTypes { get; set; }
+        public List<PricedItem> LensColors { get; set; }
+        public List<PricedItem> Options { get; set; }
 
+        #endregion Public Fields
     }
 }

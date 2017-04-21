@@ -4,255 +4,254 @@
     "DataBase": {
         "Items": {
             "Push_To_Test": {
-                "Full_Voltage": [
+                "OperatorType": [
                     {
-                        "id": "1",
+                        "text": "Push To Test",
+                        "sku": "PTT",
+                        "progression": "1",
+                        "price": "32.00"
+                    }
+                ],
+                "BasicOperators": [
+                    {
+                        "text": "Full Voltage",
+                        "sku": "FV",
+                        "progression": "1",
+                        "price": "46.00"
+                    },
+                    {
+                        "text": "Transformer (50/60 Hz)",
+                        "sku": "TSF",
+                        "progression": "1",
+                        "price": "68.00"
+                    },
+                    {
+                        "text": "Resister",
+                        "sku": "RSTR",
+                        "progression": "1",
+                        "price": "57.00"
+                    }
+                ],
+                "Voltages": [
+                    {
                         "text": "6V AC/DC",
-                        "price": "78",
-                        "sku": "FVPTT6"
+                        "sku": "6V",
+                        "progression": "1",
+                        "price": "0.0"
                     },
                     {
-                        "id": "2",
                         "text": "12V AC/DC",
-                        "price": "78",
-                        "sku": "FVPTT12"
+                        "sku": "12V",
+                        "progression": "1",
+                        "price": "0.0"
                     },
                     {
-                        "id": "3",
                         "text": "24V AC/DC",
-                        "price": "78",
-                        "sku": "FVPTT24"
+                        "sku": "24V",
+                        "progression": "1",
+                        "price": "0.0"
                     },
                     {
-                        "id": "4",
                         "text": "120V AC/DC",
-                        "price": "78",
-                        "sku": "FVPTT120"
-                    }
-                ],
-                "Transformer (50/60 Hz)": [
+                        "sku": "120V",
+                        "progression": "1",
+                        "price": "0.0"
+                    },
                     {
-                        "id": "5",
                         "text": "120V AC",
-                        "price": "100",
-                        "sku": "TFPTT120"
+                        "sku": "120V_AC",
+                        "progression": "1",
+                        "price": "0.0"
                     },
                     {
-                        "id": "6",
                         "text": "240V AC",
-                        "price": "100",
-                        "sku": "TFPTT240"
+                        "sku": "240V_AC",
+                        "progression": "1",
+                        "price": "0.0"
                     },
                     {
-                        "id": "7",
                         "text": "277V AC",
-                        "price": "100",
-                        "sku": "TFPTT277"
+                        "sku": "277V_AC",
+                        "progression": "1",
+                        "price": "0.0"
                     },
                     {
-                        "id": "8",
                         "text": "480V AC",
-                        "price": "100",
-                        "sku": "TFPTT480"
-                    }
-                ],
-                "Resistor": [
-                    {
-                        "id": "9",
-                        "text": "120V AC/DC",
-                        "price": "89",
-                        "sku": "RLPTT120"
+                        "sku": "480V_AC",
+                        "progression": "1",
+                        "price": "0.0"
                     },
                     {
-                        "id": "10",
                         "text": "240V AC/DC",
-                        "price": "89",
-                        "sku": "RLPTT240"
+                        "sku": "240V",
+                        "progression": "1",
+                        "price": "0.0"
                     },
                     {
-                        "id": "11",
                         "text": "480V AC/DC",
-                        "price": "89",
-                        "sku": "RLPTT480"
+                        "sku": "480V",
+                        "progression": "1",
+                        "price": "0.0"
                     }
                 ],
-                "Lamp Type And Color": [
+                "LampColors": [
                     {
-                        "text": "Amber LED",
-                        "sku": "LA",
-                        "price": "18",
-                        "progression": "1"
-                    },
-                    {
-                        "text": "Blue LED",
-                        "sku": "LB",
-                        "price": "18",
-                        "progression": "1"
-                    },
-                    {
-                        "text": "Green LED",
-                        "sku": "LG",
-                        "price": "18",
-                        "progression": "1"
-                    },
-                    {
-                        "text": "Red LED",
-                        "sku": "LR",
-                        "price": "18",
-                        "progression": "1"
-                    },
-                    {
-                        "text": "White LED",
-                        "sku": "LW",
-                        "price": "18",
-                        "progression": "1"
+                        "text": "No Lamp",
+                        "sku": "LC_N",
+                        "progression": "1",
+                        "price": "0.0"
                     },
                     {
                         "text": "Clear Incandescent",
-                        "sku": "",
-                        "price": "0",
+                        "sku": "LC_CI",
                         "progression": "1",
-                        "display_if_voltage_id_is": [
-                            "1",
-                            "2",
-                            "3",
-                            "4",
-                            "5",
-                            "6",
-                            "7",
-                            "8",
-                            "9",
-                            "10"
-                        ]
+                        "price": "0.0"
+                    },
+                    {
+                        "text": "Amber LED",
+                        "sku": "LC_A",
+                        "progression": "1",
+                        "price": "18.00"
+                    },
+                    {
+                        "text": "Blue LED",
+                        "sku": "LC_B",
+                        "progression": "1",
+                        "price": "18.00"
+                    },
+                    {
+                        "text": "Green LED",
+                        "sku": "LC_G",
+                        "progression": "1",
+                        "price": "18.00"
+                    },
+                    {
+                        "text": "Red LED",
+                        "sku": "LC_R",
+                        "progression": "1",
+                        "price": "18.00"
+                    },
+                    {
+                        "text": "White LED",
+                        "sku": "LC_W",
+                        "progression": "1",
+                        "price": "18.00"
                     },
                     {
                         "text": "Clear Flashing Incandescent",
-                        "sku": "F",
-                        "price": "7.1",
+                        "sku": "LC_CLI",
                         "progression": "1",
-                        "display_if_voltage_id_is": [
-                            "1",
-                            "5",
-                            "6",
-                            "7",
-                            "8"
-                        ]
+                        "price": "7.10"
                     },
                     {
                         "text": "Neon Green",
-                        "sku": "NG",
-                        "price": "0",
+                        "sku": "LC_NG",
                         "progression": "1",
-                        "display_if_voltage_id_is": [
-                            "4",
-                            "10",
-                            "11"
-                        ]
+                        "price": "0.0"
                     },
                     {
                         "text": "Neon Red",
-                        "sku": "NR",
-                        "price": "0",
+                        "sku": "LC_NR",
                         "progression": "1",
-                        "display_if_voltage_id_is": [
-                            "4",
-                            "10",
-                            "11"
-                        ]
-                    },
-                    {
-                        "text": "No Lamp",
-                        "sku": "NL",
-                        "price": "-1.8",
-                        "progression": "1"
+                        "price": "0.0"
                     }
                 ],
-                "Clamp Ring": [
-                    {
-                        "text": "Aluminum (Type 4)",
-                        "sku": "A",
-                        "price": "4.3",
-                        "progression": "1",
-                        "display_if_lens_type_id_is": [
-                            "1",
-                            "2"
-                        ]
-                    },
+                "ClampRings": [
                     {
                         "text": "Black Polyester (Type 4X)",
-                        "sku": "",
-                        "price": "0",
-                        "progression": "1"
+                        "sku": "BP",
+                        "progression": "3",
+                        "price": "0.00"
+                    },
+                    {
+                        "text": "Aluminum (Type 4)",
+                        "sku": "AL",
+                        "progression": "3",
+                        "price": "4.30"
                     }
                 ],
-                "Lens Type": [
+                "LensTypes": [
                     {
-                        "id": "1",
-                        "text": "Illuminated Push Button",
-                        "sku": "IPBC",
-                        "price": "24",
-                        "progression": "1"
+                        "text": "Illuminated Lens",
+                        "sku": "IPBL",
+                        "progression": "2",
+                        "price": "24.00"
                     },
                     {
-                        "id": "2",
-                        "text": "Illuminated Push Button Mushroom",
-                        "sku": "IPBCM",
-                        "price": "36",
-                        "progression": "1"
+                        "text": "Illuminated Mushroom Lens",
+                        "sku": "IPBML",
+                        "progression": "2",
+                        "price": "36.00"
                     },
                     {
-                        "id": "3",
-                        "text": "Guarded Illuminated Push Button",
-                        "sku": "GIPBC",
-                        "price": "36",
-                        "progression": "1"
+                        "text": "Guarded Illuminated Lens",
+                        "sku": "GIPBL",
+                        "progression": "2",
+                        "price": "36.00"
                     },
                     {
-                        "id": "4",
-                        "text": "Shrouded Illuminated Push Button",
-                        "sku": "SIPBCM",
-                        "price": "48",
-                        "progression": "1"
+                        "text": "Shrouded Illuminated Mushroom Lens",
+                        "sku": "SIPBML",
+                        "progression": "2",
+                        "price": "48.00"
                     }
                 ],
-                "Lens Color": [
+                "LensColors": [
                     {
-                        "text": "Amber",
-                        "sku": "AR",
-                        "progression": "1"
+                        "text": "Amber Lens",
+                        "sku": "ALE",
+                        "progression": "2",
+                        "price": "0.0"
                     },
                     {
-                        "text": "Blue",
-                        "sku": "BE",
-                        "progression": "1"
+                        "text": "Blue Lens",
+                        "sku": "BLE",
+                        "progression": "2",
+                        "price": "0.0"
                     },
                     {
-                        "text": "Clear",
-                        "sku": "CR",
-                        "progression": "1"
+                        "text": "Clear Lens",
+                        "sku": "CLE",
+                        "progression": "2",
+                        "price": "0.0"
                     },
                     {
-                        "text": "Green",
-                        "sku": "GN",
-                        "progression": "1"
+                        "text": "Green Lens",
+                        "sku": "GLE",
+                        "progression": "2",
+                        "price": "0.0"
                     },
                     {
-                        "text": "Red",
-                        "sku": "RD",
-                        "progression": "1"
+                        "text": "Red Lens",
+                        "sku": "RLE",
+                        "progression": "2",
+                        "price": "0.0"
                     },
                     {
-                        "text": "White",
-                        "sku": "WE",
-                        "progression": "1"
+                        "text": "White Lens",
+                        "sku": "WLE",
+                        "progression": "2",
+                        "price": "0.0"
+                    },
+                    {
+                        "text": "Yellow Lens",
+                        "sku": "YLE",
+                        "progression": "2",
+                        "price": "0.0"
                     }
                 ],
                 "Options": [
                     {
-                        "text": "IP20 Guards",
-                        "sku": "IP20",
-                        "price": "12",
-                        "progression": "1"
+                        "text": "No IP20 Guard",
+                        "sku": "NIPG",
+                        "progression": "3",
+                        "price": "0.00"
+                    },
+                    {
+                        "text": "IP20 Guard",
+                        "sku": "IPG",
+                        "progression": "3",
+                        "price": "12.00"
                     }
                 ]
             }

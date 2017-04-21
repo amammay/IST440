@@ -45,13 +45,15 @@
 <h4>Already know your SKU? Enter here:</h4>
 
 <form id ="enter_sku">
-    <input type="text" name="product_sku" size="2" id="operatorSku" maxlength="3" /> <strong>-</strong>
-    <input type="text" name="product_sku" size="2" id="voltageSku" maxlength="3" /> <strong>-</strong>
-    <input type="text" name="product_sku" size="2" id="lampColorSku" maxlength="3" /> <strong>-</strong>
-    <input type="text" name="product_sku" size="2" id="lensColorSku" maxlength="3" /> <strong>-</strong>
-    <input type="text" name="product_sku" size="2" id="clampRingSku" maxlength="3" /> <strong>-</strong>
-    <input type="text" name="product_sku" size="2" id="lensTypeSku" maxlength="3" /> <strong>-</strong>
-    <input type="text" name="product_sku" size="2" id="optionsSku" maxlength="3" /> 
+    <input type="text" name="product_sku" size="2" id="pttOperatorSku" maxlength="5" placeholder="Operator" /> 
+    <input type="text" name="product_sku" size="2" id="operatorTypeSku" maxlength="5" placeholder="PTT" disabled/> 
+    <input type="text" name="product_sku" size="2" id="voltageBasedOperatorSku" placeholder="Voltage" maxlength="5" /> 
+    <input type="text" name="product_sku" size="2" id="lampTypeSku" maxlength="5" placeholder="Lamp Type" /> <strong>-</strong>
+    <input type="text" name="product_sku" size="2" id="clampRingSku" maxlength="5" placeholder="Clamp Ring" /> 
+    <input type="text" name="product_sku" size="2" id="lensTypeSku" maxlength="5" placeholder="Lens Type" /> 
+    <input type="text" name="product_sku" size="2" id="lensColorSku" maxlength="5" placeholder="Lens Color"/> <strong>-</strong>
+    <input type="text" name="product_sku" size="2" id="optionsSku" maxlength="5" placeholder="Options" /> 
+    <button type="button" name="submitManualSku" id="manualSku" class="button button-primary btn-lg" onclick="submitManualSkuPtt()">Submit Sku</button>
 </form>
         
 <span></span>

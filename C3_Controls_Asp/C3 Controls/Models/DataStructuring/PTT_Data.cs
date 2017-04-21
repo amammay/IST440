@@ -23,12 +23,14 @@ namespace C3_Controls.Models.DataStructuring
 
         #region Public Fields
 
+        public List<PricedItem> OperatorType { get; set; }
         public List<PricedItem> Voltages { get; set; }
-        public List<PricedItem> LampTypeColor { get; set; }
-        public List<PricedItem> ClampRing { get; set; }
-        public List<PricedItem> LensType { get; set; }
-        public List<PricedItem> LensColor { get; set; }
-        public PricedItem Options { get; set; }
+        public List<PricedItem> BasicOperators { get; set; }
+        public List<PricedItem> LampColors { get; set; }
+        public List<PricedItem> ClampRings { get; set; }
+        public List<PricedItem> LensTypes { get; set; }
+        public List<PricedItem> LensColors { get; set; }
+        public List<PricedItem> Options { get; set; }
 
         #endregion Public Fields
 
@@ -61,10 +63,8 @@ namespace C3_Controls.Models.DataStructuring
         /// <param name="pttMap"></param>
         public void PttDataStructure(Dictionary<string, PTTItem[]> pttMap)
         {
-            //Initilaze the voltages
-            Voltages = new List<PricedItem>();
            
-            //Cycle over our wtl map 
+            //Cycle over our ptt map 
             foreach (var valueSet in pttMap)
             {
                 var valueSetItems = new List<PTTItem>();
@@ -76,7 +76,7 @@ namespace C3_Controls.Models.DataStructuring
                 //Switch on the value set key
                 switch (valueSet.Key)
                 {
-                    case "Full_Voltage":
+                    case "OperatorType":
                         foreach (var item in valueSetItems)
                         {
                             var singleItem = new PricedItem
@@ -84,15 +84,13 @@ namespace C3_Controls.Models.DataStructuring
                                 Name = item.text,
                                 Price = item.price,
                                 Desc = item.text,
-                                Sku = item.sku,
-                                Img = "img_voltages.png"
+                                Sku = item.sku
                             };
-                            //Add her to the list
-                            Voltages.Add(singleItem);
+                            OperatorType.Add(singleItem);
                         }
                         break;
 
-                    case "Transformer (50/60 Hz)":
+                    case "Voltages":
                         foreach (var item in valueSetItems)
                         {
                             var singleItem = new PricedItem

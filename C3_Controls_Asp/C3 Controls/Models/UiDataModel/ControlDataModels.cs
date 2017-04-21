@@ -42,9 +42,9 @@ namespace C3_Controls.Models.UiDataModel
 
         public List<PricedItem> Basics => new List<PricedItem>()
         {
-            new PricedItem() { Name = "Full Voltage", Img = "img_push_to_test.png", Desc= "Full Voltage"},
-            new PricedItem() { Name = "Transformer (50/60 Hz)",  Img = "img_push_to_test.png", Desc = "Transformer (50/60 Hz)" },
-            new PricedItem() { Name = "Resister",  Img = "img_push_to_test.png", Desc = "Resister" }
+            new PricedItem() { Name = "Full Voltage", Sku = "FV", Price = 5.00, Img = "img_push_to_test.png", Desc = "Full Voltage" },
+            new PricedItem() { Name = "Transformer (50/60 Hz)", Sku = "TSF", Price = 5.00, Img = "img_push_to_test.png", Desc = "Transformer (50/60 Hz)" },
+            new PricedItem() { Name = "Resister", Sku = "RSTR", Price = 5.00, Img = "img_push_to_test.png", Desc = "Resister" }
         };
         
 

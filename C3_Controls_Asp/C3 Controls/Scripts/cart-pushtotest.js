@@ -87,7 +87,7 @@ var Cart = {
         this.price += parseFloat(p);
     },
 
-    substractPrice: function (p) {
+    subtractPrice: function (p) {
         this.price -= parseFloat(p);
     }
 };
@@ -128,12 +128,41 @@ function dragPart(ev) {
 function manualInputRetrieve() {
     var tempSkuArray = new Array();
     var pttOperatorSku = document.getElementById("pttOperatorSku").value.toUpperCase();
+    if (pttOperatorSku == "") {
+        showErrorModal("Warning, please provide a input for the Operator");
+        return null;
+    }
+
     var voltageBasedOperatorSku = document.getElementById("voltageBasedOperatorSku").value.toUpperCase();
+    if (pttOperatorSku == "") {
+        showErrorModal("Warning, please provide a input for the voltage");
+        return null;
+    }
     var lampTypeSku = document.getElementById("lampTypeSku").value.toUpperCase();
+    if (pttOperatorSku == "") {
+        showErrorModal("Warning, please provide a input for the lamp type");
+        return null;
+    }
     var clampRingSku = document.getElementById("clampRingSku").value.toUpperCase();
+    if (pttOperatorSku == "") {
+        showErrorModal("Warning, please provide a input for the clamp ring");
+        return null;
+    }
     var lensTypeSku = document.getElementById("lensTypeSku").value.toUpperCase();
+    if (pttOperatorSku == "") {
+        showErrorModal("Warning, please provide a input for the lens type");
+        return null;
+    }
     var lensColorSku = document.getElementById("lensColorSku").value.toUpperCase();
+    if (pttOperatorSku == "") {
+        showErrorModal("Warning, please provide a input for the lens color");
+        return null;
+    }
     var optionsSku = document.getElementById("optionsSku").value.toUpperCase();
+    if (pttOperatorSku == "") {
+        showErrorModal("Warning, please provide a input for the options");
+        return null;
+    }
 
     tempSkuArray.push(pttOperatorSku);
     tempSkuArray.push(voltageBasedOperatorSku);
@@ -476,6 +505,29 @@ function filter(_tiles, _allowed) {
     }
 }
 
+
+/**
+ * Filters out tiles where the title attribute of
+ * the image element doesn't match any of the allowed
+ * names.
+ * @param _tiles Collection of tiles to filter
+ * @param _allowed Collection of names to not filter
+*/
+function unfilter(_tiles, _allowed) {
+    for (var i = 0; i < _tiles.length; i++) {
+        var found = false;
+        var title = _tiles[i].getElementsByTagName("img")[0].getAttribute("title");
+        for (var j = 0; j < _allowed.length; j++) {
+            if (title == _allowed[j]) {
+                found = true;
+                break;
+            }
+        }
+        if (!found)
+            _tiles[i].addClass();
+    }
+}
+
 /**
  * Gets a collection of children from all columns
  * in a slide.
@@ -673,7 +725,8 @@ function removeOperator(event) {
             parent.appendChild(child);
 
             setProperSku(getContainer(selectedId), "");
-            Cart.subtractPrice(child.dataset.price);
+            var price = child.dataset.price;
+            Cart.subtractPrice(price);
        // }
     }
 

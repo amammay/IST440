@@ -2,13 +2,14 @@
 @using MyCouch.Contexts
 @model C3_Controls.Models.UiDataModel.PushToTest
 @{
-    var basics = Model.BasicOperators;
     var voltages = Model.Voltages;
+    var basicOperators = Model.BasicOperators;
     var lampColors = Model.LampColors;
-    var lensColors = Model.LensColors;
     var clampRings = Model.ClampRings;
     var lensTypes = Model.LensTypes;
+    var lensColors = Model.LensColors;
     var options = Model.Options;
+
     ViewBag.Title = "Configure Push to Test";
 }
 
@@ -55,18 +56,7 @@
         
 <span></span>
     
-<script language="javascript">
-
-    var operatorSku = document.getElementById("operatorSku");
-
-    var voltageSku = document.getElementById("voltageSku");
-    document.write(voltageSku.value);
-</script>
      
-           
-       
-
-
 <!-- Tabs With Left Navigation -->
 <div class="row tabs nomargin-top">
     

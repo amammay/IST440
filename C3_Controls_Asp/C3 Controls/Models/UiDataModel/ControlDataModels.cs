@@ -37,22 +37,14 @@ namespace C3_Controls.Models.UiDataModel
             PttData = new PTT_Data();
         }
 
-        public override PricedItem OperatorType
-            => new PricedItem {Name = "Push to Test", Sku = "PTT", Price = DEFAULT_PRICE};
-
-        public List<PricedItem> Basics => new List<PricedItem>()
-        {
-            new PricedItem() { Name = "Full Voltage", Sku = "FV", Price = 5.00, Img = "img_push_to_test.png", Desc = "Full Voltage" },
-            new PricedItem() { Name = "Transformer (50/60 Hz)", Sku = "TSF", Price = 5.00, Img = "img_push_to_test.png", Desc = "Transformer (50/60 Hz)" },
-            new PricedItem() { Name = "Resister", Sku = "RSTR", Price = 5.00, Img = "img_push_to_test.png", Desc = "Resister" }
-        };
-        
-
+        public override PricedItem OperatorType => new PricedItem() { Name = "Push to Test", Sku = "PTT", Price = DEFAULT_PRICE };
         public override List<PricedItem> Voltages => PttData.Voltages;
-        public List<PricedItem> LampColors => PttData.LampTypeColor;
-        public List<PricedItem> ClampRings => PttData.ClampRing;
-        public List<PricedItem> LensTypes => PttData.LensType;
-        public List<PricedItem> LensColors => PttData.LensColor;
-        public PricedItem Options => PttData.Options;
+        public List<PricedItem> BasicOperators => PttData.BasicOperators;
+        public List<PricedItem> LampColors => PttData.LampColors;
+        public List<PricedItem> ClampRings => PttData.ClampRings;
+        public List<PricedItem> LensTypes => PttData.LensTypes;
+        public List<PricedItem> LensColors => PttData.LensColors;
+        public List<PricedItem> Options => PttData.Options;
+
     }
 }

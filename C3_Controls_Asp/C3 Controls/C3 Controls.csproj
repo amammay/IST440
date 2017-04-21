@@ -159,14 +159,18 @@
     <Content Include="Content\assets\AmberFlashingTowerLight_clear.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\assets\AmberRotaryTowerLight.png" />
+    <Content Include="Content\assets\AmberRotaryTowerLight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\assets\AmberRotaryTowerLight_clear.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\assets\BlueFlashingTowerLight_clear.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\assets\BlueRotaryTowerLight.png" />
+    <Content Include="Content\assets\BlueRotaryTowerLight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\assets\BlueFlashingTowerLight.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -179,7 +183,9 @@
     <Content Include="Content\assets\GreenFlashingTowerLight_clear.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\assets\GreenRotaryTowerLight.png" />
+    <Content Include="Content\assets\GreenRotaryTowerLight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\assets\GreenRotaryTowerLight_clear.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -250,7 +256,9 @@
     <Content Include="Content\assets\RedFlashingTowerLight_clear.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\assets\RedRotaryTowerLight.png" />
+    <Content Include="Content\assets\RedRotaryTowerLight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\assets\RedRotaryTowerLight_clear.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

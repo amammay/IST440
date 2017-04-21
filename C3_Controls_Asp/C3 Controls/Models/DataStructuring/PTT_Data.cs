@@ -67,9 +67,38 @@ namespace C3_Controls.Models.DataStructuring
                                 Name = item.text,
                                 Price = item.price,
                                 Desc = item.text,
-                                Sku = item.sku,
-                                Img = "img_voltages.png"
+                                Sku = item.sku
                             };
+
+                            if (singleItem.Sku.Equals("6V"))
+                                singleItem.Img = "6vacdc.png";
+                            else if (singleItem.Sku.Equals("12V"))
+                                singleItem.Img = "12vacdc.png";
+                            else if (singleItem.Sku.Equals("24V"))
+                                singleItem.Img = "24acdc.png";
+                            else if (singleItem.Sku.Equals("120V"))
+                                singleItem.Img = "120vacdc.png";
+
+                            else if (singleItem.Sku.Equals("120V_AC"))
+                                singleItem.Img = "120vacdc.png";
+                            else if (singleItem.Sku.Equals("240V_AC"))
+                                singleItem.Img = "120vac.png";
+                            else if (singleItem.Sku.Equals("277V_AC"))
+                                singleItem.Img = "120vac.png";
+                            
+                            //to change
+                            else if (singleItem.Sku.Equals("480V_AC"))
+                                singleItem.Img = "120vac.png";
+
+                            else if (singleItem.Sku.Equals("240V"))
+                                singleItem.Img = "120vac.png";
+                            //to change
+                            else if (singleItem.Sku.Equals("480V"))
+                                singleItem.Img = "120vac.png";
+
+
+
+
                             //Add her to the list
                             Voltages.Add(singleItem);
                         }
@@ -202,7 +231,7 @@ namespace C3_Controls.Models.DataStructuring
                                 singleItem.Img = "img_lens_red.png";
                             else if (singleItem.Sku.Equals("WLE"))
                                 singleItem.Img = "img_lens_white.png";
-                            else if (singleItem.Sku.Equals("yLE"))
+                            else if (singleItem.Sku.Equals("YLE"))
                                 singleItem.Img = "img_lens_yellow.png";
 
                             //Add her to the list

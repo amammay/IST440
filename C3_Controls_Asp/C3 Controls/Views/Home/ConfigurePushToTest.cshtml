@@ -3,7 +3,7 @@
 @model C3_Controls.Models.UiDataModel.PushToTest
 @{
     var voltages = Model.Voltages;
-    var basicOperators = Model.BasicOperators;
+    var basics = Model.BasicOperators;
     var lampColors = Model.LampColors;
     var clampRings = Model.ClampRings;
     var lensTypes = Model.LensTypes;
@@ -258,15 +258,18 @@
             <div id="tab_g">
                 <h4>Options</h4>
                 <div id="option" class="row">
-                    @options
+                    @foreach (var i in options)
                     {
-                    <div id="col_option_@options.ToString()" class="col-md-3 metro-column">
-                        <div id="item_option_@options.ToString()" class="metro" data-sku="@options.Sku" data-price="@options.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                            <img class="part-tile-img" alt="@options.Name" src="@options.Img" title="@options.Name" />
-                            <p style="color:white; text-align:center; font-size:10px;"> @options.Desc </p>
+                        <div id="col_option_@i.ToString()" class="col-md-3 metro-column">
+                            <div id="item_option_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
+                                <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                            </div>
                         </div>
-                    </div>
                     }
+                    
+                   
+                    
                 </div>
             </div>
 
@@ -373,14 +376,14 @@
     <div id="tab_g" class="collapse">
         <h4>Options</h4>
         <div id="slide_lens_types" class="row">
-            @options
+            @foreach (var i in options)
             {
-            <div id="col_option_@options.ToString()" class="col-md-3 metro-column">
-                <div id="item_option_@options.ToString()" class="metro" data-sku="@options.Sku" data-price="@options.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                    <img class="part-tile-img" alt="@options.Name" src="@options.Img" title="@options.Name" />
-                    <p style="color:white; text-align:center; font-size:10px;"> @options.Desc </p>
+                <div id="col_option_@i.ToString()" class="col-md-3 metro-column">
+                    <div id="item_option_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
+                        <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                    </div>
                 </div>
-            </div>
             }
         </div>
     </div>

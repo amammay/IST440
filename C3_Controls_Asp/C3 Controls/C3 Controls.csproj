@@ -151,8 +151,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\assets\120V.JPG" />
+    <Content Include="Content\assets\120vac.png" />
+    <Content Include="Content\assets\120vacdc.png" />
+    <Content Include="Content\assets\12vacdc.png" />
     <Content Include="Content\assets\240V.JPG" />
+    <Content Include="Content\assets\24acdc.png" />
     <Content Include="Content\assets\24V.JPG" />
+    <Content Include="Content\assets\480vac.png" />
+    <Content Include="Content\assets\6vacdc.png" />
     <Content Include="Content\assets\AluminumClampRing.jpg" />
     <Content Include="Content\assets\AmberFlashingTowerLight.PNG" />
     <Content Include="Content\assets\AmberRotaryTowerLight.PNG" />

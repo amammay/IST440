@@ -67,7 +67,7 @@ var Cart = {
         this.lampColor = "-" + l;
     },
 
-    setLensColor: function(l) {
+    setLensColor: function (l) {
         this.lensColor = "-" + l;
     },
 
@@ -79,7 +79,7 @@ var Cart = {
         this.lensType = "-" + l;
     },
 
-    setOption: function(o) {
+    setOption: function (o) {
         this.option = o;
     },
 
@@ -87,7 +87,7 @@ var Cart = {
         this.price += parseFloat(p);
     },
 
-    subtractPrice: function (p) {
+    substractPrice: function (p) {
         this.price -= parseFloat(p);
     }
 };
@@ -147,7 +147,7 @@ function dropInCart(ev) {
 
     // Add child to proper container
     document.getElementById(container).appendChild(child);
-    
+
     // Set the correct sku for child
     setProperSku(container, child.dataset.sku);
 
@@ -160,9 +160,6 @@ function dropInCart(ev) {
 
     // Update text on screen
     displayCartUpdates();
-
-    alert(selectedId);
-    alert(container);
 }
 
 
@@ -187,8 +184,7 @@ function dropInRemoveContainer(e) {
         parent.appendChild(child);
 
         setProperSku(getContainer(selectedId), "");
-        Cart.subtractPrice(child.dataset.price);
-        alert(parent);
+        Cart.substractPrice(child.dataset.price);
     }
 
     // Show text updates
@@ -196,9 +192,6 @@ function dropInRemoveContainer(e) {
 
     // Make remove container invisible
     $("#remove_container").addClass("hidden");
-
-    alert(selectedId);
-    alert(correctColumn);
 }
 
 
@@ -289,27 +282,27 @@ function getContainer(_id) {
 */
 function setProperSku(_container, _sku) {
     switch (_container) {
-        case CONTAINER_BASIC:
-            Cart.setBasic(_sku);
-            break;
-        case CONTAINER_VOLTAGE:
-            Cart.setVoltage(_sku);
-            break;
-        case CONTAINER_LAMP_COLOR:
-            Cart.setLampColor(_sku);
-            break;
-        case CONTAINER_LENS_COLOR:
-            Cart.setLensColor(_sku);
-            break;
-        case CONTAINER_CLAMP_RING:
-            Cart.setClampRing(_sku);
-            break;
-        case CONTAINER_LENS_TYPE:
-            Cart.setLensType(_sku);
-            break;
-        case CONTAINER_OPTION:
-            Cart.setOption(_sku);
-            break;
+    case CONTAINER_BASIC:
+        Cart.setBasic(_sku);
+        break;
+    case CONTAINER_VOLTAGE:
+        Cart.setVoltage(_sku);
+        break;
+    case CONTAINER_LAMP_COLOR:
+        Cart.setLampColor(_sku);
+        break;
+    case CONTAINER_LENS_COLOR:
+        Cart.setLensColor(_sku);
+        break;
+    case CONTAINER_CLAMP_RING:
+        Cart.setClampRing(_sku);
+        break;
+    case CONTAINER_LENS_TYPE:
+        Cart.setLensType(_sku);
+        break;
+    case CONTAINER_OPTION:
+        Cart.setOption(_sku);
+        break;
     }
 }
 
@@ -321,15 +314,15 @@ function setProperSku(_container, _sku) {
 */
 function applyContraints(_container, _id) {
     switch (_container) {
-        case CONTAINER_BASIC:
-            filterVoltages(_id);
-            break;
-        case CONTAINER_VOLTAGE:
-            filterLampColors(_id);
-            break;
-        case CONTAINER_CLAMP_RING:
-            filterLensTypes(_id);
-            break;
+    case CONTAINER_BASIC:
+        filterVoltages(_id);
+        break;
+    case CONTAINER_VOLTAGE:
+        filterLampColors(_id);
+        break;
+    case CONTAINER_CLAMP_RING:
+        filterLensTypes(_id);
+        break;
     }
 }
 
@@ -343,15 +336,15 @@ function filterVoltages(_id) {
     var tiles = getTiles(SLIDE_VOLTAGE);
     var allowed;
     switch (_id) {
-        case "item_basic_full_voltage":
-            allowed = ['6V AC/DC', '12V AC/DC', '24V AC/DC', '120V AC/DC'];
-            break;
-        case "item_basic_transformer_(50/60_hz)":
-            allowed = ['120V AC', '240V AC', '277V AC', '480V AC'];
-            break;
-        case "item_basic_resister":
-            allowed = ['120V AC/DC', '240V AC/DC', '480V AC/DC'];
-            break;
+    case "item_basic_full_voltage":
+        allowed = ['6V AC/DC', '12V AC/DC', '24V AC/DC', '120V AC/DC'];
+        break;
+    case "item_basic_transformer_(50/60_hz)":
+        allowed = ['120V AC', '240V AC', '277V AC', '480V AC'];
+        break;
+    case "item_basic_resister":
+        allowed = ['120V AC/DC', '240V AC/DC', '480V AC/DC'];
+        break;
     }
     filter(tiles, allowed);
 }
@@ -367,19 +360,19 @@ function filterLampColors(_id) {
     var allowed = ['No Lamp', 'Clear Incandescent', 'Amber LED',
         'Blue LED', 'Green LED', 'Red LED', 'White LED'];
     switch (_id) {
-        case "item_voltage_6v_ac/dc":
-        case "item_voltage_120v_ac":
-        case "item_voltage_240v_ac":
-        case "item_voltage_277v_ac":
-        case "item_voltage_480v_ac":
-            allowed.push('Clear Flashing Incandescent');
-            break;
-        case "item_voltage_120v_ac/dc":
-        case "item_voltage_240v_ac/dc":
-        case "item_voltage_480v_ac/dc":
-            allowed.push('Neon Green');
-            allowed.push('Neon Red');
-            break;
+    case "item_voltage_6v_ac/dc":
+    case "item_voltage_120v_ac":
+    case "item_voltage_240v_ac":
+    case "item_voltage_277v_ac":
+    case "item_voltage_480v_ac":
+        allowed.push('Clear Flashing Incandescent');
+        break;
+    case "item_voltage_120v_ac/dc":
+    case "item_voltage_240v_ac/dc":
+    case "item_voltage_480v_ac/dc":
+        allowed.push('Neon Green');
+        allowed.push('Neon Red');
+        break;
     }
     filter(tiles, allowed);
 }
@@ -392,10 +385,10 @@ function filterLampColors(_id) {
 */
 function filterLensTypes(_id) {
     switch (_id) {
-        case "item_clamp_ring_aluminum_(type_4)":
-            document.getElementById("col_lens_type_guarded_illuminated_lens").remove();
-            document.getElementById("col_lens_type_shrouded_illuminated_mushroom_lens").remove();
-            break;
+    case "item_clamp_ring_aluminum_(type_4)":
+        document.getElementById("col_lens_type_guarded_illuminated_lens").remove();
+        document.getElementById("col_lens_type_shrouded_illuminated_mushroom_lens").remove();
+        break;
     }
 }
 
@@ -548,414 +541,11 @@ function showSelectedItems() {
     showModal('Product Details', content);
 }
 
-/*
- * Functions to show details for the individual parts 
- */
-function showOperatorDesc() {
-    showModal('Operator Description', 'Placeholder');
-}
-
-function showVoltageDesc() {
-    showModal('Voltage Description', 'Placeholder');
-}
-
-function showLampTypeDesc() {
-    showModal('Lamp Type/Color Description', 'Placeholder');
-}
-
-function showClampRingDesc() {
-    showModal('Clamp Ring Description', 'Placeholder');
-}
-
-function showLensTypeDesc() {
-    showModal('Lens Type Description', 'Placeholder');
-}
-
-function showLensColorDesc() {
-    showModal('Lens Color Description', 'Placeholder');
-}
-
-function showOptionsDesc() {
-    showModal('Options Description', 'Placeholder');
-}
-
-
-/**
- *
- * Function for removing an operator
- * @param {any} event
- */
-function removeOperator(event) {
-
-    var item = findSelectedItems();
-    //This is the specific substring we are searching for this would be the part of the object type
-    var subString = "basic";
-    var selectedId, child, correctColumn, parent;
-
-    for (var i = 0; i < item.length; i++) {
-
-        var tempId = item[i].id;
-
-        if (tempId.includes(subString)) {
-            child = item[i];
-            selectedId = tempId;
-            correctColumn = getSelectionColumn(selectedId) +
-                "_" + getProductName(selectedId);
-
-            alert(correctColumn);
-        }
-    }
-
-    // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
-        // Set child as not selected anymore
-        child.dataset.selected = 'false';
-
-        // Check the child
-        if (selectedId.indexOf(CATEGORY_BASIC) >= 0) {
-            Cart.basicOperator = "";
-            Cart.subtractPrice(child.dataset.price);
-            document.getElementById(CONTAINER_BASIC).removeChild(child);
-        }
-        else {
-            //// Append child to its original parent
-            parent = document.getElementById(correctColumn);
-            parent.appendChild(child);
-
-            setProperSku(getContainer(selectedId), "");
-            Cart.subtractPrice(child.dataset.price);
-        }
-    }
-
-    // Show text updates
-
-    displayCartUpdates();
-}
-
-/**
- *
- * Function for removing an operator
- * @param {any} event
- */
-function removeVoltage(event) {
-
-    var item = findSelectedItems();
-    //This is the specific substring we are searching for this would be the part of the object type
-    var subString = "voltage";
-    var selectedId, child, correctColumn;
-
-    for (var i = 0; i < item.length; i++) {
-
-        var tempId = item[i].id;
-
-        if (tempId.includes(subString)) {
-            child = item[i];
-            selectedId = tempId;
-            correctColumn = getSelectionColumn(selectedId) +
-                "_" + getProductName(selectedId);
-
-            alert(correctColumn);
-        }
-    }
-
-    // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
-        // Set child as not selected anymore
-        child.dataset.selected = 'false';
-
-        // Check the child
-        if (selectedId.indexOf(CATEGORY_VOLTAGE) >= 0) {
-            Cart.voltage = "";
-            Cart.subtractPrice(child.dataset.price);
-            document.getElementById(CONTAINER_VOLTAGE).removeChild(child);
-        }
-        else {
-            //// Append child to its original parent
-            var parent = document.getElementById(correctColumn);
-            parent.appendChild(child);
-
-            setProperSku(getContainer(selectedId), "");
-            Cart.subtractPrice(child.dataset.price);
-        }
-    }
-
-    // Show text updates
-
-    displayCartUpdates();
-}
-
-/**
- *
- * Function for removing an operator
- * @param {any} event
- */
-function removeLamp(event) {
-
-    var item = findSelectedItems();
-    //This is the specific substring we are searching for this would be the part of the object type
-    var subString = "lamp_color";
-    var selectedId, child, correctColumn;
-
-    for (var i = 0; i < item.length; i++) {
-
-        var tempId = item[i].id;
-
-        if (tempId.includes(subString)) {
-            child = item[i];
-            selectedId = tempId;
-            correctColumn = getSelectionColumn(selectedId) +
-                "_" + getProductName(selectedId);
-
-            alert(correctColumn);
-        }
-    }
-
-    // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
-        // Set child as not selected anymore
-        child.dataset.selected = 'false';
-
-        // Check the child
-        if (selectedId.indexOf(CATEGORY_LAMP_COLOR) >= 0) {
-            Cart.lampColor = "";
-            Cart.subtractPrice(child.dataset.price);
-            document.getElementById(CONTAINER_LAMP_COLOR).removeChild(child);
-        }
-        else {
-            //// Append child to its original parent
-            var parent = document.getElementById(correctColumn);
-            parent.appendChild(child);
-
-            setProperSku(getContainer(selectedId), "");
-            Cart.subtractPrice(child.dataset.price);
-        }
-    }
-
-    // Show text updates
-
-    displayCartUpdates();
-}
-
-/**
- *
- * Function for removing a clamp
- * @param {any} event
- */
-function removeClamp(event) {
-
-    var item = findSelectedItems();
-    //This is the specific substring we are searching for this would be the part of the object type
-    var subString = "clamp";
-    var selectedId, child, correctColumn;
-
-    for (var i = 0; i < item.length; i++) {
-
-        var tempId = item[i].id;
-
-        if (tempId.includes(subString)) {
-            child = item[i];
-            selectedId = tempId;
-            correctColumn = getSelectionColumn(selectedId) +
-                "_" + getProductName(selectedId);
-
-            alert(correctColumn);
-        }
-    }
-
-    // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
-        // Set child as not selected anymore
-        child.dataset.selected = 'false';
-
-        // Check the child
-        if (selectedId.indexOf(CATEGORY_CLAMP_RING) >= 0) {
-            Cart.clampRing = "";
-            Cart.subtractPrice(child.dataset.price);
-            document.getElementById(CONTAINER_CLAMP_RING).removeChild(child);
-        }
-        else {
-            //// Append child to its original parent
-            var parent = document.getElementById(correctColumn);
-            parent.appendChild(child);
-
-            setProperSku(getContainer(selectedId), "");
-            Cart.subtractPrice(child.dataset.price);
-        }
-    }
-
-    // Show text updates
-
-    displayCartUpdates();
-}
-
-/**
- *
- * Function for removing an operator
- * @param {any} event
- */
-function removeLensType(event) {
-
-    var item = findSelectedItems();
-    //This is the specific substring we are searching for this would be the part of the object type
-    var subString = "lens_type";
-    var selectedId, child, correctColumn;
-
-    for (var i = 0; i < item.length; i++) {
-
-        var tempId = item[i].id;
-
-        if (tempId.includes(subString)) {
-            child = item[i];
-            selectedId = tempId;
-            correctColumn = getSelectionColumn(selectedId) +
-                "_" + getProductName(selectedId);
-
-            alert(correctColumn);
-        }
-    }
-
-    // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
-        // Set child as not selected anymore
-        child.dataset.selected = 'false';
-
-        // Check the child
-        if (selectedId.indexOf(CATEGORY_LENS_TYPE) >= 0) {
-            Cart.lensType = "";
-            Cart.subtractPrice(child.dataset.price);
-            document.getElementById(CONTAINER_LENS_TYPE).removeChild(child);
-        }
-        else {
-            //// Append child to its original parent
-            var parent = document.getElementById(correctColumn);
-            parent.appendChild(child);
-
-            setProperSku(getContainer(selectedId), "");
-            Cart.subtractPrice(child.dataset.price);
-        }
-    }
-
-    // Show text updates
-
-    displayCartUpdates();
-}
-
-/**
- *
- * Function for removing a lens color
- * @param {any} event
- */
-function removeLensColor(event) {
-
-    var item = findSelectedItems();
-    //This is the specific substring we are searching for this would be the part of the object type
-    var subString = "lens_color";
-    var selectedId, child, correctColumn;
-
-    for (var i = 0; i < item.length; i++) {
-
-        var tempId = item[i].id;
-
-        if (tempId.includes(subString)) {
-            child = item[i];
-            selectedId = tempId;
-            correctColumn = getSelectionColumn(selectedId) +
-                "_" + getProductName(selectedId);
-
-            
-            alert(child);
-            alert(selectedId);
-            alert(getSelectionColumn(selectedId));
-            alert(getProductName(selectedId));
-            alert(correctColumn);
-        }
-    }
-
-    // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
-        // Set child as not selected anymore
-        child.dataset.selected = 'false';
-
-        // Check the child
-        if (selectedId.indexOf(CATEGORY_LENS_COLOR) >= 0) {
-            Cart.lensColor = "";
-            Cart.subtractPrice(child.dataset.price);
-            document.getElementById(CONTAINER_LENS_COLOR).removeChild(child);
-        }
-        else {
-            //// Append child to its original parent
-            var parent = document.getElementById(correctColumn);
-            parent.appendChild(child);
-
-            setProperSku(getContainer(selectedId), "");
-            Cart.subtractPrice(child.dataset.price);
-        }
-    }
-
-    // Show text updates
-
-    displayCartUpdates();
-}
-
-/**
- *
- * Function for removing an option
- * @param {any} event
- */
-function removeOptions(event) {
-
-    var item = findSelectedItems();
-    //This is the specific substring we are searching for this would be the part of the object type
-    var subString = "option";
-    var selectedId, child, correctColumn;
-
-    for (var i = 0; i < item.length; i++) {
-
-        var tempId = item[i].id;
-
-        if (tempId.includes(subString)) {
-            child = item[i];
-            selectedId = tempId;
-            correctColumn = getSelectionColumn(selectedId) +
-                "_" + getProductName(selectedId);
-
-            alert(correctColumn);
-        }
-    }
-
-    // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
-        // Set child as not selected anymore
-        child.dataset.selected = 'false';
-
-        // Check the child
-        if (selectedId.indexOf(CATEGORY_OPTION) >= 0) {
-            Cart.option = "";
-            Cart.subtractPrice(child.dataset.price);
-            document.getElementById(CONTAINER_OPTION).removeChild(child);
-        }
-        else {
-            //// Append child to its original parent
-            var parent = document.getElementById(correctColumn);
-            parent.appendChild(child);
-
-            setProperSku(getContainer(selectedId), "");
-            Cart.subtractPrice(child.dataset.price);
-        }
-    }
-
-    // Show text updates
-
-    displayCartUpdates();
-}
-
 /**
  * Validates the user's selection and mocks a 
  * checkout proccess.
 */
-function addToCart() { 
-    
-    
+function addToCart() {
     // Let's check if the user has selected everything we need to build the part
     if (!hasItems(CONTAINER_BASIC)) {
         showErrorModal('Missing Items', 'Please select a basic operator!');
@@ -986,94 +576,4 @@ function addToCart() {
         return;
     }
     showModal('Success', 'Push-to-Test item added to cart!');
-    dateTimeChecker();
-    
-
-}
-
-function dateTimeChecker() {
-
-// placing order and checks timestap to determine if same day shipping is availible
-    var d = new Date();
-    var hour = d.getHours();
-    var day = d.getDay();
-
-    //if (day == 1, day == 2, day == 3, day == 4, day == 5) {
-    //    if (hour >= 8 == hour <= 18) {
-    //        showModal("success!", "your item will be shipped today!");
-    //        return;
-    //    } else {
-    //        showErrorModal("error", "Your item will ship the next business day");
-    //        return;
-    //    } 
-    //} else {
-    //    showErrorModal("error", "Your item will ship the next business day");
-    //    return;
-    //}
-
-
-    switch (day) {
-    case 0:
-        showErrorModal("error", "Your item will ship the next business day");
-
-        break;
-    case 1:
-
-        if (hour >= 8 == hour <= 18) {
-            showModal("success!", "your item will be shipped today!");
-
-        } else {
-            showErrorModal("error", "Your item will ship the next business day");
-
-        }
-        break;
-    case 2:
-
-        if (hour >= 8 == hour <= 18) {
-            showModal("success!", "your item will be shipped today!");
-
-        } else {
-            showErrorModal("error", "Your item will ship the next business day");
-
-        }
-        break;
-    case 3:
-
-        if (hour >= 8 == hour <= 18) {
-            showModal("success!", "your item will be shipped today!");
-
-        } else {
-            showErrorModal("error", "Your item will ship the next business day");
-
-        }
-        break;
-    case 4:
-
-        if (hour >= 8 == hour <= 18) {
-            showModal("success!", "your item will be shipped today!");
-
-        } else {
-            showErrorModal("error", "Your item will ship the next business day");
-
-        }
-        break;
-    case 5:
-
-        if (hour >= 8 == hour <= 18) {
-            showModal("success!", "your item will be shipped today!");
-
-        } else {
-            showErrorModal("error", "Your item will ship the next business day");
-
-        }
-        break;
-
-    case 6:
-        showErrorModal("error", "Your item will ship the next business day");
-
-    default:
-        showModal("Success", "Your item will be ship Today");
-
-        break;
-    }
 }

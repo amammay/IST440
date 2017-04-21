@@ -455,6 +455,26 @@ function showSelectedItems() {
     showModal('Product Details', content);
 }
 
+/**
+ * What's This buttons in Accordian'
+ */
+function whatsThisBase() {
+    content = "The Base is the bottom section of your Tower Light. What base to choose is dependent on how tall you want your light to be." + "<br/><br/>" + "<b>Prices</b>" + "<br/>" + "Direct Mount: $48.50" + "<br/>" + "Short Base: $48.50" + "<br/>" + "Tall Base: $48.50";
+    showModal("Base Style", content);
+}
+function whatsThisLamp() {
+    content = "There are two styles: Clear and Opaque. There are three types: Continuous, Flashing, and Rotary (Spinning). There are several colors to choose from as well." + "<br/><br/>" + "<b>Prices</b>" + "<br/>" + "Opaque and Clear Lenses" + "<br/>" + "Continuous: $48.50" + "<br/>" + "Flashing: $61.00" + "<br/>" + "Rotary: $61.00";
+    showModal("Lamp Style", content);
+}
+function whatsThisSound() {
+    content = "The Sound Module is the top section of the towerlight. It emits a tone for any reason you may want" + "<br/><br/>" + "<b>Prices</b>" + "<br/>" + "Continuous 80dB: $82.00" + "<br/>" + "Intermittent 80dB: $82.00";
+    showModal("Sound Module", content);
+}
+function whatsThisVoltage() {
+    content = "Voltage Style depends on what type of power you are using where the Tower Light is placed" + "<br/><br/>" + "<b>Prices</b>" + "<br/>" + "There is no extra cost for any voltage style.";
+    showModal("Voltage", content);
+}
+
 
 
 

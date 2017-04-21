@@ -125,10 +125,7 @@ function manualInputRetrieve() {
     var baseMaterial = document.getElementById("baseMaterialSku").value.toUpperCase();
     if (!baseMaterial.includes(subStringBase)) {
         showWarningModal('Warning', 'You\'ve entered a invalid base!');
-
         return null;
-
-
     }
 
     var voltage = document.getElementById("voltageSku").value.toUpperCase();
@@ -137,7 +134,6 @@ function manualInputRetrieve() {
     for (var i = 0; i < voltages.length; i++) {
         if (!voltage.includes(voltages[i])) {
             iteratorBool = true;
-            //showWarningModal('Warning', 'You\'ve entered a invalid voltage!');
             
         }
         if (voltage.includes(voltages[i])) {
@@ -151,14 +147,8 @@ function manualInputRetrieve() {
                 showWarningModal('Warning', 'You\'ve entered a invalid voltage!');
                 return null;
             }
-            
-           
         }
-
-
-        
     }
-
     var position1 = document.getElementById("positionSku1").value.toUpperCase();
     var position2 = document.getElementById("positionSku2").value.toUpperCase();
     var position3 = document.getElementById("positionSku3").value.toUpperCase();
@@ -182,9 +172,7 @@ function manualInputRetrieve() {
     tempSkuArray.push(position4);
     tempSkuArray.push(position5);
     tempSkuArray.push(soundModule);
-
     return tempSkuArray;
-
 
 }
 
@@ -195,8 +183,6 @@ function manualInputRetrieve() {
 function submitManaulSku() {
 
     var getInputs = manualInputRetrieve();
-
-    
 
     for (var i = 0; i < getInputs.length; i++) {
 

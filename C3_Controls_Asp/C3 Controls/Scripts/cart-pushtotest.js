@@ -124,6 +124,67 @@ function dragPart(ev) {
     ev.dataTransfer.setData("part", ev.target.id);
 }
 
+
+function manualInputRetrieve() {
+    var tempSkuArray = new Array();
+    var pttOperatorSku = document.getElementById("pttOperatorSku").value.toUpperCase();
+    var voltageBasedOperatorSku = document.getElementById("voltageBasedOperatorSku").value.toUpperCase();
+    var lampTypeSku = document.getElementById("lampTypeSku").value.toUpperCase();
+    var clampRingSku = document.getElementById("clampRingSku").value.toUpperCase();
+    var lensTypeSku = document.getElementById("lensTypeSku").value.toUpperCase();
+    var lensColorSku = document.getElementById("lensColorSku").value.toUpperCase();
+    var optionsSku = document.getElementById("optionsSku").value.toUpperCase();
+
+    tempSkuArray.push(pttOperatorSku);
+    tempSkuArray.push(voltageBasedOperatorSku);
+    tempSkuArray.push(lampTypeSku);
+    tempSkuArray.push(clampRingSku);
+    tempSkuArray.push(lensTypeSku);
+    tempSkuArray.push(lensColorSku);
+    tempSkuArray.push(optionsSku);
+
+    return tempSkuArray;
+}
+
+
+function submitManualSkuPtt() {
+    var getInputs = manualInputRetrieve();
+
+
+    for (var i = 0; i < getInputs.length; i++) {
+
+        //temp value for checking to see if the input is empty
+        var checkValue = getInputs[i];
+
+        //serach for a matching data sku that was inputed 
+        var searchItem = "[data-sku~=" + "'" + checkValue.toUpperCase() + "'" + "]";
+
+        //query for a child
+        var childQuery = document.querySelectorAll(searchItem);
+        var id = childQuery[0].id;
+        var container = getContainer(id);
+
+        // Add child to proper container
+        document.getElementById(container).appendChild(childQuery[0]);
+
+        // Set the correct sku for child
+        setProperSku(container, childQuery[0].dataset.sku);
+
+        // Filter other tiles using the container and the name of the item
+        applyContraints(container, id);
+
+        // Set the data selected to true
+        childQuery[0].dataset.selected = true;
+        Cart.updatePrice(childQuery[0].dataset.price);
+
+        // Update text on screen
+        displayCartUpdates();
+
+    }
+
+}
+
+
 /**
  * When item is dropped in cart container.
  * @param ev Event data

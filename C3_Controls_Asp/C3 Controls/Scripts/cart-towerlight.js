@@ -213,7 +213,9 @@ function submitManaulSku() {
                 document.getElementById(container).appendChild(childQuery[0]);
                 childQuery[0].dataset.selected = true;
                 setProperSku(container, childQuery[0].dataset.sku);
-
+                // Update the price of the cart
+                Cart.updatePrice(childQuery[0].dataset.price);
+                updateDisplay();
 
             } else {
                 // Check if another position can be added
@@ -221,7 +223,11 @@ function submitManaulSku() {
                     // Add a new child to the proper container because multiple
                     // positions  can be chosen
                     document.getElementById(container).appendChild(copyTile(childQuery[0]));
+                    childQuery[0].dataset.selected = true;
                     Cart.addPosition(childQuery[0].dataset.sku);
+                    // Update the price of the cart
+                    Cart.updatePrice(childQuery[0].dataset.price);
+                    updateDisplay();
                 } else {
                     showWarningModal('You can\'t select any more positions',
                         'You\'ve chosen ' +
@@ -234,7 +240,7 @@ function submitManaulSku() {
             }
         }
     }
-    updateDisplay();
+
 
 
 }

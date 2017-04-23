@@ -253,6 +253,45 @@ function dropInCart(ev) {
 
 }
 
+/**
+ * When item is clicked add to cart.
+ * @param ev Event data
+*/
+function clickInCart(ev) {
+    ev.preventDefault();
+
+    // Get id of dragged item and the element
+    var selectedId = ev.currentTarget.id;
+    var child = document.getElementById(selectedId);
+
+    // Get the container the item should be placed in
+    var container = getContainer(selectedId);
+
+    // Check if user already picked an item for this category
+    if (hasItems(container)) {
+        showWarningModal('Warning', 'You\'ve already selected an item!');
+        checkRemoveContainer();
+        return;
+    }
+
+    // Add child to proper container
+    document.getElementById(container).appendChild(child);
+
+    // Set the correct sku for child
+    setProperSku(container, child.dataset.sku);
+
+    // Filter other tiles using the container and the name of the item
+    applyContraints(container, selectedId);
+
+    // Set the data selected to true
+    child.dataset.selected = true;
+    Cart.updatePrice(child.dataset.price);
+
+    // Update text on screen
+    displayCartUpdates();
+
+}
+
 
 /**
  * Triggered when an item is dropped inside 

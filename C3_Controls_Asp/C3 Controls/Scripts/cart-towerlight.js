@@ -89,7 +89,6 @@ function setup(_operator, _module) {
     updateDisplay();
 }
 
-
 /**
  * Enables the drag-and-drop functionality.
  * @param ev Event data
@@ -103,7 +102,6 @@ function allowDrop(ev) {
         $("#remove_container").removeClass("hidden");
     }
 }
-
 
 /**
  * Triggered when dragging a part. Transfers the id
@@ -255,6 +253,59 @@ function dropInCart(ev) {
 
     // Get id and element being dragged
     var selectedId = ev.dataTransfer.getData("part");
+    var child = document.getElementById(selectedId);
+
+    // Get the container of the dragged item
+    var container = getContainer(selectedId);
+
+    // Check if item isn't a position item
+    if (container != CONTAINER_POSITION) {
+        if (hasItems(container)) {
+            showWarningModal('Warning', 'You\'ve already selected an item!');
+
+            // Check if should hide remove container
+            checkRemoveContainer(child);
+            return;
+        }
+        // Add child to its proper container & set proper sku
+        document.getElementById(container).appendChild(child);
+        child.dataset.selected = true;
+        setProperSku(container, child.dataset.sku);
+
+
+    } else {
+        // Check if another position can be added
+        if (allowAnotherPosition()) {
+            // Add a new child to the proper container because multiple
+            // positions  can be chosen
+            document.getElementById(container).appendChild(copyTile(child));
+            Cart.addPosition(child.dataset.sku);
+        } else {
+            showWarningModal('You can\'t select any more positions', 'You\'ve chosen ' +
+                'a sound module or have all five positions selected!');
+
+            // Check if should hide remove container
+            checkRemoveContainer(child);
+            return;
+        }
+    }
+
+    // Update the price of the cart
+    Cart.updatePrice(child.dataset.price);
+
+    // Update text on screen
+    updateDisplay();
+}
+
+/**
+ * Triggered when item is clicked.
+ * @param ev Event data
+*/
+function clickInCart(ev) {
+    ev.preventDefault();
+
+    // Get id and element being dragged
+    var selectedId = ev.currentTarget.id;
     var child = document.getElementById(selectedId);
 
     // Get the container of the dragged item

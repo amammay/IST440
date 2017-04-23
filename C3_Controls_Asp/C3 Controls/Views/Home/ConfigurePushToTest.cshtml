@@ -82,7 +82,7 @@
                         @foreach (var i in basics)
                         {
                             <div id="col_basic_@i.ToString()" class="col-md-3 metro-column">
-                                <div id="item_basic_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                <div id="item_basic_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)" onclick="clickInCart(event)">
                                     <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
                                     <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                 </div>
@@ -111,7 +111,7 @@
                         @foreach (var i in voltages)
                         {
                             <div id="col_voltage_@i.ToString()" class="col-md-3 metro-column">
-                                <div id="item_voltage_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                <div id="item_voltage_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)" onclick="clickInCart(event)">
                                     <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
                                     <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                 </div>
@@ -139,7 +139,7 @@
                         @foreach (var i in lampColors)
                         {
                             <div id="col_lamp_color_@i.ToString()" class="col-md-3 metro-column">
-                                <div id="item_lamp_color_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                <div id="item_lamp_color_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)" onclick="clickInCart(event)">
                                     <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
                                     <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                 </div>
@@ -169,7 +169,7 @@
                         @foreach (var i in lensColors)
                         {
                             <div id="col_lens_color_@i.ToString()" class="col-md-3 metro-column">
-                                <div id="item_lens_color_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                <div id="item_lens_color_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)" onclick="clickInCart(event)">
                                     <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
                                     <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                 </div>
@@ -198,7 +198,7 @@
                         @foreach (var i in clampRings)
                         {
                             <div id="col_clamp_ring_@i.ToString()" class="col-md-3 metro-column">
-                                <div id="item_clamp_ring_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                <div id="item_clamp_ring_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)" onclick="clickInCart(event)">
                                     <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
                                     <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                 </div>
@@ -227,7 +227,7 @@
                         @foreach (var i in lensTypes)
                         {
                             <div id="col_lens_type_@i.ToString()" class="col-md-3 metro-column">
-                                <div id="item_lens_type_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                <div id="item_lens_type_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)" onclick="clickInCart(event)">
                                     <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
                                     <p style="color:white; text-align:center; font-size:9px;"> @i.Name </p>
                                 </div>
@@ -256,7 +256,7 @@
                     @foreach (var i in options)
                     {
                         <div id="col_option_@i.ToString()" class="col-md-3 metro-column">
-                            <div id="item_option_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                            <div id="item_option_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)" onclick="clickInCart(event)">
                                 <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
                                 <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
                             </div>

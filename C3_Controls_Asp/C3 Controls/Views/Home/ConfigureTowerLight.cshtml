@@ -40,7 +40,7 @@
 
 
 <form id ="enter_sku">
-    <input type="text" name="product_sku_1" size="2" id="operatorSku"     placeholder="WTL" disabled maxlength="3" /> <strong>-</strong>
+    <input type="text" name="product_sku_1"  size="2" id="operatorSku"     placeholder="WTL" disabled maxlength="3" /> <strong>-</strong>
     <input type="text" name="product_sku_2" size="2" id="diameterSku"     placeholder="50" disabled maxlength="3" /> 
     <input type="text" name="product_sku_3" size="2" id="baseMaterialSku" placeholder="Base" maxlength="3"  /> <strong>-</strong>
     <input type="text" name="product_sku_4" size="3" id="voltageSku"       placeholder="Voltage " maxlength="3"  />
@@ -53,11 +53,9 @@
     <button type="button" name="submitManualSku" id="manualSku" class="button button-primary btn-sm" onclick="submitManaulSku();">Submit Sku</button>
 </form>
     
+<p class="target">double click me!</p>
+
 <span></span>
-
-    
-
-
 
 <!-- Tabs With Left Navigation -->
 <div class="row tabs nomargin-top">
@@ -81,7 +79,7 @@
                             @foreach (var i in styles)
                             {
                                 <div id="col_style_@i.ToString()" class="col-md-3 metro-column">
-                                    <div id="item_style_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                    <div id="item_style_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)" onclick="clickInCart(event)" >
                                         <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
                                         <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                     </div>
@@ -110,7 +108,7 @@
                             @foreach (var i in voltages)
                             {
                                 <div id="col_voltage_@i.ToString()" class="col-md-3 metro-column">
-                                    <div id="item_voltage_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                    <div id="item_voltage_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)" onclick="clickInCart(event)" >
                                         <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
                                         <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                     </div>
@@ -139,7 +137,7 @@
                             @foreach (var i in positions)
                             {
                                 <div id="col_positions_@i.ToString()" class="col-md-3 metro-column">
-                                    <div id="item_positions_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                    <div id="item_positions_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)" onclick="clickInCart(event)" >
                                         <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
                                         <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                     </div>
@@ -169,7 +167,7 @@
                             @foreach (var i in soundMoudle)
                             {
                                 <div id="col_soundMoudle_@i.ToString()" class="col-md-3 metro-column">
-                                    <div id="item_soundMoudle_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
+                                    <div id="item_soundMoudle_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)" onclick="clickInCart(event)">
                                         <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
                                         <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
                                     </div>

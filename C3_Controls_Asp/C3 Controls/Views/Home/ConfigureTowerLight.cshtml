@@ -37,22 +37,20 @@
 <br />
 
 <h4>Already know your SKU? Enter here:</h4>
-    
 
 
 <form id ="enter_sku">
     <input type="text" name="product_sku_1" size="2" id="operatorSku"     placeholder="WTL" disabled maxlength="3" /> <strong>-</strong>
     <input type="text" name="product_sku_2" size="2" id="diameterSku"     placeholder="50" disabled maxlength="3" /> 
-    <input type="text" name="product_sku_3" size="2" id="baseMaterialSku" maxlength="3"  /> <strong>-</strong>
-    <input type="text" name="product_sku_4" size="2" id="voltageSku"      maxlength="3"  />
-        
-    <input type="text" name="product_sku_5" size="2" id="positionSku1" maxlength="3" />
-    <input type="text" name="product_sku_5" size="2" id="positionSku2" maxlength="3" />
-    <input type="text" name="product_sku_5" size="2" id="positionSku3" maxlength="3" /> 
-    <input type="text" name="product_sku_5" size="2" id="positionSku4" maxlength="3" /> 
-    <input type="text" name="product_sku_5" size="2" id="positionSku5" maxlength="3" /> 
-    <input type="text" name="product_sku_5" size="2" id="soundSku" maxlength="3" placeholder="Sound" /> 
-    <button type="button" name="submitManualSku" id="manualSku" class="button button-primary btn-lg" onclick="submitManaulSku();">Submit Sku</button>
+    <input type="text" name="product_sku_3" size="2" id="baseMaterialSku" placeholder="Base" maxlength="3"  /> <strong>-</strong>
+    <input type="text" name="product_sku_4" size="3" id="voltageSku"       placeholder="Voltage " maxlength="3"  />
+    <input type="text" name="product_sku_5" size="5" id="positionSku1" placeholder="Position 1" maxlength="3" />
+    <input type="text" name="product_sku_5" size="5" id="positionSku2" placeholder="Position 2" maxlength="3" />
+    <input type="text" name="product_sku_5" size="5" id="positionSku3" placeholder="Position 3" maxlength="3" /> 
+    <input type="text" name="product_sku_5" size="5" id="positionSku4" placeholder="Position 4" maxlength="3" /> 
+    <input type="text" name="product_sku_5" size="5" id="positionSku5" placeholder="Position 5" maxlength="3" /> 
+    <input type="text" name="product_sku_5" size="3" id="soundSku" placeholder="Sound" maxlength="3" /> 
+    <button type="button" name="submitManualSku" id="manualSku" class="button button-primary btn-sm" onclick="submitManaulSku();">Submit Sku</button>
 </form>
     
 <span></span>
@@ -71,7 +69,7 @@
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
                         <i class="fa fa-dashboard"></i> Base Styles</a>
-                    <button type="button" onclick="whatsThisBase()">What's This?</button>
+                    <button type="button" class="button btn-info btn-sm part-section-btn" onclick="whatsThisBase()">What's This?</button>
                 </h4>
             </div>
             <div id="collapse1" class="panel-collapse collapse">
@@ -100,7 +98,7 @@
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
                         <i class="fa fa-bolt"></i> Voltages</a>
-                    <button type="button" onclick="whatsThisVoltage()">What's This?</button>
+                    <button type="button"class="button btn-info btn-sm part-section-btn" onclick="whatsThisVoltage()">What's This?</button>
                 </h4>
             </div>
             <div id="collapse2" class="panel-collapse collapse">
@@ -129,7 +127,7 @@
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
                         <i class="fa fa-lightbulb-o"></i> Lamps</a>
-                    <button type="button" onclick="whatsThisLamp()">What's This?</button>
+                    <button type="button" class="button btn-info btn-sm part-section-btn" onclick="whatsThisLamp()">What's This?</button>
                 </h4>
             </div>
             <div id="collapse3" class="panel-collapse collapse">
@@ -159,7 +157,7 @@
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
                         <i class="fa fa-bell"></i> Sound Modules</a>
-                    <button type="button" onclick="whatsThisSound()">What's This?</button>
+                    <button type="button"class="button btn-info btn-sm part-section-btn" onclick="whatsThisSound()">What's This?</button>
                 </h4>
             </div>
             <div id="collapse4" class="panel-collapse collapse">
@@ -264,32 +262,32 @@
     <br/>
    
 
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
         <tr>
             <th bgcolor="#D3D3D3"><strong>Part Type</strong></th>
-            <th bgcolor="#D3D3D3"><strong>Part Pic</strong></th>
+            <th bgcolor="#D3D3D3"><strong>Part Picture</strong></th>
             <th bgcolor="#D3D3D3"><strong>Remove</strong></th>
         </tr>
         <tr>
             <th>Sound Module</th>
             <td id="container_sound"></td>
-            <td><button id="removeModuleBtn" type="button" onclick="removeSoundModule(event)">X</button></td>
+            <td align="center"><button id="removeModuleBtn"  type="button" class="btn-sm btn-danger" onclick="removeSoundModule(event)">Remove</button></td>
         </tr>
         <tr>
             <th>Voltage</th>
             <td id="container_voltage"></td>
-            <td><button id="removeVoltageBtn" type="button" onclick="removeVoltage(event)">X</button></td>
+            <td align="center"><button id="removeVoltageBtn" type="button" class="btn-sm btn-danger" onclick="removeVoltage(event)">Remove</button></td>
         </tr>          
         <tr>
             <th>Positon </th>
             <td id="container_positions"></td>
-            <td><button id="removePositionBtn" type="button" onclick="removeLastPostion()">X</button></td>
+            <td align="center"><button id="removePositionBtn" type="button" class="btn-sm btn-danger" onclick="removeLastPostion()">Remove</button></td>
         </tr>
  
         <tr>
             <th>Operator Type</th>
             <td id="container_style"></td>
-            <td><button id="removestyleBtn" type="button" onclick="removeStyle(event)">X</button></td>
+            <td align="center"><button id="removestyleBtn" type="button" class="btn-sm btn-danger" onclick="removeStyle(event)">Remove</button></td>
         </tr>
                
     </table>

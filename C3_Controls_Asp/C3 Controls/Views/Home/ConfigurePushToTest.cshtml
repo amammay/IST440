@@ -45,15 +45,15 @@
 <h4>Already know your SKU? Enter here:</h4>
 
 <form id ="enter_sku">
-    <input type="text" name="product_sku" size="2" id="pttOperatorSku" maxlength="5" placeholder="Operator" /> 
+    <input type="text" name="product_sku" size="4" id="pttOperatorSku" maxlength="5" placeholder="Operator" /> 
     <input type="text" name="product_sku" size="2" id="operatorTypeSku" maxlength="5" placeholder="PTT" disabled/> 
-    <input type="text" name="product_sku" size="2" id="voltageBasedOperatorSku" placeholder="Voltage" maxlength="5" /> 
-    <input type="text" name="product_sku" size="2" id="lampTypeSku" maxlength="5" placeholder="Lamp Type" /> <strong>-</strong>
-    <input type="text" name="product_sku" size="2" id="clampRingSku" maxlength="5" placeholder="Clamp Ring" /> 
-    <input type="text" name="product_sku" size="2" id="lensTypeSku" maxlength="5" placeholder="Lens Type" /> 
-    <input type="text" name="product_sku" size="2" id="lensColorSku" maxlength="5" placeholder="Lens Color"/> <strong>-</strong>
-    <input type="text" name="product_sku" size="2" id="optionsSku" maxlength="5" placeholder="Options" /> 
-    <button type="button" name="submitManualSku" id="manualSku" class="button button-primary btn-lg" onclick="submitManualSkuPtt()">Submit Sku</button>
+    <input type="text" name="product_sku" size="3" id="voltageBasedOperatorSku" placeholder="Voltage" maxlength="5" /> 
+    <input type="text" name="product_sku" size="6" id="lampTypeSku" maxlength="5" placeholder="Lamp Type" /> <strong>-</strong>
+    <input type="text" name="product_sku" size="7" id="clampRingSku" maxlength="5" placeholder="Clamp Ring" /> 
+    <input type="text" name="product_sku" size="5" id="lensTypeSku" maxlength="5" placeholder="Lens Type" /> 
+    <input type="text" name="product_sku" size="6" id="lensColorSku" maxlength="5" placeholder="Lens Color"/> <strong>-</strong>
+    <input type="text" name="product_sku" size="3" id="optionsSku" maxlength="5" placeholder="Options" /> 
+    <button type="button" name="submitManualSku" id="manualSku" class="button button-primary btn-sm" onclick="submitManualSkuPtt()">Submit Sku</button>
 </form>
         
 <span></span>
@@ -71,14 +71,13 @@
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
                     <i class="fa fa-dashboard"></i> Operators</a>
-                <button class="button btn-default btn-sm part-section-btn" onclick="showOperatorDesc()">What's this?</button>
+                <button class="button btn-info btn-sm part-section-btn" onclick="showOperatorDesc()">What's this?</button>
             </h4>
         </div>
         <div id="collapse1" class="panel-collapse collapse">
             <div class="panel-body">
                 
                 <div id="collapse1">
-                    <h4>Basic Operators</h4>
                     <div class="row">
                         @foreach (var i in basics)
                         {
@@ -101,14 +100,13 @@
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
                     <i class="fa fa-bolt"></i> Voltages</a>
-                <button class="button btn-default btn-sm part-section-btn" onclick="showVoltageDesc()">What's this?</button>
+                <button class="button btn-info btn-sm part-section-btn" onclick="showVoltageDesc()">What's this?</button>
             </h4>
         </div>
         <div id="collapse2" class="panel-collapse collapse">
             <div class="panel-body">
                 
                 <div id="tab_b">
-                    <h4>Voltages</h4>
                     <div id="slide_voltages" class="row metro-overflow">
                         @foreach (var i in voltages)
                         {
@@ -130,14 +128,13 @@
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
                     <i class="fa fa-tint"></i> Lamp Colors</a>
-                <button class="button btn-default btn-sm part-section-btn" onclick="showLampTypeDesc()">What's this?</button>
+                <button class="button btn-info btn-sm part-section-btn" onclick="showLampTypeDesc()">What's this?</button>
             </h4>
         </div>
         <div id="collapse3" class="panel-collapse collapse">
             <div class="panel-body">
                 
                 <div id="tab_c">
-                    <h4>Lamp Colors</h4>
                     <div id="slide_lamp_colors" class="row metro-overflow">
                         @foreach (var i in lampColors)
                         {
@@ -161,14 +158,13 @@
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
                     <i class="fa fa-tint"></i> Lens Colors </a>
-                    <button class="button btn-default btn-sm part-section-btn" onclick="showLensColorDesc()">What's this?</button>
+                    <button class="button btn-info btn-sm part-section-btn" onclick="showLensColorDesc()">What's this?</button>
             </h4>
         </div>
         <div id="collapse4" class="panel-collapse collapse">
             <div class="panel-body">
 
                 <div id="tab_d" >
-                    <h4>Lens Colors</h4>
                     <div class="row metro-overflow">
                         @foreach (var i in lensColors)
                         {
@@ -191,14 +187,13 @@
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
                     <i class="fa fa-wrench"></i> Clamp Rings</a>
-                    <button class="button btn-default btn-sm part-section-btn" onclick="showClampRingDesc()">What's this?</button>
+                    <button class="button btn-info btn-sm part-section-btn" onclick="showClampRingDesc()">What's this?</button>
             </h4>
         </div>
         <div id="collapse5" class="panel-collapse collapse">
             <div class="panel-body">
                 
                 <div id="tab_e">
-                    <h4>Clamp Rings</h4>
                     <div class="row">
                         @foreach (var i in clampRings)
                         {
@@ -221,14 +216,13 @@
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
                     <i class="fa fa-eye"></i> Lens Types</a>
-                    <button class="button btn-default btn-sm part-section-btn" onclick="showLensTypeDesc()">What's this?</button>
+                    <button class="button btn-info btn-sm part-section-btn" onclick="showLensTypeDesc()">What's this?</button>
                 </h4>
         </div>
         <div id="collapse6" class="panel-collapse collapse">
             <div class="panel-body">
                 
                 <div id="tab_f">
-                    <h4>Lens Types</h4>
                     <div id="slide_lens_types" class="row metro-overflow">
                         @foreach (var i in lensTypes)
                         {
@@ -251,14 +245,13 @@
         <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">
                 <i class="fa fa-gear"></i> Options</a>
-                <button class="button btn-default btn-sm part-section-btn" onclick="showOptionsDesc()">What's this?</button>
+                <button class="button btn-info btn-sm part-section-btn" onclick="showOptionsDesc()">What's this?</button>
             </h4>
     </div>
     <div id="collapse7" class="panel-collapse collapse">
         <div class="panel-body">
                 
             <div id="tab_g">
-                <h4>Options</h4>
                 <div id="option" class="row">
                     @foreach (var i in options)
                     {
@@ -409,60 +402,46 @@
         <br/>
 
 
-        <table class="table table-bordered">
+        <table class="table table-bordered table-striped">
             <tr>
                 <th bgcolor="#D3D3D3"><strong>Part Type</strong></th>
-                <th bgcolor="#D3D3D3"><strong>Part Pic</strong></th>
+                <th bgcolor="#D3D3D3"><strong>Part Picture</strong></th>
                 <th bgcolor="#D3D3D3"><strong>Remove</strong></th>
             </tr>
             <tr>
-                <th>Operator Type
-                    <button class="button btn-default btn-sm part-section-btn" onclick="showOperatorDesc()">Details</button>
-                </th>
+                <th>Operator Type</th>
                 <td id="container_basic"></td>
-                <td><button id="removeOperatorBtn" type="button" onclick="removeOperator(event)">X</button></td>
+                <td align="center"><button id="removeOperatorBtn"  class="btn-sm btn-danger" type="button" onclick="removeOperator(event)">Remove</button></td>
             </tr>
             <tr>
-                <th>Voltage
-                    <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showVoltageDesc()">Details</button>
-                </th>
+                <th>Voltage</th>
                 <td id="container_voltage"></td>
-                <td><button id="removeVoltageBtn" type="button" onclick="removeVoltage()">X</button></td>
+                <td align="center"><button id="removeVoltageBtn"   class="btn-sm btn-danger" type="button" onclick="removeVoltage()">Remove</button></td>
             </tr>
             <tr>
-                <th>Lamp Type/Color
-                    <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showLampTypeDesc()">Details</button>
-                </th>
+                <th>Lamp Type/Color </th>
                 <td id="container_lamp_color"></td>
-                <td><button id="removeLampBtn" type="button" onclick="removeLamp()" >X</button></td>
+                <td align="center"><button id="removeLampBtn"  class="btn-sm btn-danger" type="button" onclick="removeLamp()" >Remove</button></td>
             </tr>
             <tr>
-                <th>Clamp Ring
-                    <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showClampRingDesc()">Details</button>
-                </th>
+                <th>Clamp Ring </th>
                 <td id="container_clamp_ring"></td>
-                <td><button id="removeClampBtn" type="button" onclick="removeClamp()">X</button></td>
+                <td align="center"><button id="removeClampBtn"  class="btn-sm btn-danger" type="button" onclick="removeClamp()">Remove</button></td>
             </tr>
             <tr>
-                <th>Lens Type
-                    <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showLensTypeDesc()">Details</button>
-                </th>
+                <th>Lens Type </th>
                 <td id="container_lens_type"></td>
-                <td><button id="removeLensTypeBtn" type="button" onclick="removeLensType()">X</button></td>
+                <td align="center"><button id="removeLensTypeBtn"  class="btn-sm btn-danger" type="button" onclick="removeLensType()">Remove</button></td>
             </tr>
             <tr>
-                <th>Lens Color
-                    <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showLensColorDesc()">Details</button>
-                </th>
+                <th>Lens Color</th>
                 <td id="container_lens_color"></td>
-                <td><button id="removeLensColorBtn" type="button" onclick="removeLensColor()">X</button></td>
+                <td align="center"><button id="removeLensColorBtn" class="btn-sm btn-danger" type="button" onclick="removeLensColor()">Remove</button></td>
             </tr>
             <tr>
-                <th>Options
-                    <button class="button button-primary btn-default btn-sm part-section-btn" onclick="showOptionsDesc()">Details</button>
-                </th>
+                <th>Options </th>
                 <td id="container_option"></td>
-                <td><button id="removeOptionsBtn" type="button" onclick="removeOptions()">X</button></td>
+                <td align="center"><button id="removeOptionsBtn"  class="btn-sm btn-danger" type="button" onclick="removeOptions()">Remove</button></td>
             </tr>
         </table>
 

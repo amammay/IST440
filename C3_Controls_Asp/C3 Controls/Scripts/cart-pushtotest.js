@@ -546,13 +546,15 @@ function filter(_tiles, _allowed) {
 
 
 /**
- * Filters out tiles where the title attribute of
+ * unFilters out tiles where the title attribute of
  * the image element doesn't match any of the allowed
  * names.
  * @param _tiles Collection of tiles to filter
  * @param _allowed Collection of names to not filter
 */
 function unfilter(_tiles, _allowed) {
+    //TODO unfilter
+
     for (var i = 0; i < _tiles.length; i++) {
         var found = false;
         var title = _tiles[i].getElementsByTagName("img")[0].getAttribute("title");

@@ -472,7 +472,7 @@ function filterVoltages(_id) {
     case "item_basic_transformer_(50/60_hz)":
         allowed = ['120V AC', '240V AC', '277V AC', '480V AC'];
         break;
-    case "item_basic_resister":
+    case "item_basic_resistor":
         allowed = ['120V AC/DC', '240V AC/DC', '480V AC/DC'];
         break;
     }

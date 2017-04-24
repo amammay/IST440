@@ -124,7 +124,7 @@ namespace C3_Controls.Models.DataStructuring
                                     singleItem.Img = "img_base_long.png";
                                     break;
                                 case "P3":
-                                    singleItem.Img = "img_base_direct.jpg";
+                                    singleItem.Img = "img_base_direct.png";
                                     break;
                             }
 
@@ -192,7 +192,7 @@ namespace C3_Controls.Models.DataStructuring
                                 Price = item.price,
                                 Desc = item.text,
                                 Sku = item.sku,
-                                Img = "sound.jpg"
+                                Img = "sound.png"
                             };
                             //Add her to the list
                             SoundModule.Add(singleItem);

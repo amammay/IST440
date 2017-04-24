@@ -151,25 +151,56 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\assets\120V.JPG" />
-    <Content Include="Content\assets\120vac.png" />
-    <Content Include="Content\assets\120vacdc.png" />
-    <Content Include="Content\assets\12vacdc.png" />
     <Content Include="Content\assets\240V.JPG" />
-    <Content Include="Content\assets\24acdc.png" />
     <Content Include="Content\assets\24V.JPG" />
-    <Content Include="Content\assets\480vac.png" />
-    <Content Include="Content\assets\6vacdc.png" />
-    <Content Include="Content\assets\AluminumClampRing.jpg" />
-    <Content Include="Content\assets\AmberFlashingTowerLight.PNG" />
-    <Content Include="Content\assets\AmberRotaryTowerLight.PNG" />
-    <Content Include="Content\assets\BlueRotaryTowerLight.PNG" />
-    <Content Include="Content\assets\BlueFlashingTowerLight.png" />
-    <Content Include="Content\assets\GreenFlashingTowerLight.PNG" />
-    <Content Include="Content\assets\GreenRotaryTowerLight.PNG" />
-    <Content Include="Content\assets\illuminated.jpg" />
-    <Content Include="Content\assets\illuminated_guarded.jpg" />
-    <Content Include="Content\assets\illuminated_mushroom.jpg" />
-    <Content Include="Content\assets\img_base_direct.jpg" />
+    <Content Include="Content\assets\AmberFlashingTowerLight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\AmberFlashingTowerLight_clear.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\AmberRotaryTowerLight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\AmberRotaryTowerLight_clear.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\BlueFlashingTowerLight_clear.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\BlueRotaryTowerLight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\BlueFlashingTowerLight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\BlueRotaryTowerLight_clear.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\GreenFlashingTowerLight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\GreenFlashingTowerLight_clear.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\GreenRotaryTowerLight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\GreenRotaryTowerLight_clear.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\illuminated.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\illuminated_guarded.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\illuminated_mushroom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\img_base_direct.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\assets\img_base_long.png" />
     <Content Include="Content\assets\img_base_short.png" />
     <Content Include="Content\assets\img_clamp_ring_polyester.png" />
@@ -194,25 +225,59 @@
     <Content Include="Content\assets\img_light_green.png" />
     <Content Include="Content\assets\img_light_red.png" />
     <Content Include="Content\assets\img_light_white.png" />
-    <Content Include="Content\assets\img_pilot_light_amber.jpg" />
-    <Content Include="Content\assets\img_pilot_light_blue.jpg" />
-    <Content Include="Content\assets\img_pilot_light_clear.jpg" />
-    <Content Include="Content\assets\img_pilot_light_green.jpg" />
-    <Content Include="Content\assets\img_pilot_light_red.jpg" />
-    <Content Include="Content\assets\img_pilot_light_white.jpg" />
-    <Content Include="Content\assets\img_pilot_light_yellow.jpg" />
+    <Content Include="Content\assets\img_pilot_light_amber.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\img_pilot_light_blue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\img_pilot_light_clear.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\img_pilot_light_green.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\img_pilot_light_red.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\img_pilot_light_white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\img_pilot_light_yellow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\assets\img_push_to_test.png" />
     <Content Include="Content\assets\img_towerlight.png" />
     <Content Include="Content\assets\img_voltages.png" />
+    <Content Include="Content\assets\ip20guard.png" />
     <Content Include="Content\assets\logo.gif" />
-    <Content Include="Content\assets\RedFlashingTowerLight.PNG" />
-    <Content Include="Content\assets\RedRotaryTowerLight.PNG" />
+    <Content Include="Content\assets\Nothing.png" />
+    <Content Include="Content\assets\RedFlashingTowerLight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\RedFlashingTowerLight_clear.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\RedRotaryTowerLight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\RedRotaryTowerLight_clear.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\assets\search.gif" />
-    <Content Include="Content\assets\shrouded_illuminated_push_button.jpg" />
-    <Content Include="Content\assets\sound.jpg" />
+    <Content Include="Content\assets\shrouded_illuminated_push_button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\sound.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\assets\towerlights.png" />
-    <Content Include="Content\assets\WhiteFlashingTowerLight.PNG" />
-    <Content Include="Content\assets\WhiteRotaryTowerLight.PNG" />
+    <Content Include="Content\assets\WhiteFlashingTowerLight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\WhiteRotaryTowerLight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\c3Controls.css" />

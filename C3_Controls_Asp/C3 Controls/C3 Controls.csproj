@@ -159,6 +159,7 @@
     <Content Include="Content\assets\24V.JPG" />
     <Content Include="Content\assets\480vac.png" />
     <Content Include="Content\assets\6vacdc.png" />
+    <Content Include="Content\assets\AluminumClampRing.png" />
     <Content Include="Content\assets\AmberFlashingTowerLight.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

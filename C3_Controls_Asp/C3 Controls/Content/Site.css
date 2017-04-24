@@ -217,3 +217,72 @@ div.tabs div.tab-content.transparent {
     border-top:rgba(0,0,0,0.03) 1px solid;
     background:transparent;
 }
+
+
+
+/* For mobile: */
+@media only screen and (max-width: 767px) {
+
+    /* right justifies the 'what-if' buttons*/
+    .panel-title > button {
+        float: right;
+    }
+
+    /* centers images in accordions */
+    .metro {
+        margin-left: 20%;
+    }
+
+    /* resizes drag and drop area */
+    #container_main {
+        width: 270px;
+        height: 200px;
+    }
+
+    /* 'clear all' button moves to left*/
+    .col-md-4 > button {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        float: left;
+    }
+}
+
+/* For tablets: */
+@media only screen and (min-width: 768px) and (max-width: 989px) {
+
+    /* right justifies the 'what-if' buttons*/
+    .panel-title > button {
+        float: right;
+    }
+
+    /* centers images in accordions */
+    .metro {
+        margin-left: 40%;
+    }
+
+    /* resizes and centers drag and drop area */
+    #container_main {
+        margin-left: 30%;
+        width: 270px;
+        height: 200px;
+    }
+}
+
+/* stripped from cshtml */
+.col-md-4 {
+    margin-bottom: 124px;
+}
+
+/* stripped from cshtml */
+.col-md-12 {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+/* Drag and drop area */
+.box {
+    border: 5px solid black;
+    width: 380px;
+    height: 300px;
+    text-align: center;
+}

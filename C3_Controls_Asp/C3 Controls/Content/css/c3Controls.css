@@ -189,30 +189,3 @@
 .get-app img {
     height: 40px;
 }
-
-.box {
-    border: 5px solid black;
-    width: 380px;
-    height: 300px;
-    text-align: center;
-}
-
-.info {
-    border: 5px solid black;
-    width: 790px;
-    height: 100px;
-    text-align: center;
-}
-
-/*Affixed product info*/
-.affix {
-    top: 15px;
-}
-
-/*Drag and drop area*/
-.box {
-    border: 5px solid black;
-    width: 380px;
-    height: 300px;
-    text-align: center;
-}

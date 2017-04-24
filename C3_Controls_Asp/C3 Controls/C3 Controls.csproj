@@ -249,7 +249,9 @@
     <Content Include="Content\assets\img_push_to_test.png" />
     <Content Include="Content\assets\img_towerlight.png" />
     <Content Include="Content\assets\img_voltages.png" />
+    <Content Include="Content\assets\ip20guard.png" />
     <Content Include="Content\assets\logo.gif" />
+    <Content Include="Content\assets\Nothing.png" />
     <Content Include="Content\assets\RedFlashingTowerLight.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -266,8 +268,14 @@
     <Content Include="Content\assets\shrouded_illuminated_push_button.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\assets\sound.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\assets\towerlights.png" />
     <Content Include="Content\assets\WhiteFlashingTowerLight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\assets\WhiteRotaryTowerLight.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\bootstrap.css" />

@@ -152,7 +152,7 @@ namespace C3_Controls.Models.DataStructuring
                             else if (singleItem.Sku.Contains("_NR"))
                                 singleItem.Img = "img_lamp_neon_red.png";
                             else if (singleItem.Name.Equals("No Lamp"))
-                                singleItem.Img = "img_voltages.png";
+                                singleItem.Img = "Nothing.png";
                             //Add her to the list
                             LampColors.Add(singleItem);
                         }
@@ -171,7 +171,7 @@ namespace C3_Controls.Models.DataStructuring
 
 
                             if (singleItem.Name.Contains("Aluminum"))
-                                singleItem.Img = "AluminumClampRing.jpg";
+                                singleItem.Img = "AluminumClampRing.png";
                             else if (singleItem.Name.Contains("Polyester"))
                                 singleItem.Img = "img_clamp_ring_polyester.png";
 
@@ -193,13 +193,13 @@ namespace C3_Controls.Models.DataStructuring
 
                             //assigning image to each item
                             if (singleItem.Sku.Equals("IPBL"))
-                                singleItem.Img = "illuminated.jpg";
+                                singleItem.Img = "illuminated.png";
                             else if (singleItem.Sku.Equals("IPBML"))
-                                singleItem.Img = "illuminated_mushroom.jpg";
+                                singleItem.Img = "illuminated_mushroom.png";
                             else if (singleItem.Sku.Equals("GIPBL"))
-                                singleItem.Img = "illuminated_guarded.jpg";
+                                singleItem.Img = "illuminated_guarded.png";
                             else if (singleItem.Sku.Equals("SIPBML"))
-                                singleItem.Img = "shrouded_illuminated_push_button.jpg";
+                                singleItem.Img = "shrouded_illuminated_push_button.png";
 
                             //Add her to the list
                             LensTypes.Add(singleItem);
@@ -251,7 +251,9 @@ namespace C3_Controls.Models.DataStructuring
                             };
 
                             if (singleItem.Sku.Equals("IPG"))
-                                singleItem.Img = "search.gif";
+                                singleItem.Img = "ip20guard.png";
+                            if (singleItem.Sku.Equals("NIPG"))
+                                singleItem.Img = "Nothing.png";
 
                             Options.Add(singleItem);
                         }

@@ -457,6 +457,21 @@ function applyContraints(_container, _id) {
 }
 
 /**
+ * Determines what constraints should be
+ * applied.
+ * @param _container Child's container
+ * @param _id Child's id
+*/
+function removeContraints(_container, _id) {
+    switch (_container) {
+    case CONTAINER_BASIC:
+        unfilterVoltages(_id);
+        break;
+
+    }
+}
+
+/**
  * Filters the correct voltages based on
  * the child's id. Id should be one of the
  * basic operators.
@@ -478,6 +493,30 @@ function filterVoltages(_id) {
     }
     filter(tiles, allowed);
 }
+
+/**
+ * Filters the correct voltages based on
+ * the child's id. Id should be one of the
+ * basic operators.
+ * @param _id Child's id
+*/
+function unfilterVoltages(_id) {
+    var tiles = getTiles(SLIDE_VOLTAGE);
+    var allowed;
+    switch (_id) {
+    case "item_basic_full_voltage":
+        allowed = ['120V AC/DC', '240V AC/DC', '480V AC/DC', '6V AC/DC', '12V AC/DC', '24V AC/DC', '120V AC/DC', '120V AC', '240V AC', '277V AC', '480V AC'];
+        break;
+    case "item_basic_transformer_(50/60_hz)":
+        allowed = ['120V AC/DC', '240V AC/DC', '480V AC/DC', '6V AC/DC', '12V AC/DC', '24V AC/DC', '120V AC/DC', '120V AC', '240V AC', '277V AC', '480V AC'];
+        break;
+    case "item_basic_resistor":
+        allowed = ['120V AC/DC', '240V AC/DC', '480V AC/DC', '6V AC/DC', '12V AC/DC', '24V AC/DC', '120V AC/DC', '120V AC', '240V AC', '277V AC', '480V AC'];
+        break;
+    }
+    unfilter(tiles, allowed);
+}
+
 
 /**
  * Filters the correct lamp colors based on
@@ -540,7 +579,7 @@ function filter(_tiles, _allowed) {
             }
         }
         if (!found)
-            _tiles[i].remove();
+            _tiles[i].hidden = true;
     }
 }
 
@@ -553,19 +592,16 @@ function filter(_tiles, _allowed) {
  * @param _allowed Collection of names to not filter
 */
 function unfilter(_tiles, _allowed) {
-    //TODO unfilter
+
 
     for (var i = 0; i < _tiles.length; i++) {
         var found = false;
         var title = _tiles[i].getElementsByTagName("img")[0].getAttribute("title");
         for (var j = 0; j < _allowed.length; j++) {
-            if (title == _allowed[j]) {
-                found = true;
-                break;
-            }
+            _tiles[i].hidden = false;
         }
-        if (!found)
-            _tiles[i].addClass();
+        
+            
     }
 }
 
@@ -768,9 +804,11 @@ function removeOperator(event) {
             setProperSku(getContainer(selectedId), "");
             var price = child.dataset.price;
             Cart.subtractPrice(price);
-       // }
+    
     }
+    var container = getContainer(selectedId);
 
+    removeContraints(container, selectedId);
     // Show text updates
 
     displayCartUpdates();
@@ -812,6 +850,7 @@ function removeVoltage(event) {
             setProperSku(getContainer(selectedId), "");
             Cart.subtractPrice(child.dataset.price);
     }
+   
 
     // Show text updates
 

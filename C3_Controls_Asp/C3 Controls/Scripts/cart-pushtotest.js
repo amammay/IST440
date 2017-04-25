@@ -777,33 +777,41 @@ function showSelectedItems() {
  */
 function showOperatorDesc() {
     showModal('Operator Description', 'Choose from one of three options (Full Voltage, Transformer, Resistor) that you wish ' +
-        'to have in use for your light unit. Please note that your selection will limit the available voltages.');
+        'to have in use for your light unit. Please note that your selection will limit the available voltages.' +
+        '<br/><br/><b>Prices</b>' + '<br/>Full Voltage: $46.00' + '<br/>Transformer: $68.00' + '<br/>Resistor: $57.00');
 }
 
 function showVoltageDesc() {
     showModal('Voltage Description', 'The voltage intensity that you would like to have for your product. Please note that this will limit the lamp colors ' +
-        'you will have available.');
+        'you will have available.' + '<br/><br/><b>Prices</b>' + '<br/>There is no additional cost for any voltage option selected.');
 }
 
 function showLampTypeDesc() {
-    showModal('Lamp Type/Color Description', 'The lamp type (if none) or color that you wish to use in the position of your lamp.');
+    showModal('Lamp Type/Color Description', 'The lamp type (if none) or color that you wish to use in the position of your lamp.' +
+        ' <br/><br/><b>Prices</b>' + "<br/>LED (Any color): $18.00" + '<br/>Incandescent: $7.10' + '<br/>Neon Green or Red: $0.00' + 
+        '<br/>No Lamp: -$1.80');
 }
 
 function showClampRingDesc() {
     showModal('Clamp Ring Description', 'The clamp ring type you would like to have for your product. Please note that if Aluminum is selected, ' +
-        'it will limit your available lens types.');
+        'it will limit your available lens types.' + '<br/><br/><b>Prices</b>' + '<br/>Black Polyester (Type 4x): $0.00' +
+        '<br/>Aluminum (Type 4): $4.30');
 }
 
 function showLensTypeDesc() {
-    showModal('Lens Type Description', 'The lens type you wish your product to have.');
+    showModal('Lens Type Description', 'The lens type you wish your product to have.' + '<br/><br/><b>Prices</b>' +
+        '<br/>Illuminated Push Button Lens: $24.00' + '<br/>Illuminated Push Button Mushroom Lens: $36.00' +
+        '<br/>Guarded Illuminated Push Button Lens: $36.00' + '<br/>Shrouded Illuminated Push Button Mushroom Lens: $48.00');
 }
 
 function showLensColorDesc() {
-    showModal('Lens Color Description', 'The color of the lens for the lens type that you wish your product to have');
+    showModal('Lens Color Description', 'The color of the lens for the lens type that you wish your product to have.' +
+        '<br/><br/><b>Prices</b>' + '<br/>There is no additional cost for any lens color selected.');
 }
 
 function showOptionsDesc() {
-    showModal('Options Description', 'An option to have a case added to your product to will help to prevent from accidently bumping.');
+    showModal('Options Description', 'An option to have a case added to your product to help prevent accidental bumping.' +
+        '<br/><br/><b>Prices</b>' + '<br/>None: $0.00' + '<br/>IP20 Guard: $12.00');
 }
 
 

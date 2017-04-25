@@ -458,7 +458,7 @@ function applyContraints(_container, _id) {
 
 /**
  * Determines what constraints should be
- * applied.
+ * removed.
  * @param _container Child's container
  * @param _id Child's id
 */
@@ -568,7 +568,7 @@ function filter(_tiles, _allowed) {
 
 
 /**
- * Filters the correct voltages based on
+ * unFilters the correct voltages based on
  * the child's id. Id should be one of the
  * basic operators.
  * @param _id Child's id
@@ -591,7 +591,7 @@ function unFilterVoltages(_id) {
 }
 
 /**
- * Filters the correct lamp colors based on
+ * unFilters the correct lamp colors based on
  * the child's id. Id should be one of the
  * voltages.
  * @param _id Child's id
@@ -615,7 +615,7 @@ function unFilterLampColors(_id) {
 }
 
 /**
- * Filters the correct lens type based on
+ * unFilters the correct lens type based on
  * the child's id. Id should be one of the
  * clamp rings.
  * @param _id Child's id
@@ -632,9 +632,7 @@ function unFilterLensTypes(_id) {
 
 
 /**
- * unFilters out tiles where the title attribute of
- * the image element doesn't match any of the allowed
- * names.
+ * unFilters out tiles when removing a item
  * @param _tiles Collection of tiles to filter
  * @param _allowed Collection of names to not filter
 */

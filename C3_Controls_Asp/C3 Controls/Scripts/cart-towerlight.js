@@ -946,7 +946,7 @@ function removeLastPostion(event) {
 
         // Check if child is a position item
         if (selectedId.indexOf(CATEGORY_POSITION) >= 0) {
-            Cart.position = "";
+            Cart.position = Cart.position.substring(0, Cart.position.lastIndexOf("-"));
             Cart.subtractPrice(child.dataset.price);
             document.getElementById(CONTAINER_POSITION).removeChild(child);
         }

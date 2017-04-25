@@ -457,6 +457,27 @@ function applyContraints(_container, _id) {
 }
 
 /**
+ * Determines what constraints should be
+ * removed.
+ * @param _container Child's container
+ * @param _id Child's id
+*/
+function removeContraints(_container, _id) {
+    switch (_container) {
+    case CONTAINER_BASIC:
+        unFilterVoltages(_id);
+        break;
+    case CONTAINER_VOLTAGE:
+        unFilterLampColors(_id);
+        break;
+    case CONTAINER_CLAMP_RING:
+        unFilterLensTypes(_id);
+        break;
+
+    }
+}
+
+/**
  * Filters the correct voltages based on
  * the child's id. Id should be one of the
  * basic operators.
@@ -472,7 +493,7 @@ function filterVoltages(_id) {
     case "item_basic_transformer_(50/60_hz)":
         allowed = ['120V AC', '240V AC', '277V AC', '480V AC'];
         break;
-    case "item_basic_resister":
+    case "item_basic_resistor":
         allowed = ['120V AC/DC', '240V AC/DC', '480V AC/DC'];
         break;
     }
@@ -516,11 +537,12 @@ function filterLampColors(_id) {
 function filterLensTypes(_id) {
     switch (_id) {
     case "item_clamp_ring_aluminum_(type_4)":
-        document.getElementById("col_lens_type_guarded_illuminated_lens").remove();
-        document.getElementById("col_lens_type_shrouded_illuminated_mushroom_lens").remove();
+        document.getElementById("col_lens_type_guarded_illuminated_lens").hidden = true;
+        document.getElementById("col_lens_type_shrouded_illuminated_mushroom_lens").hidden = true;
         break;
     }
 }
+
 
 /**
  * Filters out tiles where the title attribute of
@@ -540,30 +562,85 @@ function filter(_tiles, _allowed) {
             }
         }
         if (!found)
-            _tiles[i].remove();
+            _tiles[i].hidden = true;
     }
 }
 
 
 /**
- * Filters out tiles where the title attribute of
- * the image element doesn't match any of the allowed
- * names.
+ * unFilters the correct voltages based on
+ * the child's id. Id should be one of the
+ * basic operators.
+ * @param _id Child's id
+*/
+function unFilterVoltages(_id) {
+    var tiles = getTiles(SLIDE_VOLTAGE);
+    var allowed;
+    switch (_id) {
+    case "item_basic_full_voltage":
+        allowed = ['120V AC/DC', '240V AC/DC', '480V AC/DC', '6V AC/DC', '12V AC/DC', '24V AC/DC', '120V AC/DC', '120V AC', '240V AC', '277V AC', '480V AC'];
+        break;
+    case "item_basic_transformer_(50/60_hz)":
+        allowed = ['120V AC/DC', '240V AC/DC', '480V AC/DC', '6V AC/DC', '12V AC/DC', '24V AC/DC', '120V AC/DC', '120V AC', '240V AC', '277V AC', '480V AC'];
+        break;
+    case "item_basic_resistor":
+        allowed = ['120V AC/DC', '240V AC/DC', '480V AC/DC', '6V AC/DC', '12V AC/DC', '24V AC/DC', '120V AC/DC', '120V AC', '240V AC', '277V AC', '480V AC'];
+        break;
+    }
+    unfilter(tiles, allowed);
+}
+
+/**
+ * unFilters the correct lamp colors based on
+ * the child's id. Id should be one of the
+ * voltages.
+ * @param _id Child's id
+*/
+function unFilterLampColors(_id) {
+    var tiles = getTiles(SLIDE_LAMP_COLOR);
+    var allowed = ['No Lamp', 'Clear Incandescent', 'Amber LED',
+        'Blue LED', 'Green LED', 'Red LED', 'White LED', 'Clear Flashing Incandescent', 'Neon Green', 'Neon Red'];
+    switch (_id) {
+    case "item_voltage_6v_ac/dc":
+    case "item_voltage_120v_ac":
+    case "item_voltage_240v_ac":
+    case "item_voltage_277v_ac":
+    case "item_voltage_480v_ac":
+    case "item_voltage_120v_ac/dc":
+    case "item_voltage_240v_ac/dc":
+    case "item_voltage_480v_ac/dc":
+        break;
+    }
+    unfilter(tiles, allowed);
+}
+
+/**
+ * unFilters the correct lens type based on
+ * the child's id. Id should be one of the
+ * clamp rings.
+ * @param _id Child's id
+*/
+function unFilterLensTypes(_id) {
+    switch (_id) {
+    case "item_clamp_ring_aluminum_(type_4)":
+        document.getElementById("col_lens_type_guarded_illuminated_lens").hidden =false;
+        document.getElementById("col_lens_type_shrouded_illuminated_mushroom_lens").hidden = false;
+        break;
+    }
+}
+
+
+
+/**
+ * unFilters out tiles when removing a item
  * @param _tiles Collection of tiles to filter
  * @param _allowed Collection of names to not filter
 */
 function unfilter(_tiles, _allowed) {
     for (var i = 0; i < _tiles.length; i++) {
-        var found = false;
-        var title = _tiles[i].getElementsByTagName("img")[0].getAttribute("title");
         for (var j = 0; j < _allowed.length; j++) {
-            if (title == _allowed[j]) {
-                found = true;
-                break;
-            }
+            _tiles[i].hidden = false;
         }
-        if (!found)
-            _tiles[i].addClass();
     }
 }
 
@@ -766,11 +843,14 @@ function removeOperator(event) {
             setProperSku(getContainer(selectedId), "");
             var price = child.dataset.price;
             Cart.subtractPrice(price);
-       // }
+    
     }
 
-    // Show text updates
+    //Logic for remvoing a applied filter to a component line
+    var container = getContainer(selectedId);
+    removeContraints(container, selectedId);
 
+    // Show text updates
     displayCartUpdates();
 }
 
@@ -811,8 +891,11 @@ function removeVoltage(event) {
             Cart.subtractPrice(child.dataset.price);
     }
 
-    // Show text updates
+    //Logic for remvoing a applied filter to a component line
+    var container = getContainer(selectedId);
+    removeContraints(container, selectedId);
 
+    // Show text updates
     displayCartUpdates();
 }
 
@@ -893,10 +976,12 @@ function removeClamp(event) {
             setProperSku(getContainer(selectedId), "");
             Cart.subtractPrice(child.dataset.price);
         }
-    
+
+    //Logic for remvoing a applied filter to a component line
+    var container = getContainer(selectedId);
+    removeContraints(container, selectedId);
 
     // Show text updates
-
     displayCartUpdates();
 }
 
@@ -939,7 +1024,6 @@ function removeLensType(event) {
     
 
     // Show text updates
-
     displayCartUpdates();
 }
 
@@ -981,7 +1065,6 @@ function removeLensColor(event) {
         }
 
     // Show text updates
-
     displayCartUpdates();
 }
 
@@ -1023,7 +1106,6 @@ function removeOptions(event) {
         }
 
     // Show text updates
-
     displayCartUpdates();
 }
 

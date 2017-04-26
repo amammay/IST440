@@ -841,7 +841,7 @@ function displayCartUpdates() {
         document.getElementById("generatedImg").src = "../../Content/assets/sorry.png";
     }
 
-     if (tempCart.includes("FVPTT120-AIPBCMAR")) {
+     if (tempCart.includes("AIPBC")) {
         document.getElementById("generatedImg").src = "../../Content/assets/pilot_light_guarded.png";
     }
      else {

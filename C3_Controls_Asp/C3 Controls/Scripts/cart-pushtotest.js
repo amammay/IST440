@@ -856,7 +856,15 @@ function displayCartUpdates() {
     if (tempCart.includes("AIPBC")) {
         document.getElementById("generatedImg").src = "../../Content/assets/pilot_light_guarded.png";
     }
-
+    if (tempCart.includes("IPBCM")) {
+        document.getElementById("generatedImg").src = "../../Content/assets/illuminated_mushroom.png";    
+    }
+    if (tempCart.includes("GIPBC")) {
+        document.getElementById("generatedImg").src = "../../Content/assets/illuminated_guarded.png";
+    }
+    if (tempCart.includes("SIPBCM")) {
+        document.getElementById("generatedImg").src = "../../Content/assets/shrouded_illuminated_push_button.png";
+    }
 
 }
 

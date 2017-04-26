@@ -147,13 +147,13 @@ namespace C3_Controls.Models.DataStructuring
 
                             switch (singleItem.Sku)
                             {
-                                case "24":
+                                case "MC":
                                     singleItem.Img = "24acdc.png";
                                     break;
-                                case "120":
+                                case "D":
                                     singleItem.Img = "120vacdc.png";
                                     break;
-                                case "240":
+                                case "F":
                                     singleItem.Img = "120vac.png";
                                     break;
                                 default:

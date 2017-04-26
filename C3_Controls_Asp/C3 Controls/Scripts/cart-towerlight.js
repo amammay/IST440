@@ -62,7 +62,7 @@ var Cart = {
     },
 
     setBase(b) {
-        this.base = "-" + b;
+        this.base = b;
     },
 
     setVoltage(v) {
@@ -70,10 +70,10 @@ var Cart = {
     },
 
     addPosition(p) {
-        this.position += "-" + p;
+        this.position += p;
     },
     setSound(s) {
-        this.sound = "-" + s;
+        this.sound = s;
     }
 };
 
@@ -926,7 +926,7 @@ function removeLastPostion(event) {
     //This is the specific substring we are searching for this would be the part of the object type
     var subString = "positions";
     var selectedId, child, correctColumn;
-
+    var tempPositionArray = new Array();
     for (var i = 0; i < item.length; i++) {
 
         var tempId = item[i].id;
@@ -936,6 +936,7 @@ function removeLastPostion(event) {
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
                 "_" + getProductName(selectedId);
+            tempPositionArray.push(child);
         }
     }
 
@@ -946,9 +947,21 @@ function removeLastPostion(event) {
 
         // Check if child is a position item
         if (selectedId.indexOf(CATEGORY_POSITION) >= 0) {
+
+            //Clear out the position
             Cart.position = "";
+
             Cart.subtractPrice(child.dataset.price);
             document.getElementById(CONTAINER_POSITION).removeChild(child);
+            tempPositionArray.pop(child);
+
+            //loop through our temp array and set the position to whats left
+            //Sort of hacky but owell
+            for (var j = 0; j < tempPositionArray.length; j++) {
+                Cart.position += tempPositionArray[j].dataset.sku;
+            }
+
+
         }
         else {
             //// Append child to its original parent

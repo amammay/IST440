@@ -42,17 +42,17 @@
                 "Voltage": [
                     {
                         "text": "24V AC/DC",
-                        "sku": "24",
+                        "sku": "MC",
                         "progression": "1"
                     },
                     {
                         "text": "120V 60Hz / 110V 50Hz",
-                        "sku": "120",
+                        "sku": "D",
                         "progression": "1"
                     },
                     {
                         "text": "240V 60Hz / 220V 50Hz",
-                        "sku": "240",
+                        "sku": "F",
                         "progression": "1"
                     }
                 ],

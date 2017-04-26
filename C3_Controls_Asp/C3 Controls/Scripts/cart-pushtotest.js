@@ -31,7 +31,6 @@ const SLIDE_LAMP_COLOR = "slide_lamp_colors";
 const SLIDE_LENS_TYPE = "slide_lens_type";
 
 
-
 // Cart Object
 var Cart = {
     price: 32.00,
@@ -44,52 +43,59 @@ var Cart = {
     lensType: "",
     option: "",
 
-    getSku: function () {
-        return "Sku: " + this.basicOperator + this.operator + + this.voltage +
-            this.lampColor +  this.clampRing + this.lensType + this.lensColor + this.option;
+    getSku: function() {
+        return "Sku: " +
+            this.basicOperator +
+            this.operator +
+            + this.voltage +
+            this.lampColor +
+            this.clampRing +
+            this.lensType +
+            this.lensColor +
+            this.option;
     },
 
-    getPrice: function () {
+    getPrice: function() {
         return "Price: $" + this.price;
     },
 
-    subtractPrice: function (p) {
-        this.price -= parseFloat((Math.round(p * 100) / 100).toFixed(2) ); 
+    subtractPrice: function(p) {
+        this.price -= parseFloat((Math.round(p * 100) / 100).toFixed(2));
     },
 
-    updatePrice: function (p) {
+    updatePrice: function(p) {
         this.price += parseFloat(p);
     },
 
-    setBasic: function (b) {
+    setBasic: function(b) {
         this.basicOperator = b;
     },
 
-    setOperator: function (o) {
+    setOperator: function(o) {
         this.operator = o;
     },
 
-    setVoltage: function (v) {
+    setVoltage: function(v) {
         this.voltage = v;
     },
 
-    setLampColor: function (l) {
+    setLampColor: function(l) {
         this.lampColor = l;
     },
 
-    setClampRing: function (c) {
+    setClampRing: function(c) {
         this.clampRing = "-" + c;
     },
 
-    setLensType: function (l) {
+    setLensType: function(l) {
         this.lensType = l;
     },
 
-    setLensColor: function (l) {
+    setLensColor: function(l) {
         this.lensColor = l;
     },
 
-    setOption: function (o) {
+    setOption: function(o) {
         this.option = "-" + o;
     }
 };
@@ -113,7 +119,7 @@ function allowDrop(ev) {
 
     // Check if item is selected to show remove container
     var child = document.getElementById(ev.target.id);
-    if (child.dataset.selected == 'true') {
+    if (child.dataset.selected == "true") {
         $("#remove_container").removeClass("hidden");
     }
 }
@@ -193,70 +199,68 @@ function manualInputRetrieve() {
 }
 
 
-function submitManualSkuPtt()
-{
+function submitManualSkuPtt() {
     var getInputs = manualInputRetrieve();
     var searchItem, childQuery;
 
-    for (var i = 0; i < getInputs.length; i++)
-    {
+    for (var i = 0; i < getInputs.length; i++) {
 
         //temp value for checking to see if the input is empty
         var checkValue = getInputs[i];
 
         //switch on reocurring skus
         switch (checkValue) {
-            case "NoLamp":
-                childQuery = document.getElementById("item_lamp_color_clear_incandescent");
-                SpecialCart(childQuery);
-                break;
-            case "NoClamp":
-                childQuery = document.getElementById("item_clamp_ring_black_polyester_(type_4x)");
-                SpecialCart(childQuery);
-                break;
-            case "NoOptions":
-                childQuery = document.getElementById("item_option_no_ip20_guard");
-                SpecialCart(childQuery);
-                break;
+        case "NoLamp":
+            childQuery = document.getElementById("item_lamp_color_clear_incandescent");
+            SpecialCart(childQuery);
+            break;
+        case "NoClamp":
+            childQuery = document.getElementById("item_clamp_ring_black_polyester_(type_4x)");
+            SpecialCart(childQuery);
+            break;
+        case "NoOptions":
+            childQuery = document.getElementById("item_option_no_ip20_guard");
+            SpecialCart(childQuery);
+            break;
 
-            case "AlumClampRing":
-                childQuery = document.getElementById("item_clamp_ring_aluminum_(type_4)");
-                SpecialCart(childQuery);
-                break;
+        case "AlumClampRing":
+            childQuery = document.getElementById("item_clamp_ring_aluminum_(type_4)");
+            SpecialCart(childQuery);
+            break;
 
-            default:
-                //serach for a matching data sku that was inputed 
-                searchItem = "[data-sku~=" + "'" + checkValue.toUpperCase() + "'" + "]";
+        default:
+            //serach for a matching data sku that was inputed 
+            searchItem = "[data-sku~=" + "'" + checkValue.toUpperCase() + "'" + "]";
 
-                //query for a child
-                childQuery = document.querySelectorAll(searchItem);
-                var id = childQuery[0].id;
+            //query for a child
+            childQuery = document.querySelectorAll(searchItem);
+            var id = childQuery[0].id;
 
-                var container = getContainer(id);
+            var container = getContainer(id);
 
-                // Check if user already picked an item for this category
-                if (hasItems(container)) {
-                    showWarningModal('Warning', 'You\'ve already selected an item!');
-                    checkRemoveContainer();
-                    return;
-                }
+            // Check if user already picked an item for this category
+            if (hasItems(container)) {
+                showWarningModal("Warning", "You've already selected an item!");
+                checkRemoveContainer();
+                return;
+            }
 
-                // Add child to proper container
-                document.getElementById(container).appendChild(childQuery[0]);
+            // Add child to proper container
+            document.getElementById(container).appendChild(childQuery[0]);
 
-                // Set the correct sku for child
-                setProperSku(container, childQuery[0].dataset.sku);
+            // Set the correct sku for child
+            setProperSku(container, childQuery[0].dataset.sku);
 
-                // Filter other tiles using the container and the name of the item
-                applyContraints(container, id);
+            // Filter other tiles using the container and the name of the item
+            applyContraints(container, id);
 
-                // Set the data selected to true
-                childQuery[0].dataset.selected = true;
-                Cart.updatePrice(childQuery[0].dataset.price);
+            // Set the data selected to true
+            childQuery[0].dataset.selected = true;
+            Cart.updatePrice(childQuery[0].dataset.price);
 
-                // Update text on screen
-                displayCartUpdates();
-                break;
+            // Update text on screen
+            displayCartUpdates();
+            break;
         }
 
     }
@@ -273,7 +277,7 @@ function SpecialCart(item) {
 
     // Check if user already picked an item for this category
     if (hasItems(container)) {
-        showWarningModal('Warning', 'You\'ve already selected an item!');
+        showWarningModal("Warning", "You've already selected an item!");
         checkRemoveContainer();
         return;
     }
@@ -311,7 +315,7 @@ function dropInCart(ev) {
 
     // Check if user already picked an item for this category
     if (hasItems(container)) {
-        showWarningModal('Warning', 'You\'ve already selected an item!');
+        showWarningModal("Warning", "You've already selected an item!");
         checkRemoveContainer();
         return;
     }
@@ -350,7 +354,7 @@ function clickInCart(ev) {
 
     // Check if user already picked an item for this category
     if (hasItems(container)) {
-        showWarningModal('Warning', 'You\'ve already selected an item!');
+        showWarningModal("Warning", "You've already selected an item!");
         checkRemoveContainer();
         return;
     }
@@ -383,10 +387,11 @@ function dropInRemoveContainer(e) {
     var selectedId = e.dataTransfer.getData("part");
     var child = document.getElementById(selectedId);
     var correctColumn = getSelectionColumn(selectedId) +
-        "_" + getProductName(selectedId);
+        "_" +
+        getProductName(selectedId);
 
     // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
+    if (child.dataset.selected == "true") {
         // Set child as not selected anymore
         child.dataset.selected = false;
 
@@ -569,13 +574,13 @@ function filterVoltages(_id) {
     var allowed;
     switch (_id) {
     case "item_basic_full_voltage":
-        allowed = ['6V AC/DC', '12V AC/DC', '24V AC/DC', '120V AC/DC'];
+        allowed = ["6V AC/DC", "12V AC/DC", "24V AC/DC", "120V AC/DC"];
         break;
     case "item_basic_transformer_(50/60_hz)":
-        allowed = ['120V AC', '240V AC', '277V AC', '480V AC'];
+        allowed = ["120V AC", "240V AC", "277V AC", "480V AC"];
         break;
     case "item_basic_resistor":
-        allowed = ['120V AC/DC', '240V AC/DC', '480V AC/DC'];
+        allowed = ["120V AC/DC", "240V AC/DC", "480V AC/DC"];
         break;
     }
     filter(tiles, allowed);
@@ -589,21 +594,23 @@ function filterVoltages(_id) {
 */
 function filterLampColors(_id) {
     var tiles = getTiles(SLIDE_LAMP_COLOR);
-    var allowed = ['No Lamp', 'Clear Incandescent', 'Amber LED',
-        'Blue LED', 'Green LED', 'Red LED', 'White LED'];
+    var allowed = [
+        "No Lamp", "Clear Incandescent", "Amber LED",
+        "Blue LED", "Green LED", "Red LED", "White LED"
+    ];
     switch (_id) {
     case "item_voltage_6v_ac/dc":
     case "item_voltage_120v_ac":
     case "item_voltage_240v_ac":
     case "item_voltage_277v_ac":
     case "item_voltage_480v_ac":
-        allowed.push('Clear Flashing Incandescent');
+        allowed.push("Clear Flashing Incandescent");
         break;
     case "item_voltage_120v_ac/dc":
     case "item_voltage_240v_ac/dc":
     case "item_voltage_480v_ac/dc":
-        allowed.push('Neon Green');
-        allowed.push('Neon Red');
+        allowed.push("Neon Green");
+        allowed.push("Neon Red");
         break;
     }
     filter(tiles, allowed);
@@ -659,13 +666,22 @@ function unFilterVoltages(_id) {
     var allowed;
     switch (_id) {
     case "item_basic_full_voltage":
-        allowed = ['120V AC/DC', '240V AC/DC', '480V AC/DC', '6V AC/DC', '12V AC/DC', '24V AC/DC', '120V AC/DC', '120V AC', '240V AC', '277V AC', '480V AC'];
+        allowed = [
+            "120V AC/DC", "240V AC/DC", "480V AC/DC", "6V AC/DC", "12V AC/DC", "24V AC/DC", "120V AC/DC", "120V AC",
+            "240V AC", "277V AC", "480V AC"
+        ];
         break;
     case "item_basic_transformer_(50/60_hz)":
-        allowed = ['120V AC/DC', '240V AC/DC', '480V AC/DC', '6V AC/DC', '12V AC/DC', '24V AC/DC', '120V AC/DC', '120V AC', '240V AC', '277V AC', '480V AC'];
+        allowed = [
+            "120V AC/DC", "240V AC/DC", "480V AC/DC", "6V AC/DC", "12V AC/DC", "24V AC/DC", "120V AC/DC", "120V AC",
+            "240V AC", "277V AC", "480V AC"
+        ];
         break;
     case "item_basic_resistor":
-        allowed = ['120V AC/DC', '240V AC/DC', '480V AC/DC', '6V AC/DC', '12V AC/DC', '24V AC/DC', '120V AC/DC', '120V AC', '240V AC', '277V AC', '480V AC'];
+        allowed = [
+            "120V AC/DC", "240V AC/DC", "480V AC/DC", "6V AC/DC", "12V AC/DC", "24V AC/DC", "120V AC/DC", "120V AC",
+            "240V AC", "277V AC", "480V AC"
+        ];
         break;
     }
     unfilter(tiles, allowed);
@@ -679,8 +695,10 @@ function unFilterVoltages(_id) {
 */
 function unFilterLampColors(_id) {
     var tiles = getTiles(SLIDE_LAMP_COLOR);
-    var allowed = ['No Lamp', 'Clear Incandescent', 'Amber LED',
-        'Blue LED', 'Green LED', 'Red LED', 'White LED', 'Clear Flashing Incandescent', 'Neon Green', 'Neon Red'];
+    var allowed = [
+        "No Lamp", "Clear Incandescent", "Amber LED",
+        "Blue LED", "Green LED", "Red LED", "White LED", "Clear Flashing Incandescent", "Neon Green", "Neon Red"
+    ];
     switch (_id) {
     case "item_voltage_6v_ac/dc":
     case "item_voltage_120v_ac":
@@ -704,12 +722,11 @@ function unFilterLampColors(_id) {
 function unFilterLensTypes(_id) {
     switch (_id) {
     case "item_clamp_ring_aluminum_(type_4)":
-        document.getElementById("col_lens_type_guarded_illuminated_lens").hidden =false;
+        document.getElementById("col_lens_type_guarded_illuminated_lens").hidden = false;
         document.getElementById("col_lens_type_shrouded_illuminated_mushroom_lens").hidden = false;
         break;
     }
 }
-
 
 
 /**
@@ -822,32 +839,25 @@ function displayCartUpdates() {
 
     if (tempCart.includes("RD")) {
         document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_red.png";
-    }
-    else if (tempCart.includes("GN")) {
+    } else if (tempCart.includes("GN")) {
         document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_green.png";
-    }
-    else if (tempCart.includes("YW")) {
+    } else if (tempCart.includes("YW")) {
         document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_yellow.png";
-    }
-    else if (tempCart.includes("BE")) {
+    } else if (tempCart.includes("BE")) {
         document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_blue.png";
-    }
-    else if (tempCart.includes("AR")) {
+    } else if (tempCart.includes("AR")) {
         document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_amber.png";
-    }
-    else if (tempCart.includes("WE")) {
+    } else if (tempCart.includes("WE")) {
         document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_white.png";
     } else {
         document.getElementById("generatedImg").src = "../../Content/assets/sorry.png";
     }
 
-     if (tempCart.includes("AIPBC")) {
+    if (tempCart.includes("AIPBC")) {
         document.getElementById("generatedImg").src = "../../Content/assets/pilot_light_guarded.png";
+    } else {
+        document.getElementById("generatedImg").src = "../../Content/assets/sorry.png";
     }
-     else {
-         document.getElementById("generatedImg").src = "../../Content/assets/sorry.png";
-     }
-
 
 
 }
@@ -862,7 +872,7 @@ function findSelectedItems() {
     var items = document.getElementsByClassName("metro");
     var selItems = new Array();
     for (var i = 0; i < items.length; i++) {
-        if (items[i].dataset.selected == 'true')
+        if (items[i].dataset.selected == "true")
             selItems.push(items[i]);
     }
     return selItems;
@@ -882,7 +892,7 @@ function showSelectedItems() {
         content += "Item: " + title + "<br />" + "Cost: $" + price + "<br /><br />";
     }
     content += "<b>Total Price: </b>$" + Cart.price;
-    showModal('Product Details', content);
+    showModal("Product Details", content);
 }
 
 
@@ -890,42 +900,65 @@ function showSelectedItems() {
  * Functions to show details for the individual parts 
  */
 function showOperatorDesc() {
-    showModal('Operator Description', 'Choose from one of three options (Full Voltage, Transformer, Resistor) that you wish ' +
-        'to have in use for your light unit. Please note that your selection will limit the available voltages.' +
-        '<br/><br/><b>Prices</b>' + '<br/>Full Voltage: $46.00' + '<br/>Transformer: $68.00' + '<br/>Resistor: $57.00');
+    showModal("Operator Description",
+        "Choose from one of three options (Full Voltage, Transformer, Resistor) that you wish " +
+        "to have in use for your light unit. Please note that your selection will limit the available voltages." +
+        "<br/><br/><b>Prices</b>" +
+        "<br/>Full Voltage: $46.00" +
+        "<br/>Transformer: $68.00" +
+        "<br/>Resistor: $57.00");
 }
 
 function showVoltageDesc() {
-    showModal('Voltage Description', 'The voltage intensity that you would like to have for your product. Please note that this will limit the lamp colors ' +
-        'you will have available.' + '<br/><br/><b>Prices</b>' + '<br/>There is no additional cost for any voltage option selected.');
+    showModal("Voltage Description",
+        "The voltage intensity that you would like to have for your product. Please note that this will limit the lamp colors " +
+        "you will have available." +
+        "<br/><br/><b>Prices</b>" +
+        "<br/>There is no additional cost for any voltage option selected.");
 }
 
 function showLampTypeDesc() {
-    showModal('Lamp Type/Color Description', 'The lamp type (if none) or color that you wish to use in the position of your lamp.' +
-        ' <br/><br/><b>Prices</b>' + "<br/>LED (Any color): $18.00" + '<br/>Incandescent: $7.10' + '<br/>Neon Green or Red: $0.00' + 
-        '<br/>No Lamp: -$1.80');
+    showModal("Lamp Type/Color Description",
+        "The lamp type (if none) or color that you wish to use in the position of your lamp." +
+        " <br/><br/><b>Prices</b>" +
+        "<br/>LED (Any color): $18.00" +
+        "<br/>Incandescent: $7.10" +
+        "<br/>Neon Green or Red: $0.00" +
+        "<br/>No Lamp: -$1.80");
 }
 
 function showClampRingDesc() {
-    showModal('Clamp Ring Description', 'The clamp ring type you would like to have for your product. Please note that if Aluminum is selected, ' +
-        'it will limit your available lens types.' + '<br/><br/><b>Prices</b>' + '<br/>Black Polyester (Type 4x): $0.00' +
-        '<br/>Aluminum (Type 4): $4.30');
+    showModal("Clamp Ring Description",
+        "The clamp ring type you would like to have for your product. Please note that if Aluminum is selected, " +
+        "it will limit your available lens types." +
+        "<br/><br/><b>Prices</b>" +
+        "<br/>Black Polyester (Type 4x): $0.00" +
+        "<br/>Aluminum (Type 4): $4.30");
 }
 
 function showLensTypeDesc() {
-    showModal('Lens Type Description', 'The lens type you wish your product to have.' + '<br/><br/><b>Prices</b>' +
-        '<br/>Illuminated Push Button Lens: $24.00' + '<br/>Illuminated Push Button Mushroom Lens: $36.00' +
-        '<br/>Guarded Illuminated Push Button Lens: $36.00' + '<br/>Shrouded Illuminated Push Button Mushroom Lens: $48.00');
+    showModal("Lens Type Description",
+        "The lens type you wish your product to have." +
+        "<br/><br/><b>Prices</b>" +
+        "<br/>Illuminated Push Button Lens: $24.00" +
+        "<br/>Illuminated Push Button Mushroom Lens: $36.00" +
+        "<br/>Guarded Illuminated Push Button Lens: $36.00" +
+        "<br/>Shrouded Illuminated Push Button Mushroom Lens: $48.00");
 }
 
 function showLensColorDesc() {
-    showModal('Lens Color Description', 'The color of the lens for the lens type that you wish your product to have.' +
-        '<br/><br/><b>Prices</b>' + '<br/>There is no additional cost for any lens color selected.');
+    showModal("Lens Color Description",
+        "The color of the lens for the lens type that you wish your product to have." +
+        "<br/><br/><b>Prices</b>" +
+        "<br/>There is no additional cost for any lens color selected.");
 }
 
 function showOptionsDesc() {
-    showModal('Options Description', 'An option to have a case added to your product to help prevent accidental bumping.' +
-        '<br/><br/><b>Prices</b>' + '<br/>None: $0.00' + '<br/>IP20 Guard: $12.00');
+    showModal("Options Description",
+        "An option to have a case added to your product to help prevent accidental bumping." +
+        "<br/><br/><b>Prices</b>" +
+        "<br/>None: $0.00" +
+        "<br/>IP20 Guard: $12.00");
 }
 
 
@@ -949,23 +982,24 @@ function removeOperator(event) {
             child = item[i];
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
-                "_" + getProductName(selectedId);
+                "_" +
+                getProductName(selectedId);
         }
     }
 
     // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
+    if (child.dataset.selected == "true") {
         // Set child as not selected anymore
-        child.dataset.selected = 'false';
+        child.dataset.selected = "false";
 
-            //// Append child to its original parent
-            parent = document.getElementById(correctColumn);
-            parent.appendChild(child);
+        //// Append child to its original parent
+        parent = document.getElementById(correctColumn);
+        parent.appendChild(child);
 
-            setProperSku(getContainer(selectedId), "");
-            var price = child.dataset.price;
-            Cart.subtractPrice(price);
-    
+        setProperSku(getContainer(selectedId), "");
+        var price = child.dataset.price;
+        Cart.subtractPrice(price);
+
     }
 
     //Logic for remvoing a applied filter to a component line
@@ -996,21 +1030,22 @@ function removeVoltage(event) {
             child = item[i];
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
-                "_" + getProductName(selectedId);
+                "_" +
+                getProductName(selectedId);
         }
     }
 
     // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
+    if (child.dataset.selected == "true") {
         // Set child as not selected anymore
-        child.dataset.selected = 'false';
+        child.dataset.selected = "false";
 
-            //// Append child to its original parent
-            var parent = document.getElementById(correctColumn);
-            parent.appendChild(child);
+        //// Append child to its original parent
+        var parent = document.getElementById(correctColumn);
+        parent.appendChild(child);
 
-            setProperSku(getContainer(selectedId), "");
-            Cart.subtractPrice(child.dataset.price);
+        setProperSku(getContainer(selectedId), "");
+        Cart.subtractPrice(child.dataset.price);
     }
 
     //Logic for remvoing a applied filter to a component line
@@ -1041,22 +1076,23 @@ function removeLamp(event) {
             child = item[i];
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
-                "_" + getProductName(selectedId);
+                "_" +
+                getProductName(selectedId);
         }
     }
 
     // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
+    if (child.dataset.selected == "true") {
         // Set child as not selected anymore
-        child.dataset.selected = 'false';
-            //// Append child to its original parent
-            var parent = document.getElementById(correctColumn);
-            parent.appendChild(child);
+        child.dataset.selected = "false";
+        //// Append child to its original parent
+        var parent = document.getElementById(correctColumn);
+        parent.appendChild(child);
 
-            setProperSku(getContainer(selectedId), "");
-            Cart.subtractPrice(child.dataset.price);
-        }
-    
+        setProperSku(getContainer(selectedId), "");
+        Cart.subtractPrice(child.dataset.price);
+    }
+
 
     // Show text updates
 
@@ -1083,21 +1119,22 @@ function removeClamp(event) {
             child = item[i];
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
-                "_" + getProductName(selectedId);
+                "_" +
+                getProductName(selectedId);
         }
     }
 
     // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
+    if (child.dataset.selected == "true") {
         // Set child as not selected anymore
-        child.dataset.selected = 'false';
-            //// Append child to its original parent
-            var parent = document.getElementById(correctColumn);
-            parent.appendChild(child);
+        child.dataset.selected = "false";
+        //// Append child to its original parent
+        var parent = document.getElementById(correctColumn);
+        parent.appendChild(child);
 
-            setProperSku(getContainer(selectedId), "");
-            Cart.subtractPrice(child.dataset.price);
-        }
+        setProperSku(getContainer(selectedId), "");
+        Cart.subtractPrice(child.dataset.price);
+    }
 
     //Logic for remvoing a applied filter to a component line
     var container = getContainer(selectedId);
@@ -1127,23 +1164,24 @@ function removeLensType(event) {
             child = item[i];
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
-                "_" + getProductName(selectedId);
+                "_" +
+                getProductName(selectedId);
         }
     }
 
     // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
+    if (child.dataset.selected == "true") {
         // Set child as not selected anymore
-        child.dataset.selected = 'false';
+        child.dataset.selected = "false";
 
-            //// Append child to its original parent
-            var parent = document.getElementById(correctColumn);
-            parent.appendChild(child);
+        //// Append child to its original parent
+        var parent = document.getElementById(correctColumn);
+        parent.appendChild(child);
 
-            setProperSku(getContainer(selectedId), "");
-            Cart.subtractPrice(child.dataset.price);
-        }
-    
+        setProperSku(getContainer(selectedId), "");
+        Cart.subtractPrice(child.dataset.price);
+    }
+
 
     // Show text updates
     displayCartUpdates();
@@ -1169,22 +1207,23 @@ function removeLensColor(event) {
             child = item[i];
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
-                "_" + getProductName(selectedId);
+                "_" +
+                getProductName(selectedId);
         }
     }
 
     // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
+    if (child.dataset.selected == "true") {
         // Set child as not selected anymore
-        child.dataset.selected = 'false';
+        child.dataset.selected = "false";
 
-            //// Append child to its original parent
-            var parent = document.getElementById(correctColumn);
-            parent.appendChild(child);
+        //// Append child to its original parent
+        var parent = document.getElementById(correctColumn);
+        parent.appendChild(child);
 
-            setProperSku(getContainer(selectedId), "");
-            Cart.subtractPrice(child.dataset.price);
-        }
+        setProperSku(getContainer(selectedId), "");
+        Cart.subtractPrice(child.dataset.price);
+    }
 
     // Show text updates
     displayCartUpdates();
@@ -1210,22 +1249,23 @@ function removeOptions(event) {
             child = item[i];
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
-                "_" + getProductName(selectedId);
+                "_" +
+                getProductName(selectedId);
         }
     }
 
     // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
+    if (child.dataset.selected == "true") {
         // Set child as not selected anymore
-        child.dataset.selected = 'false';
+        child.dataset.selected = "false";
 
-            //// Append child to its original parent
-            var parent = document.getElementById(correctColumn);
-            parent.appendChild(child);
+        //// Append child to its original parent
+        var parent = document.getElementById(correctColumn);
+        parent.appendChild(child);
 
-            setProperSku(getContainer(selectedId), "");
-            Cart.subtractPrice(child.dataset.price);
-        }
+        setProperSku(getContainer(selectedId), "");
+        Cart.subtractPrice(child.dataset.price);
+    }
 
     // Show text updates
     displayCartUpdates();
@@ -1238,32 +1278,106 @@ function removeOptions(event) {
 function addToCart() {
     // Let's check if the user has selected everything we need to build the part
     if (!hasItems(CONTAINER_BASIC)) {
-        showErrorModal('Missing Items', 'Please select a basic operator!');
+        showErrorModal("Missing Items", "Please select a basic operator!");
         return;
     }
     if (!hasItems(CONTAINER_VOLTAGE)) {
-        showErrorModal('Missing Items', 'Please select a voltage!');
+        showErrorModal("Missing Items", "Please select a voltage!");
         return;
     }
     if (!hasItems(CONTAINER_LAMP_COLOR)) {
-        showErrorModal('Missing Items', 'Please select a lamp color!');
+        showErrorModal("Missing Items", "Please select a lamp color!");
         return;
     }
     if (!hasItems(CONTAINER_LENS_COLOR)) {
-        showErrorModal('Missing Items', 'Please select a lens color!');
+        showErrorModal("Missing Items", "Please select a lens color!");
         return;
     }
     if (!hasItems(CONTAINER_CLAMP_RING)) {
-        showErrorModal('Missing Items', 'Please select a clamp ring!');
+        showErrorModal("Missing Items", "Please select a clamp ring!");
         return;
     }
     if (!hasItems(CONTAINER_LENS_TYPE)) {
-        showErrorModal('Missing Items', 'Please select a lens type!');
+        showErrorModal("Missing Items", "Please select a lens type!");
         return;
     }
     if (!hasItems(CONTAINER_OPTION)) {
-        showErrorModal('Missing Items', 'Please select a option!');
+        showErrorModal("Missing Items", "Please select a option!");
         return;
     }
-    showModal('Success', 'Push-to-Test item added to cart!');
+    showModal("Success", "Push-to-Test item added to cart!");
+
+    dateTimeChecker();
+}
+function dateTimeChecker() {
+
+    // placing order and checks timestap to determine if same day shipping is availible
+    var d = new Date();
+    var hour = d.getHours();
+    var day = d.getDay();
+
+    switch (day) {
+    case 0:
+        showErrorModal("error", "Your item will ship the next business day");
+
+        break;
+    case 1:
+
+        if (hour >= 8 == hour <= 18) {
+            showModal("success!", "your item will be shipped today!");
+
+        } else {
+            showErrorModal("error", "Your item will ship the next business day");
+
+        }
+        break;
+    case 2:
+
+        if (hour >= 8 == hour <= 18) {
+            showModal("success!", "your item will be shipped today!");
+
+        } else {
+            showErrorModal("error", "Your item will ship the next business day");
+
+        }
+        break;
+    case 3:
+
+        if (hour >= 8 == hour <= 18) {
+            showModal("success!", "your item will be shipped today!");
+
+        } else {
+            showErrorModal("error", "Your item will ship the next business day");
+
+        }
+        break;
+    case 4:
+
+        if (hour >= 8 == hour <= 18) {
+            showModal("success!", "your item will be shipped today!");
+
+        } else {
+            showErrorModal("error", "Your item will ship the next business day");
+
+        }
+        break;
+    case 5:
+
+        if (hour >= 8 == hour <= 18) {
+            showModal("success!", "your item will be shipped today!");
+
+        } else {
+            showErrorModal("error", "Your item will ship the next business day");
+
+        }
+        break;
+
+    case 6:
+        showErrorModal("error", "Your item will ship the next business day");
+
+    default:
+        showModal("Success", "Your item will be ship Today");
+
+        break;
+    }
 }

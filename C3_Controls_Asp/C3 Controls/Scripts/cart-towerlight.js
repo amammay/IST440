@@ -26,7 +26,6 @@ const LAST_ALLOWED_POSITIONS = [
 // Variables
 
 
-
 var Cart = {
     price: 8,
     operator: "",
@@ -98,7 +97,7 @@ function allowDrop(ev) {
 
     // Check if item is selected to show remove container
     var child = document.getElementById(ev.target.id);
-    if (child.dataset.selected == 'true') {
+    if (child.dataset.selected == "true") {
         $("#remove_container").removeClass("hidden");
     }
 }
@@ -122,7 +121,7 @@ function manualInputRetrieve() {
 
     var baseMaterial = document.getElementById("baseMaterialSku").value.toUpperCase();
     if (!baseMaterial.includes(subStringBase)) {
-        showWarningModal('Warning', 'You\'ve entered a invalid base!');
+        showWarningModal("Warning", "You've entered a invalid base!");
         return null;
     }
 
@@ -132,7 +131,7 @@ function manualInputRetrieve() {
     for (var i = 0; i < voltages.length; i++) {
         if (!voltage.includes(voltages[i])) {
             iteratorBool = true;
-            
+
         }
         if (voltage.includes(voltages[i])) {
             break;
@@ -142,7 +141,7 @@ function manualInputRetrieve() {
         if (iteratorBool) {
             //did we max out the array?
             if (i == lengthOfArray) {
-                showWarningModal('Warning', 'You\'ve entered a invalid voltage!');
+                showWarningModal("Warning", "You've entered a invalid voltage!");
                 return null;
             }
         }
@@ -157,11 +156,11 @@ function manualInputRetrieve() {
     //make sure soundmodule isnt blank
     if (!soundModule == "") {
         if (!soundModule.includes(subStringSound)) {
-            showWarningModal('Warning', 'You\'ve entered a invalid sound moudle!');
+            showWarningModal("Warning", "You've entered a invalid sound moudle!");
             return null;
         }
     }
-   
+
     tempSkuArray.push(baseMaterial);
     tempSkuArray.push(voltage);
     tempSkuArray.push(position1);
@@ -201,7 +200,7 @@ function submitManaulSku() {
             // Check if item isn't a position item
             if (container != CONTAINER_POSITION) {
                 if (hasItems(container)) {
-                    showWarningModal('Warning', 'You\'ve already selected an item!');
+                    showWarningModal("Warning", "You've already selected an item!");
 
                     // Check if should hide remove container
                     checkRemoveContainer(childQuery[0]);
@@ -227,9 +226,9 @@ function submitManaulSku() {
                     Cart.updatePrice(childQuery[0].dataset.price);
                     updateDisplay();
                 } else {
-                    showWarningModal('You can\'t select any more positions',
-                        'You\'ve chosen ' +
-                        'a sound module or have all five positions selected!');
+                    showWarningModal("You can't select any more positions",
+                        "You've chosen " +
+                        "a sound module or have all five positions selected!");
 
                     // Check if should hide remove container
                     checkRemoveContainer(childQuery[0]);
@@ -238,7 +237,6 @@ function submitManaulSku() {
             }
         }
     }
-
 
 
 }
@@ -261,7 +259,7 @@ function dropInCart(ev) {
     // Check if item isn't a position item
     if (container != CONTAINER_POSITION) {
         if (hasItems(container)) {
-            showWarningModal('Warning', 'You\'ve already selected an item!');
+            showWarningModal("Warning", "You've already selected an item!");
 
             // Check if should hide remove container
             checkRemoveContainer(child);
@@ -281,8 +279,9 @@ function dropInCart(ev) {
             document.getElementById(container).appendChild(copyTile(child));
             Cart.addPosition(child.dataset.sku);
         } else {
-            showWarningModal('You can\'t select any more positions', 'You\'ve chosen ' +
-                'a sound module or have all five positions selected!');
+            showWarningModal("You can't select any more positions",
+                "You've chosen " +
+                "a sound module or have all five positions selected!");
 
             // Check if should hide remove container
             checkRemoveContainer(child);
@@ -314,7 +313,7 @@ function clickInCart(ev) {
     // Check if item isn't a position item
     if (container != CONTAINER_POSITION) {
         if (hasItems(container)) {
-            showWarningModal('Warning', 'You\'ve already selected an item!');
+            showWarningModal("Warning", "You've already selected an item!");
 
             // Check if should hide remove container
             checkRemoveContainer(child);
@@ -334,8 +333,9 @@ function clickInCart(ev) {
             document.getElementById(container).appendChild(copyTile(child));
             Cart.addPosition(child.dataset.sku);
         } else {
-            showWarningModal('You can\'t select any more positions', 'You\'ve chosen ' +
-                'a sound module or have all five positions selected!');
+            showWarningModal("You can't select any more positions",
+                "You've chosen " +
+                "a sound module or have all five positions selected!");
 
             // Check if should hide remove container
             checkRemoveContainer(child);
@@ -360,20 +360,20 @@ function dropInRemoveContainer(e) {
     var selectedId = e.dataTransfer.getData("part");
     var child = document.getElementById(selectedId);
     var correctColumn = getSelectionColumn(selectedId) +
-        "_" + getProductName(selectedId);
+        "_" +
+        getProductName(selectedId);
 
     // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
+    if (child.dataset.selected == "true") {
         // Set child as not selected anymore
-        child.dataset.selected = 'false';
+        child.dataset.selected = "false";
 
         // Check if child is a position item
         if (selectedId.indexOf(CATEGORY_POSITION) >= 0) {
             Cart.position = "";
             Cart.subtractPrice(child.dataset.price);
             document.getElementById(CONTAINER_POSITION).removeChild(child);
-        }
-        else {
+        } else {
             // Append child to its original parent
             var parent = document.getElementById(correctColumn);
             parent.appendChild(child);
@@ -465,16 +465,16 @@ function getContainer(_id) {
 */
 function setProperSku(_container, _sku) {
     switch (_container) {
-        case CONTAINER_STYLE:
-            Cart.setBase(_sku);
-            break;
-        case CONTAINER_VOLTAGE:
-            Cart.setVoltage(_sku);
-            break;
-        case CONTAINER_SOUND:
-            Cart.setSound(_sku)
-            break;  
-     
+    case CONTAINER_STYLE:
+        Cart.setBase(_sku);
+        break;
+    case CONTAINER_VOLTAGE:
+        Cart.setVoltage(_sku);
+        break;
+    case CONTAINER_SOUND:
+        Cart.setSound(_sku);
+        break;
+
     }
 }
 
@@ -488,7 +488,7 @@ function findSelectedItems() {
     var items = document.getElementsByClassName("metro");
     var selItems = new Array();
     for (var i = 0; i < items.length; i++) {
-        if (items[i].dataset.selected == 'true')
+        if (items[i].dataset.selected == "true")
             selItems.push(items[i]);
     }
     return selItems;
@@ -509,31 +509,61 @@ function showSelectedItems() {
         content += "Item: " + title + "<br />" + "Cost: $" + price + "<br /><br />";
     }
     content += "<b>Total Price: </b>$" + Cart.price;
-    showModal('Product Details', content);
+    showModal("Product Details", content);
 }
 
 /**
  * What's This buttons in Accordian'
  */
 function whatsThisBase() {
-    content = "The Base is the bottom section of your Tower Light. What base to choose is dependent on how tall you want your light to be." + "<br/><br/>" + "<b>Prices</b>" + "<br/>" + "Direct Mount: $48.50" + "<br/>" + "Short Base: $48.50" + "<br/>" + "Tall Base: $48.50";
+    content =
+        "The Base is the bottom section of your Tower Light. What base to choose is dependent on how tall you want your light to be." +
+        "<br/><br/>" +
+        "<b>Prices</b>" +
+        "<br/>" +
+        "Direct Mount: $48.50" +
+        "<br/>" +
+        "Short Base: $48.50" +
+        "<br/>" +
+        "Tall Base: $48.50";
     showModal("Base Style", content);
 }
+
 function whatsThisLamp() {
-    content = "There are two styles: Clear and Opaque. There are three types: Continuous, Flashing, and Rotary (Spinning). There are several colors to choose from as well." + "<br/><br/>" + "<b>Prices</b>" + "<br/>" + "Opaque and Clear Lenses" + "<br/>" + "Continuous: $48.50" + "<br/>" + "Flashing: $61.00" + "<br/>" + "Rotary: $61.00";
+    content =
+        "There are two styles: Clear and Opaque. There are three types: Continuous, Flashing, and Rotary (Spinning). There are several colors to choose from as well." +
+        "<br/><br/>" +
+        "<b>Prices</b>" +
+        "<br/>" +
+        "Opaque and Clear Lenses" +
+        "<br/>" +
+        "Continuous: $48.50" +
+        "<br/>" +
+        "Flashing: $61.00" +
+        "<br/>" +
+        "Rotary: $61.00";
     showModal("Lamp Style", content);
 }
+
 function whatsThisSound() {
-    content = "The Sound Module is the top section of the towerlight. It emits a tone for any reason you may want" + "<br/><br/>" + "<b>Prices</b>" + "<br/>" + "Continuous 80dB: $82.00" + "<br/>" + "Intermittent 80dB: $82.00";
+    content = "The Sound Module is the top section of the towerlight. It emits a tone for any reason you may want" +
+        "<br/><br/>" +
+        "<b>Prices</b>" +
+        "<br/>" +
+        "Continuous 80dB: $82.00" +
+        "<br/>" +
+        "Intermittent 80dB: $82.00";
     showModal("Sound Module", content);
 }
+
 function whatsThisVoltage() {
-    content = "Voltage Style depends on what type of power you are using where the Tower Light is placed" + "<br/><br/>" + "<b>Prices</b>" + "<br/>" + "There is no extra cost for any voltage style.";
+    content = "Voltage Style depends on what type of power you are using where the Tower Light is placed" +
+        "<br/><br/>" +
+        "<b>Prices</b>" +
+        "<br/>" +
+        "There is no extra cost for any voltage style.";
     showModal("Voltage", content);
 }
-
-
-
 
 
 /**
@@ -581,9 +611,11 @@ function allowAnotherPosition() {
 */
 function copyTile(_child) {
     var newChild = _child.cloneNode(true);
-    var attr = newChild.getAttribute("id") + document.getElementById(CONTAINER_POSITION).getElementsByClassName("metro").length + 1;
-    newChild.setAttribute("id", attr)
-    newChild.setAttribute("data-selected", 'true');
+    var attr = newChild.getAttribute("id") +
+        document.getElementById(CONTAINER_POSITION).getElementsByClassName("metro").length +
+        1;
+    newChild.setAttribute("id", attr);
+    newChild.setAttribute("data-selected", "true");
     return newChild;
 }
 
@@ -665,41 +697,28 @@ function showErrorModal(_title, _content) {
 function addToCart() {
     // Let's check if the user has selected everything we need to build the part
     if (!hasItems(CONTAINER_STYLE)) {
-        showErrorModal('Missing Items', 'Please select a style!');
+        showErrorModal("Missing Items", "Please select a style!");
         return;
     }
     if (!hasItems(CONTAINER_VOLTAGE)) {
-        showErrorModal('Missing Items', 'Please select a voltage!');
+        showErrorModal("Missing Items", "Please select a voltage!");
         return;
     }
     if (!hasItems(CONTAINER_POSITION)) {
-        showErrorModal('Missing Items', 'Please select at least one position!');
+        showErrorModal("Missing Items", "Please select at least one position!");
         return;
     }
-    showModal('Success', 'World Tower Light added to cart!');
+    showModal("Success", "World Tower Light added to cart!");
 
     dateTimeChecker();
 }
+
 function dateTimeChecker() {
 
     // placing order and checks timestap to determine if same day shipping is availible
     var d = new Date();
     var hour = d.getHours();
     var day = d.getDay();
-
-    //if (day == 1, day == 2, day == 3, day == 4, day == 5) {
-    //    if (hour >= 8 == hour <= 18) {
-    //        showModal("success!", "your item will be shipped today!");
-    //        return;
-    //    } else {
-    //        showErrorModal("error", "Your item will ship the next business day");
-    //        return;
-    //    } 
-    //} else {
-    //    showErrorModal("error", "Your item will ship the next business day");
-    //    return;
-    //}
-
 
     switch (day) {
     case 0:
@@ -787,22 +806,22 @@ function removeStyle(event) {
             child = item[i];
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
-                "_" + getProductName(selectedId);
+                "_" +
+                getProductName(selectedId);
         }
     }
 
     // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
+    if (child.dataset.selected == "true") {
         // Set child as not selected anymore
-        child.dataset.selected = 'false';
+        child.dataset.selected = "false";
 
         // Check if child is a position item
         if (selectedId.indexOf(CATEGORY_POSITION) >= 0) {
             Cart.position = "";
             Cart.subtractPrice(child.dataset.price);
             document.getElementById(CONTAINER_POSITION).removeChild(child);
-        }
-        else {
+        } else {
             //// Append child to its original parent
             var parent = document.getElementById(correctColumn);
             parent.appendChild(child);
@@ -815,6 +834,7 @@ function removeStyle(event) {
     // Show text updates
     updateDisplay();
 }
+
 /**
  *
  * Function for removing a style 
@@ -835,22 +855,22 @@ function removeSoundModule(event) {
             child = item[i];
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
-                "_" + getProductName(selectedId);
+                "_" +
+                getProductName(selectedId);
         }
     }
 
     // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
+    if (child.dataset.selected == "true") {
         // Set child as not selected anymore
-        child.dataset.selected = 'false';
+        child.dataset.selected = "false";
 
         // Check if child is a position item
         if (selectedId.indexOf(CATEGORY_POSITION) >= 0) {
             Cart.position = "";
             Cart.subtractPrice(child.dataset.price);
             document.getElementById(CONTAINER_POSITION).removeChild(child);
-        }
-        else {
+        } else {
             //// Append child to its original parent
             var parent = document.getElementById(correctColumn);
             parent.appendChild(child);
@@ -884,22 +904,22 @@ function removeVoltage(event) {
             child = item[i];
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
-                "_" + getProductName(selectedId);
+                "_" +
+                getProductName(selectedId);
         }
     }
 
     // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
+    if (child.dataset.selected == "true") {
         // Set child as not selected anymore
-        child.dataset.selected = 'false';
+        child.dataset.selected = "false";
 
         // Check if child is a position item
         if (selectedId.indexOf(CATEGORY_POSITION) >= 0) {
             Cart.position = "";
             Cart.subtractPrice(child.dataset.price);
             document.getElementById(CONTAINER_POSITION).removeChild(child);
-        }
-        else {
+        } else {
             //// Append child to its original parent
             var parent = document.getElementById(correctColumn);
             parent.appendChild(child);
@@ -912,7 +932,6 @@ function removeVoltage(event) {
     // Show text updates
     updateDisplay();
 }
-
 
 
 /**
@@ -935,15 +954,16 @@ function removeLastPostion(event) {
             child = item[i];
             selectedId = tempId;
             correctColumn = getSelectionColumn(selectedId) +
-                "_" + getProductName(selectedId);
+                "_" +
+                getProductName(selectedId);
             tempPositionArray.push(child);
         }
     }
 
     // Make sure the child is a selected child
-    if (child.dataset.selected == 'true') {
+    if (child.dataset.selected == "true") {
         // Set child as not selected anymore
-        child.dataset.selected = 'false';
+        child.dataset.selected = "false";
 
         // Check if child is a position item
         if (selectedId.indexOf(CATEGORY_POSITION) >= 0) {
@@ -962,8 +982,7 @@ function removeLastPostion(event) {
             }
 
 
-        }
-        else {
+        } else {
             //// Append child to its original parent
             var parent = document.getElementById(correctColumn);
             parent.appendChild(child);

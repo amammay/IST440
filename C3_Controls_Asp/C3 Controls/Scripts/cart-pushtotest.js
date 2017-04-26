@@ -54,7 +54,7 @@ var Cart = {
     },
 
     subtractPrice: function (p) {
-        this.price -= parseFloat(p);
+        this.price -= parseFloat((Math.round(p * 100) / 100).toFixed(2) ); 
     },
 
     updatePrice: function (p) {

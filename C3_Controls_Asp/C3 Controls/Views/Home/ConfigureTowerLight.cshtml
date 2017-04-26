@@ -1,7 +1,6 @@
-﻿@using C3_Controls.Models
-@model C3_Controls.Models.UiDataModel.TowerLight
+﻿@model C3_Controls.Models.UiDataModel.TowerLight
 @{
-  
+
     var operatorType = Model.OperatorType;
     var voltages = Model.Voltages;
     var moduleDiameter = Model.ModuleDiameter;
@@ -23,7 +22,7 @@
         </p>
     </div>
     <div class="col-md-3">
-        <img class="part-img" src="~/Content/assets/towerlights.png" />
+        <img class="part-img" src="~/Content/assets/towerlights.png"/>
     </div>
 </div>
 
@@ -34,25 +33,25 @@
 <h2 class="part-section-title">Available Parts</h2>
 <h1 class="part-section-body">Drag a part into your product</h1>
 
-<br />
+<br/>
 
 <h4>Already know your SKU? Enter here:</h4>
 
 
-<form id ="enter_sku">
-    <input type="text" name="product_sku_1"  size="2" id="operatorSku"     placeholder="WTL" disabled maxlength="3" /> <strong>-</strong>
-    <input type="text" name="product_sku_2" size="2" id="diameterSku"     placeholder="50" disabled maxlength="3" /> 
-    <input type="text" name="product_sku_3" size="2" id="baseMaterialSku" placeholder="Base" maxlength="3"  /> <strong>-</strong>
-    <input type="text" name="product_sku_4" size="3" id="voltageSku"       placeholder="Voltage " maxlength="3"  />
-    <input type="text" name="product_sku_5" size="5" id="positionSku1" placeholder="Position 1" maxlength="3" />
-    <input type="text" name="product_sku_5" size="5" id="positionSku2" placeholder="Position 2" maxlength="3" />
-    <input type="text" name="product_sku_5" size="5" id="positionSku3" placeholder="Position 3" maxlength="3" /> 
-    <input type="text" name="product_sku_5" size="5" id="positionSku4" placeholder="Position 4" maxlength="3" /> 
-    <input type="text" name="product_sku_5" size="5" id="positionSku5" placeholder="Position 5" maxlength="3" /> 
-    <input type="text" name="product_sku_5" size="3" id="soundSku" placeholder="Sound" maxlength="3" /> 
+<form id="enter_sku">
+    <input type="text" name="product_sku_1" size="2" id="operatorSku" placeholder="WTL" disabled maxlength="3"/> <strong>-</strong>
+    <input type="text" name="product_sku_2" size="2" id="diameterSku" placeholder="50" disabled maxlength="3"/>
+    <input type="text" name="product_sku_3" size="2" id="baseMaterialSku" placeholder="Base" maxlength="3"/> <strong>-</strong>
+    <input type="text" name="product_sku_4" size="3" id="voltageSku" placeholder="Voltage " maxlength="3"/>
+    <input type="text" name="product_sku_5" size="5" id="positionSku1" placeholder="Position 1" maxlength="3"/>
+    <input type="text" name="product_sku_5" size="5" id="positionSku2" placeholder="Position 2" maxlength="3"/>
+    <input type="text" name="product_sku_5" size="5" id="positionSku3" placeholder="Position 3" maxlength="3"/>
+    <input type="text" name="product_sku_5" size="5" id="positionSku4" placeholder="Position 4" maxlength="3"/>
+    <input type="text" name="product_sku_5" size="5" id="positionSku5" placeholder="Position 5" maxlength="3"/>
+    <input type="text" name="product_sku_5" size="3" id="soundSku" placeholder="Sound" maxlength="3"/>
     <button type="button" name="submitManualSku" id="manualSku" class="button button-primary btn-sm" onclick="submitManaulSku();">Submit Sku</button>
 </form>
-   
+
 
 <span></span>
 
@@ -65,22 +64,23 @@
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                        <i class="fa fa-dashboard"></i> Base Styles</a>
+                        <i class="fa fa-dashboard"></i> Base Styles
+                    </a>
                     <button type="button" class="button btn-info btn-sm part-section-btn" onclick="whatsThisBase()">What's This?</button>
                 </h4>
             </div>
             <div id="collapse1" class="panel-collapse collapse">
                 <div class="panel-body">
-                
+
                     <div id="tab_a">
                         @*<h4>Styles</h4>*@
                         <div id="slide_styles" class="row">
                             @foreach (var i in styles)
                             {
                                 <div id="col_style_@i.ToString()" class="col-md-3 metro-column">
-                                    <div id="item_style_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)" onclick="clickInCart(event)" >
-                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
-                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
+                                    <div id="item_style_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)" onclick="clickInCart(event)">
+                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc"/>
+                                        <p style="color: white; font-size: 10px; text-align: center;"> @i.Name </p>
                                     </div>
                                 </div>
                             }
@@ -94,28 +94,29 @@
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-                        <i class="fa fa-bolt"></i> Voltages</a>
+                        <i class="fa fa-bolt"></i> Voltages
+                    </a>
                     <button type="button"class="button btn-info btn-sm part-section-btn" onclick="whatsThisVoltage()">What's This?</button>
                 </h4>
             </div>
             <div id="collapse2" class="panel-collapse collapse">
                 <div class="panel-body">
-                
+
                     <div id="tab_b">
                         @*<h4>Voltages</h4>*@
                         <div id="slide_voltages" class="row">
                             @foreach (var i in voltages)
                             {
                                 <div id="col_voltage_@i.ToString()" class="col-md-3 metro-column">
-                                    <div id="item_voltage_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)" onclick="clickInCart(event)" >
-                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
-                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
+                                    <div id="item_voltage_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)" onclick="clickInCart(event)">
+                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc"/>
+                                        <p style="color: white; font-size: 10px; text-align: center;"> @i.Name </p>
                                     </div>
                                 </div>
                             }
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -123,52 +124,55 @@
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                        <i class="fa fa-lightbulb-o"></i> Lamps</a>
+                        <i class="fa fa-lightbulb-o"></i> Lamps
+                    </a>
                     <button type="button" class="button btn-info btn-sm part-section-btn" onclick="whatsThisLamp()">What's This?</button>
                 </h4>
             </div>
             <div id="collapse3" class="panel-collapse collapse">
                 <div class="panel-body">
-                
+
                     <div id="tab_c">
                         @*<h4>Positions</h4>*@
-                        <div id="slide_positions" class="row metro-overflow"> <!--overflow when more than one row of choices-->
+                        <div id="slide_positions" class="row metro-overflow">
+                            <!--overflow when more than one row of choices-->
                             @foreach (var i in positions)
                             {
                                 <div id="col_positions_@i.ToString()" class="col-md-3 metro-column">
-                                    <div id="item_positions_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)" onclick="clickInCart(event)" >
-                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
-                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
+                                    <div id="item_positions_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)" onclick="clickInCart(event)">
+                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc"/>
+                                        <p style="color: white; font-size: 10px; text-align: center;"> @i.Name </p>
                                     </div>
                                 </div>
                             }
                         </div>
                     </div>
-                        
+
                 </div>
             </div>
         </div>
-    
+
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-                        <i class="fa fa-bell"></i> Sound Modules</a>
+                        <i class="fa fa-bell"></i> Sound Modules
+                    </a>
                     <button type="button"class="button btn-info btn-sm part-section-btn" onclick="whatsThisSound()">What's This?</button>
                 </h4>
             </div>
             <div id="collapse4" class="panel-collapse collapse">
                 <div class="panel-body">
 
-                    <div id="tab_d" >
+                    <div id="tab_d">
                         @*<h4>Sound Module</h4>*@
                         <div id="slide_sound_modules" class="row">
                             @foreach (var i in soundMoudle)
                             {
                                 <div id="col_soundMoudle_@i.ToString()" class="col-md-3 metro-column">
                                     <div id="item_soundMoudle_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)" onclick="clickInCart(event)">
-                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
-                                        <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
+                                        <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc"/>
+                                        <p style="color: white; font-size: 10px; text-align: center;"> @i.Name </p>
                                     </div>
                                 </div>
                             }
@@ -180,33 +184,32 @@
         </div>
     </div>
 
-          
 
     <!-- Tab Contents -->
-    <div class="col-md-12 col-sm-12 nopadding-left" >
+    <div class="col-md-12 col-sm-12 nopadding-left">
         <div id="tab_a" class="collapse">
-                                   
+
             <div class="row">
                 @foreach (var i in styles)
                 {
                     <div id="col_style_@i.Name" class="col-md-3 metro-column">
                         <div id="item_style.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                            <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name"/>
+                            <p style="color: white; font-size: 10px; text-align: center;"> @i.Desc </p>
                         </div>
                     </div>
                 }
             </div>
         </div>
         <div id="tab_b" class="collapse">
-                                    
+
             <div id="slide_voltages" class="row metro-overflow">
                 @foreach (var i in voltages)
                 {
                     <div id="col_voltage_@i.Name" class="col-md-3 metro-column">
                         <div id="item_voltage_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                            <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name"/>
+                            <p style="color: white; font-size: 10px; text-align: center;"> @i.Desc </p>
                         </div>
                     </div>
                 }
@@ -214,14 +217,14 @@
         </div>
 
         <div id="tab_c" class="collapse">
-                                    
+
             <div id="slide_positions" class="row metro-overflow">
                 @foreach (var i in positions)
                 {
                     <div id="col_positions_@i.ToString()" class="col-md-3 metro-column">
                         <div id="item_positions_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name" />
-                            <p style="color:white; text-align:center; font-size:10px;"> @i.Desc </p>
+                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Name"/>
+                            <p style="color: white; font-size: 10px; text-align: center;"> @i.Desc </p>
                         </div>
                     </div>
                 }
@@ -230,71 +233,85 @@
 
 
         <div id="tab_d" class="collapse">
-                                    
+
             <div class="row metro-overflow">
                 @foreach (var i in soundMoudle)
                 {
                     <div id="col_soundMoudle_@i.ToString()" class="col-md-3 metro-column">
                         <div id="item_soundMoudle_@i.ToString()" class="metro" data-sku="@i.Sku" data-price="@i.Price" data-selected="false" draggable="true" ondragstart="dragPart(event)">
-                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc" />
-                            <p style="color:white; text-align:center; font-size:10px;"> @i.Name </p>
+                            <img class="part-tile-img" alt="@i.Name" src="@i.Img" title="@i.Desc"/>
+                            <p style="color: white; font-size: 10px; text-align: center;"> @i.Name </p>
                         </div>
                     </div>
                 }
             </div>
         </div>
 
-                   
+
     </div>
 </div>
 </div>
-            
-  
+
+
 <!-- Cart Information -->
-<div class="col-md-4" id="cart_info_container" >
+<div class="col-md-4" id="cart_info_container">
     <h2 class="part-section-title">Product Info</h2>
-       
+
     <div class="box" id="container_main" ondrop="dropInCart(event)" ondragover="allowDrop(event)">Drag and drop here</div>
 
     <br/>
-   
+
 
     <table class="table table-bordered table-striped">
         <tr>
-            <th bgcolor="#D3D3D3"><strong>Part Type</strong></th>
-            <th bgcolor="#D3D3D3"><strong>Part Picture</strong></th>
-            <th bgcolor="#D3D3D3"><strong>Remove</strong></th>
+            <th bgcolor="#D3D3D3">
+                <strong>Part Type</strong>
+            </th>
+            <th bgcolor="#D3D3D3">
+                <strong>Part Picture</strong>
+            </th>
+            <th bgcolor="#D3D3D3">
+                <strong>Remove</strong>
+            </th>
         </tr>
         <tr>
             <th>Sound Module</th>
             <td id="container_sound"></td>
-            <td align="center"><button id="removeModuleBtn"  type="button" class="btn-sm btn-danger" onclick="removeSoundModule(event)">Remove</button></td>
+            <td align="center">
+                <button id="removeModuleBtn" type="button" class="btn-sm btn-danger" onclick="removeSoundModule(event)">Remove</button>
+            </td>
         </tr>
-              
+
         <tr>
             <th>Positon </th>
             <td id="container_positions"></td>
-            <td align="center"><button id="removePositionBtn" type="button" class="btn-sm btn-danger" onclick="removeLastPostion()">Remove</button></td>
+            <td align="center">
+                <button id="removePositionBtn" type="button" class="btn-sm btn-danger" onclick="removeLastPostion()">Remove</button>
+            </td>
         </tr>
         <tr>
             <th>Voltage</th>
             <td id="container_voltage"></td>
-            <td align="center"><button id="removeVoltageBtn" type="button" class="btn-sm btn-danger" onclick="removeVoltage(event)">Remove</button></td>
-        </tr> 
+            <td align="center">
+                <button id="removeVoltageBtn" type="button" class="btn-sm btn-danger" onclick="removeVoltage(event)">Remove</button>
+            </td>
+        </tr>
         <tr>
             <th>Base Style</th>
             <td id="container_style"></td>
-            <td align="center"><button id="removestyleBtn" type="button" class="btn-sm btn-danger" onclick="removeStyle(event)">Remove</button></td>
+            <td align="center">
+                <button id="removestyleBtn" type="button" class="btn-sm btn-danger" onclick="removeStyle(event)">Remove</button>
+            </td>
         </tr>
-               
+
     </table>
-    <br /> <br />
-    
+    <br/> <br/>
+
     <h1 class="part-section-body" id="title_text_sku">Product Sku: </h1>
     <h1 class="part-section-body" id="title_text_price">Price: $0</h1>
     <h1 class="part-section-body" id="title_text_price_discount">Discounted Price: $0</h1>
 
-    <hr />
+    <hr/>
     <div class="col-md-8">
         <button class="button button-primary btn-info btn-sm part-section-btn" onclick="showSelectedItems()">Details</button>
         <button class="button button-primary btn-sm part-section-btn" onclick="addToCart()">Add to Cart</button>
@@ -330,12 +347,11 @@
 </div>
 
 
-
 @section Scripts {
     @Scripts.Render("~/Scripts/scripts.js")
     @Scripts.Render("~/Scripts/cart-towerlight.js")
     <script type="text/javascript">
-        $(function () {
+        $(function() {
             setup('@Model.OperatorType.Sku', '@Model.ModuleDiameter.Sku');
         });
     </script>

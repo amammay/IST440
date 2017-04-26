@@ -30,9 +30,11 @@ const SLIDE_VOLTAGE = "slide_voltages";
 const SLIDE_LAMP_COLOR = "slide_lamp_colors";
 const SLIDE_LENS_TYPE = "slide_lens_type";
 
+
+
 // Cart Object
 var Cart = {
-    price: 0,
+    price: 32.00,
     operator: "",
     basicOperator: "",
     voltage: "",
@@ -52,7 +54,7 @@ var Cart = {
     },
 
     subtractPrice: function (p) {
-        this.price -= parseFloat(p);
+        this.price -= parseFloat((Math.round(p * 100) / 100).toFixed(2) ); 
     },
 
     updatePrice: function (p) {
@@ -127,92 +129,171 @@ function dragPart(ev) {
 
 function manualInputRetrieve() {
     var tempSkuArray = new Array();
+
+    //Operator Input Gather
     var pttOperatorSku = document.getElementById("pttOperatorSku").value.toUpperCase();
-    if (pttOperatorSku == "") {
-        showErrorModal("Warning, please provide a input for the Operator");
+    if (!pttOperatorSku == "") {
+        tempSkuArray.push(pttOperatorSku);
+    } else {
+        showErrorModal("Warning, please provide a input for the Operator", "Check Input");
         return null;
     }
 
+    //Voltage input gather
     var voltageBasedOperatorSku = document.getElementById("voltageBasedOperatorSku").value.toUpperCase();
-    if (pttOperatorSku == "") {
-        showErrorModal("Warning, please provide a input for the voltage");
-        return null;
-    }
-    var lampTypeSku = document.getElementById("lampTypeSku").value.toUpperCase();
-    if (pttOperatorSku == "") {
-        showErrorModal("Warning, please provide a input for the lamp type");
-        return null;
-    }
-    var clampRingSku = document.getElementById("clampRingSku").value.toUpperCase();
-    if (pttOperatorSku == "") {
-        showErrorModal("Warning, please provide a input for the clamp ring");
-        return null;
-    }
-    var lensTypeSku = document.getElementById("lensTypeSku").value.toUpperCase();
-    if (pttOperatorSku == "") {
-        showErrorModal("Warning, please provide a input for the lens type");
-        return null;
-    }
-    var lensColorSku = document.getElementById("lensColorSku").value.toUpperCase();
-    if (pttOperatorSku == "") {
-        showErrorModal("Warning, please provide a input for the lens color");
-        return null;
-    }
-    var optionsSku = document.getElementById("optionsSku").value.toUpperCase();
-    if (pttOperatorSku == "") {
-        showErrorModal("Warning, please provide a input for the options");
+    if (!voltageBasedOperatorSku == "") {
+        tempSkuArray.push(voltageBasedOperatorSku);
+    } else {
+        showErrorModal("Warning, please provide a input for the voltage", "Check Input");
         return null;
     }
 
-    tempSkuArray.push(pttOperatorSku);
-    tempSkuArray.push(voltageBasedOperatorSku);
+    //Lamp type input gather
+    var lampTypeSku = document.getElementById("lampTypeSku").value.toUpperCase();
+    if (lampTypeSku == "") {
+        lampTypeSku = "NoLamp";
+    }
     tempSkuArray.push(lampTypeSku);
+
+    //clamp ring input gather
+    var clampRingSku = document.getElementById("clampRingSku").value.toUpperCase();
+    if (clampRingSku == "") {
+        clampRingSku = "NoClamp";
+    } else if (clampRingSku == "A") {
+        clampRingSku = "AlumClampRing";
+    }
     tempSkuArray.push(clampRingSku);
-    tempSkuArray.push(lensTypeSku);
-    tempSkuArray.push(lensColorSku);
+
+    //lens type input gather
+    var lensTypeSku = document.getElementById("lensTypeSku").value.toUpperCase();
+    if (!lensTypeSku == "") {
+        tempSkuArray.push(lensTypeSku);
+    } else {
+        showErrorModal("Warning, please provide a input for the lens type", "Check Input");
+        return null;
+    }
+
+    //lens color input gather
+    var lensColorSku = document.getElementById("lensColorSku").value.toUpperCase();
+    if (!lensColorSku == "") {
+        tempSkuArray.push(lensColorSku);
+    } else {
+        showErrorModal("Warning, please provide a input for the lens color", "Check Input");
+        return null;
+    }
+
+    //options input gather
+    var optionsSku = document.getElementById("optionsSku").value.toUpperCase();
+    if (optionsSku == "") {
+        optionsSku = "NoOptions";
+    }
     tempSkuArray.push(optionsSku);
 
     return tempSkuArray;
 }
 
 
-function submitManualSkuPtt() {
+function submitManualSkuPtt()
+{
     var getInputs = manualInputRetrieve();
+    var searchItem, childQuery;
 
-
-    for (var i = 0; i < getInputs.length; i++) {
+    for (var i = 0; i < getInputs.length; i++)
+    {
 
         //temp value for checking to see if the input is empty
         var checkValue = getInputs[i];
 
-        //serach for a matching data sku that was inputed 
-        var searchItem = "[data-sku~=" + "'" + checkValue.toUpperCase() + "'" + "]";
+        //switch on reocurring skus
+        switch (checkValue) {
+            case "NoLamp":
+                childQuery = document.getElementById("item_lamp_color_clear_incandescent");
+                SpecialCart(childQuery);
+                break;
+            case "NoClamp":
+                childQuery = document.getElementById("item_clamp_ring_black_polyester_(type_4x)");
+                SpecialCart(childQuery);
+                break;
+            case "NoOptions":
+                childQuery = document.getElementById("item_option_no_ip20_guard");
+                SpecialCart(childQuery);
+                break;
 
-        //query for a child
-        var childQuery = document.querySelectorAll(searchItem);
-        var id = childQuery[0].id;
-        var container = getContainer(id);
+            case "AlumClampRing":
+                childQuery = document.getElementById("item_clamp_ring_aluminum_(type_4)");
+                SpecialCart(childQuery);
+                break;
 
-        // Add child to proper container
-        document.getElementById(container).appendChild(childQuery[0]);
+            default:
+                //serach for a matching data sku that was inputed 
+                searchItem = "[data-sku~=" + "'" + checkValue.toUpperCase() + "'" + "]";
 
-        // Set the correct sku for child
-        setProperSku(container, childQuery[0].dataset.sku);
+                //query for a child
+                childQuery = document.querySelectorAll(searchItem);
+                var id = childQuery[0].id;
 
-        // Filter other tiles using the container and the name of the item
-        applyContraints(container, id);
+                var container = getContainer(id);
 
-        // Set the data selected to true
-        childQuery[0].dataset.selected = true;
-        Cart.updatePrice(childQuery[0].dataset.price);
+                // Check if user already picked an item for this category
+                if (hasItems(container)) {
+                    showWarningModal('Warning', 'You\'ve already selected an item!');
+                    checkRemoveContainer();
+                    return;
+                }
 
-        // Update text on screen
-        displayCartUpdates();
+                // Add child to proper container
+                document.getElementById(container).appendChild(childQuery[0]);
+
+                // Set the correct sku for child
+                setProperSku(container, childQuery[0].dataset.sku);
+
+                // Filter other tiles using the container and the name of the item
+                applyContraints(container, id);
+
+                // Set the data selected to true
+                childQuery[0].dataset.selected = true;
+                Cart.updatePrice(childQuery[0].dataset.price);
+
+                // Update text on screen
+                displayCartUpdates();
+                break;
+        }
 
     }
 
 }
 
+
+function SpecialCart(item) {
+
+    var childQuery = item;
+
+    // Get the container the item should be placed in
+    var container = getContainer(childQuery.id);
+
+    // Check if user already picked an item for this category
+    if (hasItems(container)) {
+        showWarningModal('Warning', 'You\'ve already selected an item!');
+        checkRemoveContainer();
+        return;
+    }
+
+    // Add child to proper container
+    document.getElementById(container).appendChild(childQuery);
+
+    // Set the correct sku for child
+    setProperSku(container, childQuery.dataset.sku);
+
+    // Filter other tiles using the container and the name of the item
+    applyContraints(container, childQuery.id);
+
+    // Set the data selected to true
+    childQuery.dataset.selected = true;
+    Cart.updatePrice(childQuery.dataset.price);
+
+    // Update text on screen
+    displayCartUpdates();
+}
 
 /**
  * When item is dropped in cart container.
@@ -736,6 +817,39 @@ function showErrorModal(_title, _content) {
 function displayCartUpdates() {
     $("#title_text_price").html(Cart.getPrice());
     $("#title_text_sku").html(Cart.getSku());
+
+    var tempCart = Cart.getSku();
+
+    if (tempCart.includes("RD")) {
+        document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_red.png";
+    }
+    else if (tempCart.includes("GN")) {
+        document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_green.png";
+    }
+    else if (tempCart.includes("YW")) {
+        document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_yellow.png";
+    }
+    else if (tempCart.includes("BE")) {
+        document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_blue.png";
+    }
+    else if (tempCart.includes("AR")) {
+        document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_amber.png";
+    }
+    else if (tempCart.includes("WE")) {
+        document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_white.png";
+    } else {
+        document.getElementById("generatedImg").src = "../../Content/assets/sorry.png";
+    }
+
+     if (tempCart.includes("AIPBC")) {
+        document.getElementById("generatedImg").src = "../../Content/assets/pilot_light_guarded.png";
+    }
+     else {
+         document.getElementById("generatedImg").src = "../../Content/assets/sorry.png";
+     }
+
+
+
 }
 
 

@@ -159,6 +159,8 @@ function manualInputRetrieve() {
     var clampRingSku = document.getElementById("clampRingSku").value.toUpperCase();
     if (clampRingSku == "") {
         clampRingSku = "NoClamp";
+    } else if (clampRingSku == "A") {
+        clampRingSku = "AlumClampRing";
     }
     tempSkuArray.push(clampRingSku);
 
@@ -202,7 +204,7 @@ function submitManualSkuPtt()
         //temp value for checking to see if the input is empty
         var checkValue = getInputs[i];
 
-
+        //switch on reocurring skus
         switch (checkValue) {
             case "NoLamp":
                 childQuery = document.getElementById("item_lamp_color_clear_incandescent");
@@ -217,6 +219,11 @@ function submitManualSkuPtt()
                 SpecialCart(childQuery);
                 break;
 
+            case "AlumClampRing":
+                childQuery = document.getElementById("item_clamp_ring_aluminum_(type_4)");
+                SpecialCart(childQuery);
+                break;
+
             default:
                 //serach for a matching data sku that was inputed 
                 searchItem = "[data-sku~=" + "'" + checkValue.toUpperCase() + "'" + "]";
@@ -226,6 +233,13 @@ function submitManualSkuPtt()
                 var id = childQuery[0].id;
 
                 var container = getContainer(id);
+
+                // Check if user already picked an item for this category
+                if (hasItems(container)) {
+                    showWarningModal('Warning', 'You\'ve already selected an item!');
+                    checkRemoveContainer();
+                    return;
+                }
 
                 // Add child to proper container
                 document.getElementById(container).appendChild(childQuery[0]);
@@ -823,7 +837,16 @@ function displayCartUpdates() {
     }
     else if (tempCart.includes("WE")) {
         document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_white.png";
+    } else {
+        document.getElementById("generatedImg").src = "../../Content/assets/sorry.png";
     }
+
+     if (tempCart.includes("FVPTT120-AIPBCMAR")) {
+        document.getElementById("generatedImg").src = "../../Content/assets/pilot_light_guarded.png";
+    }
+     else {
+         document.getElementById("generatedImg").src = "../../Content/assets/sorry.png";
+     }
 
 
 

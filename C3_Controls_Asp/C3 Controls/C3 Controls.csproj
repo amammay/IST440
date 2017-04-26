@@ -263,6 +263,7 @@
     <Content Include="Content\assets\ip20guard.png" />
     <Content Include="Content\assets\logo.gif" />
     <Content Include="Content\assets\Nothing.png" />
+    <Content Include="Content\assets\pilot_light_guarded.png" />
     <Content Include="Content\assets\RedFlashingTowerLight.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -153,7 +153,6 @@ function manualInputRetrieve() {
     if (lampTypeSku == "") {
         lampTypeSku = "NoLamp";
     }
-    //TODO
     tempSkuArray.push(lampTypeSku);
 
     //clamp ring input gather
@@ -161,7 +160,6 @@ function manualInputRetrieve() {
     if (clampRingSku == "") {
         clampRingSku = "NoClamp";
     }
-    //TODO
     tempSkuArray.push(clampRingSku);
 
     //lens type input gather
@@ -187,7 +185,6 @@ function manualInputRetrieve() {
     if (optionsSku == "") {
         optionsSku = "NoOptions";
     }
-    //TODO
     tempSkuArray.push(optionsSku);
 
     return tempSkuArray;

@@ -70,31 +70,21 @@ namespace C3_Controls.Models.DataStructuring
                                 Sku = item.sku
                             };
 
-                            if (singleItem.Sku.Equals("6V"))
+                            if (singleItem.Sku.Equals("6"))
                                 singleItem.Img = "6vacdc.png";
-                            else if (singleItem.Sku.Equals("12V"))
+                            else if (singleItem.Sku.Equals("12"))
                                 singleItem.Img = "12vacdc.png";
-                            else if (singleItem.Sku.Equals("24V"))
+                            else if (singleItem.Sku.Equals("24"))
                                 singleItem.Img = "24acdc.png";
-                            else if (singleItem.Sku.Equals("120V"))
+                            else if (singleItem.Sku.Equals("120"))
                                 singleItem.Img = "120vacdc.png";
-
-                            else if (singleItem.Sku.Equals("120V_AC"))
-                                singleItem.Img = "120vacdc.png";
-                            else if (singleItem.Sku.Equals("240V_AC"))
+                            else if (singleItem.Sku.Equals("240"))
                                 singleItem.Img = "120vac.png";
-                            else if (singleItem.Sku.Equals("277V_AC"))
+                            else if (singleItem.Sku.Equals("277"))
                                 singleItem.Img = "120vac.png";
                            
-                            else if (singleItem.Sku.Equals("480V_AC"))
+                            else if (singleItem.Sku.Equals("480"))
                                 singleItem.Img = "480vac.png";
-
-                            else if (singleItem.Sku.Equals("240V"))
-                                singleItem.Img = "120vac.png";
-                            
-                            else if (singleItem.Sku.Equals("480V"))
-                                singleItem.Img = "480vac.png";
-
 
 
 
@@ -133,23 +123,23 @@ namespace C3_Controls.Models.DataStructuring
                             };
 
                             //extra logic for assigning image path to position
-                            if (singleItem.Sku.Contains("_A"))
+                            if (singleItem.Sku.Equals("A"))
                                 singleItem.Img = "img_lamp_amber.png";
-                            else if (singleItem.Sku.Contains("_B"))
+                            else if (singleItem.Sku.Equals("B"))
                                 singleItem.Img = "img_lamp_blue.png";
-                            else if (singleItem.Sku.Contains("_G"))
+                            else if (singleItem.Sku.Equals("G"))
                                 singleItem.Img = "img_lamp_green.png";
-                            else if (singleItem.Sku.Contains("_R"))
+                            else if (singleItem.Sku.Equals("R"))
                                 singleItem.Img = "img_lamp_red.png";
-                            else if (singleItem.Sku.Contains("_W"))
+                            else if (singleItem.Sku.Equals("W"))
                                 singleItem.Img = "img_lamp_white.png";
-                            else if (singleItem.Sku.Contains("_CI")) //checked differently
+                            else if (singleItem.Sku.Equals("")) //checked differently
                                 singleItem.Img = "img_lamp_clear_incandescent.png";
-                            else if (singleItem.Sku.Contains("_CLI"))
+                            else if (singleItem.Sku.Equals("F"))
                                 singleItem.Img = "img_lamp_clear_flashing_incandescent.png";
-                            else if (singleItem.Sku.Contains("_NG"))
+                            else if (singleItem.Sku.Equals("NG"))
                                 singleItem.Img = "img_lamp_neon_green.png";
-                            else if (singleItem.Sku.Contains("_NR"))
+                            else if (singleItem.Sku.Equals("NR"))
                                 singleItem.Img = "img_lamp_neon_red.png";
                             else if (singleItem.Name.Equals("No Lamp"))
                                 singleItem.Img = "Nothing.png";
@@ -192,13 +182,13 @@ namespace C3_Controls.Models.DataStructuring
                             };
 
                             //assigning image to each item
-                            if (singleItem.Sku.Equals("IPBL"))
+                            if (singleItem.Sku.Equals("IPBC"))
                                 singleItem.Img = "illuminated.png";
-                            else if (singleItem.Sku.Equals("IPBML"))
+                            else if (singleItem.Sku.Equals("IPBCM"))
                                 singleItem.Img = "illuminated_mushroom.png";
-                            else if (singleItem.Sku.Equals("GIPBL"))
+                            else if (singleItem.Sku.Equals("GIPBC"))
                                 singleItem.Img = "illuminated_guarded.png";
-                            else if (singleItem.Sku.Equals("SIPBML"))
+                            else if (singleItem.Sku.Equals("SIPBCM"))
                                 singleItem.Img = "shrouded_illuminated_push_button.png";
 
                             //Add her to the list
@@ -218,19 +208,19 @@ namespace C3_Controls.Models.DataStructuring
                             };
 
                             //assigning image to each item
-                            if (singleItem.Sku.Equals("ALE"))
+                            if (singleItem.Sku.Equals("AR"))
                                 singleItem.Img = "img_lens_amber.png";
-                            else if (singleItem.Sku.Equals("BLE"))
+                            else if (singleItem.Sku.Equals("BE"))
                                 singleItem.Img = "img_lens_blue.png";
-                            else if (singleItem.Sku.Equals("CLE"))
+                            else if (singleItem.Sku.Equals("CR"))
                                 singleItem.Img = "img_lens_clear.png";
-                            else if (singleItem.Sku.Equals("GLE"))
+                            else if (singleItem.Sku.Equals("GN"))
                                 singleItem.Img = "img_lens_green.png";
-                            else if (singleItem.Sku.Equals("RLE"))
+                            else if (singleItem.Sku.Equals("RD"))
                                 singleItem.Img = "img_lens_red.png";
-                            else if (singleItem.Sku.Equals("WLE"))
+                            else if (singleItem.Sku.Equals("WE"))
                                 singleItem.Img = "img_lens_white.png";
-                            else if (singleItem.Sku.Equals("YLE"))
+                            else if (singleItem.Sku.Equals("YW"))
                                 singleItem.Img = "img_lens_yellow.png";
 
                             //Add her to the list
@@ -250,9 +240,9 @@ namespace C3_Controls.Models.DataStructuring
                                 Sku = item.sku
                             };
 
-                            if (singleItem.Sku.Equals("IPG"))
+                            if (singleItem.Sku.Equals("IP20"))
                                 singleItem.Img = "ip20guard.png";
-                            if (singleItem.Sku.Equals("NIPG"))
+                            if (singleItem.Sku.Equals(""))
                                 singleItem.Img = "Nothing.png";
 
                             Options.Add(singleItem);

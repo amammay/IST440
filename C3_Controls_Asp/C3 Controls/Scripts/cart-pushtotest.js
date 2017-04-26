@@ -43,32 +43,36 @@ var Cart = {
     option: "",
 
     getSku: function () {
-        return "Sku: " + this.operator + this.basicOperator + this.voltage +
-            this.lampColor + this.lensColor + this.clampRing + this.lensType + this.option;
+        return "Sku: " + this.basicOperator + this.operator + + this.voltage +
+            this.lampColor +  this.clampRing + this.lensType + this.lensColor + this.option;
     },
 
     getPrice: function () {
         return "Price: $" + this.price;
     },
 
+    subtractPrice: function (p) {
+        this.price -= parseFloat(p);
+    },
+
+    updatePrice: function (p) {
+        this.price += parseFloat(p);
+    },
+
+    setBasic: function (b) {
+        this.basicOperator = b;
+    },
+
     setOperator: function (o) {
         this.operator = o;
     },
 
-    setBasic: function (b) {
-        this.basicOperator = "-" + b;
-    },
-
     setVoltage: function (v) {
-        this.voltage = "-" + v;
+        this.voltage = v;
     },
 
     setLampColor: function (l) {
-        this.lampColor = "-" + l;
-    },
-
-    setLensColor: function (l) {
-        this.lensColor = "-" + l;
+        this.lampColor = l;
     },
 
     setClampRing: function (c) {
@@ -76,19 +80,15 @@ var Cart = {
     },
 
     setLensType: function (l) {
-        this.lensType = "-" + l;
+        this.lensType = l;
+    },
+
+    setLensColor: function (l) {
+        this.lensColor = l;
     },
 
     setOption: function (o) {
-        this.option = o;
-    },
-
-    updatePrice: function (p) {
-        this.price += parseFloat(p);
-    },
-
-    subtractPrice: function (p) {
-        this.price -= parseFloat(p);
+        this.option = "-" + o;
     }
 };
 

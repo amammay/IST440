@@ -151,8 +151,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\assets\120V.JPG" />
+    <Content Include="Content\assets\120vac.png" />
+    <Content Include="Content\assets\120vacdc.png" />
+    <Content Include="Content\assets\12vacdc.png" />
     <Content Include="Content\assets\240V.JPG" />
+    <Content Include="Content\assets\24acdc.png" />
     <Content Include="Content\assets\24V.JPG" />
+    <Content Include="Content\assets\480vac.png" />
+    <Content Include="Content\assets\6vacdc.png" />
+    <Content Include="Content\assets\AluminumClampRing.png" />
     <Content Include="Content\assets\AmberFlashingTowerLight.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -221,9 +228,13 @@
     <Content Include="Content\assets\img_lens_white.png" />
     <Content Include="Content\assets\img_lens_yellow.png" />
     <Content Include="Content\assets\img_light_amber.png" />
+    <Content Include="Content\assets\img_light_amber_clear.png" />
     <Content Include="Content\assets\img_light_blue.png" />
+    <Content Include="Content\assets\img_light_blue_clear.png" />
     <Content Include="Content\assets\img_light_green.png" />
+    <Content Include="Content\assets\img_light_green_clear.png" />
     <Content Include="Content\assets\img_light_red.png" />
+    <Content Include="Content\assets\img_light_red_clear.png" />
     <Content Include="Content\assets\img_light_white.png" />
     <Content Include="Content\assets\img_pilot_light_amber.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -326,6 +337,7 @@
     <Content Include="Content\old\css%281%29" />
     <Content Include="Content\old\saved_resource" />
     <None Include="Properties\PublishProfiles\c3controls - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\C3Controls440wNewUpdate - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\c3Controls.js" />
     <Content Include="Scripts\cart-pushtotest.js" />

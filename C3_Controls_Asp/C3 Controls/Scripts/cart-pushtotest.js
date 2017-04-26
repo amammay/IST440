@@ -30,9 +30,11 @@ const SLIDE_VOLTAGE = "slide_voltages";
 const SLIDE_LAMP_COLOR = "slide_lamp_colors";
 const SLIDE_LENS_TYPE = "slide_lens_type";
 
+var NoOptions = ["NoLamp", "NoClamp", "NoOptions"];
+
 // Cart Object
 var Cart = {
-    price: 0,
+    price: 32.00,
     operator: "",
     basicOperator: "",
     voltage: "",
@@ -127,92 +129,160 @@ function dragPart(ev) {
 
 function manualInputRetrieve() {
     var tempSkuArray = new Array();
+
+    //Operator Input Gather
     var pttOperatorSku = document.getElementById("pttOperatorSku").value.toUpperCase();
-    if (pttOperatorSku == "") {
-        showErrorModal("Warning, please provide a input for the Operator");
+    if (!pttOperatorSku == "") {
+        tempSkuArray.push(pttOperatorSku);
+    } else {
+        showErrorModal("Warning, please provide a input for the Operator", "Check Input");
         return null;
     }
 
+    //Voltage input gather
     var voltageBasedOperatorSku = document.getElementById("voltageBasedOperatorSku").value.toUpperCase();
-    if (pttOperatorSku == "") {
-        showErrorModal("Warning, please provide a input for the voltage");
-        return null;
-    }
-    var lampTypeSku = document.getElementById("lampTypeSku").value.toUpperCase();
-    if (pttOperatorSku == "") {
-        showErrorModal("Warning, please provide a input for the lamp type");
-        return null;
-    }
-    var clampRingSku = document.getElementById("clampRingSku").value.toUpperCase();
-    if (pttOperatorSku == "") {
-        showErrorModal("Warning, please provide a input for the clamp ring");
-        return null;
-    }
-    var lensTypeSku = document.getElementById("lensTypeSku").value.toUpperCase();
-    if (pttOperatorSku == "") {
-        showErrorModal("Warning, please provide a input for the lens type");
-        return null;
-    }
-    var lensColorSku = document.getElementById("lensColorSku").value.toUpperCase();
-    if (pttOperatorSku == "") {
-        showErrorModal("Warning, please provide a input for the lens color");
-        return null;
-    }
-    var optionsSku = document.getElementById("optionsSku").value.toUpperCase();
-    if (pttOperatorSku == "") {
-        showErrorModal("Warning, please provide a input for the options");
+    if (!voltageBasedOperatorSku == "") {
+        tempSkuArray.push(voltageBasedOperatorSku);
+    } else {
+        showErrorModal("Warning, please provide a input for the voltage", "Check Input");
         return null;
     }
 
-    tempSkuArray.push(pttOperatorSku);
-    tempSkuArray.push(voltageBasedOperatorSku);
+    //Lamp type input gather
+    var lampTypeSku = document.getElementById("lampTypeSku").value.toUpperCase();
+    if (lampTypeSku == "") {
+        lampTypeSku = "NoLamp";
+    }
+    //TODO
     tempSkuArray.push(lampTypeSku);
+
+    //clamp ring input gather
+    var clampRingSku = document.getElementById("clampRingSku").value.toUpperCase();
+    if (clampRingSku == "") {
+        clampRingSku = "NoClamp";
+    }
+    //TODO
     tempSkuArray.push(clampRingSku);
-    tempSkuArray.push(lensTypeSku);
-    tempSkuArray.push(lensColorSku);
+
+    //lens type input gather
+    var lensTypeSku = document.getElementById("lensTypeSku").value.toUpperCase();
+    if (!lensTypeSku == "") {
+        tempSkuArray.push(lensTypeSku);
+    } else {
+        showErrorModal("Warning, please provide a input for the lens type", "Check Input");
+        return null;
+    }
+
+    //lens color input gather
+    var lensColorSku = document.getElementById("lensColorSku").value.toUpperCase();
+    if (!lensColorSku == "") {
+        tempSkuArray.push(lensColorSku);
+    } else {
+        showErrorModal("Warning, please provide a input for the lens color", "Check Input");
+        return null;
+    }
+
+    //options input gather
+    var optionsSku = document.getElementById("optionsSku").value.toUpperCase();
+    if (optionsSku == "") {
+        optionsSku = "NoOptions";
+    }
+    //TODO
     tempSkuArray.push(optionsSku);
 
     return tempSkuArray;
 }
 
 
-function submitManualSkuPtt() {
+function submitManualSkuPtt()
+{
     var getInputs = manualInputRetrieve();
+    var searchItem, childQuery;
 
-
-    for (var i = 0; i < getInputs.length; i++) {
+    for (var i = 0; i < getInputs.length; i++)
+    {
 
         //temp value for checking to see if the input is empty
         var checkValue = getInputs[i];
 
-        //serach for a matching data sku that was inputed 
-        var searchItem = "[data-sku~=" + "'" + checkValue.toUpperCase() + "'" + "]";
 
-        //query for a child
-        var childQuery = document.querySelectorAll(searchItem);
-        var id = childQuery[0].id;
-        var container = getContainer(id);
+        switch (checkValue) {
+            case "NoLamp":
+                childQuery = document.getElementById("item_lamp_color_clear_incandescent");
+                SpecialCart(childQuery);
+                break;
+            case "NoClamp":
+                childQuery = document.getElementById("item_clamp_ring_black_polyester_(type_4x)");
+                SpecialCart(childQuery);
+                break;
+            case "NoOptions":
+                childQuery = document.getElementById("item_option_no_ip20_guard");
+                SpecialCart(childQuery);
+                break;
 
-        // Add child to proper container
-        document.getElementById(container).appendChild(childQuery[0]);
+            default:
+                //serach for a matching data sku that was inputed 
+                searchItem = "[data-sku~=" + "'" + checkValue.toUpperCase() + "'" + "]";
 
-        // Set the correct sku for child
-        setProperSku(container, childQuery[0].dataset.sku);
+                //query for a child
+                childQuery = document.querySelectorAll(searchItem);
+                var id = childQuery[0].id;
 
-        // Filter other tiles using the container and the name of the item
-        applyContraints(container, id);
+                var container = getContainer(id);
 
-        // Set the data selected to true
-        childQuery[0].dataset.selected = true;
-        Cart.updatePrice(childQuery[0].dataset.price);
+                // Add child to proper container
+                document.getElementById(container).appendChild(childQuery[0]);
 
-        // Update text on screen
-        displayCartUpdates();
+                // Set the correct sku for child
+                setProperSku(container, childQuery[0].dataset.sku);
+
+                // Filter other tiles using the container and the name of the item
+                applyContraints(container, id);
+
+                // Set the data selected to true
+                childQuery[0].dataset.selected = true;
+                Cart.updatePrice(childQuery[0].dataset.price);
+
+                // Update text on screen
+                displayCartUpdates();
+                break;
+        }
 
     }
 
 }
 
+
+function SpecialCart(item) {
+
+    var childQuery = item;
+
+    // Get the container the item should be placed in
+    var container = getContainer(childQuery.id);
+
+    // Check if user already picked an item for this category
+    if (hasItems(container)) {
+        showWarningModal('Warning', 'You\'ve already selected an item!');
+        checkRemoveContainer();
+        return;
+    }
+
+    // Add child to proper container
+    document.getElementById(container).appendChild(childQuery);
+
+    // Set the correct sku for child
+    setProperSku(container, childQuery.dataset.sku);
+
+    // Filter other tiles using the container and the name of the item
+    applyContraints(container, childQuery.id);
+
+    // Set the data selected to true
+    childQuery.dataset.selected = true;
+    Cart.updatePrice(childQuery.dataset.price);
+
+    // Update text on screen
+    displayCartUpdates();
+}
 
 /**
  * When item is dropped in cart container.

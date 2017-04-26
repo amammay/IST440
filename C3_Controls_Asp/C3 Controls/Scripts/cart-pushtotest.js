@@ -30,7 +30,7 @@ const SLIDE_VOLTAGE = "slide_voltages";
 const SLIDE_LAMP_COLOR = "slide_lamp_colors";
 const SLIDE_LENS_TYPE = "slide_lens_type";
 
-var NoOptions = ["NoLamp", "NoClamp", "NoOptions"];
+
 
 // Cart Object
 var Cart = {
@@ -803,6 +803,30 @@ function showErrorModal(_title, _content) {
 function displayCartUpdates() {
     $("#title_text_price").html(Cart.getPrice());
     $("#title_text_sku").html(Cart.getSku());
+
+    var tempCart = Cart.getSku();
+
+    if (tempCart.includes("RD")) {
+        document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_red.png";
+    }
+    else if (tempCart.includes("GN")) {
+        document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_green.png";
+    }
+    else if (tempCart.includes("YW")) {
+        document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_yellow.png";
+    }
+    else if (tempCart.includes("BE")) {
+        document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_blue.png";
+    }
+    else if (tempCart.includes("AR")) {
+        document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_amber.png";
+    }
+    else if (tempCart.includes("WE")) {
+        document.getElementById("generatedImg").src = "../../Content/assets/img_pilot_light_white.png";
+    }
+
+
+
 }
 
 

@@ -93,27 +93,27 @@
                     },
                     {
                         "text": "Amber LED",
-                        "sku": "A",
+                        "sku": "LA",
                         "price": "18.00"
                     },
                     {
                         "text": "Blue LED",
-                        "sku": "B",
+                        "sku": "LB",
                         "price": "18.00"
                     },
                     {
                         "text": "Green LED",
-                        "sku": "G",
+                        "sku": "LG",
                         "price": "18.00"
                     },
                     {
                         "text": "Red LED",
-                        "sku": "R",
+                        "sku": "LR",
                         "price": "18.00"
                     },
                     {
                         "text": "White LED",
-                        "sku": "W",
+                        "sku": "LW",
                         "price": "18.00"
                     },
                     {

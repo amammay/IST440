@@ -122,15 +122,15 @@ namespace C3_Controls.Models.DataStructuring
                             };
 
                             //extra logic for assigning image path to position
-                            if (singleItem.Sku.Equals("A"))
+                            if (singleItem.Sku.Equals("LA"))
                                 singleItem.Img = "img_lamp_amber.png";
-                            else if (singleItem.Sku.Equals("B"))
+                            else if (singleItem.Sku.Equals("LB"))
                                 singleItem.Img = "img_lamp_blue.png";
-                            else if (singleItem.Sku.Equals("G"))
+                            else if (singleItem.Sku.Equals("LG"))
                                 singleItem.Img = "img_lamp_green.png";
-                            else if (singleItem.Sku.Equals("R"))
+                            else if (singleItem.Sku.Equals("LR"))
                                 singleItem.Img = "img_lamp_red.png";
-                            else if (singleItem.Sku.Equals("W"))
+                            else if (singleItem.Sku.Equals("LW"))
                                 singleItem.Img = "img_lamp_white.png";
                             else if (singleItem.Sku.Equals("")) //checked differently
                                 singleItem.Img = "img_lamp_clear_incandescent.png";

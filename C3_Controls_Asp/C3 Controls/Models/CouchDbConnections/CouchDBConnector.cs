@@ -15,7 +15,7 @@ namespace C3_Controls.Models.CouchDbConnections
     /// @email: amm7100@psu.edu
     /// This class acts a database connection and light data sctucturing
     /// </summary>
-    public class CouchDbConnector
+    public class CouchDbConnector : DataItem
     {
         #region Public Fields
 
@@ -23,8 +23,8 @@ namespace C3_Controls.Models.CouchDbConnections
         public string DatabaseName => WebConfigurationManager.AppSettings["DataBaseName"];
         public string DataBaseWtl => WebConfigurationManager.AppSettings["C3Controls_WTL"];
         public string DataBasePtt => WebConfigurationManager.AppSettings["C3Controls_PTT"];
-        public Dictionary<string, WTLItem[]> WtlMap { get; set; }
-        public Dictionary<string, PTTItem[]> PttMap { get; set; }
+        public Dictionary<string, DataItem[]> WtlMap { get; set; }
+        public Dictionary<string, DataItem[]> PttMap { get; set; }
         public MyCouchClient MyClient { get; set; }
         public Task<ViewQueryResponse> WtlQueryResponse { get; set; }
         public Task<ViewQueryResponse> PttQueryResponse { get; set; }
@@ -70,8 +70,8 @@ namespace C3_Controls.Models.CouchDbConnections
         public CouchDbConnector()
         {
             //Initilize 
-            WtlMap = new Dictionary<string, WTLItem[]>();
-            PttMap = new Dictionary<string, PTTItem[]>();
+            WtlMap = new Dictionary<string, DataItem[]>();
+            PttMap = new Dictionary<string, DataItem[]>();
 
             //New instance of a mycouchclient
             MyClient = new MyCouchClient(DatabaseAddress, DatabaseName);
@@ -88,10 +88,10 @@ namespace C3_Controls.Models.CouchDbConnections
         /// </summary>
         /// <param name="wtlQueryResponse"></param>
         /// <returns> Returns Dictionary of world tower light items </returns>
-        public Dictionary<string, WTLItem[]> DeserelizeWtl(Task<ViewQueryResponse> wtlQueryResponse)
+        public Dictionary<string, DataItem[]> DeserelizeWtl(Task<ViewQueryResponse> wtlQueryResponse)
         {
             //Create a local dictionary
-            var dictionaryValuesWtl = new Dictionary<string, WTLItem[]>();
+            var dictionaryValuesWtl = new Dictionary<string, DataItem[]>();
 
             //Cycle through our response that we got, specifically the Rows
             foreach (var row in wtlQueryResponse.Result.Rows)
@@ -100,7 +100,7 @@ namespace C3_Controls.Models.CouchDbConnections
                 var itemObject = row.Value;
 
                 //set our dictionary to the Deserialized object Dictionary consisting of strings and pttitems
-                dictionaryValuesWtl = JsonConvert.DeserializeObject<Dictionary<string, WTLItem[]>>(itemObject);
+                dictionaryValuesWtl = JsonConvert.DeserializeObject<Dictionary<string, DataItem[]>>(itemObject);
             }
 
             return dictionaryValuesWtl;
@@ -111,10 +111,10 @@ namespace C3_Controls.Models.CouchDbConnections
         /// </summary>
         /// <param name="pttQueryResponse"></param>
         /// <returns> Returns Dictionary of push to test items </returns>
-        public Dictionary<string, PTTItem[]> DeserelizePtt(Task<ViewQueryResponse> pttQueryResponse)
+        public Dictionary<string, DataItem[]> DeserelizePtt(Task<ViewQueryResponse> pttQueryResponse)
         {
             //Create a local dictionary
-            var dictionaryValuesPtt = new Dictionary<string, PTTItem[]>();
+            var dictionaryValuesPtt = new Dictionary<string, DataItem[]>();
 
             //Cycle through our response that we got, specifically the Rows
             foreach (var row in pttQueryResponse.Result.Rows)
@@ -123,11 +123,12 @@ namespace C3_Controls.Models.CouchDbConnections
                 var itemObject = row.Value;
 
                 //set our dictionary to the Deserialized object Dictionary consisting of strings and pttitems
-                dictionaryValuesPtt = JsonConvert.DeserializeObject<Dictionary<string, PTTItem[]>>(itemObject);
+                dictionaryValuesPtt = JsonConvert.DeserializeObject<Dictionary<string, DataItem[]>>(itemObject);
             }
 
             return dictionaryValuesPtt;
         }
+
 
         #endregion Public Methods
 

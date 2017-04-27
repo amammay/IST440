@@ -145,8 +145,7 @@
     <Compile Include="Models\DataStructuring\PTT_Data.cs" />
     <Compile Include="Models\DataStructuring\WTL_Data.cs" />
     <Compile Include="Models\Items\PricedItem.cs" />
-    <Compile Include="Models\Items\PTTItem.cs" />
-    <Compile Include="Models\Items\WTLItem.cs" />
+    <Compile Include="Models\Items\DataItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -338,6 +337,10 @@
     <Content Include="Content\old\css" />
     <Content Include="Content\old\css%281%29" />
     <Content Include="Content\old\saved_resource" />
+    <Content Include="ClassDiagram1.cd" />
+    <Content Include="..\..\..\..\Users\mamma\Desktop\ClassDiagram2.cd">
+      <Link>ClassDiagram2.cd</Link>
+    </Content>
     <None Include="Properties\PublishProfiles\c3controls - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\C3Controls440wNewUpdate - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

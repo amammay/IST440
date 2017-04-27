@@ -21,7 +21,7 @@ namespace C3_Controls.Models.DataStructuring
             var myCouchDbConnector = new CouchDbConnector();
 
             //Creates our map
-            PttMap = new Dictionary<string, PTTItem[]>();
+            PttMap = new Dictionary<string, DataItem[]>();
 
             //Assign our dictionary to the one that was populated when the connection was made 
             PttMap = myCouchDbConnector.PttMap;
@@ -34,7 +34,7 @@ namespace C3_Controls.Models.DataStructuring
 
         #region Private Fields
 
-        public Dictionary<string, PTTItem[]> PttMap { get; }
+        public Dictionary<string, DataItem[]> PttMap { get; }
 
         #endregion Private Fields
 
@@ -44,12 +44,12 @@ namespace C3_Controls.Models.DataStructuring
         ///     Actually structures of the data.
         /// </summary>
         /// <param name="pttMap"></param>
-        public void PttDataStructure(Dictionary<string, PTTItem[]> pttMap)
+        public void PttDataStructure(Dictionary<string, DataItem[]> pttMap)
         {
             //Cycle over our ptt map 
             foreach (var valueSet in pttMap)
             {
-                var valueSetItems = new List<PTTItem>();
+                var valueSetItems = new List<DataItem>();
 
                 //Iterate over each value set, its going to be a ptt item 
                 foreach (var valueSetItem in valueSet.Value)

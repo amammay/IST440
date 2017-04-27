@@ -21,7 +21,8 @@ namespace C3_Controls.Models.UiDataModel
         public List<PricedItem> Styles => WtlData.Styles;
         public List<PricedItem> Positions => WtlData.Positions;
         public List<PricedItem> SoundModule => WtlData.SoundModule;
-       // public List<PricedItem> LightLens => WtlData.LightLens;
+
+       
     }
 
 

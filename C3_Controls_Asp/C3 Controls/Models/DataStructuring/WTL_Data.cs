@@ -18,7 +18,7 @@ namespace C3_Controls.Models.DataStructuring
 
         #region Private Fields
 
-        public Dictionary<string, WTLItem[]> WtlMap { get; }
+        public Dictionary<string, DataItem[]> WtlMap { get; }
 
         private List<PricedItem> PositionsClearlens { get; set; }
 
@@ -35,7 +35,7 @@ namespace C3_Controls.Models.DataStructuring
         public List<PricedItem> LightLens { get; set; }
 
         #endregion Public Fields
-        
+
         #region Public Methods
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace C3_Controls.Models.DataStructuring
             var myCouchDbConnector = new CouchDbConnector();
 
             //Creates our map
-            WtlMap = new Dictionary<string, WTLItem[]>();
+            WtlMap = new Dictionary<string, DataItem[]>();
 
             //Assign our dictionary to the one that was populated when the connection was made 
             WtlMap = myCouchDbConnector.WtlMap;
@@ -65,12 +65,12 @@ namespace C3_Controls.Models.DataStructuring
         /// Actually structures of the data.
         /// </summary>
         /// <param name="wtlMap"></param>
-        public void WtlDataStructure(Dictionary<string, WTLItem[]> wtlMap)
+        public void WtlDataStructure(Dictionary<string, DataItem[]> wtlMap)
         {
             //Cycle over our wtl map 
             foreach (var valueSet in wtlMap)
             {
-                var valueSetItems = new List<WTLItem>();
+                var valueSetItems = new List<DataItem>();
 
                 //Iterate over each value set, its going to be a wtl item 
                 foreach (var valueSetItem in valueSet.Value)

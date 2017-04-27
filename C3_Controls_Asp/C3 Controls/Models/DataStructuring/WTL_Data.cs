@@ -1,49 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web.Configuration;
 using C3_Controls.Models.CouchDbConnections;
 
 namespace C3_Controls.Models.DataStructuring
 {
-
     /// <summary>
-    /// @author Alex Mammay
-    /// @updated 4/2/2017
-    /// @email: amm7100@psu.edu
-    /// This class acts a data structuring class
+    ///     @author Alex Mammay
+    ///     @updated 4/2/2017
+    ///     @email: amm7100@psu.edu
+    ///     This class acts a data structuring class
     /// </summary>
     public class WTL_Data
     {
-
-        #region Private Fields
-
-        public Dictionary<string, DataItem[]> WtlMap { get; }
-
-        private List<PricedItem> PositionsClearlens { get; set; }
-
-        #endregion Private Fields
-
-        #region Public Fields
-
-        public PricedItem OperatorType { get; set; }
-        public PricedItem ModuelDiameter { get; set; }
-        public List<PricedItem> Voltages { get; set; }
-        public List<PricedItem> Styles { get; set; }
-        public List<PricedItem> Positions { get; set; }
-        public List<PricedItem> SoundModule { get; set; }
-        public List<PricedItem> LightLens { get; set; }
-
-        #endregion Public Fields
-
         #region Public Methods
 
         /// <summary>
-        /// This is were dictionary specific values get their proper inheritence of a priced item
+        ///     This is were dictionary specific values get their proper inheritence of a priced item
         /// </summary>
         public WTL_Data()
         {
-        
             //Instance of couch connector
             var myCouchDbConnector = new CouchDbConnector();
 
@@ -52,17 +27,17 @@ namespace C3_Controls.Models.DataStructuring
 
             //Assign our dictionary to the one that was populated when the connection was made 
             WtlMap = myCouchDbConnector.WtlMap;
-            
+
             //Fire off Method for doing the heavy lifting 
             WtlDataStructure(WtlMap);
-           
         }
 
         #endregion Public Methods
 
         #region Private Methods
+
         /// <summary>
-        /// Actually structures of the data.
+        ///     Actually structures of the data.
         /// </summary>
         /// <param name="wtlMap"></param>
         public void WtlDataStructure(Dictionary<string, DataItem[]> wtlMap)
@@ -142,7 +117,7 @@ namespace C3_Controls.Models.DataStructuring
                                 Name = item.text,
                                 Price = item.price,
                                 Desc = item.text,
-                                Sku = item.sku,
+                                Sku = item.sku
                             };
 
                             switch (singleItem.Sku)
@@ -158,7 +133,6 @@ namespace C3_Controls.Models.DataStructuring
                                     break;
                                 default:
                                     break;
-
                             }
 
                             //Add her to the list
@@ -213,7 +187,6 @@ namespace C3_Controls.Models.DataStructuring
 
                             //extra logic for assigning image path to position
                             if (singleItem.Sku.EndsWith("A"))
-                            {
                                 switch (singleItem.Sku)
                                 {
                                     case "DA":
@@ -225,12 +198,9 @@ namespace C3_Controls.Models.DataStructuring
                                     case "RA":
                                         singleItem.Img = "AmberRotaryTowerLight.png";
                                         break;
-
                                 }
-                            }
-                              
+
                             else if (singleItem.Sku.EndsWith("B"))
-                            {
                                 switch (singleItem.Sku)
                                 {
                                     case "DB":
@@ -242,11 +212,8 @@ namespace C3_Controls.Models.DataStructuring
                                     case "RB":
                                         singleItem.Img = "BlueRotaryTowerLight.png";
                                         break;
-
                                 }
-                            }
                             else if (singleItem.Sku.EndsWith("G"))
-                            {
                                 switch (singleItem.Sku)
                                 {
                                     case "DG":
@@ -258,12 +225,9 @@ namespace C3_Controls.Models.DataStructuring
                                     case "RG":
                                         singleItem.Img = "GreenRotaryTowerLight.png";
                                         break;
-
                                 }
-                            }
-                              
+
                             else if (singleItem.Sku.EndsWith("R"))
-                            {
                                 switch (singleItem.Sku)
                                 {
                                     case "DR":
@@ -275,12 +239,9 @@ namespace C3_Controls.Models.DataStructuring
                                     case "RR":
                                         singleItem.Img = "RedRotaryTowerLight.png";
                                         break;
-
                                 }
-                            }
-                             
+
                             else if (singleItem.Sku.EndsWith("W"))
-                            {
                                 switch (singleItem.Sku)
                                 {
                                     case "DW":
@@ -292,12 +253,9 @@ namespace C3_Controls.Models.DataStructuring
                                     case "RW":
                                         singleItem.Img = "WhiteRotaryTowerLight.png";
                                         break;
-
                                 }
-                            }
 
 
-                                
                             //Add it to the list
                             Positions.Add(singleItem);
                         }
@@ -312,7 +270,7 @@ namespace C3_Controls.Models.DataStructuring
             foreach (var positionItem in Positions)
             {
                 var tempPositionItem = new PricedItem();
-                
+
 
                 var tempSku = positionItem.Sku;
                 var tempImg = positionItem.Img;
@@ -327,29 +285,39 @@ namespace C3_Controls.Models.DataStructuring
                     tempPositionItem.Img = tempImg.Replace(".png", "_clear.png");
 
                     if (tempPositionItem.Sku.StartsWith("D"))
-                    {
                         tempPositionItem.Price = 48.50;
-                    }
                     else
-                    {
                         tempPositionItem.Price = 61.00;
-                    }
 
                     PositionsClearlens.Add(tempPositionItem);
                 }
-
-              
             }
 
-            
+
             foreach (var item in PositionsClearlens)
-            {
                 Positions.Add(item);
-            }
-
-
         }
 
         #endregion Private Methods
+
+        #region Private Fields
+
+        public Dictionary<string, DataItem[]> WtlMap { get; }
+
+        private List<PricedItem> PositionsClearlens { get; set; }
+
+        #endregion Private Fields
+
+        #region Public Fields
+
+        public PricedItem OperatorType { get; set; }
+        public PricedItem ModuelDiameter { get; set; }
+        public List<PricedItem> Voltages { get; set; }
+        public List<PricedItem> Styles { get; set; }
+        public List<PricedItem> Positions { get; set; }
+        public List<PricedItem> SoundModule { get; set; }
+        public List<PricedItem> LightLens { get; set; }
+
+        #endregion Public Fields
     }
 }

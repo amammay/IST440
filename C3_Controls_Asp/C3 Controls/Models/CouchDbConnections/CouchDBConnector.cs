@@ -10,32 +10,17 @@ using Newtonsoft.Json;
 namespace C3_Controls.Models.CouchDbConnections
 {
     /// <summary>
-    /// @author Alex Mammay
-    /// @updated 4/2/2017
-    /// @email: amm7100@psu.edu
-    /// This class acts a database connection and light data sctucturing
+    ///     @author Alex Mammay
+    ///     @updated 4/2/2017
+    ///     @email: amm7100@psu.edu
+    ///     This class acts a database connection and light data sctucturing
     /// </summary>
     public class CouchDbConnector : DataItem
     {
-        #region Public Fields
-
-        public string DatabaseAddress => WebConfigurationManager.AppSettings["DataBaseAddress"];
-        public string DatabaseName => WebConfigurationManager.AppSettings["DataBaseName"];
-        public string DataBaseWtl => WebConfigurationManager.AppSettings["C3Controls_WTL"];
-        public string DataBasePtt => WebConfigurationManager.AppSettings["C3Controls_PTT"];
-        public Dictionary<string, DataItem[]> WtlMap { get; set; }
-        public Dictionary<string, DataItem[]> PttMap { get; set; }
-        public MyCouchClient MyClient { get; set; }
-        public Task<ViewQueryResponse> WtlQueryResponse { get; set; }
-        public Task<ViewQueryResponse> PttQueryResponse { get; set; }
-
-        #endregion Public Fields
-
-
         #region Private Methods
 
         /// <summary>
-        /// Establish a connection to the database, retrieve our data and leave.
+        ///     Establish a connection to the database, retrieve our data and leave.
         /// </summary>
         /// <param name="couchConnection"></param>
         private void DbConnection(MyCouchClient couchConnection)
@@ -61,6 +46,20 @@ namespace C3_Controls.Models.CouchDbConnections
         }
 
         #endregion Private Methods
+
+        #region Public Fields
+
+        public string DatabaseAddress => WebConfigurationManager.AppSettings["DataBaseAddress"];
+        public string DatabaseName => WebConfigurationManager.AppSettings["DataBaseName"];
+        public string DataBaseWtl => WebConfigurationManager.AppSettings["C3Controls_WTL"];
+        public string DataBasePtt => WebConfigurationManager.AppSettings["C3Controls_PTT"];
+        public Dictionary<string, DataItem[]> WtlMap { get; set; }
+        public Dictionary<string, DataItem[]> PttMap { get; set; }
+        public MyCouchClient MyClient { get; set; }
+        public Task<ViewQueryResponse> WtlQueryResponse { get; set; }
+        public Task<ViewQueryResponse> PttQueryResponse { get; set; }
+
+        #endregion Public Fields
 
         #region Public Methods
 
@@ -129,9 +128,6 @@ namespace C3_Controls.Models.CouchDbConnections
             return dictionaryValuesPtt;
         }
 
-
         #endregion Public Methods
-
-
     }
 }

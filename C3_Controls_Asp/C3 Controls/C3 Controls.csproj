@@ -337,10 +337,8 @@
     <Content Include="Content\old\css" />
     <Content Include="Content\old\css%281%29" />
     <Content Include="Content\old\saved_resource" />
-    <Content Include="ClassDiagram1.cd" />
-    <Content Include="..\..\..\..\Users\mamma\Desktop\ClassDiagram2.cd">
-      <Link>ClassDiagram2.cd</Link>
-    </Content>
+    <Content Include="ptt_class.cd" />
+    <Content Include="wtl_class.cd" />
     <None Include="Properties\PublishProfiles\c3controls - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\C3Controls440wNewUpdate - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

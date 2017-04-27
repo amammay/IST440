@@ -82,10 +82,9 @@ namespace C3_Controls.Models.DataStructuring
                                 singleItem.Img = "120vac.png";
                             else if (singleItem.Sku.Equals("277"))
                                 singleItem.Img = "120vac.png";
-                           
+
                             else if (singleItem.Sku.Equals("480"))
                                 singleItem.Img = "480vac.png";
-
 
 
                             //Add her to the list

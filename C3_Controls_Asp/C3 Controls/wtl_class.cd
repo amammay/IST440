@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="C3_Controls.Models.CouchDbConnections.CouchDbConnector">
+    <Position X="9.5" Y="0.5" Width="1.75" />
+    <InheritanceLine Type="C3_Controls.Models.DataItem" FixedFromPoint="true">
+      <Path>
+        <Point X="10.375" Y="4.75" />
+        <Point X="10.375" Y="4.3" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAACQCAAAAAIgAAAAABBAAAAAAAAAQACAAAEAAABAAQ=</HashCode>
+      <FileName>Models\CouchDbConnections\CouchDBConnector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C3_Controls.Models.UiDataModel.TowerLight">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QACAABgAAABAAAAgAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Models\UiDataModel\ControlDataModels.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="WTL_Data" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="C3_Controls.Models.Control">
+    <Position X="3.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAJAAAAAAAAAAAYAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Models\Items\Control.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C3_Controls.Models.DataStructuring.WTL_Data">
+    <Position X="6" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>QAABABBAAABAgAAgAAAQAAAAAAAAAACEBAAAAAgAAAA=</HashCode>
+      <FileName>Models\DataStructuring\WTL_Data.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CouchDbConnector" />
+      <Property Name="PricedItem" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="C3_Controls.Models.DataItem">
+    <Position X="9.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAABAAAAA=</HashCode>
+      <FileName>Models\Items\DataItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C3_Controls.Models.PricedItem">
+    <Position X="6" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAQAAAAAMAAAAAIQgAAAAAAAAEAAAQAAAAAA=</HashCode>
+      <FileName>Models\Items\PricedItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

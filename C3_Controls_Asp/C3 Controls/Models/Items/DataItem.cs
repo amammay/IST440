@@ -6,9 +6,4 @@
         public string sku { get; set; }
         public double price { get; set; }
     }
-
-
 }
-
-
-

@@ -21,8 +21,6 @@ namespace C3_Controls.Models.UiDataModel
         public List<PricedItem> Styles => WtlData.Styles;
         public List<PricedItem> Positions => WtlData.Positions;
         public List<PricedItem> SoundModule => WtlData.SoundModule;
-
-       
     }
 
 
@@ -38,7 +36,13 @@ namespace C3_Controls.Models.UiDataModel
             PttData = new PTT_Data();
         }
 
-        public override PricedItem OperatorType => new PricedItem() { Name = "Push to Test", Sku = "PTT", Price = DEFAULT_PRICE };
+        public override PricedItem OperatorType => new PricedItem
+        {
+            Name = "Push to Test",
+            Sku = "PTT",
+            Price = DEFAULT_PRICE
+        };
+
         public override List<PricedItem> Voltages => PttData.Voltages;
         public List<PricedItem> BasicOperators => PttData.BasicOperators;
         public List<PricedItem> LampColors => PttData.LampColors;
@@ -46,6 +50,5 @@ namespace C3_Controls.Models.UiDataModel
         public List<PricedItem> LensTypes => PttData.LensTypes;
         public List<PricedItem> LensColors => PttData.LensColors;
         public List<PricedItem> Options => PttData.Options;
-
     }
 }
